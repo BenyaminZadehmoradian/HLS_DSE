@@ -1,5 +1,6 @@
-registry_version: "1.2"
+registry_version: "1.3"
 ids_immutable: true          # IDs are never reused or renamed; entries may gain status/notes
+# 1.3: S67 marked SUPERSEDED by S22 (identical title/question); overlap_review added for similar studies.
 # 1.2 (repository cleanup): per-study template stubs (studies/S02-S08, S10-S70, S73-S96) removed - they held
 # no content beyond the title recorded here. A study folder is created from studies/_TEMPLATE/ when the study
 # gets a real contract. No ID was reused, renamed or re-titled.
@@ -182,7 +183,7 @@ study_status:
   S64: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION)"}
   S65: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (CORE)"}
   S66: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (CORE)"}
-  S67: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION)"}
+  S67: {status: SUPERSEDED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION)", superseded_by: S22, note: "same title and question as S22 (Minimum joint evidence); ID kept, never reused"}
   S68: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION)"}
   S69: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (FUTURE)"}
   S70: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (FUTURE)"}
@@ -222,3 +223,11 @@ supersession:
 historical_meaning_drift:
   - ids: S07-S27
     note: "The R07 §27 study map (now archive/V19/HLS_DSE_V19_RESEARCH_MASTER.md) is an older study map whose S07-S27 meanings differ from R06 §19. Per the R06 registry rule, R06 §19 records the current role and historical definitions remain in archive/V19/. No ID was reassigned by this registry."
+
+# Studies whose questions overlap but are not identical. Status is unchanged: which study keeps the question
+# (and whether the others are SUPERSEDED or narrowed) is a research decision for the researcher.
+overlap_review:
+  - {studies: [S07, S65], topic: "joint candidate / task-candidate-fidelity selection", decision: PENDING_HUMAN}
+  - {studies: [S21, S23], topic: "adaptive fidelity", decision: PENDING_HUMAN}
+  - {studies: [S32, S34, S88], topic: "early stopping / staged evaluation termination", decision: PENDING_HUMAN}
+  - {studies: [S26, S87], topic: "provenance storage / evidence reuse", decision: PENDING_HUMAN}

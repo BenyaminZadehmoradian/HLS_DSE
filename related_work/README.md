@@ -137,7 +137,7 @@ systematic search required." It is **never** written as absence of prior work.
 
 Everything here is `LITERATURE_REPORTED`. Our measurements go to `evidence/measured/` and derived results to
 `evidence/derived/`. A paper's number never enters a measurement dataset. Cross-paper comparison requires
-normalization (`AI_CONTROL/LITERATURE_NORMALIZATION_POLICY.md`). Reproduction belongs to **S71** (`REPRODUCED` evidence).
+normalization (`AI_CONTROL/EXTERNAL_BASELINE_AND_LITERATURE_POLICY.md`). Reproduction belongs to **S71** (`REPRODUCED` evidence).
 
 ## 11. What must NOT be claimed from this directory
 
