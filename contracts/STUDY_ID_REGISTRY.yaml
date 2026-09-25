@@ -1,5 +1,8 @@
-registry_version: "1.0"
+registry_version: "1.1"
 immutable: true
+# 1.1 (2026-09-25, pre-P0 correction audit): S10-S70 added from REPORTS/R06_Study_Specifications.md §19
+# (the canonical S00-S70 index); S28-S31 recorded as MISSING_DEFINITION; per-ID status and the S09
+# supersession made explicit. Existing entries are unchanged. No ID was reused or renamed.
 reserved:
   S00: Project contract
   S01: Flow smoke test
@@ -11,6 +14,67 @@ reserved:
   S07: Joint task-candidate-fidelity selection
   S08: Full framework
   S09: Historical/legacy allocation; no new execution
+  S10: Shared vs per-benchmark model
+  S11: Cross-benchmark transfer
+  S12: Online learning
+  S13: Uncertainty-aware scheduling
+  S14: Feasibility learning
+  S15: Joint concurrent HLS DSE
+  S16: Decision-change prediction
+  S17: No-joint certificate / CPU-FPGA historical variants
+  S18: Budget allocation / DMA historical variants
+  S19: Evidence portfolio / power-energy historical variants
+  S20: Cost-aware evidence selection / carbon historical variants
+  S21: Adaptive fidelity / no-joint historical variants
+  S22: Minimum joint evidence
+  S23: Adaptive fidelity ladder
+  S24: Large workload scaling
+  S25: Distributed execution
+  S26: Provenance/storage
+  S27: Advanced controller comparison
+  S28: UNDEFINED - ID allocated (studies/S28 stub) but no definition in any canonical source
+  S29: UNDEFINED - ID allocated (studies/S29 stub) but no definition in any canonical source
+  S30: UNDEFINED - ID allocated (studies/S30 stub) but no definition in any canonical source
+  S31: UNDEFINED - ID allocated (studies/S31 stub) but no definition in any canonical source
+  S32: Adaptive evaluation stopping
+  S33: Stage-wise VOI
+  S34: Dominance-based early termination
+  S35: Error-budgeted evaluation
+  S36: Sparse interaction discovery
+  S37: Interaction screening
+  S38: Higher-order interaction discovery
+  S39: Interaction-order selection
+  S40: Counterfactual interaction analysis
+  S41: Interaction decomposition
+  S42: Interaction fingerprinting
+  S43: Pareto frontier stability
+  S44: Pareto rank stability
+  S45: Decision stability
+  S46: Pareto frontier uncertainty
+  S47: Frontier coverage
+  S48: Asynchronous evidence scheduling
+  S49: Straggler-aware DSE
+  S50: Portfolio scheduling
+  S51: Robust DSE
+  S52: QoR variability
+  S53: Replication-aware DSE
+  S54: Risk-aware Pareto
+  S55: Directive sensitivity map
+  S56: Directive interaction modeling
+  S57: Dynamic search-space reduction
+  S58: Region-level DSE
+  S59: Pre-P&R physical interaction prediction
+  S60: Routing-risk prediction
+  S61: Physical feasibility boundary learning
+  S62: Bottleneck switching
+  S63: Bottleneck transition modeling
+  S64: Resource opportunity cost
+  S65: Joint candidate selection
+  S66: Joint Pareto composition failure
+  S67: Minimum joint evidence
+  S68: Interaction-driven benchmark grouping
+  S69: Meta-DSE
+  S70: Study selection / meta-study
   S71: External baseline reproduction and cross-paper comparison
   S72: Search algorithm and end-to-end cost comparison
   S73: Memory-system and data-movement cost
@@ -39,3 +103,119 @@ reserved:
   S96: Sustained execution and thermal behavior
 
 policy: Never reuse an existing Study ID for a different scientific question.
+
+status_vocabulary: [ACTIVE, PLANNED, RESERVED, DEPRECATED, SUPERSEDED, ARCHIVED, MISSING_DEFINITION, UNKNOWN]
+status_definitions:
+  ACTIVE: "Study currently executing (none: P0 not started)."
+  PLANNED: "Study has a named contract (studies/<ID>/CONTRACT.yaml with study_name) and is gated; not started."
+  RESERVED: "ID and canonical role recorded (R06 §19) with a registry_only contract stub; no executable definition yet."
+  ARCHIVED: "Historical ID retained for traceability; no new execution."
+  MISSING_DEFINITION: "ID allocated (stub folder exists) but no definition exists in any canonical source."
+study_status:
+  S00: {status: PLANNED, source: "studies/S00/CONTRACT.yaml (IMPLEMENTABLE); RESEARCH_STATE.yaml current_study", note: "current_study; P0 PLANNED, not started, not authorized"}
+  S01: {status: PLANNED, source: "studies/S01/CONTRACT.yaml (LOCKED_UNTIL_P0_GATE)"}
+  S02: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (VALIDATION); studies/S02/CONTRACT.yaml (registry_only)"}
+  S03: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (VALIDATION); studies/S03/CONTRACT.yaml (registry_only)"}
+  S04: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (CORE); studies/S04/CONTRACT.yaml (registry_only)"}
+  S05: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (CORE + EXTENSION); studies/S05/CONTRACT.yaml (registry_only)"}
+  S06: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (VALIDATION + EXTENSION); studies/S06/CONTRACT.yaml (registry_only)"}
+  S07: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (CORE); studies/S07/CONTRACT.yaml (registry_only)"}
+  S08: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (FINAL CORE); studies/S08/CONTRACT.yaml (registry_only)"}
+  S09: {status: ARCHIVED, source: "studies/S09/CONTRACT.yaml (ARCHIVED_ID_COLLISION); archive/legacy_study_ids/", note: "external-baseline role superseded by S71; see supersession"}
+  S10: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S10/CONTRACT.yaml (registry_only)"}
+  S11: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S11/CONTRACT.yaml (registry_only)"}
+  S12: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S12/CONTRACT.yaml (registry_only)"}
+  S13: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S13/CONTRACT.yaml (registry_only)"}
+  S14: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (VALIDATION); studies/S14/CONTRACT.yaml (registry_only)"}
+  S15: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (CORE); studies/S15/CONTRACT.yaml (registry_only)"}
+  S16: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (CORE); studies/S16/CONTRACT.yaml (registry_only)"}
+  S17: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION / ARCHIVED); studies/S17/CONTRACT.yaml (registry_only)", note: "R06 marks historical variants archived"}
+  S18: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S18/CONTRACT.yaml (registry_only)"}
+  S19: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S19/CONTRACT.yaml (registry_only)"}
+  S20: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (CORE + EXTENSION); studies/S20/CONTRACT.yaml (registry_only)"}
+  S21: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S21/CONTRACT.yaml (registry_only)"}
+  S22: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S22/CONTRACT.yaml (registry_only)"}
+  S23: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S23/CONTRACT.yaml (registry_only)"}
+  S24: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S24/CONTRACT.yaml (registry_only)"}
+  S25: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S25/CONTRACT.yaml (registry_only)"}
+  S26: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (INFRASTRUCTURE EXTENSION); studies/S26/CONTRACT.yaml (registry_only)"}
+  S27: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (FUTURE); studies/S27/CONTRACT.yaml (registry_only)"}
+  S28: {status: MISSING_DEFINITION, source: "studies/S28/CONTRACT.yaml (registry_only stub)", note: "absent from R06 §19, R07 §27, R11 and MASTER"}
+  S29: {status: MISSING_DEFINITION, source: "studies/S29/CONTRACT.yaml (registry_only stub)", note: "absent from R06 §19, R07 §27, R11 and MASTER"}
+  S30: {status: MISSING_DEFINITION, source: "studies/S30/CONTRACT.yaml (registry_only stub)", note: "absent from R06 §19, R07 §27, R11 and MASTER"}
+  S31: {status: MISSING_DEFINITION, source: "studies/S31/CONTRACT.yaml (registry_only stub)", note: "absent from R06 §19, R07 §27, R11 and MASTER"}
+  S32: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S32/CONTRACT.yaml (registry_only)"}
+  S33: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S33/CONTRACT.yaml (registry_only)"}
+  S34: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S34/CONTRACT.yaml (registry_only)"}
+  S35: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S35/CONTRACT.yaml (registry_only)"}
+  S36: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (VALIDATION); studies/S36/CONTRACT.yaml (registry_only)"}
+  S37: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (VALIDATION); studies/S37/CONTRACT.yaml (registry_only)"}
+  S38: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (ADVANCED); studies/S38/CONTRACT.yaml (registry_only)"}
+  S39: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (ADVANCED); studies/S39/CONTRACT.yaml (registry_only)"}
+  S40: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (VALIDATION); studies/S40/CONTRACT.yaml (registry_only)"}
+  S41: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (VALIDATION); studies/S41/CONTRACT.yaml (registry_only)"}
+  S42: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (ADVANCED); studies/S42/CONTRACT.yaml (registry_only)"}
+  S43: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (VALIDATION); studies/S43/CONTRACT.yaml (registry_only)"}
+  S44: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S44/CONTRACT.yaml (registry_only)"}
+  S45: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (VALIDATION); studies/S45/CONTRACT.yaml (registry_only)"}
+  S46: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S46/CONTRACT.yaml (registry_only)"}
+  S47: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (VALIDATION); studies/S47/CONTRACT.yaml (registry_only)"}
+  S48: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S48/CONTRACT.yaml (registry_only)"}
+  S49: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S49/CONTRACT.yaml (registry_only)"}
+  S50: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S50/CONTRACT.yaml (registry_only)"}
+  S51: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S51/CONTRACT.yaml (registry_only)"}
+  S52: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S52/CONTRACT.yaml (registry_only)"}
+  S53: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S53/CONTRACT.yaml (registry_only)"}
+  S54: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S54/CONTRACT.yaml (registry_only)"}
+  S55: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (ADVANCED); studies/S55/CONTRACT.yaml (registry_only)"}
+  S56: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (ADVANCED); studies/S56/CONTRACT.yaml (registry_only)"}
+  S57: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (ADVANCED); studies/S57/CONTRACT.yaml (registry_only)"}
+  S58: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (ADVANCED); studies/S58/CONTRACT.yaml (registry_only)"}
+  S59: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION / ARCHIVED); studies/S59/CONTRACT.yaml (registry_only)", note: "R06 marks historical variants archived"}
+  S60: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S60/CONTRACT.yaml (registry_only)"}
+  S61: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S61/CONTRACT.yaml (registry_only)"}
+  S62: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (VALIDATION); studies/S62/CONTRACT.yaml (registry_only)"}
+  S63: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S63/CONTRACT.yaml (registry_only)"}
+  S64: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S64/CONTRACT.yaml (registry_only)"}
+  S65: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (CORE); studies/S65/CONTRACT.yaml (registry_only)"}
+  S66: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (CORE); studies/S66/CONTRACT.yaml (registry_only)"}
+  S67: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S67/CONTRACT.yaml (registry_only)"}
+  S68: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION); studies/S68/CONTRACT.yaml (registry_only)"}
+  S69: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (FUTURE); studies/S69/CONTRACT.yaml (registry_only)"}
+  S70: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (FUTURE); studies/S70/CONTRACT.yaml (registry_only)"}
+  S71: {status: PLANNED, source: "studies/S71/CONTRACT.yaml (PLANNED)"}
+  S72: {status: PLANNED, source: "studies/S72/CONTRACT.yaml (PLANNED)"}
+  S73: {status: PLANNED, source: "studies/S73/CONTRACT.yaml (planned)"}
+  S74: {status: PLANNED, source: "studies/S74/CONTRACT.yaml (planned)"}
+  S75: {status: PLANNED, source: "studies/S75/CONTRACT.yaml (planned)"}
+  S76: {status: PLANNED, source: "studies/S76/CONTRACT.yaml (planned)"}
+  S77: {status: PLANNED, source: "studies/S77/CONTRACT.yaml (planned)"}
+  S78: {status: PLANNED, source: "studies/S78/CONTRACT.yaml (planned)"}
+  S79: {status: PLANNED, source: "studies/S79/CONTRACT.yaml (planned)"}
+  S80: {status: PLANNED, source: "studies/S80/CONTRACT.yaml (planned)"}
+  S81: {status: PLANNED, source: "studies/S81/CONTRACT.yaml (planned)"}
+  S82: {status: PLANNED, source: "studies/S82/CONTRACT.yaml (planned)"}
+  S83: {status: PLANNED, source: "studies/S83/CONTRACT.yaml (planned)"}
+  S84: {status: PLANNED, source: "studies/S84/CONTRACT.yaml (planned)"}
+  S85: {status: PLANNED, source: "studies/S85/CONTRACT.yaml (planned)"}
+  S86: {status: PLANNED, source: "studies/S86/CONTRACT.yaml (planned)"}
+  S87: {status: PLANNED, source: "studies/S87/CONTRACT.yaml (planned)"}
+  S88: {status: PLANNED, source: "studies/S88/CONTRACT.yaml (planned)"}
+  S89: {status: PLANNED, source: "studies/S89/CONTRACT.yaml (planned)"}
+  S90: {status: PLANNED, source: "studies/S90/CONTRACT.yaml (planned)"}
+  S91: {status: PLANNED, source: "studies/S91/CONTRACT.yaml (planned)"}
+  S92: {status: PLANNED, source: "studies/S92/CONTRACT.yaml (planned)"}
+  S93: {status: PLANNED, source: "studies/S93/CONTRACT.yaml (planned)"}
+  S94: {status: PLANNED, source: "studies/S94/CONTRACT.yaml (planned)"}
+  S95: {status: PLANNED, source: "studies/S95/CONTRACT.yaml (planned)"}
+  S96: {status: PLANNED, source: "studies/S96/CONTRACT.yaml (planned)"}
+supersession:
+  - old_study_id: S09
+    current_status: ARCHIVED
+    replacement_study_id: S71
+    reason: "External-baseline reproduction was first registered under S09 (V22.6), colliding with the earlier S09 meaning; moved to the immutable ID S71."
+    source: "archive/legacy_study_ids/S09_EXTERNAL_BASELINE_V22_6_CONTRACT.yaml; RESEARCH_STATE.yaml external_baseline_study; studies/S09/CONTRACT.yaml status ARCHIVED_ID_COLLISION"
+    other_historical_meanings: "Model/Learning efficiency (R03, R06 §19 before 1.1 correction); Multi-fidelity evidence (R07 §27). No replacement ID is defined for these in canonical sources."
+historical_meaning_drift:
+  - ids: S07-S27
+    note: "REPORTS/R07_Research_Extensions.md §27 is an older study map whose S07-S27 meanings differ from R06 §19. Per the R06 registry rule, R06 §19 records the current role and historical definitions remain in archive/reports. No ID was reassigned by this registry."

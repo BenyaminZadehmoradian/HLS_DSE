@@ -1,5 +1,7 @@
 # RW0033 — FIFOAdvisor: A DSE Framework for Automated FIFO Sizing of High-Level Synthesis Designs
 
+> **Relevance (2026-09-25 correction audit): CORE** — All inter-kernel FIFO depths of a dataflow design sized jointly against whole-design latency; inter-kernel interaction boundary. Primary Studies: S15 S36 S65. Prior-art boundary: PARTIAL OVERLAP.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 
@@ -11,7 +13,7 @@
 
 ## PDF provenance
 - Status: `LOCAL_EXISTING` (published)
-- Canonical path: `related_work/papers/hls_dse/RW0033_AbiKaram2026_FIFOAdvisor_ASPDAC.pdf`
+- Canonical path: `related_work/papers/core/RW0033_AbiKaram2026_FIFOAdvisor_ASPDAC.pdf`
 - SHA-256: `8f57ad7f0cf58bdc300336cf47cbaf3068c365a7bea6924466b7a5b8ac4fbe0f`
 - Source: /home/benyamin/Desktop/Library/FIFOAdvisor: A DSE Framework for Automated FIFO Sizing of High-Level Synthesis Designs.pdf
 

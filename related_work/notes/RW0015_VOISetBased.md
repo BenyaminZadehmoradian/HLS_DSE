@@ -1,5 +1,9 @@
 # RW0015 — A value of information methodology for multiobjective decisions in quantitative set-based design
 
+> **Relevance (2026-09-25 correction audit): HOLD** — Value-of-information methodology for multi-objective set-based design; abstract-only review. Primary Studies: S33 S03. Prior-art boundary: UNRESOLVED.
+> **Identity:** Venue resolved to Systems Engineering 24(6), 2021 (Shallcross et al.); companion paper sys.21595 is different.
+> **HOLD:** reviewed from the abstract only; no legitimate open full text found (OpenAlex: closed). Classification to be revisited when full text is available.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_ABSTRACT_ONLY`.
 

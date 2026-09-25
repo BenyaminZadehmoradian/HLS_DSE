@@ -66,7 +66,7 @@ This report is the canonical index for S00–S70. Each Study must have a self-co
 | S06 | Budget scaling / lifecycle-aware selection | VALIDATION + EXTENSION |
 | S07 | Joint task-candidate-fidelity selection | CORE |
 | S08 | Full framework | FINAL CORE |
-| S09 | Learning efficiency | EXTENSION |
+| S09 | Historical/legacy allocation; no new execution (ID collision; former meaning "Learning efficiency"; external-baseline role moved to S71) | ARCHIVED |
 | S10 | Shared vs per-benchmark model | EXTENSION |
 | S11 | Cross-benchmark transfer | EXTENSION |
 | S12 | Online learning | EXTENSION |

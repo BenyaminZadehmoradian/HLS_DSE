@@ -1,5 +1,9 @@
 # RW0016 — On the value of information in system design: A framework for understanding and aiding designers
 
+> **Relevance (2026-09-25 correction audit): HOLD** — Early VOI framework for aiding designers (human information seeking per abstract); abstract-only review, relevance to quantitative stage-wise VOI unconfirmed. Primary Studies: S33. Prior-art boundary: UNRESOLVED.
+> **Identity:** Original venue "1986" only; actual: W. B. Rouse, Information Processing & Management 22(3), 1986; full subtitle added. Not IEEE SMC.
+> **HOLD:** reviewed from the abstract only; no legitimate open full text found (OpenAlex: closed). Classification to be revisited when full text is available.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_ABSTRACT_ONLY`.
 

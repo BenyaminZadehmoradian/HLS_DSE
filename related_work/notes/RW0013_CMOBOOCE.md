@@ -1,5 +1,8 @@
 # RW0013 — Constrained Multi-objective Bayesian Optimization through Optimistic Constraints Estimation
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Constrained multi-objective BO with feasibility estimation: foundation for feasibility-aware acquisition. Primary Studies: S14 S72. Prior-art boundary: METHOD FOUNDATIONAL.
+> **Identity:** Algorithm is named COMBOO inside the paper; registered under paper title.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

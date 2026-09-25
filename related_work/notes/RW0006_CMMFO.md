@@ -1,5 +1,8 @@
 # RW0006 — Correlated Multi-objective Multi-fidelity Optimization for HLS Directives Design
 
+> **Relevance (2026-09-25 correction audit): CORE** — Jointly selects HLS directive configuration and fidelity with a cost-penalized acquisition (full-text review); boundary of the evidence-selection question. Primary Studies: S04 S05 S07 S21 S23. Prior-art boundary: PRIOR ART.
+> **Identity:** DATE 2021 DOI used; TODAES 2022 extension (10.1145/3503540) with the same title is a different paper.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

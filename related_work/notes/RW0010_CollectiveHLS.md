@@ -1,5 +1,7 @@
 # RW0010 — CollectiveHLS: A Collaborative Approach to High-Level Synthesis Design Optimization
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — HLS DSE method listed as an S71 external-baseline candidate. Primary Studies: S71 S72. Prior-art boundary: PRIOR ART.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

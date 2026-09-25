@@ -1,5 +1,7 @@
 # RW0031 — Holistic Optimization Framework for FPGA Accelerators
 
+> **Relevance (2026-09-25 correction audit): CORE** — All tasks of a program optimized jointly in one NLP with global/per-SLR resources; joint-vs-local boundary. Primary Studies: S15 S65 S66. Prior-art boundary: PARTIAL OVERLAP.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 
@@ -11,7 +13,7 @@
 
 ## PDF provenance
 - Status: `LOCAL_EXISTING` (published)
-- Canonical path: `related_work/papers/hls_dse/RW0031_Pouget2025_Prometheus_TODAES.pdf`
+- Canonical path: `related_work/papers/core/RW0031_Pouget2025_Prometheus_TODAES.pdf`
 - SHA-256: `2027336b4b0aa722526ee1226a6205285e7522b1cf8a8f6670a0ee0814f3903b`
 - Source: /home/benyamin/Desktop/Library/Holistic Optimization Framework for FPGA Accelerators.pdf
 

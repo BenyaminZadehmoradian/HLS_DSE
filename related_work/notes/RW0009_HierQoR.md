@@ -1,5 +1,7 @@
 # RW0009 — Hierarchical Source-to-Post-Route QoR Prediction in High-Level Synthesis with GNNs
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Source-to-post-route QoR prediction: cross-fidelity model for oracle/fidelity-ladder Studies. Primary Studies: S04 S21 S89. Prior-art boundary: METHOD FOUNDATIONAL.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

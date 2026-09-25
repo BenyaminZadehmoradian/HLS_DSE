@@ -1,5 +1,7 @@
 # RW0052 — GreenFPGA: Evaluating FPGAs as Environmentally Sustainable Computing Solutions
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — FPGA-specific embodied + operational carbon over lifetime. Primary Studies: S20 S94. Prior-art boundary: RELEVANT BUT DIFFERENT.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

@@ -1,5 +1,7 @@
 # RW0042 — Automated Design Space Exploration in High-Level Physical Synthesis
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Metric-guided DSE over floorplan/implementation choices with post-route feedback: HLS-physical co-DSE foundation. Primary Studies: S78 S61. Prior-art boundary: RELEVANT BUT DIFFERENT.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

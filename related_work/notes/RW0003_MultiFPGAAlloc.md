@@ -1,5 +1,7 @@
 # RW0003 — Exact and Heuristic Allocation of Multi-kernel Applications to Multi-FPGA Platforms
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Joint allocation of kernel compute units under shared resources/bandwidth; foundation for resource packing, not directive DSE. Primary Studies: S95 S15. Prior-art boundary: RELEVANT BUT DIFFERENT.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

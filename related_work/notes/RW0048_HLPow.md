@@ -1,5 +1,8 @@
 # RW0048 — HL-Pow: A Learning-Based Power Modeling Framework for High-Level Synthesis
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Learned power model driving a latency-power Pareto search over HLS directives. Primary Studies: S19. Prior-art boundary: PARTIAL OVERLAP.
+> **Identity:** Key renamed from placeholder ENERGY1.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

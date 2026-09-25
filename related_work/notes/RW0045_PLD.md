@@ -1,5 +1,8 @@
 # RW0045 — PLD: Fast FPGA Compilation to Make Reconfigurable Acceleration Compatible with Modern Incremental Refinement Software Development
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — DFX-based fast compilation trading compile cost against QoR: build/configuration cost source. Primary Studies: S85 S94. Prior-art boundary: RELEVANT BUT DIFFERENT.
+> **Identity:** Key renamed from placeholder DFX2.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

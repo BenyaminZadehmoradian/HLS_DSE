@@ -1,5 +1,7 @@
 # RW0030 — Automatic Hardware Pragma Insertion in High-Level Synthesis: A Non-Linear Programming Approach
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Non-linear-programming pragma insertion; listed (NLP-DSE) as an S71 candidate. Primary Studies: S71 S72. Prior-art boundary: PRIOR ART.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

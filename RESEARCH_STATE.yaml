@@ -1,7 +1,7 @@
 project_version: V23.2
 current_phase: P0
 current_study: S00
-status: READY_FOR_P0_IMPLEMENTATION
+status: PLANNED
 preimplementation_hardening: COMPLETE
 staged_evaluation_and_provenance_hardening: COMPLETE
 p1_authorized: false

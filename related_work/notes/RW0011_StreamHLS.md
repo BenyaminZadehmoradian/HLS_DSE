@@ -1,5 +1,8 @@
 # RW0011 — Stream-HLS: Towards Automatic Dataflow Acceleration
 
+> **Relevance (2026-09-25 correction audit): CORE** — All kernels of a multi-kernel dataflow application scheduled jointly under a global budget; named in LITERATURE_STATUS_2026_09 as the neighbouring area our joint-evidence question must be distinguished from. Primary Studies: S15 S65 S36. Prior-art boundary: PARTIAL OVERLAP.
+> **Identity:** Original venue "2025"; actual venue FPGA 2025.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 
@@ -11,7 +14,7 @@
 
 ## PDF provenance
 - Status: `LOCAL_EXISTING` (published)
-- Canonical path: `related_work/papers/concurrent_multikernel/RW0011_Basalama2025_StreamHLS_FPGA.pdf`
+- Canonical path: `related_work/papers/core/RW0011_Basalama2025_StreamHLS_FPGA.pdf`
 - SHA-256: `83570565411d5f63c5e08bb883c9eacde9d3cb0402f3381bf23a8d1d700f888b`
 - Source: /home/benyamin/Desktop/Library/Stream-HLS: Towards Automatic Dataflow Acceleration.pdf
 

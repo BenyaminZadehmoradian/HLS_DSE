@@ -1,5 +1,8 @@
 # RW0043 — FPGA Dynamic and Partial Reconfiguration: A Survey of Architectures, Methods, and Applications
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Survey of dynamic/partial reconfiguration architectures and overheads (reconfiguration time, tool runtime). Primary Studies: S85 S86. Prior-art boundary: METHOD FOUNDATIONAL.
+> **Identity:** Key renamed from placeholder DFX1.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

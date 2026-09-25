@@ -7,5 +7,6 @@ To rebuild a local copy, use `pdf_source_url` (downloads) or `original_path` (lo
 `../RELATED_WORK_REGISTRY.csv` / `../PDF_PROVENANCE.csv`. Then check the file with `sha256sum` against the registry.
 A file whose hash differs is a different version and must not replace the registered one silently.
 
-Category folders: core, concurrent_multikernel, hls_dse, multifidelity, bo_mobo, physical, lifecycle_dfx,
-energy_sustainability, other (see `../README.md`).
+Folders hold only canonical papers (CORE in `core/`, SUPPORTING by topic): core, concurrent_multikernel, hls_dse,
+multifidelity, bo_mobo, physical, lifecycle_dfx, energy_sustainability (see `../README.md`). ADJACENT/EXCLUDE papers are
+never kept here; see `../EXCLUSION_REGISTER.csv`.

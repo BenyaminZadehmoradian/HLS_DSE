@@ -1,5 +1,8 @@
 # RW0004 — Fast Energy-Optimal Multi-Kernel DNN-like Application Allocation on Multi-FPGA Platforms
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Energy-optimal joint multi-kernel allocation; foundation for packing and energy trade-offs. Primary Studies: S95 S19. Prior-art boundary: RELEVANT BUT DIFFERENT.
+> **Identity:** Title on PDF "Multi-Kernel DNN-like Application Allocation"; Crossref "Multikernel DNN-Like".
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

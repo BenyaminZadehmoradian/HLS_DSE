@@ -1,5 +1,9 @@
 # RW0002 — MVSym: Efficient symbiotic exploitation of HLS-kernel multi-versioning for collaborative CPU-FPGA cloud systems
 
+> **Relevance (2026-09-25 correction audit): HOLD** — HLS-kernel multi-versioning for collaborative CPU-FPGA cloud systems; abstract-only review, full text not legitimately available. Primary Studies: S84 S93. Prior-art boundary: UNRESOLVED.
+> **Identity:** "Sym" = symbiotic (not symbolic); full title added.
+> **HOLD:** reviewed from the abstract only; no legitimate open full text found (OpenAlex: closed). Classification to be revisited when full text is available.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_ABSTRACT_ONLY`.
 

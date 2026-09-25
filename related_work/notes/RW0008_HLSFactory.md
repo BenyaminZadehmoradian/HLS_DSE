@@ -1,5 +1,7 @@
 # RW0008 — HLSFactory: A Framework Empowering High-Level Synthesis Datasets for Machine Learning and Beyond
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — HLS dataset/benchmark infrastructure with tool-version benchmarking; benchmark and provenance foundation. Primary Studies: S71 S90 S80. Prior-art boundary: METHOD FOUNDATIONAL.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 
@@ -11,7 +13,7 @@
 
 ## PDF provenance
 - Status: `DOWNLOADED_OPEN_ACCESS` (arxiv)
-- Canonical path: `related_work/papers/other/RW0008_AbiKaram2024_HLSFactory_MLCAD_arxiv.pdf`
+- Canonical path: `related_work/papers/hls_dse/RW0008_AbiKaram2024_HLSFactory_MLCAD_arxiv.pdf`
 - SHA-256: `d4a8be4b378d2e8285bc1106d8d28db6bb1dd3f8d6fbde196ef8a202efa6da5e`
 - Source: https://arxiv.org/pdf/2405.00820
 

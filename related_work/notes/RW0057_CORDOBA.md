@@ -1,5 +1,7 @@
 # RW0057 — CORDOBA: Carbon-Efficient Optimization Framework for Computing Systems
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Carbon-aware design optimization with explicit Pareto/decision analysis; methodology for carbon objectives. Primary Studies: S20 S92 S43. Prior-art boundary: METHOD FOUNDATIONAL.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

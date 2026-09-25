@@ -1,5 +1,7 @@
 # RW0021 — Robust GNN-based Representation Learning for HLS
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — GNN representation for HLS QoR prediction used for DSE; surrogate foundation for constraint-vs-QoR prediction. Primary Studies: S89 S10. Prior-art boundary: METHOD FOUNDATIONAL.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

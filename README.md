@@ -35,7 +35,7 @@ The framework separates user-defined pragma-space constraints from automatically
 
 ## V22.5.1 Literature-gap and external-baseline layer
 
-The project now includes S09 External Baseline Reproduction and a formal Research Gap Register. External results are separated into literature-reported, reproduced, our-measured, and oracle/reference evidence. Direct comparisons require normalized benchmark, pragma space, device, tool version, constraints, metric stage, and evaluation budget.
+The project now includes S09 External Baseline Reproduction and a formal Research Gap Register. *(Superseded: external-baseline reproduction is now S71; S09 is archived. See the `supersession` entry in `contracts/STUDY_ID_REGISTRY.yaml`.)* External results are separated into literature-reported, reproduced, our-measured, and oracle/reference evidence. Direct comparisons require normalized benchmark, pragma space, device, tool version, constraints, metric stage, and evaluation budget.
 
 ## V23.1 Fixed Device and Vivado/Vitis Artifact Isolation
 

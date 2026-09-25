@@ -1,5 +1,8 @@
 # RW0014 — Bayesian optimization of cooperative components for multi-stage aero-structural compressor blade design
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Cooperative-components BO: decomposes optimization into component subproblems while evaluating the coupled system; methodological analogue of local-optimize/joint-evaluate. Different domain (compressor blades). Primary Studies: S15 S65. Prior-art boundary: METHOD FOUNDATIONAL.
+> **Identity:** Original entry "Cooperative Components Bayesian Optimization" named a METHOD (CC-BO), not a paper. Registered paper: Pretsch et al., "Bayesian optimization of cooperative components for multi-stage aero-structural compressor blade design", Struct. Multidisc. Optim. 68:84 (2025).
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

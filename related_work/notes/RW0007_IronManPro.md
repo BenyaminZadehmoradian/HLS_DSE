@@ -1,5 +1,9 @@
 # RW0007 — IronMan-Pro: Multiobjective Design Space Exploration in HLS via Reinforcement Learning and Graph Neural Network-Based Modeling
 
+> **Relevance (2026-09-25 correction audit): HOLD** — Multi-objective HLS DSE (RL + GNN), listed as an S71 candidate; abstract-only review. Primary Studies: S71 S72. Prior-art boundary: UNRESOLVED.
+> **Identity:** Published title: "Multiobjective ... Graph Neural Network-Based Modeling" (TCAD 2023, early access 2022).
+> **HOLD:** reviewed from the abstract only; no legitimate open full text found (OpenAlex: closed). Classification to be revisited when full text is available.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_ABSTRACT_ONLY`.
 

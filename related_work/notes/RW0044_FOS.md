@@ -1,5 +1,8 @@
 # RW0044 — FOS: A Modular FPGA Operating System for Dynamic Workloads
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — PR-based FPGA OS measuring swap/update latency and switching HLS variants at runtime. Primary Studies: S85 S86 S84. Prior-art boundary: RELEVANT BUT DIFFERENT.
+> **Identity:** Key renamed from placeholder DFX3.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

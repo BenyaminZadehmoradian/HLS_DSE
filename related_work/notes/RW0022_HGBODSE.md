@@ -1,5 +1,8 @@
 # RW0022 — HGBO-DSE: Hierarchical GNN and Bayesian Optimization based HLS Design Space Exploration
 
+> **Relevance (2026-09-25 correction audit): HOLD** — Hierarchical GNN + BO HLS DSE; abstract-only review. Primary Studies: S72 S05. Prior-art boundary: UNRESOLVED.
+> **HOLD:** reviewed from the abstract only; no legitimate open full text found (OpenAlex: closed). Classification to be revisited when full text is available.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_ABSTRACT_ONLY`.
 

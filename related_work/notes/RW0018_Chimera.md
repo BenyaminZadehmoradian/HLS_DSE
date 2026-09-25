@@ -1,5 +1,8 @@
 # RW0018 — Chimera: A Hybrid Machine Learning Driven Multi-Objective Design Space Exploration Tool for FPGA High-Level Synthesis
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Active-learning HLS DSE that selects which designs to synthesize, single fidelity, per benchmark. Primary Studies: S05 S72. Prior-art boundary: PARTIAL OVERLAP.
+> **Identity:** Name shared by unrelated works (HPCA 2023 operator fusion, SC 2021 pipeline training); HLS DSE tool by Yu, Huang, Chen selected.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

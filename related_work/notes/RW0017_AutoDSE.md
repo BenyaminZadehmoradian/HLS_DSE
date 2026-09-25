@@ -1,5 +1,7 @@
 # RW0017 — AutoDSE: Enabling Software Programmers to Design Efficient FPGA Accelerators
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Widely used HLS DSE baseline (bottleneck-guided). Primary Studies: S71 S72. Prior-art boundary: PRIOR ART.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

@@ -1,5 +1,8 @@
 # RW0050 — System-Level Design Space Exploration for High-Level Synthesis under End-to-End Latency Constraints
 
+> **Relevance (2026-09-25 correction audit): CORE** — Component HLS alternatives combined and evaluated at system level under end-to-end latency; joint-composition boundary. Primary Studies: S15 S65 S66. Prior-art boundary: PARTIAL OVERLAP.
+> **Identity:** Key renamed from placeholder ENERGY2.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 
@@ -11,7 +14,7 @@
 
 ## PDF provenance
 - Status: `DOWNLOADED_OPEN_ACCESS` (arxiv)
-- Canonical path: `related_work/papers/energy_sustainability/RW0050_Liao2024_EtoEDSE_TCAD_arxiv.pdf`
+- Canonical path: `related_work/papers/core/RW0050_Liao2024_EtoEDSE_TCAD_arxiv.pdf`
 - SHA-256: `db1a8c2a44ff9a06e54d4623a017c66538710e4cafbfbed7d56a36489dedd850`
 - Source: https://arxiv.org/pdf/2408.10431
 

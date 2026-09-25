@@ -1,5 +1,7 @@
 # RW0026 — Efficient Task Transfer for HLS DSE
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Transfers DSE knowledge across HLS programs/toolchains with active labelling: evidence reuse across tasks. Primary Studies: S10 S11 S87. Prior-art boundary: PARTIAL OVERLAP.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

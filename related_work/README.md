@@ -3,119 +3,146 @@
 ## 1. Why this directory exists
 
 HLS-DSE is a gated research program. Before any Study claims a contribution, we must know what prior work already
-studies, measures and optimizes. This directory holds that literature evidence and our analysis of it: papers,
-metadata, reviews, an overlap matrix and a map from papers to Studies. It contains **no experimental measurements**.
+studies, measures and optimizes. This directory holds that literature evidence and our analysis of it. It contains
+**no experimental measurements**, and the collection is **curated, not a systematic review**.
 
 ## 2. Contents
 
 | Path | Purpose |
 |---|---|
-| `RELATED_WORK_REGISTRY.csv` | One row per paper: identity, PDF provenance, review fields, study relations, overlap/gap labels |
-| `PDF_PROVENANCE.csv` | Where each canonical PDF came from, with SHA-256 before and after placement |
-| `MANIFEST.md` | Human-readable inventory (repository-derived counts, per-category totals) |
-| `GAP_OVERLAP_MATRIX.md` | Research dimensions vs prior work, plus the named prior-art check |
-| `STUDY_LITERATURE_MAP.yaml` | Literature ↔ Study relationships for S00–S96 |
-| `notes/RW####_<Key>.md` | Structured review per paper (from `notes/PAPER_REVIEW_TEMPLATE.md`) |
-| `papers/<category>/` | Canonical local PDFs (not committed; see §5) |
+| `RELATED_WORK_REGISTRY.csv` | Canonical papers (CORE, SUPPORTING) plus HOLD papers: identity, provenance, relevance, review fields |
+| `EXCLUSION_REGISTER.csv` | Papers reviewed and judged ADJACENT or EXCLUDE, with reason and provenance. Prevents rediscovery churn. |
+| `PDF_PROVENANCE.csv` | Every PDF ever placed: original path, current path, SHA-256, license reported, disposition |
+| `MANIFEST.md` | Human-readable inventory (repository-derived counts) |
+| `GAP_OVERLAP_MATRIX.md` | Dimensions vs canonical prior work, plus the prior-art boundary check |
+| `STUDY_LITERATURE_MAP.yaml` | Literature ↔ Study relationships for all 97 registered Study IDs |
+| `notes/RW####_<Key>.md` | Detailed reviews for CORE and SUPPORTING papers; abstract-only reviews for HOLD papers |
+| `papers/<category>/` | Canonical local PDFs (not committed; see §6) |
+| `noncanonical_pdfs/` | Local-only PDFs of ADJACENT papers that exist nowhere else locally (not canonical; not committed) |
 | `PDF_NAMING_STANDARD.md` | Filename rules |
-| `LITERATURE_GAP_MATRIX.csv`, `LITERATURE_STATUS_2026_09.md` | Earlier planning snapshots (kept for history) |
+| `LITERATURE_GAP_MATRIX.csv`, `LITERATURE_STATUS_2026_09.md` | Earlier planning snapshots (history) |
 | `S71_BASELINE_SCHEMA.csv` | Column schema for S71 external-baseline reproduction records |
 
-## 3. Categories
+## 3. Research scope used for relevance
 
-Each paper has exactly one primary `category` (its folder) and optional `secondary_categories` in the registry.
-A PDF is never copied into a second folder.
+The scope is taken from the canonical sources, not from keywords:
+- `MASTER/HLS_DSE_MASTER_V23_2.md` names the core local-vs-joint evidence-selection question.
+- `REPORTS/R11_RESEARCH_PROGRAM_AND_STUDY_PORTFOLIO.md` §2 lists the program dimensions.
+- `REPORTS/R06_Study_Specifications.md` §19 marks the CORE studies: S02–S08, S15, S16, S20, S65, S66.
+- `contracts/STUDY_ID_REGISTRY.yaml` holds the Study universe.
 
-| Category | Meaning |
+## 4. Relevance gate
+
+Every candidate goes through: identity verification → scope test → relation to the research program → relation to a
+Study → decision.
+
+| Class | Meaning | Where |
+|---|---|---|
+| `CORE` | HLS/FPGA design-space work on a contribution boundary of the central question: (a) HLS design decisions of several kernels/components chosen jointly under shared constraints, or (b) evidence selection across fidelities/stages for HLS DSE under an evaluation budget. Assigned paper by paper from the full-text review, not by keyword. | registry; `papers/core/` |
+| `SUPPORTING` | Direct methodological or empirical foundation for a named Study. Examples: S71 baseline candidates, fidelity models, datasets, and configuration-cost sources. | registry; `papers/<category>/` |
+| `HOLD` | Potentially relevant, but primary-source evidence is incomplete (abstract-only). | registry (metadata only) |
+| `ADJACENT` | Technically related but not needed by any current Study question | `EXCLUSION_REGISTER.csv` |
+| `EXCLUDE` | Out of scope, wrong identity, or duplicate | `EXCLUSION_REGISTER.csv` |
+
+Notes on the gate:
+- A paper is never kept because it was already added, and never added to grow the collection.
+- Every registry and register row carries its reason.
+- An earlier rule defined `core` as a keyword intersection (adaptive acquisition AND fidelity YES). That rule is
+  **retired**, because it measured dimension overlap, not centrality.
+
+## 5. Topical categories (folders)
+
+The topical category is secondary to relevance. CORE papers live in `papers/core/`, and their topic is recorded in
+`secondary_categories`. The other canonical folders are:
+
+| Folder | Topic |
 |---|---|
-| `core` | HLS/FPGA-targeted work whose review marks **both** adaptive evidence acquisition and cost/fidelity modeling as YES. This is the closest prior art to the evidence-selection question (S05/S07). It is assigned by that rule, not by judgment. |
-| `concurrent_multikernel` | Multi-kernel / multi-application allocation or joint optimization |
-| `hls_dse` | HLS pragma/directive DSE, QoR models used for DSE, HLS datasets |
-| `multifidelity` | Multi-fidelity or cross-stage QoR estimation |
-| `bo_mobo` | Bayesian / multi-objective optimization methods (not HLS-specific) |
-| `physical` | Floorplanning, high-level physical synthesis, post-route-in-the-loop work |
-| `lifecycle_dfx` | Partial reconfiguration (DFX), compile/configuration cost, FPGA runtime systems |
-| `energy_sustainability` | Power/energy models, carbon and sustainability of computing and FPGAs |
-| `other` | Surveys, infrastructure, decision theory and other supporting work |
+| `concurrent_multikernel` | multi-kernel / multi-application allocation |
+| `hls_dse` | HLS directive DSE, QoR surrogates, HLS datasets |
+| `multifidelity` | cross-stage QoR estimation |
+| `bo_mobo` | Bayesian / multi-objective optimization and value-of-information methods |
+| `physical` | floorplan / post-route-in-the-loop DSE |
+| `lifecycle_dfx` | partial reconfiguration, compile and configuration cost |
+| `energy_sustainability` | power, energy and carbon |
 
-## 4. Paper IDs and filenames
+`other/` is **not used**: an uncertain paper goes to HOLD, not to a catch-all folder.
 
-Every paper has an immutable ID `RW####`. RW0001–RW0016 keep the IDs of the original registry; new papers get the
-next free ID. Filenames follow `PDF_NAMING_STANDARD.md`: `RW####_<FirstAuthor><Year>_<Key>_<Venue>[_suffix].pdf`.
+## 6. PDFs, licensing, hashes and provenance
 
-## 5. PDFs, hashes and provenance
+- **No PDF is committed.** The repository is public. `papers/.gitignore` and `noncanonical_pdfs/.gitignore` exclude `*.pdf`.
+- `storage_status`:
+  - `local_only (gitignored)`: a local PDF exists.
+  - `metadata_only`: no PDF is held.
+- `license_reported`: the license OpenAlex reports for the paper's open-access version, for example `cc-by` or
+  `none (OpenAlex: closed)`. It applies to that version only. A reported open license does **not** override the
+  local-only policy; committing an openly licensed PDF needs an explicit human decision.
+- `pdf_availability`:
+  - `PDF_AVAILABLE`
+  - `BROWSER_ONLY`: a legitimate open-access copy exists, but scripted download is refused.
+  - `LEGITIMATE_OPEN_COPY_NOT_FOUND`: search found none, and OpenAlex reports the paper closed.
+  - `UNKNOWN`
+- **Identity is the SHA-256.** Verify a copy with `sha256sum` against the registry. Duplicates collapse by hash, and
+  a different version is noted rather than imported.
+- **Library PDFs are copied, never moved.** When a paper leaves the canonical set, the repo copy is removed only
+  after the original is re-verified by hash. Downloaded-only files move to `noncanonical_pdfs/`. Every disposition
+  is recorded in `PDF_PROVENANCE.csv`.
+- **Never used:** shadow libraries or suspicious mirrors.
 
-- **PDFs are not committed.** This repository is public, and most PDFs are publisher or author copies that we may
-  not redistribute. `papers/.gitignore` excludes `*.pdf`. Each researcher keeps local copies in `papers/<category>/`.
-- **Identity is the SHA-256.** The registry records `sha256`, `pdf_source_url` or `original_path`, `pdf_version`
-  and `metadata_source`. To verify a copy, run `sha256sum related_work/papers/<category>/<file>` and compare it with the registry.
-- **Acquisition status** (`pdf_status`) is one of:
-  - `LOCAL_EXISTING`: copied from a library already on the machine. The original is left in place.
-  - `DOWNLOADED_OPEN_ACCESS`: downloaded from arXiv, proceedings, an author or institutional page, or a CC-licensed
-    publisher copy.
-  - `METADATA_ONLY_PAYWALLED`: no legitimate open copy was found.
-  - `NOT_FOUND`: open access, but the download was blocked. The paper was read online.
+## 7. Review notes
 
-  Shadow libraries are never used.
-- **Never overwrite a PDF with different content.** A duplicate is resolved by hash. Byte-identical copies collapse
-  to one canonical file, and every origin is recorded. A different version (for example, preprint vs journal) is
-  noted in the registry and is not imported as a second copy of the same paper.
+- **CORE and SUPPORTING:** a full review. The 16 items of `notes/PAPER_REVIEW_TEMPLATE.md` plus 12 evidence
+  dimensions, each `YES` / `PARTIAL` / `NO` / `NOT_REPORTED` / `NOT_APPLICABLE` with an evidence note.
+- **HOLD:** the abstract-only review, clearly marked.
+- **ADJACENT and EXCLUDE:** the reason in `EXCLUSION_REGISTER.csv`. Their earlier full reviews stay in git history
+  (commit `6a08f53`).
 
-## 6. How reviews are performed
+Missing information is `NOT_REPORTED`, `UNKNOWN` or `NOT_APPLICABLE`, never guessed.
 
-Each review follows `notes/PAPER_REVIEW_TEMPLATE.md`:
-- 16 fixed items: research question, setting, search space, evaluation, benchmarks, hardware, toolchain, metrics,
-  baselines, findings, limitations, what is not evaluated, relation to Studies, overlap, gap and reproducibility.
-- 12 evidence dimensions, each marked `YES` / `PARTIAL` / `NO` / `NOT_REPORTED` / `NOT_APPLICABLE` with a short
-  evidence note.
-- A `review_status`: `REVIEWED_FULL_TEXT` or `REVIEWED_ABSTRACT_ONLY`.
+## 8. Mapping to Studies
 
-Missing information is written as `NOT_REPORTED`, `UNKNOWN` or `NOT_APPLICABLE`. It is never guessed.
+`STUDY_LITERATURE_MAP.yaml` covers every ID in `contracts/STUDY_ID_REGISTRY.yaml`. Three relationship levels are recorded:
 
-## 7. How Related Work maps to Studies
+- `direct_overlap`: the Study is a primary Study named in the paper's relevance decision (reviewed judgement).
+- `dimension_match`: a review dimension linked to the Study is YES (mechanical).
+- `partial_overlap`: the linked dimension is PARTIAL (mechanical).
 
-The mapping is mechanical. A paper relates to a Study when a review dimension linked to that Study is YES (direct)
-or PARTIAL (partial):
+HOLD papers are listed separately as `not_reviewed_hold`. The mechanical dimension → Study links:
 
 | Dimension | Studies |
 |---|---|
-| joint (vs local) evaluation | S07, S15, S65 |
-| measured interactions | S02, S36, S37, S56 |
-| staged evaluation | S32, S34, S88 |
-| adaptive evidence acquisition | S05, S20, S23, S33 |
-| cost/fidelity modeling | S04, S06, S21, S72 |
-| lifecycle/configuration cost | S85, S86, S94 |
-| physical implementation | S59, S61, S78, S81 |
-| multi-benchmark transfer | S10, S11, S90 |
-| decision/Pareto stability | S43, S45, S92 |
-| energy/power | S19, S20 |
-| CPU–FPGA interaction | S83, S84 |
-| memory/data movement | S73 |
+| joint evaluation | S07, S15, S65 |
+| interactions | S02, S36, S37, S56 |
+| staged | S32, S34, S88 |
+| adaptive acquisition | S05, S20, S23, S33 |
+| cost/fidelity | S04, S06, S21, S72 |
+| lifecycle/configuration | S85, S86, S94 |
+| physical | S59, S61, S78, S81 |
+| transfer | S10, S11, S90 |
+| stability | S43, S45, S92 |
+| energy | S19, S20 |
+| CPU–FPGA | S83, S84 |
+| memory | S73 |
 
-Two more rules add partial links:
-- `bo_mobo` papers relate partially to S72.
-- HLS papers with public code relate partially to S71, as candidate external baselines.
-
-S87 and S89 receive keyword-screen partial links. These are labelled as such in `STUDY_LITERATURE_MAP.yaml`.
 A mapping means the paper reports on the same dimension. **It does not mean the paper answers the Study's question.**
 
-## 8. Overlap and gaps
+## 9. Overlap and gap vocabulary
 
-The labels are deliberately cautious: `KNOWN PRIOR ART`, `PARTIAL OVERLAP`, `POTENTIAL OVERLAP`, `UNRESOLVED`,
-`POTENTIAL GAP`, `REQUIRES EXPERIMENTAL VALIDATION`.
+- **Matrix status:** `KNOWN PRIOR ART`, `PARTIAL OVERLAP`, `POTENTIAL OVERLAP`, `POTENTIAL GAP`, `UNRESOLVED`, `NOT REVIEWED`.
+- **Prior-art boundary labels:** `PRIOR ART`, `PARTIAL OVERLAP`, `METHOD FOUNDATIONAL`, `RELEVANT BUT DIFFERENT`, `UNRESOLVED`.
 
-A *potential gap* only says that a particular paper does not report a dimension. It is not evidence that no work
-exists; the reviewed set is not a systematic review.
+An empty match is written as "No directly matching work identified in the current reviewed collection. Additional
+systematic search required." It is **never** written as absence of prior work.
 
-## 9. Literature evidence vs our evidence
+## 10. Literature evidence vs our evidence
 
-Everything here is `LITERATURE_REPORTED`. A number from a paper never becomes `OUR_MEASURED`, and cross-paper
-numbers are not compared without normalization (`AI_CONTROL/LITERATURE_NORMALIZATION_POLICY.md`). Reproducing a
-baseline belongs to **S71**, which produces `REPRODUCED` evidence under `runs/` and `evidence/`, never here.
+Everything here is `LITERATURE_REPORTED`. Our measurements go to `evidence/measured/` and derived results to
+`evidence/derived/`. A paper's number never enters a measurement dataset. Cross-paper comparison requires
+normalization (`AI_CONTROL/LITERATURE_NORMALIZATION_POLICY.md`). Reproduction belongs to **S71** (`REPRODUCED` evidence).
 
-## 10. What must NOT be claimed from this directory
+## 11. What must NOT be claimed from this directory
 
 - Novelty, "first work", "no prior work", "state of the art", "best" or "unique". Such a claim requires a separate,
   reviewed argument backed by our own measured evidence.
 - That a Study is answered, or that a gap is real, because a matrix cell is empty.
+- That this collection is a systematic review.
 - Any measured, reproduced or hardware result.

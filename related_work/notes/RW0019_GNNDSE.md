@@ -1,5 +1,7 @@
 # RW0019 — Automated Accelerator Optimization Aided by Graph Neural Networks
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — GNN surrogate-driven HLS DSE; surrogate baseline and multi-benchmark model. Primary Studies: S71 S89 S10. Prior-art boundary: PRIOR ART.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

@@ -1,5 +1,8 @@
 # RW0001 — CRYPTONITE: Scalable Accelerator Design for Cryptographic Primitives and Algorithms
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Composes per-kernel Pareto designs (sum of resources, max latency): an instance of local composition relevant to joint-composition failure; no interaction measured. Primary Studies: S66 S65. Prior-art boundary: RELEVANT BUT DIFFERENT.
+> **Identity:** Full title "CRYPTONITE: Scalable Accelerator Design for Cryptographic Primitives and Algorithms".
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

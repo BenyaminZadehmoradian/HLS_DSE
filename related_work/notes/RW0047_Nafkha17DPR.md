@@ -1,5 +1,8 @@
 # RW0047 — Accurate Measurement of Power Consumption Overhead During FPGA Dynamic Partial Reconfiguration
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Measurement method for DPR power overhead: foundation for measured (not estimated) configuration energy. Primary Studies: S86 S19. Prior-art boundary: METHOD FOUNDATIONAL.
+> **Identity:** Conference paper is ISWCS 2016 (local filename said 2017).
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

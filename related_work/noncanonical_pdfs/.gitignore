@@ -1,0 +1,3 @@
+# Local-only PDFs of papers classified ADJACENT or EXCLUDE (see ../EXCLUSION_REGISTER.csv).
+# Kept only where no other local copy exists. Not canonical Related Work; never committed.
+*.pdf

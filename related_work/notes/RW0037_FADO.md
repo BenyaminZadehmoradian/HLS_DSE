@@ -1,5 +1,7 @@
 # RW0037 — FADO: Floorplan-Aware Directive Optimization for High-Level Synthesis Designs on Multi-Die FPGAs
 
+> **Relevance (2026-09-25 correction audit): CORE** — Directives of multiple kernels co-optimized under shared per-die resources with floorplan interaction; joint multi-kernel boundary. Primary Studies: S15 S65 S78. Prior-art boundary: PARTIAL OVERLAP.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 
@@ -11,7 +13,7 @@
 
 ## PDF provenance
 - Status: `DOWNLOADED_OPEN_ACCESS` (arxiv)
-- Canonical path: `related_work/papers/physical/RW0037_Du2023_FADO_FPGA_arxiv.pdf`
+- Canonical path: `related_work/papers/core/RW0037_Du2023_FADO_FPGA_arxiv.pdf`
 - SHA-256: `4e63512b5bd841b194d0ffbac8aab37b3397ea74ec0783cfade65e9e06bff353`
 - Source: https://arxiv.org/pdf/2212.11582
 

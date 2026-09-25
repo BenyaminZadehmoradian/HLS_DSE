@@ -1,5 +1,7 @@
 # RW0032 — A Unified Framework for Automated Code Transformation and Pragma Insertion
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Unified code transformation + pragma insertion; listed (Sisyphus) as an S71 candidate; relevant to search-space boundary. Primary Studies: S71 S75. Prior-art boundary: PRIOR ART.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

@@ -1,5 +1,7 @@
 # RW0053 — Idle is the New Sleep: Configuration-Aware Alternative to Powering Off FPGA-Based DL Accelerators During Inactivity
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Configuration-aware alternative to powering off FPGA accelerators; measured configuration/idle power. Primary Studies: S85 S86. Prior-art boundary: RELEVANT BUT DIFFERENT.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

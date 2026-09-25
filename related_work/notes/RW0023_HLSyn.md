@@ -1,5 +1,8 @@
 # RW0023 — Towards a Comprehensive Benchmark for High-Level Synthesis Targeted to FPGAs
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — HLS benchmark/dataset (42 programs, 42k+ labelled designs); listed as an S71 candidate. Primary Studies: S71 S90 S02. Prior-art boundary: METHOD FOUNDATIONAL.
+> **Identity:** Hint name "HLSyn" is the dataset; paper title "Towards a Comprehensive Benchmark for High-Level Synthesis Targeted to FPGAs" (NeurIPS 2023 D&B).
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 

@@ -1,5 +1,7 @@
 # RW0035 — Pattern-Guided Design Space Exploration for FPGA Accelerator Design
 
+> **Relevance (2026-09-25 correction audit): SUPPORTING** — Pattern-guided pruning of the HLS design space (staged evaluation). Recent arXiv; venue ICECCME 2026 not independently confirmed. Primary Studies: S57 S88. Prior-art boundary: PARTIAL OVERLAP.
+
 > Literature evidence only (`LITERATURE_REPORTED`). Nothing here is an HLS-DSE measurement or a novelty claim.
 > Generated 2026-09-25 from the full-text/abstract review recorded in `related_work/RELATED_WORK_REGISTRY.csv`; review status: `REVIEWED_FULL_TEXT`.
 
