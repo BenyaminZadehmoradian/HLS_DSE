@@ -1,0 +1,104 @@
+{
+  "project_version": "V23.2",
+  "current_phase": "P0",
+  "current_study": "S00",
+  "reference_commit": "d9fe19661205a3863fcdfa8d8c66628e23bf887a",
+  "scope": "Pre-P0 toolchain preparation only; P0 not started; P1 not authorized",
+  "final_status": "READY_FOR_PYTEST_AND_LICENSE_REVIEW",
+  "environment_identity": {
+    "environment_id": {"value": null, "status": "UNKNOWN", "note": "Not assigned. environments/ENVIRONMENT_REGISTRY.yaml holds only template ENV-001; registration is a human/P0 decision."},
+    "toolchain_family": {"value": "AMD-Xilinx 2025.2.1 (XILINX_VERSION_DEFAULT=2025.2.1 in /mnt/data/Apps/2025.2.1/data/version.sh)", "status": "MEASURED"},
+    "vivado_version": {"value": "vivado v2025.2.1 (64-bit); SW Build 6403652", "status": "MEASURED"},
+    "vivado_path": {"value": "/mnt/data/Apps/2025.2.1/Vivado/bin/vivado", "status": "MEASURED"},
+    "vitis_version": {"value": "Vitis v2025.2.1 (64-bit); SW Build 6397637", "status": "MEASURED"},
+    "vitis_path": {"value": "/mnt/data/Apps/2025.2.1/Vitis/bin/vitis", "status": "MEASURED"},
+    "vitis_hls_version": {"value": "vitis-run v2025.2.1 (64-bit); SW Build 6397637 (HLS mode; release ships no standalone vitis_hls)", "status": "MEASURED"},
+    "vitis_hls_path": {"value": "/home/benyamin/Desktop/HLS_DSE/environments/xilinx_2025_2_1/bin/vitis_hls -> exec /mnt/data/Apps/2025.2.1/Vitis/bin/vitis-run --mode hls", "status": "MEASURED"},
+    "vitis_run_version": {"value": "vitis-run v2025.2.1 (64-bit); SW Build 6397637", "status": "MEASURED"},
+    "vitis_run_path": {"value": "/mnt/data/Apps/2025.2.1/Vitis/bin/vitis-run", "status": "MEASURED"},
+    "vpp_version": {"value": "v++ v2025.2.1 (64-bit); SW Build 6397637", "status": "MEASURED"},
+    "vpp_path": {"value": "/mnt/data/Apps/2025.2.1/Vitis/bin/v++", "status": "MEASURED"},
+    "python_executable": {"value": "/usr/bin/python3 (-> /usr/bin/python3.12)", "status": "MEASURED"},
+    "python_version": {"value": "3.12.3", "status": "MEASURED"},
+    "target_device": {"value": "xc7z020clg484 visible as xc7z020clg484-1/-2/-3 (family zynq, package clg484); project speed grade remains UNKNOWN_UNTIL_FIXED", "status": "MEASURED"},
+    "environment_initialization_method": {"value": "environments/xilinx_2025_2_1/run_in_env.sh: env -i re-exec + source /mnt/data/Apps/2025.2.1/Vivado/settings64.sh (sha256 c53e2d30fe4b09067fe6894d11a9fc11fedda82d4fb1f506878a67a6d7aab3bb) + project-local vitis_hls shim + release guards", "status": "MEASURED"},
+    "workspace_candidate": {"value": "/mnt/data (xfs, 11550461599744 bytes available); top level root:root 755, not user-writable; not approved", "status": "MEASURED"},
+    "verification_timestamp": {"value": "2026-09-25T13:23:22+02:00", "status": "MEASURED"}
+  },
+  "xilinx_environment_variables_after_init": {
+    "XILINX_VIVADO": "/mnt/data/Apps/2025.2.1/Vivado",
+    "XILINX_VITIS": "/mnt/data/Apps/2025.2.1/Vitis",
+    "XILINX_HLS": "/mnt/data/Apps/2025.2.1/Vitis"
+  },
+  "discovered_installations": [
+    {"path": "/mnt/data/Apps/2025.2.1", "release": "2025.2.1", "role": "SELECTED"},
+    {"path": "/mnt/data/Xilinx/Vitis_HLS/2023.2", "release": "2023.2", "role": "EXCLUDED_BY_LAUNCHER_GUARD"},
+    {"path": "/tools/Xilinx/SDK/2019.1", "release": "2019.1", "role": "EXCLUDED_BY_LAUNCHER_GUARD"},
+    {"path": "/opt/Xilinx/14.7/ISE_DS/ISE", "release": "ISE 14.7", "role": "EXCLUDED; present in interactive shell PATH and XILINX variable"},
+    {"path": "/home/benyamin/.local/bin/vitis_hls", "release": "wrapper to 2025.2.1 vitis-run", "role": "NOT_USED; unchanged; its -version path fails with vitis-run 60-1520 (rc=2)"}
+  ],
+  "preflight": {
+    "command": "environments/xilinx_2025_2_1/run_in_env.sh python3 scripts/p0_preflight.py",
+    "cwd": "/home/benyamin/Desktop/HLS_DSE",
+    "exit_code": 0,
+    "status_line": "STATUS=ENVIRONMENT_TOOLS_VISIBLE",
+    "stderr": "",
+    "stdout_sha256": "90d914e4a64543b8c6f3c6233f0b74289f4a4e2d2d04832d7614df8f8057440a",
+    "tools": {
+      "vivado": {"present": true, "path": "/mnt/data/Apps/2025.2.1/Vivado/bin/vivado", "version": "vivado v2025.2.1 (64-bit)"},
+      "vitis": {"present": true, "path": "/mnt/data/Apps/2025.2.1/Vitis/bin/vitis", "version": "****** Vitis Development Environment"},
+      "vitis_hls": {"present": true, "path": "/home/benyamin/Desktop/HLS_DSE/environments/xilinx_2025_2_1/bin/vitis_hls", "version": "****** vitis-run v2025.2.1 (64-bit)"},
+      "git": {"present": true, "path": "/usr/bin/git", "version": "git version 2.43.0"}
+    },
+    "device_support": {"reference_device": "xc7z020clg484", "verified": false, "note": "Hard-coded false by src/hlsdse/scanning/environment.py; device visibility was verified separately."},
+    "scanner_limitations": [
+      "vitis version field records the first banner line, not the version line",
+      "device_support.verified is not computed",
+      "license_visibility, disk_space, cpu_memory checks listed in configs/preflight/default.yaml are not implemented by scripts/p0_preflight.py"
+    ]
+  },
+  "python": {"interpreter": "/usr/bin/python3", "version": "3.12.3", "pytest": "MISSING", "pyyaml": "6.0.1", "pip": "24.0", "venv_module": "importable", "externally_managed_pep668": true, "project_venv": "ABSENT"},
+  "license": {
+    "status": "HUMAN_ACTION_REQUIRED",
+    "XILINXD_LICENSE_FILE": "UNSET",
+    "LM_LICENSE_FILE": "UNSET",
+    "home_xilinx_lic_files_present": 1,
+    "contents_read": false,
+    "xlicdiag": "fails: lmutil not on PATH (lmutil exists at /mnt/data/Apps/2025.2.1/Vivado/bin/unwrapped/lnx64.o/lmutil)",
+    "vivado_tcl_license_commands": "none matched *licen*"
+  },
+  "workspace": {
+    "project_filesystem": {"mount": "/", "fstype": "ext4", "size_bytes": 501809635328, "used_bytes": 458822172672, "avail_bytes": 17421660160},
+    "candidate": {"mount": "/mnt/data", "fstype": "xfs", "size_bytes": 11921134714880, "used_bytes": 370673115136, "avail_bytes": 11550461599744, "top_level_owner": "root:root 755", "user_writable_top_level": false},
+    "status": "PROPOSAL_ONLY_NOT_ACTIVATED"
+  },
+  "files_created": [
+    {"path": "environments/xilinx_2025_2_1/run_in_env.sh", "old_sha256": null, "new_sha256": "55a7c55deb2e42e330ad478ec348de1e8001970f4b5bc3a67512e0f06772d423"},
+    {"path": "environments/xilinx_2025_2_1/bin/vitis_hls", "old_sha256": null, "new_sha256": "17456415db532ac3b8724480c320ea5e16a4e5b19a28ef4af1cf821193b48860"},
+    {"path": "audit/environment/PRE_P0_TOOLCHAIN_PREPARATION_REPORT.md", "old_sha256": null, "new_sha256": "see git"},
+    {"path": "audit/environment/PRE_P0_TOOLCHAIN_PREPARATION_SNAPSHOT.json", "old_sha256": null, "new_sha256": "see git"}
+  ],
+  "files_modified": [],
+  "blockers": [
+    {"id": "B-02", "category": "toolchain", "status": "RESOLVED_PENDING_REAUDIT"},
+    {"id": "B-03", "category": "pytest", "status": "OPEN"},
+    {"id": "B-04", "category": "license", "status": "OPEN_HUMAN_ACTION_REQUIRED"},
+    {"id": "B-05", "category": "workspace", "status": "OPEN_PROPOSAL_ONLY"},
+    {"id": "B-06", "category": "human_gate", "status": "OPEN"}
+  ],
+  "safety": {
+    "p0_started": false,
+    "p1_authorized": false,
+    "research_state_unchanged": true,
+    "hls_synthesis": false,
+    "vivado_synthesis": false,
+    "implementation": false,
+    "xsa_generated": false,
+    "bitstream_generated": false,
+    "fpga_programmed": false,
+    "license_contents_exposed": false,
+    "xilinx_installation_modified": false,
+    "global_shell_config_modified": false,
+    "files_deleted": false
+  }
+}

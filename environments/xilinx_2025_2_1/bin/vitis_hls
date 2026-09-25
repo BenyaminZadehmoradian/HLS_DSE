@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Project-local vitis_hls entry point for the 2025.2.1 environment.
+# 2025.2.1 ships no standalone vitis_hls; HLS runs through `vitis-run --mode hls`.
+# Only valid inside environments/xilinx_2025_2_1/run_in_env.sh.
+# Maps legacy flags: -f <tcl> -> --tcl <tcl>; -version/-v -> --version.
+set -euo pipefail
+
+[[ "${HLSDSE_XILINX_ENV:-}" == "2025.2.1" ]] \
+    || { echo "HLSDSE_ENV_ERROR: vitis_hls shim used outside run_in_env.sh" >&2; exit 3; }
+
+ARGS=()
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -f) ARGS+=(--tcl "$2"); shift 2 ;;
+        -version|-v) ARGS+=(--version); shift ;;
+        *) ARGS+=("$1"); shift ;;
+    esac
+done
+
+exec "$XILINX_VITIS/bin/vitis-run" --mode hls "${ARGS[@]}"
