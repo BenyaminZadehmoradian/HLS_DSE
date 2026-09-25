@@ -1,15 +1,44 @@
-import subprocess, time
-from dataclasses import asdict
+import shlex, time
+from pathlib import Path
+import yaml
 from .models import RunRecord
+from . import control
 
-def run_command(run: RunRecord, command, log_path):
-    start=time.time()
+
+def _study_phase(root, study_id):
+    p = Path(root) / 'studies' / str(study_id) / 'CONTRACT.yaml'
     try:
-        with open(log_path,'w',encoding='utf-8') as log:
-            cp=subprocess.run(command,shell=True,text=True,stdout=log,stderr=subprocess.STDOUT)
-        run.status='SUCCESS' if cp.returncode==0 else 'FAILED'
-        if cp.returncode!=0: run.failure_class='UNKNOWN_FAILURE'
+        return (yaml.safe_load(p.read_text(encoding='utf-8')) or {}).get('phase_id')
     except Exception:
-        run.status='FAILED'; run.failure_class='INFRASTRUCTURE_FAILURE'
-    run.metrics['wall_clock_s']=time.time()-start
+        return None                                   # unknown phase -> the control plane denies
+
+
+def run_command(run: RunRecord, command, log_path, *, action, actor='hlsdse.flow', phase=None, root=None):
+    """Execute a tool command for a run through the control plane. Authorization happens before any process is
+    started; on DENY nothing is executed and run.status is DENIED. `command` is an argv list (a string is split
+    with shlex; it is never given to a shell)."""
+    root = root or control.ROOT
+    argv = shlex.split(command) if isinstance(command, str) else list(command)
+    start = time.time()
+    try:
+        with open(log_path, 'w', encoding='utf-8') as log:
+            res = control.run_authorized(argv, action=action, phase=phase or _study_phase(root, run.study_id),
+                                         study=run.study_id, environment=run.environment_id, actor=actor,
+                                         caller=f'hlsdse.flow.run_command:{run.run_id}', root=root,
+                                         stdout=log, stderr=log)
+    except OSError:
+        run.status = 'FAILED'; run.failure_class = 'INFRASTRUCTURE_FAILURE'
+        run.metrics['wall_clock_s'] = time.time() - start
+        return run
+    run.metrics['control_request_id'] = res.decision.request_id
+    run.metrics['control_decision'] = res.decision.decision
+    if not res.executor_called:
+        run.status = 'DENIED'
+        run.metrics['control_reason'] = f'{res.decision.reason_code}: {res.decision.reason}'
+    elif res.returncode is None:
+        run.status = 'FAILED'; run.failure_class = 'INFRASTRUCTURE_FAILURE'
+    else:
+        run.status = 'SUCCESS' if res.returncode == 0 else 'FAILED'
+        if res.returncode != 0: run.failure_class = 'UNKNOWN_FAILURE'
+    run.metrics['wall_clock_s'] = time.time() - start
     return run

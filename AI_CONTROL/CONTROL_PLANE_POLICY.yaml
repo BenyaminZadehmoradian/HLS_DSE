@@ -1,0 +1,91 @@
+# Canonical runtime control-plane policy. Read by src/hlsdse/control.py (authorize / run_authorized / transition)
+# and by scripts/validate_project.py. A missing, malformed or version-mismatched policy fails closed: every
+# request is DENIED before any executor runs.
+policy_id: CONTROL_PLANE_POLICY
+policy_version: "1.0"
+project_version: V23.2
+state_schema_version: "1.0"          # must equal RESEARCH_STATE.yaml state_schema_version
+approval_schema_version: "1.0"
+canonical_contract: contracts/CANONICAL_PROJECT_CONTRACT.yaml
+
+paths:
+  state: RESEARCH_STATE.yaml
+  phase_control: AI_CONTROL/PHASE_CONTROL.yaml
+  approvals_dir: audit/gates/approvals
+  study_registry: contracts/STUDY_ID_REGISTRY.yaml
+  environment_registry: environments/ENVIRONMENT_REGISTRY.yaml
+  decision_log: audit/AI_CONTROL/CONTROL_DECISION_LOG.jsonl     # append-only JSONL
+
+known_phases: [P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15]
+phase_states: [PLANNED, IMPLEMENTING, VALIDATING, GATE_REVIEW, APPROVED_FOR_NEXT_PHASE, BLOCKED]
+
+# Gate-controlled fields. Must match AUTO_PUSH_POLICY.yaml protected_state (the validator checks this).
+# Their hash is recorded by every canonical transition; a non-PLANNED state whose gate hash has no matching
+# TRANSITION record was written outside the canonical mechanism and is rejected.
+gate_fields:
+  RESEARCH_STATE.yaml: [status, current_phase, current_study, active_phase, active_phase_state, p1_authorized,
+                        p1_gate_required, human_gate_required, automatic_advance, active_environment,
+                        next_phase_implementation_allowed, future_phase_implementation_allowed]
+  AI_CONTROL/PHASE_CONTROL.yaml: [active_phase, state, human_approval_required, automatic_advance]
+
+# Action categories. Ungated categories still require a valid policy and a valid state (fail-closed); gated
+# categories additionally require a valid, unexpired, committed human approval whose scope lists the action.
+categories:
+  READ_ONLY:             {gated: false, requires_environment: false}
+  ENVIRONMENT_DISCOVERY: {gated: false, requires_environment: false}
+  VALIDATION:            {gated: true, requires_environment: false, allowed_phase_states: [IMPLEMENTING, VALIDATING]}
+  CONTROL_PLANE:         {gated: true, requires_environment: false, allowed_phase_states: [IMPLEMENTING]}
+  RESEARCH_EXECUTION:    {gated: true, requires_environment: true, allowed_phase_states: [IMPLEMENTING, VALIDATING]}
+  HLS:                   {gated: true, requires_environment: true, allowed_phase_states: [IMPLEMENTING, VALIDATING]}
+  VIVADO:                {gated: true, requires_environment: true, allowed_phase_states: [IMPLEMENTING, VALIDATING]}
+  VITIS:                 {gated: true, requires_environment: true, allowed_phase_states: [IMPLEMENTING, VALIDATING]}
+  HARDWARE:              {gated: true, requires_environment: true, requires_hardware: true, allowed_phase_states: [IMPLEMENTING, VALIDATING]}
+
+# Every action is an approval-scope token. An action not listed here is unknown and DENIED.
+actions:
+  repository_inspection: READ_ONLY
+  environment_discovery: ENVIRONMENT_DISCOVERY
+  control_plane_implementation: CONTROL_PLANE
+  control_decision_logging: CONTROL_PLANE
+  mock_validation: VALIDATION
+  unit_tests: VALIDATION
+  integration_tests: VALIDATION
+  negative_control_tests: VALIDATION
+  bypass_tests: VALIDATION
+  validator_tests: VALIDATION
+  auto_push_policy_validation: VALIDATION
+  scientific_experiments: RESEARCH_EXECUTION
+  dse_campaigns: RESEARCH_EXECUTION
+  p1_implementation: RESEARCH_EXECUTION
+  research_hls_runs: HLS
+  research_vivado_runs: VIVADO
+  research_vitis_runs: VITIS
+  xsa: VIVADO
+  bitstream: VIVADO
+  elf: VITIS
+  hardware_programming: HARDWARE
+  hardware_execution: HARDWARE
+
+# Tool identity -> action, used by the launcher's PATH gate (environments/xilinx_2025_2_1/bin/*).
+# Classification is by executable identity, not by matching arbitrary command strings. A pure version/help
+# query (every argument in discovery_flags, after an optional leading `--mode <m>`) is environment_discovery.
+tools:
+  vivado: research_vivado_runs
+  vitis: research_vitis_runs
+  vitis-run: {default: research_vitis_runs, mode_hls: research_hls_runs}
+  v++: research_vitis_runs
+  xsct: hardware_programming
+  xsdb: hardware_programming
+  hw_server: hardware_programming
+  program_flash: hardware_programming
+  bootgen: hardware_programming
+  updatemem: bitstream
+discovery_flags: [-version, --version, -help, --help, -h]
+
+# PHASE_CONTROL.yaml transition requirements, as enforced by control.transition().
+transition_requirements:
+  start_active_phase: valid_approval          # PLANNED -> IMPLEMENTING
+  implementation_complete: valid_approval     # IMPLEMENTING -> VALIDATING
+  validation_complete: valid_approval         # VALIDATING -> GATE_REVIEW
+  explicit_human_approval: human_only         # GATE_REVIEW -> APPROVED_FOR_NEXT_PHASE (never by automation)
+  gate_failure: valid_approval                # GATE_REVIEW -> BLOCKED

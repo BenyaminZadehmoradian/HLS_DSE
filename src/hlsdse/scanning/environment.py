@@ -1,5 +1,5 @@
 from __future__ import annotations
-import os, platform, shutil, subprocess, sys
+import os, platform, shutil, sys, tempfile
 from pathlib import Path
 
 TOOLS = {
@@ -10,13 +10,25 @@ TOOLS = {
 }
 
 def _version(cmd: str):
+    """Version query through the control plane (action environment_discovery); DENY runs nothing."""
+    from .. import control
     exe = shutil.which(cmd)
     if not exe:
         return {'present': False, 'path': None, 'version': None}
     try:
+        import yaml
+        state = yaml.safe_load((control.ROOT / 'RESEARCH_STATE.yaml').read_text()) or {}
         flag = '--version' if cmd == 'git' else '-version'
-        p = subprocess.run([exe, flag], capture_output=True, text=True, timeout=10)
-        text = (p.stdout or p.stderr).strip().splitlines()
+        with tempfile.TemporaryFile('w+') as out:
+            res = control.run_authorized([exe, flag], action='environment_discovery', phase=state.get('current_phase'),
+                                         study=state.get('current_study'), environment=None,
+                                         actor=os.environ.get('USER', 'unknown'), caller='scan_environment',
+                                         stdout=out, stderr=out)
+            if not res.executor_called:
+                return {'present': True, 'path': exe, 'version': None,
+                        'control': f'DENY {res.decision.reason_code}'}
+            out.seek(0)
+            text = out.read().strip().splitlines()
         return {'present': True, 'path': exe, 'version': text[0] if text else 'UNKNOWN'}
     except Exception as exc:
         return {'present': True, 'path': exe, 'version': 'UNKNOWN', 'error': type(exc).__name__}

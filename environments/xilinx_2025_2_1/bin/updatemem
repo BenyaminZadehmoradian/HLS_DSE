@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Control-plane gate shim (see ../tool_gate.sh): invoking this tool by name inside run_in_env.sh is authorized
+# by hlsdse.control before the real tool runs. The tool name is this file's name.
+exec "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/../tool_gate.sh" "$(basename "${BASH_SOURCE[0]}")" "$@"

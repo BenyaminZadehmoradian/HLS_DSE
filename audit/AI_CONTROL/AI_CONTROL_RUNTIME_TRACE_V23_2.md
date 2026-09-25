@@ -1,67 +1,78 @@
-# AI_CONTROL Runtime Trace — V23.2
+# AI_CONTROL Runtime Trace — V23.2 (post-implementation, P0/S00)
 
-**Source:** `evidence/control_probe_results.json` (probe `evidence/control_probe.py`, HEAD `91f14bb`, run
-2026-09-25T16:17:50Z).
-- **Tool:** a mock `vivado` shell script called by absolute path. No real HLS, Vivado or Vitis tool was invoked.
-- **State:** mutations happened only in a temporary `git archive HEAD` copy. The live `RESEARCH_STATE.yaml` hash was
-  unchanged before and after (`562136aff9b2…`).
-- **Instrumentation:** a Python audit hook recorded every file opened *inside the executor call*.
+**Source:** `evidence/control_probe_results.json`. It was produced by `evidence/control_probe.py` on 2026-09-25T17:16:41Z,
+with base HEAD `f6b111a`.
+- **Repositories:** synthetic throwaway git repositories built by `tests/control_harness.py`.
+- **Approvals:** synthetic fixtures (approver `SYNTHETIC_TEST_FIXTURE`).
+- **Tools:** mock scripts only.
+- **Real repository:** not written.
 
-## Requested blocking trace: Unauthorized P0 — NOT OBTAINABLE
+The pre-implementation trace, "no AI_CONTROL check; implicit ALLOW; tool reached", is preserved at commit `d2a8523`.
 
-The audit was asked to show `request → AI_CONTROL → gate → DENY → executor not reached`. No such trace can be
-produced, because no code path consults AI_CONTROL. The actual trace:
-
-```text
-request_id        = 64c3dcfc-60e4-4faa-a8aa-3953f1d9f155
-timestamp_utc     = 2026-09-25T16:17:50.653Z
-requested_action  = START_P0: run S00 flow command (<mock>/vivado -mode batch -source synth_mock.tcl)
-current_phase     = P0          active_phase_state = PLANNED
-current_study     = S00         human_gate_required = true      p1_authorized = false
-active_environment = null       authorization record = NONE (no approval artifact exists)
-
-caller            : hlsdse.flow.run_command(RunRecord(study_id='S00', ...), cmd, log)
-AI_CONTROL check  : NONE — files opened during call: RESEARCH_STATE.yaml = no; AI_CONTROL/* = none
-policy decision   : NONE
-gate decision     : NONE
-execution decision: implicit ALLOW
-tool invocation   : subprocess.run(cmd, shell=True)  →  mock vivado REACHED (marker written)
-result            : run.status = SUCCESS
-```
-
-## Requested blocking trace: Unauthorized P1 — NOT OBTAINABLE
+## Trace 1: unauthorized P0 research request → DENY (scenario A)
 
 ```text
-request_id        = 67ab372c-1e51-4a4c-98ce-4c70d0b06668
-timestamp_utc     = 2026-09-25T16:17:50.657Z
-requested_action  = run S01 (P1 flow smoke) — p1_authorized = false
-AI_CONTROL check  : NONE (0 control files opened)
-gate decision     : NONE
-tool invocation   : mock vivado REACHED
-result            : run.status = SUCCESS
+request_id        = 00c2f436-64ae-4e5a-ba31-e8bcc09cee4d
+request           = run_authorized([<mock>, --probe], action=research_hls_runs, phase=P0, study=S00, environment=None)
+policy            = AI_CONTROL/CONTROL_PLANE_POLICY.yaml 1.0 → action research_hls_runs → category HLS (gated)
+state             = P0 / S00 / IMPLEMENTING (canonical transition record present), p1_authorized=false
+approval          = G0-P0-S00-001 (valid, committed, unexpired)
+scope             = research_hls_runs ∈ forbidden
+decision          = DENY  OUT_OF_SCOPE: research_hls_runs is forbidden by G0-P0-S00-001
+executor          = NOT CALLED (executor_called=false; spy saw 0 calls; mock marker absent)
+log               = DECISION record appended (request_id matches)
 ```
 
-Tests C and G mutated the (temporary) state to P1/IMPLEMENTING and P1/RUNNING. The executor still ran. The
-validator, run separately afterwards, reported `ERROR: P0 state is not PLANNED`: the violation is detected after
-the fact, not prevented.
+## Trace 2: launcher gate → DENY (scenario K)
 
-## Blocking traces that do exist (not AI_CONTROL)
-
-**L1: toolchain environment guard, fail-closed**
 ```text
-request_id  = 3ff67f40-447a-4ad8-95e0-543b80e2c7a9
-request     = run_in_env.sh <mock>/vivado -mode batch   (launcher copy with altered pinned vendor hash)
-check       = run_in_env.sh: sha256(settings64.sh) == VENDOR_SETTINGS_SHA256
-decision    = DENY — "HLSDSE_ENV_ERROR: vendor settings hash mismatch" (exit 3)
-executor    = NOT REACHED (no marker)
+request_id        = 2117faab-b07f-4ac7-bd3f-0d929dd62798
+invocation        = bin/vivado -mode batch -source mock.tcl   (PATH: gate dir first, mock tool behind it)
+path              = bin/vivado → tool_gate.sh → /usr/bin/python3 -E -B → hlsdse.control.tool_gate_main
+classification    = tool identity vivado → research_vivado_runs (not a -version/-help query)
+environment       = ENV-2025.2.1-XC7Z020-1 (from the launcher environment)
+decision          = DENY  OUT_OF_SCOPE: research_vivado_runs is forbidden by G0-P0-S00-001
+exit              = 126, "HLSDSE_CONTROL_DENY: …" on stderr; mock vivado NOT reached
 ```
-This guard checks the toolchain identity only. With a correct hash, P3 shows the same launcher executing the mock
-tool while P0 is unauthorized.
 
-**P1: CLI**
+**Real launcher check (no tool executed):** `run_in_env.sh bash -c 'command -v …'` resolves `vivado`, `vitis`,
+`vitis-run`, `v++`, `vitis_hls` and `xsct` to the gate shims in `environments/xilinx_2025_2_1/bin/`.
+
+## Trace 3: direct state write → DENY (scenario L)
+
 ```text
-request     = python -m hlsdse start-p0
-decision    = argparse error "invalid choice" (exit 2) — the CLI has no execution command at all
-executor    = NOT REACHED
+request_id        = 69f77783-908a-40ba-be5e-b09f3a2f69da
+state             = PLANNED → IMPLEMENTING written directly into RESEARCH_STATE.yaml and PHASE_CONTROL.yaml
+decision          = DENY  STATE_PROVENANCE_INVALID: P0 IMPLEMENTING has no matching canonical transition record
+transitions       = IMPLEMENTING→GATE_REVIEW: INVALID_TRANSITION;  P0→P1: PHASE_ADVANCE_FORBIDDEN
 ```
-This is blocking by *absence of a command*, not a policy decision.
+
+## Trace 4: direct executor → refused (scenario J)
+
+```text
+_execute(decision_from_authorize(), argv)  → ExecutionDenied (decision not issued for execution)
+flow.run_command(..., action=research_vivado_runs) → run.status=DENIED (OUT_OF_SCOPE); mock vivado NOT reached
+```
+
+The probe's spy counts the attempted `_execute` call (`executor_calls_observed: 1`). The executor refused it before
+starting any process, so the marker is absent.
+
+## Trace 5: positive mock → ALLOW (scenario POS)
+
+```text
+request_id        = 1d80913c-05a0-43f6-8e77-96b9e483b17b
+request           = action=control_plane_implementation, phase=P0, study=S00, environment=None
+approval          = G0-P0-S00-001 (flat scope layout, same as the real artifact)
+decision          = ALLOW  AUTHORIZED
+executor          = CALLED once; mock_control_step ran (marker written); executor_returncode=0
+tool              = mock only; no HLS, Vivado or Vitis binary resolved or executed
+```
+
+## Summary
+
+| Set | Result |
+|---|---|
+| Scenarios (A–N + POS) | 15/15 PASS |
+| Fail-closed cases | 13/13 PASS |
+
+**Real tools executed:** 0.

@@ -16,11 +16,14 @@ expected_source = state.get('canonical_source')
 if not expected_version: errors.append('Missing project_version')
 if not expected_source: errors.append('Missing canonical_source')
 if expected_source and not (ROOT/expected_source).exists(): errors.append('Canonical source file missing')
-if state.get('active_phase') != 'P0' or state.get('active_phase_state') != 'PLANNED': errors.append('P0 state is not PLANNED')
-if state.get('future_phase_implementation_allowed') is not False: errors.append('Future phase implementation must be false')
-if state.get('next_phase_implementation_allowed') is not False: errors.append('Next phase implementation must be false')
-if state.get('human_gate_required') is not True: errors.append('Human gate must be required')
-if state.get('automatic_advance') is not False: errors.append('Automatic advance must be false')
+# Phase/state machine, P1 authorization, active_environment, approval artifacts, transition provenance and
+# AI_CONTROL policy consistency: the same checks the runtime control plane (hlsdse.control) enforces.
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(ROOT/'src'))
+from hlsdse.control import repository_control_errors
+errors.extend(f'CONTROL: {e}' for e in repository_control_errors(ROOT))
+for name in ['CONTROL_PLANE_POLICY.yaml','PHASE_CONTROL.yaml','AUTO_PUSH_POLICY.yaml','AI_EXECUTION_POLICY.yaml','AI_SCOPE_POLICY.yaml']:
+    require(ROOT/'AI_CONTROL'/name, 'AI_CONTROL policy')
 if state.get('fixed_reference_device') != 'xc7z020clg484': errors.append('Reference device must be xc7z020clg484')
 
 registry=load_yaml(ROOT/'contracts/STUDY_ID_REGISTRY.yaml')
