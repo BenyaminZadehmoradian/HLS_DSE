@@ -1,4 +1,4 @@
-# P0 Implementation Start — V23.1
+# P0 Implementation Start — V23.2
 
 The project is pre-implementation complete.
 

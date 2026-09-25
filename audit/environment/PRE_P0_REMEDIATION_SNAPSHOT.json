@@ -1,0 +1,32 @@
+{
+  "project_version": "V23.2",
+  "current_phase": "P0",
+  "current_study": "S00",
+  "previous_audit_decision": "NO",
+  "blockers": [
+    {"id":"B-01","category":"active_control_consistency","status":"RESOLVED","evidence":"S00 V22.8 references and active V23.1 gate/template metadata contradicted canonical V23.2","remediation":"Minimal version-only corrections applied","verification":"Corrected-reference search and validator pass"},
+    {"id":"B-02","category":"toolchain","status":"OPEN","evidence":"Preflight exit 2: MISSING_TOOLS=vivado,vitis; HLS wrapper/legacy conflict","remediation":"Human-approved coherent project-scoped toolchain selection","verification":"Preflight sees selected tools/versions"},
+    {"id":"B-03","category":"pytest","status":"OPEN","evidence":"/usr/bin/python3 reports No module named pytest","remediation":"Approved Python 3 environment with pytest","verification":"python3 -m pytest -q -p no:cacheprovider"},
+    {"id":"B-04","category":"license","status":"OPEN","evidence":"LM_LICENSE_FILE and XILINXD_LICENSE_FILE unset; no entitlement proof","remediation":"Non-secret vendor entitlement verification","verification":"Recorded selected-tool license result"},
+    {"id":"B-05","category":"workspace","status":"OPEN","evidence":"Project filesystem has 17 GiB free at 97% use","remediation":"Human-approved high-capacity generated-workspace selection","verification":"Record selected filesystem/free space"},
+    {"id":"B-06","category":"human_gate","status":"OPEN","evidence":"RESEARCH_STATE.yaml requires human gate","remediation":"Human decision after re-audit","verification":"Formal gate record"}
+  ],
+  "s00_reconciliation": {
+    "active_contradictions": ["S00 V22.8 entry criteria", "P0 gate V23.1 metadata", "run template V23.1 identity"],
+    "historical_references": ["legacy masters", "historical reports", "V22.8 audit"],
+    "corrections_applied": ["studies/S00/CONTRACT.yaml", "studies/S00/IMPLEMENTATION.md", "studies/S00/report.md", "audit/gates/FINAL_PREIMPLEMENTATION_CHECKLIST.md", "audit/gates/P0_EXIT_CRITERIA.md", "audit/gates/P0_IMPLEMENTATION_START.md", "templates/run_workspace/manifest.yaml"]
+  },
+  "toolchain": {
+    "vivado":{"version":"2025.2.1","path":"/mnt/data/Apps/2025.2.1/Vivado/bin/vivado","selection":"available_but_not_on_path"},
+    "vitis":{"version":"2025.2.1","path":"/mnt/data/Apps/2025.2.1/Vitis/bin/vitis","selection":"available_but_not_on_path"},
+    "vitis_hls":{"selected_wrapper":"/home/benyamin/.local/bin/vitis_hls","wrapper_target":"/mnt/data/Apps/2025.2.1/Vitis/bin/vitis-run --mode hls","legacy_path":"/mnt/data/Xilinx/Vitis_HLS/2023.2/bin/vitis_hls"},
+    "canonical_selection":"HUMAN_DECISION_REQUIRED",
+    "conflict_status":"OPEN"
+  },
+  "python":{"canonical_interpreter":"/usr/bin/python3","version":"3.12.3","pytest_status":"MISSING"},
+  "license":{"vivado":"UNKNOWN","vitis":"UNKNOWN","vitis_hls":"UNKNOWN"},
+  "workspace":{"filesystem":"/","total_bytes":501809635328,"used_bytes":458788675584,"free_bytes":17455157248,"status":"INADEQUATE"},
+  "hardware":{"target_device":"xc7z020clg484","hardware_detected":false},
+  "provenance":{"modified_files":["studies/S00/CONTRACT.yaml","studies/S00/IMPLEMENTATION.md","studies/S00/report.md","audit/gates/FINAL_PREIMPLEMENTATION_CHECKLIST.md","audit/gates/P0_EXIT_CRITERIA.md","audit/gates/P0_IMPLEMENTATION_START.md","templates/run_workspace/manifest.yaml"],"verification_commands":["python3 scripts/validate_project.py","python3 scripts/p0_preflight.py","python3 -m pytest -q -p no:cacheprovider"]},
+  "p0_status":"NOT_READY"
+}

@@ -4,7 +4,7 @@
 Validate that the repository has one canonical state, immutable Study IDs, isolated evidence, traceable reports, and no-guessing behavior.
 
 ## Entry criteria
-- V22.8 state file exists
+- V23.2 state file exists
 - canonical project contract exists
 - no future phase is executable
 

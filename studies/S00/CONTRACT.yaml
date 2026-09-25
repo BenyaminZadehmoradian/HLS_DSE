@@ -4,7 +4,7 @@ phase_id: P0
 status: IMPLEMENTABLE
 purpose: Validate the project control plane before any scientific experiment.
 entry_criteria:
-  - RESEARCH_STATE.yaml exists and points to V22.8
+  - RESEARCH_STATE.yaml exists and points to V23.2
   - PHASE_CONTROL.yaml is P0/PLANNED
   - canonical contracts exist
 required_checks:

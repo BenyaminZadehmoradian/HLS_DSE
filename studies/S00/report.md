@@ -3,10 +3,10 @@
 **Status:** IMPLEMENTABLE; not yet executed.
 
 ## Objective
-Validate the V22.8 control plane before any scientific experiment.
+Validate the V23.2 control plane before any scientific experiment.
 
 ## Acceptance criteria
-- Canonical version is V22.8.
+- Canonical version is V23.2.
 - P0 is the only active implementation phase.
 - Study IDs are unique and S71 is the external-baseline study.
 - S09 is archived and cannot execute.

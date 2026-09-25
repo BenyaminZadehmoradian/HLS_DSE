@@ -1,7 +1,7 @@
-# Final Pre-Implementation Checklist — V23.1
+# Final Pre-Implementation Checklist — V23.2
 
 ## Governance
-- [x] Canonical project version = V23.1
+- [x] Canonical project version = V23.2
 - [x] Reference device = xc7z020clg484
 - [x] P0 is the only active phase
 - [x] Human gate required

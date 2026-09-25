@@ -1,4 +1,4 @@
-# P0 Exit Criteria — V23.1
+# P0 Exit Criteria — V23.2
 
 P0 may be submitted for human Gate review only when:
 
