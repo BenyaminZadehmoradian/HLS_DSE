@@ -1001,8 +1001,8 @@ studies:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
 - study_id: S28
-  title: UNDEFINED - ID allocated (studies/S28 stub) but no definition in any canonical source
-  study_status: MISSING_DEFINITION
+  title: UNDEFINED - ID allocated but no definition in any canonical source
+  study_status: DEPRECATED
   paper_ids: []
   relationship: NO_MATCH_IN_CURRENT_COLLECTION
   direct_overlap: []
@@ -1013,8 +1013,8 @@ studies:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
 - study_id: S29
-  title: UNDEFINED - ID allocated (studies/S29 stub) but no definition in any canonical source
-  study_status: MISSING_DEFINITION
+  title: UNDEFINED - ID allocated but no definition in any canonical source
+  study_status: DEPRECATED
   paper_ids: []
   relationship: NO_MATCH_IN_CURRENT_COLLECTION
   direct_overlap: []
@@ -1025,8 +1025,8 @@ studies:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
 - study_id: S30
-  title: UNDEFINED - ID allocated (studies/S30 stub) but no definition in any canonical source
-  study_status: MISSING_DEFINITION
+  title: UNDEFINED - ID allocated but no definition in any canonical source
+  study_status: DEPRECATED
   paper_ids: []
   relationship: NO_MATCH_IN_CURRENT_COLLECTION
   direct_overlap: []
@@ -1037,8 +1037,8 @@ studies:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
 - study_id: S31
-  title: UNDEFINED - ID allocated (studies/S31 stub) but no definition in any canonical source
-  study_status: MISSING_DEFINITION
+  title: UNDEFINED - ID allocated but no definition in any canonical source
+  study_status: DEPRECATED
   paper_ids: []
   relationship: NO_MATCH_IN_CURRENT_COLLECTION
   direct_overlap: []
@@ -1999,7 +1999,7 @@ studies:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S67
   title: Minimum joint evidence
-  study_status: RESERVED
+  study_status: SUPERSEDED
   paper_ids: []
   relationship: NO_MATCH_IN_CURRENT_COLLECTION
   direct_overlap: []

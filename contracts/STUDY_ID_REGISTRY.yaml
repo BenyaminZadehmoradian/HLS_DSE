@@ -1,5 +1,7 @@
-registry_version: "1.5"
+registry_version: "1.6"
 ids_immutable: true          # IDs are never reused or renamed; entries may gain status/notes
+# 1.6 (2026-09-25): owner rule - exact duplicates are removed (SUPERSEDED/DEPRECATED, IDs kept), anything that differs stays
+#      separate. The four remaining overlap groups differ and are KEEP_SEPARATE; S28-S31 (identical, undefined) DEPRECATED.
 # 1.5 (2026-09-25): owner decision - S97-S100 are kept as separate studies (no supersession of S02/S04/S05/...).
 # 1.4 (2026-09-25): S97-S100 added from the web-search literature update (compositional assumption, cross-fidelity
 #      interaction residual, decision-centric multi-source acquisition, runtime memory interference). New IDs only.
@@ -151,10 +153,10 @@ study_status:
   S25: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION)"}
   S26: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (INFRASTRUCTURE EXTENSION)"}
   S27: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (FUTURE)"}
-  S28: {status: MISSING_DEFINITION, source: "registry only; no definition in any canonical source", note: "absent from R06 §19, R07 §27, R11 and MASTER"}
-  S29: {status: MISSING_DEFINITION, source: "registry only; no definition in any canonical source", note: "absent from R06 §19, R07 §27, R11 and MASTER"}
-  S30: {status: MISSING_DEFINITION, source: "registry only; no definition in any canonical source", note: "absent from R06 §19, R07 §27, R11 and MASTER"}
-  S31: {status: MISSING_DEFINITION, source: "registry only; no definition in any canonical source", note: "absent from R06 §19, R07 §27, R11 and MASTER"}
+  S28: {status: DEPRECATED, source: "registry only; no definition in any canonical source", note: "identical empty allocations S28-S31 (no definition anywhere); deprecated 2026-09-25 by the owner rule for exact duplicates; ID retained and never reused"}
+  S29: {status: DEPRECATED, source: "registry only; no definition in any canonical source", note: "identical empty allocations S28-S31 (no definition anywhere); deprecated 2026-09-25 by the owner rule for exact duplicates; ID retained and never reused"}
+  S30: {status: DEPRECATED, source: "registry only; no definition in any canonical source", note: "identical empty allocations S28-S31 (no definition anywhere); deprecated 2026-09-25 by the owner rule for exact duplicates; ID retained and never reused"}
+  S31: {status: DEPRECATED, source: "registry only; no definition in any canonical source", note: "identical empty allocations S28-S31 (no definition anywhere); deprecated 2026-09-25 by the owner rule for exact duplicates; ID retained and never reused"}
   S32: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION)"}
   S33: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION)"}
   S34: {status: RESERVED, source: "REPORTS/R06_Study_Specifications.md §19 (EXTENSION)"}
@@ -238,10 +240,10 @@ historical_meaning_drift:
 # Studies whose questions overlap but are not identical. Status is unchanged: which study keeps the question
 # (and whether the others are SUPERSEDED or narrowed) is a research decision for the researcher.
 overlap_review:
-  - {studies: [S07, S65], topic: "joint candidate / task-candidate-fidelity selection", decision: PENDING_HUMAN}
-  - {studies: [S21, S23], topic: "adaptive fidelity", decision: PENDING_HUMAN}
-  - {studies: [S32, S34, S88], topic: "early stopping / staged evaluation termination", decision: PENDING_HUMAN}
-  - {studies: [S26, S87], topic: "provenance storage / evidence reuse", decision: PENDING_HUMAN}
+  - {studies: [S07, S65], topic: "joint candidate / task-candidate-fidelity selection", decision: KEEP_SEPARATE, decided_by: repository owner rule, decided_at: "2026-09-25", rationale: "not identical - S07 selects task, candidate AND fidelity jointly; S65 selects candidates only (no task/fidelity dimension)"}
+  - {studies: [S21, S23], topic: "adaptive fidelity", decision: KEEP_SEPARATE, decided_by: repository owner rule, decided_at: "2026-09-25", rationale: "not identical - S21 is adaptive fidelity with no-joint historical variants; S23 is a fidelity ladder (ordered escalation)"}
+  - {studies: [S32, S34, S88], topic: "early stopping / staged evaluation termination", decision: KEEP_SEPARATE, decided_by: repository owner rule, decided_at: "2026-09-25", rationale: "not identical - S32 adaptive stopping rule, S34 dominance-based termination, S88 staged evaluation with early stop: different mechanisms"}
+  - {studies: [S26, S87], topic: "provenance storage / evidence reuse", decision: KEEP_SEPARATE, decided_by: repository owner rule, decided_at: "2026-09-25", rationale: "not identical - S26 is provenance/storage infrastructure; S87 measures the decision value of reusing cached evidence"}
   - {studies: [S97, S04, S66], topic: "oracle-based test of composition (S97 is the compositional-assumption test; S04 the oracle benchmark; S66 composition failure)", decision: KEEP_SEPARATE, decided_by: repository owner, decided_at: "2026-09-25", rationale: "separate studies give clearer, independent decisions"}
   - {studies: [S98, S02, S36, S41, S59], topic: "interaction measurement (S98 is the cross-fidelity, noise-floor-aware version of the S02 pilot)", decision: KEEP_SEPARATE, decided_by: repository owner, decided_at: "2026-09-25", rationale: "separate studies give clearer, independent decisions"}
   - {studies: [S99, S05, S16, S22, S07], topic: "evidence selection / decision-change acquisition (S99 is the multi-source local-vs-joint formulation)", decision: KEEP_SEPARATE, decided_by: repository owner, decided_at: "2026-09-25", rationale: "separate studies give clearer, independent decisions"}
