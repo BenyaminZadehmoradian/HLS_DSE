@@ -1,0 +1,3 @@
+version: "1.0"
+baselines: []
+policy: contracts/EXTERNAL_BASELINE_CONTRACT.yaml

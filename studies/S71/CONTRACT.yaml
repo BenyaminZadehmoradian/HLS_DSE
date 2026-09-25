@@ -1,0 +1,42 @@
+study_id: S71
+study_name: External Baseline Reproduction and Cross-Paper Comparison
+phase_id: P5
+status: PLANNED
+purpose: >-
+  Reproduce selected external HLS-DSE methods when technically feasible and compare
+  them only under normalized, traceable protocols.
+core_question: >-
+  How does the proposed evidence-selection framework compare with established HLS-DSE
+  methods when benchmark, design space, device, toolchain, correctness, budget, and
+  evaluation stage are explicitly controlled?
+evidence_classes:
+  - LITERATURE_REPORTED
+  - REPRODUCED
+  - OUR_MEASURED
+  - REFERENCE_ORACLE
+mandatory_rules:
+  - Literature-reported numbers are never treated as our measurements.
+  - Direct comparison requires explicit normalization of benchmark, device, toolchain, design space, metrics, constraints, and budget.
+  - Missing code, data, or environment details remain UNKNOWN; guessing is forbidden.
+  - Every reproduced result must trace to immutable source artifacts and an environment snapshot.
+  - Reproduction failure is evidence and must be classified, not silently discarded.
+  - Report direct reproduction, controlled re-evaluation, and indirect comparison separately.
+external_candidates:
+  - AutoHLS
+  - IronMan-Pro
+  - CollectiveHLS
+  - HLSyn
+  - Correlated-Multi-fidelity-HLS
+  - Sisyphus
+  - Stream-HLS
+outputs:
+  - reproduction_matrix.csv
+  - benchmark_mapping.csv
+  - environment_matrix.csv
+  - literature_vs_reproduced.csv
+  - comparison_report.md
+  - comparison_plots
+stop_conditions:
+  - undocumented assumptions are required to reproduce a result
+  - required proprietary environment is unavailable and no fair controlled alternative exists
+  - benchmark/design-space mapping changes the scientific question materially

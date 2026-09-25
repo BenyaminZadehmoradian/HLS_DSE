@@ -1,0 +1,37 @@
+contract_version: "1.0"
+contract_id: FAILURE_AND_RETRY_CONTRACT
+status: ACTIVE
+classes:
+  - CONFIG_ERROR
+  - ENVIRONMENT_ERROR
+  - TOOL_NOT_FOUND
+  - LICENSE_ERROR
+  - PROCESS_ERROR
+  - TIMEOUT
+  - HLS_SYNTHESIS_ERROR
+  - HLS_PARSE_ERROR
+  - VIVADO_SYNTHESIS_ERROR
+  - VIVADO_IMPLEMENTATION_ERROR
+  - TIMING_FAILURE
+  - RESOURCE_FAILURE
+  - BITSTREAM_ERROR
+  - PROGRAMMING_ERROR
+  - HARDWARE_ERROR
+  - CORRECTNESS_FAILURE
+  - DATABASE_ERROR
+  - UNKNOWN_ERROR
+retry:
+  max_attempts: 2
+  retryable:
+    - LICENSE_ERROR
+    - TIMEOUT
+    - PROCESS_ERROR
+  non_retryable:
+    - CONFIG_ERROR
+    - HLS_PARSE_ERROR
+    - CORRECTNESS_FAILURE
+    - RESOURCE_FAILURE
+    - TIMING_FAILURE
+rules:
+  - "Every retry gets a new attempt_id."
+  - "A retry must never overwrite the failed attempt's logs or artifacts."

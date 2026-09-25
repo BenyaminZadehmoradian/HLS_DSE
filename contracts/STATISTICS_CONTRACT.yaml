@@ -1,0 +1,13 @@
+schema_version: "1.0"
+pre_registration:
+  primary_metrics: required
+  primary_comparisons: required
+  repetition_rule: required
+  confidence_interval: required
+  effect_size: required
+  multiple_comparison_policy: required
+principles:
+  - choose statistical procedure before inspecting outcomes
+  - report effect size and uncertainty, not p-value alone
+  - paired designs are preferred when the same design points are evaluated
+  - tool failure is not a stochastic observation of QoR

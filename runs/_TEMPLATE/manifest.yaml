@@ -1,0 +1,18 @@
+project_version: V23.2
+study_id: S00
+run_id: RUN_TEMPLATE
+hardware_id: HW_TEMPLATE
+software_id: SW_TEMPLATE
+environment_id: ENV_TEMPLATE
+benchmark_id: BENCH_TEMPLATE
+candidate_id: CAND_TEMPLATE
+device_part: xc7z020clg484
+vivado_version: UNKNOWN_UNTIL_MEASURED
+vitis_version: UNKNOWN_UNTIL_MEASURED
+status: PLANNED
+artifacts: []
+timestamps: {}
+staged_evaluation:
+  current_stage: CANDIDATE
+  last_decision_id: null
+  later_stages_not_run: true

@@ -1,0 +1,69 @@
+contract_version: '1.0'
+status: PLANNED
+architecture_id: CPU_PROGRAM_FPGA_SHARED_CACHE_DATA_PATH
+assumptions:
+  control_plane:
+    owner: CPU
+    responsibilities:
+    - FPGA_programming_configuration
+    - benchmark_invocation
+    - lifecycle_control
+    - timing_measurement
+  data_plane:
+    producer_consumer:
+    - CPU_or_system_memory
+    - shared_cache
+    - FPGA_accelerator
+    data_source: shared_cache
+    dma: UNKNOWN_UNTIL_MEASURED
+    direct_ddr_access: NOT_ASSUMED
+    cache_coherence: MUST_BE_DECLARED
+    cache_level: MUST_BE_DECLARED
+  fpga:
+    receives_data_from: shared_cache
+    returns_results_to: MUST_BE_DECLARED
+  configuration:
+    initiated_by: CPU
+    programming_time_required_when_programmed: true
+    partial_reconfiguration: OPTIONAL_STUDY
+required_measurements:
+  configuration:
+  - t_program_s
+  - t_init_s
+  - n_program
+  - bitstream_size_bytes
+  data_path:
+  - cache_hit_rate
+  - cache_miss_rate
+  - cache_bytes_read
+  - cache_bytes_written
+  - data_ready_wait_s
+  - fpga_data_consumption_s
+  - contention_wait_s
+  system:
+  - cpu_control_overhead_s
+  - accelerator_execution_s
+  - end_to_end_latency_s
+  - invocation_count
+  - lifecycle_time_s
+forbidden_assumptions:
+- infer_dma_from_api_calls
+- infer_cache_hit_rate_without_hardware_measurement
+- equate_kernel_latency_with_end_to_end_latency
+- estimate_programming_time_as_measured_data
+- assume_m_axi_without_hardware_evidence
+- assume_acp_without_hardware_evidence
+architecture_questions:
+- Does cache behavior change configuration/search decisions?
+- Does CPU programming overhead change the preferred design?
+- Does shared-cache contention change ranking among candidates or benchmarks?
+- Does lifecycle-optimal DSE differ from kernel-latency-optimal DSE?
+device_part: xc7z020clg484
+interfaces:
+  control: MUST_BE_DECLARED_AND_MEASURED
+  m_axi: UNKNOWN_UNTIL_MEASURED
+  acp: UNKNOWN_UNTIL_MEASURED
+  dma: UNKNOWN_UNTIL_MEASURED
+  cache_level: MUST_BE_DECLARED
+  cache_coherence: MUST_BE_DECLARED
+  result_return_path: MUST_BE_DECLARED

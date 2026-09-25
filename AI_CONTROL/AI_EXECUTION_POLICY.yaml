@@ -1,0 +1,34 @@
+project_mode: controlled_research
+evidence_required: true
+allow_unverified_claims: false
+allow_fabricated_results: false
+allow_locked_input_modification: false
+cross_study_write: false
+require_environment_fingerprint: true
+require_input_hashes: true
+require_command_record: true
+require_raw_artifact: true
+require_scanner_validation: true
+
+timing_instrumentation_required: true
+programming_time_measurement_required: true
+
+phase_execution:
+  mode: strictly_sequential_gated
+  implement_one_phase_at_a_time: true
+  future_phase_implementation_before_gate: forbidden
+  future_phase_code_generation_before_gate: forbidden
+  future_phase_experiment_execution_before_gate: forbidden
+  future_phase_plot_generation_before_gate: forbidden
+  future_phase_report_generation_before_gate: forbidden
+  automatic_phase_advance: forbidden
+  human_gate_approval_required: true
+  failed_gate_action: stop_and_report
+  gate_evidence_required: true
+  gate_approval_must_reference:
+    - phase_id
+    - required_outputs
+    - validation_results
+    - acceptance_criteria
+    - unresolved_issues
+    - approval_status

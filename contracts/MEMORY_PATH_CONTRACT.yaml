@@ -1,0 +1,27 @@
+contract_version: "1.0"
+contract_id: MEMORY_PATH_CONTRACT
+status: ACTIVE
+reference_device: xc7z020clg484
+architecture:
+  cpu_owns_programming: true
+  fpga_input_source: shared_cache_path
+  dma: UNKNOWN_UNTIL_MEASURED
+  acp: UNKNOWN_UNTIL_MEASURED
+  m_axi: UNKNOWN_UNTIL_MEASURED
+  direct_ddr_access: NOT_ASSUMED
+required_characterization:
+  - cache_level
+  - cache_hit_rate
+  - cache_miss_rate
+  - cache_coherency
+  - cache_bytes_read
+  - cache_bytes_written
+  - data_ready_wait_s
+  - contention_wait_s
+  - memory_bandwidth_Bps
+  - fpga_data_consumption_s
+rules:
+  - "No DMA claim may be inferred from an API call."
+  - "No cache hit/miss rate may be reported without hardware evidence."
+  - "ACP use must be declared from the actual hardware design."
+  - "M_AXI use must be identified from the actual block design and generated artifacts."

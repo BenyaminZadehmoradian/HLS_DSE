@@ -1,0 +1,7 @@
+agents:
+  research_manager: {role: orchestration, can_create_evidence: false}
+  experiment_agent: {role: execution, can_create_evidence: true}
+  scanner_agent: {role: validation, can_create_evidence: false}
+  literature_agent: {role: related_work, can_create_evidence: literature_only}
+  analysis_agent: {role: analysis, can_create_evidence: derived_only}
+  report_agent: {role: reporting, can_create_evidence: false}

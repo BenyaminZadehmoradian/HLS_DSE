@@ -1,0 +1,16 @@
+contract_version: "1.0"
+contract_id: CONCURRENCY_FAIRNESS_CONTRACT
+status: ACTIVE
+required_environment:
+  - cpu_count
+  - ram_bytes
+  - storage_type
+  - storage_free_bytes
+  - vivado_license_slots
+  - vitis_license_slots
+  - parallel_workers
+rules:
+  - "Parallel and serial runs must not be compared without recording execution mode."
+  - "License contention must be recorded as infrastructure state, not QoR noise."
+  - "A worker must never write into another Run workspace."
+  - "Hardware programming requires an exclusive device lock."

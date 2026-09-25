@@ -1,0 +1,7 @@
+tools:
+  literature: {allowed_for: [literature_agent]}
+  source_control: {allowed_for: [experiment_agent, archive_agent]}
+  hls: {allowed_for: [experiment_agent]}
+  vivado: {allowed_for: [experiment_agent]}
+  reporting: {allowed_for: [report_agent]}
+  arbitrary_external_execution: {allowed: false}

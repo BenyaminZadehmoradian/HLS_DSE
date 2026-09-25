@@ -1,0 +1,36 @@
+contract_version: "1.0"
+contract_id: MEASUREMENT_CONTRACT
+status: ACTIVE
+principle: "Measured, derived, and estimated values must never be conflated."
+required_time_layers:
+  - search_overhead_s
+  - hls_s
+  - synthesis_s
+  - implementation_s
+  - bitstream_generation_s
+  - programming_s
+  - initialization_s
+  - data_ready_wait_s
+  - accelerator_execution_s
+  - synchronization_s
+  - end_to_end_latency_s
+  - lifecycle_time_s
+required_counts:
+  - n_hls
+  - n_synthesis
+  - n_implementation
+  - n_bitstream_build
+  - n_program
+  - n_invocation
+source_labels:
+  allowed:
+    - MEASURED
+    - DERIVED
+    - TOOL_REPORTED
+    - LITERATURE_REPORTED
+    - UNKNOWN
+rules:
+  - "UNKNOWN must remain UNKNOWN; no synthetic value may be inserted."
+  - "Kernel execution time and end-to-end latency must be stored separately."
+  - "Bitstream generation and FPGA programming time must be stored separately."
+  - "Search overhead must be separated from tool evaluation time."

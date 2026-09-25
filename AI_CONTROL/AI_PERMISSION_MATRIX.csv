@@ -1,0 +1,8 @@
+agent,read_study,write_study,create_measured_evidence,create_derived_evidence,modify_contract,modify_locked_inputs
+research_manager,yes,no,no,no,no,no
+experiment_agent,yes,yes,yes,yes,no,no
+scanner_agent,yes,yes,no,yes,no,no
+literature_agent,related_work_only,related_work_only,no,no,no,no
+analysis_agent,yes,no,no,yes,no,no
+report_agent,yes,reports_only,no,no,no,no
+archive_agent,yes,archive_only,no,no,no,no

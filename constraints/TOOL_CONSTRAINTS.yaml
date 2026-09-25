@@ -1,0 +1,3 @@
+tool_versions_must_be_recorded: true
+environment_fingerprint_required: true
+unexpected_tool_version: stop_and_escalate

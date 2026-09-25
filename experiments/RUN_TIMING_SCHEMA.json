@@ -1,0 +1,26 @@
+{
+  "run_id": "RUN-...",
+  "study_id": "Sxx",
+  "evaluation_id": "EV-...",
+  "timing": {
+    "t_hls_s": null,
+    "t_synthesis_s": null,
+    "t_pnr_s": null,
+    "t_bitstream_s": null,
+    "t_program_s": null,
+    "t_init_s": null,
+    "t_execution_s": null,
+    "t_total_s": null
+  },
+  "counts": {
+    "n_program": null,
+    "n_bitstream_build": null,
+    "n_invocation": null
+  },
+  "provenance": {
+    "measurement_status": "measured|derived|unknown",
+    "source_artifact": null,
+    "command": null,
+    "environment_fingerprint": null
+  }
+}

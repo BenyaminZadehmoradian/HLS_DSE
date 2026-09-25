@@ -1,0 +1,8 @@
+{
+  "version": "V22.1",
+  "base_version": "V22",
+  "change": "Added stage-level timing and FPGA programming measurement",
+  "source_master": "HLS_DSE_COMPLETE_MASTER_V21_PHASED_CANONICAL.md",
+  "v21_sha256": "59030c08f94ceeb418fe852b7885aae09710355b6db9355a676b9a298d8b3126",
+  "file_count": 191
+}

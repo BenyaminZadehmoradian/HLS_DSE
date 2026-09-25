@@ -1,0 +1,14 @@
+schema_version: "1.0"
+budget_dimensions:
+  - candidate_count
+  - hls_evaluations
+  - synthesis_evaluations
+  - pnr_evaluations
+  - bitstream_builds
+  - fpga_programs
+  - benchmark_invocations
+  - wall_clock_seconds
+  - cpu_hours
+  - license_hours
+  - fpga_hours
+fairness_rule: Report both algorithmic evaluation counts and actual elapsed/resource costs.

@@ -1,0 +1,35 @@
+contract_version: "1.0"
+contract_id: STAGE_DECISION_CONTRACT
+status: ACTIVE
+principle: "Every stage transition is an auditable decision based on explicit evidence."
+decision_types:
+  - ADVANCE
+  - DROP
+  - KEEP
+  - DEFER
+  - BLOCKED
+required:
+  - decision_id
+  - candidate_id
+  - run_id
+  - current_stage
+  - decision
+  - reason_codes
+  - evidence_ids
+  - next_stage
+  - decision_source
+  - timestamp_utc
+  - policy_version
+decision_source:
+  allowed: [RULE, HUMAN, SCHEDULER, ESTIMATOR_ASSISTED]
+  estimator_assisted_requires:
+    - estimator_id
+    - estimator_version
+    - confidence
+    - input_evidence_ids
+    - uncertainty_description
+forbidden:
+  - "implicit stage transition"
+  - "decision based on an unrecorded metric"
+  - "estimated value stored as measured"
+  - "overwriting an earlier decision"

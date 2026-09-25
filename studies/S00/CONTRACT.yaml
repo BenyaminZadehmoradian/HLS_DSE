@@ -1,0 +1,25 @@
+study_id: S00
+study_name: Research Contract and Reproducibility Validation
+phase_id: P0
+status: IMPLEMENTABLE
+purpose: Validate the project control plane before any scientific experiment.
+entry_criteria:
+  - RESEARCH_STATE.yaml exists and points to V22.8
+  - PHASE_CONTROL.yaml is P0/PLANNED
+  - canonical contracts exist
+required_checks:
+  - canonical_version
+  - immutable_study_ids
+  - S09_archived_S71_active_for_external_baselines
+  - schema_parseability
+  - no_measured_evidence_before_experiment
+  - report_metadata
+  - candidate_generator_unit_test
+outputs:
+  - audit/p0_validation.json
+  - studies/S00/report.md
+exit_gate:
+  human_approval_required: true
+  criteria:
+    - all_required_checks_pass
+    - zero_high_severity_consistency_errors

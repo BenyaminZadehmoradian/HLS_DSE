@@ -1,0 +1,8 @@
+schema_version: "1.0"
+required: true
+stages:
+  - compile_or_simulation
+  - functional_test
+  - post_hls_check_when_available
+  - post_bitstream_check_when_programmed
+rule: A QoR result from a functionally incorrect design is not a valid feasible design.

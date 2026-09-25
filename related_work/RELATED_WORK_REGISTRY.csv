@@ -1,0 +1,17 @@
+rw_id,year,first_author,title,venue,doi_or_url,category,pdf_status,pdf_filename,code_status,code_url,dataset_status,dataset_url,artifact_status,read_status,benchmark,device,method,relation_to_our_work,notes
+RW0001,2025,,CRYPTONITE,ASAP,,,,missing,,not_checked,,not_checked,,not_checked,,,,,joint multi-primitive accelerator design
+RW0002,2023,,MVSym,Integration,,,,missing,,not_checked,,not_checked,,not_checked,,,,,multi-version HLS / allocation
+RW0003,2019,,Exact and Heuristic Allocation of Multi-kernel Applications to Multi-FPGA Platforms,DAC,,,,missing,,not_checked,,not_checked,,not_checked,,,,,multi-kernel multi-FPGA allocation
+RW0004,2022,,Fast Energy-Optimal Multi-Kernel DNN-like Allocation on Multi-FPGA Platforms,TCAD,,,,missing,,not_checked,,not_checked,,not_checked,,,,,energy-aware allocation
+RW0005,2022,,DML: Dynamic Partial Reconfiguration With Scalable Task Scheduling for Multi-Applications on FPGAs,IEEE TC,,,,missing,,not_checked,,not_checked,,not_checked,,,,,dynamic task scheduling / PR
+RW0006,2021,,Correlated Multi-objective Multi-fidelity Optimization for HLS Directives Design,DATE,,,,missing,,not_checked,,not_checked,,not_checked,,,,,multi-fidelity HLS DSE
+RW0007,2023,,IronMan-Pro,IEEE TCAD,,,,missing,,not_checked,,not_checked,,not_checked,,,,,HLS optimization
+RW0008,2024,,HLSFactory,MLCAD,,,,missing,,not_checked,,not_checked,,not_checked,,,,,HLS benchmarking infrastructure
+RW0009,2024,,Hierarchical Source-to-Post-Route QoR Prediction in HLS with GNNs,DATE,,,,missing,,not_checked,,not_checked,,not_checked,,,,,GNN QoR prediction
+RW0010,2024,,CollectiveHLS,ACM TRETS,,,,missing,,not_checked,,not_checked,,not_checked,,,,,HLS automation
+RW0011,2025,,Stream-HLS,2025,,,,missing,,not_checked,,not_checked,,not_checked,,,,,streaming HLS
+RW0012,2013,,Multi-Task Bayesian Optimization,NeurIPS,,,,missing,,not_checked,,not_checked,,not_checked,,,,,multi-task BO
+RW0013,2025,,Constrained Multi-objective Bayesian Optimization through Optimistic Constraints Estimation,AISTATS,,,,missing,,not_checked,,not_checked,,not_checked,,,,,constrained MOBO
+RW0014,2025,,Cooperative Components Bayesian Optimization,2025,,,,missing,,not_checked,,not_checked,,not_checked,,,,,cooperative BO
+RW0015,2021,,A Value of Information Methodology for Multiobjective Decisions in Quantitative Set-Based Design,2021,,,,missing,,not_checked,,not_checked,,not_checked,,,,,VOI
+RW0016,1986,,On the Value of Information in System Design,1986,,,,missing,,not_checked,,not_checked,,not_checked,,,,,value of information

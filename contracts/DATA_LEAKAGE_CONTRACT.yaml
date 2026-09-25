@@ -1,0 +1,17 @@
+contract_version: "1.0"
+contract_id: DATA_LEAKAGE_CONTRACT
+status: ACTIVE
+split_levels:
+  - design
+  - benchmark
+  - configuration
+  - device
+required:
+  - knowledge_scope
+  - train_scope
+  - validation_scope
+  - test_scope
+rules:
+  - "The same exact design point may not occur in train and test unless the Study explicitly tests memorization/generalization."
+  - "Feature extraction and normalization must be fit only on the declared training scope."
+  - "Leakage checks must run before model evaluation."

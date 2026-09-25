@@ -1,0 +1,34 @@
+{
+  "version": "V22",
+  "source": "HLS_DSE_COMPLETE_MASTER_V21_PHASED_CANONICAL.md",
+  "source_sha256": "59030c08f94ceeb418fe852b7885aae09710355b6db9355a676b9a298d8b3126",
+  "file_count": 186,
+  "reports": [
+    "R01_Research_Master.md",
+    "R02_Research_Program_Phases.md",
+    "R03_Experimental_Methodology.md",
+    "R04_System_Software_Architecture.md",
+    "R05_Related_Work.md",
+    "R06_Study_Specifications.md",
+    "R07_Research_Extensions.md",
+    "R08_Historical_Archive.md"
+  ],
+  "ai_control_files": [
+    "AI_AGENT_POLICY.yaml",
+    "AI_CHANGE_CONTROL.md",
+    "AI_DATA_ISOLATION_POLICY.md",
+    "AI_ESCALATION_RULES.md",
+    "AI_EVIDENCE_POLICY.md",
+    "AI_EXECUTION_POLICY.yaml",
+    "AI_NO_GUESSING_POLICY.md",
+    "AI_PERMISSION_MATRIX.csv",
+    "AI_PLUGIN_POLICY.yaml",
+    "AI_REPORTING_POLICY.md",
+    "AI_RESEARCH_RULES.md",
+    "AI_SCOPE_POLICY.yaml",
+    "AI_SKILL_POLICY.yaml",
+    "AI_STOP_CONDITIONS.md",
+    "AI_SYSTEM_CONTRACT.md",
+    "AI_TOOL_POLICY.yaml"
+  ]
+}

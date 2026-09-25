@@ -1,0 +1,16 @@
+contract_version: "1.0"
+contract_id: DEVICE_REFERENCE_CONTRACT
+status: "FIXED"
+device:
+  vendor: "AMD-Xilinx"
+  family: "Zynq-7000"
+  part: "xc7z020clg484"
+  package: "clg484"
+  speed_grade: "UNKNOWN_UNTIL_FIXED"
+  board: "UNKNOWN_UNTIL_FIXED"
+
+policy:
+  fixed_reference_device: true
+  change_requires_new_project_version: true
+  no_silent_device_change: true
+  device_must_be_recorded_per_run: true

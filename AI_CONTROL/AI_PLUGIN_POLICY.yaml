@@ -1,0 +1,6 @@
+default: deny
+allow_only_registered_plugins: true
+each_use_requires: [purpose, study_id, provenance]
+forbidden:
+  - using_plugin_output_as_measured_experiment_without_execution_evidence
+  - modifying_locked_project_contract

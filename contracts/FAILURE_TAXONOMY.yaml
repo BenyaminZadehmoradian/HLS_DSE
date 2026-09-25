@@ -1,0 +1,15 @@
+schema_version: "1.0"
+classes:
+  SOURCE_ERROR: {retry: false}
+  HLS_ERROR: {retry: false}
+  FUNCTIONAL_MISMATCH: {retry: false}
+  RESOURCE_OVERFLOW: {retry: false}
+  SYNTHESIS_ERROR: {retry: false}
+  PNR_ERROR: {retry: controlled}
+  TIMING_FAILURE: {retry: controlled}
+  TIMEOUT: {retry: controlled}
+  LICENSE_FAILURE: {retry: true}
+  INFRASTRUCTURE_FAILURE: {retry: true}
+  TRANSIENT_TOOL_FAILURE: {retry: true}
+  UNKNOWN_FAILURE: {retry: false}
+rule: Failure class must be assigned before a run is counted in a scientific metric.

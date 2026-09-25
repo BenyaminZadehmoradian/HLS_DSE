@@ -1,0 +1,32 @@
+contract_version: "1.0"
+contract_id: P1_IMPLEMENTATION_CONTRACT
+status: READY_FOR_IMPLEMENTATION_AFTER_P0_GATE
+reference_device: xc7z020clg484
+scope:
+  - environment_scan
+  - project_scan
+  - preflight_validation
+  - benchmark_smoke
+  - hls_smoke
+  - vivado_smoke
+  - xsa_generation
+  - vitis_smoke
+  - elf_generation
+  - bitstream_generation
+  - programming_smoke_when_hardware_is_available
+  - runtime_measurement_smoke
+exit_criteria:
+  - "One benchmark completes the complete declared flow or produces a classified, reproducible failure."
+  - "All generated artifacts have Run/Study provenance."
+  - "Correctness is checked before QoR is accepted as valid."
+  - "Timing/resource reports are parsed into normalized evidence."
+  - "Programming and runtime measurements are separated from build time."
+  - "No Study contamination is detected."
+  - "P1 report and gate package are generated."
+stop_conditions:
+  - "Device mismatch"
+  - "Tool version mismatch with declared environment"
+  - "Missing license"
+  - "Unclassified failure"
+  - "Artifact provenance failure"
+  - "Correctness failure"

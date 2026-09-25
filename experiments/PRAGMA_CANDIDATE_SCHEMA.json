@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HLS-DSE Pragma Candidate",
+  "type": "object",
+  "required": ["candidate_id", "benchmark_id", "pragma_space_id", "generator_id", "configuration", "legality_status"],
+  "properties": {
+    "candidate_id": {"type": "string"},
+    "benchmark_id": {"type": "string"},
+    "pragma_space_id": {"type": "string"},
+    "source_version": {"type": "string"},
+    "generator_id": {"type": "string"},
+    "generator_version": {"type": "string"},
+    "seed": {"type": ["integer", "null"]},
+    "configuration": {"type": "object"},
+    "legality_status": {
+      "enum": ["LEGAL", "ILLEGAL_DECLARED_CONSTRAINT", "ILLEGAL_TOOL_REJECTED", "INVALID_GENERATOR_OUTPUT", "UNKNOWN", "OUT_OF_SPACE_CANDIDATE"]
+    },
+    "parent_candidate_id": {"type": ["string", "null"]},
+    "generated_at": {"type": "string"}
+  }
+}

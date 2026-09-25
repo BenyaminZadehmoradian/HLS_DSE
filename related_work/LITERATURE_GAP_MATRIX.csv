@@ -1,0 +1,19 @@
+gap_id,topic,prior_art_status,covered_in_project,missing_action,priority
+G01,external baseline reproduction,established artifact practice,yes,S09 reproduction study,HIGH
+G02,benchmark and design-space normalization,required by HLSyn/HLSFactory,yes,benchmark mapping and provenance,HIGH
+G03,automatic pragma selection,prior art,yes,infrastructure only; avoid novelty claim,HIGH
+G04,code transformation search,prior art,partial,explicitly separate or exclude,HIGH
+G05,multi-kernel/global optimization,prior art,yes,keep distinct from evidence selection,HIGH
+G06,multi-fidelity HLS,prior art,yes,decision-centric differentiation,HIGH
+G07,feasibility semantics,required,partial,stage-specific feasibility labels,HIGH
+G08,tool-version sensitivity,documented,yes,environment matrix,HIGH
+G09,reproducibility artifacts,artifact practice,yes,immutable evidence links,HIGH
+G10,scale/time/storage budgeting,documented,partial,resource budget gates,MEDIUM
+G11,agentic benchmark curation,emerging,partial,separate curation from DSE,MEDIUM
+G12,baseline family coverage,established,partial,add approved recent baselines,HIGH
+G13,evaluation-stage normalization,required,yes,stage-aware comparison,HIGH
+G14,search-budget fairness,required,yes,report cost and budget,HIGH
+G15,reproduction failure accounting,required,yes,record blockers,HIGH
+G16,comparability labels,required,yes,mandatory comparison class,HIGH
+G17,current categories FIFO/memory/dataflow/agentic/physical,ongoing,partial,final literature refresh,HIGH
+G18,power/energy measurement,partial,partial,define measured vs estimated power,HIGH

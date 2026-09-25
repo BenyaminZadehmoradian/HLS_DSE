@@ -1,0 +1,19 @@
+contract_version: "1.0"
+contract_id: CACHE_CONTRACT
+status: ACTIVE
+key_components:
+  - project_version
+  - study_id_when_required_by_scope
+  - device_part
+  - vivado_version
+  - vitis_version
+  - hls_version
+  - benchmark_hash
+  - dataset_hash
+  - candidate_hash
+  - hardware_hash
+  - environment_hash
+rules:
+  - "Cache reuse is allowed only when all required key components match."
+  - "Cache hits must preserve original artifact identity and source Run ID."
+  - "A cache hit is not a new measurement."

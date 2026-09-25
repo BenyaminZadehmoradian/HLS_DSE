@@ -1,0 +1,44 @@
+contract_version: "1.0"
+contract_id: HARDWARE_PLATFORM_CONTRACT
+status: "FIXED_REFERENCE_DEVICE"
+reference_device:
+  family: "Zynq-7000"
+  part: "xc7z020clg484"
+  speed_grade: "UNKNOWN_UNTIL_FIXED"
+  board: "UNKNOWN_UNTIL_FIXED"
+
+required_identity:
+  - hardware_id
+  - device_part
+  - vivado_version
+  - target_clock
+  - xsa_hash
+  - bitstream_hash_when_generated
+
+rules:
+  - "The reference FPGA device is fixed to xc7z020clg484 unless a new project version explicitly changes it."
+  - "Every hardware build receives a unique HARDWARE_ID."
+  - "XSA artifacts are immutable after RUN_COMPLETE."
+  - "Bitstreams are immutable after RUN_COMPLETE."
+  - "Vivado projects must be isolated per Study/Run unless an explicitly versioned immutable hardware artifact is referenced."
+  - "Shared hardware artifacts are read-only inputs and may not be overwritten by a Study."
+  - "DMA, ACP, cache level, coherency, DDR path, and result-return path are UNKNOWN until declared and measured."
+
+vivado_outputs:
+  required_when_used:
+    - project
+    - block_design
+    - constraints
+    - synthesis_reports
+    - implementation_reports
+    - timing_reports
+    - utilization_reports
+    - xsa
+  optional:
+    - power_reports
+    - checkpoint
+
+xsa_policy:
+  pre_synthesis: optional
+  post_implementation: required_when_vivado_platform_is_consumed_by_vitis
+  naming: "HW_<hardware_id>_<stage>.xsa"

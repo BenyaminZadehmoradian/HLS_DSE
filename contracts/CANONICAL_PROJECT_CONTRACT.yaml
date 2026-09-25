@@ -1,0 +1,24 @@
+schema_version: '1.0'
+project_id: HLS-DSE
+canonical_version: V23.2
+study_ids_immutable: true
+source_of_truth:
+  project_state: RESEARCH_STATE.yaml
+  phase_control: AI_CONTROL/PHASE_CONTROL.yaml
+  study_contracts: studies/<SXX>/CONTRACT.yaml
+  raw_evidence: evidence/measured/
+  derived_evidence: evidence/derived/
+  plots: studies/<SXX>/plots/generated/
+  reports: reports_generated/
+  run_manifests: runs/<STUDY_ID>/<RUN_ID>/manifest.yaml
+  hardware_contract: contracts/HARDWARE_PLATFORM_CONTRACT.yaml
+  artifact_contract: contracts/ARTIFACT_AND_RUN_MANAGEMENT_CONTRACT.yaml
+forbidden:
+- invent_measurement
+- silently_expand_pragma_space
+- overwrite_raw_evidence
+- mix_literature_reported_with_measured
+- execute_future_phase
+- overwrite_study_artifact
+- mutate_completed_run
+- use_unversioned_shared_tool_workspace

@@ -1,0 +1,18 @@
+study_id: S72
+plots:
+  - id: P072_search_quality_vs_total_time
+    required_data: [algorithm, t_total_s, quality]
+  - id: P072_hypervolume_vs_wall_clock
+    required_data: [algorithm, elapsed_wall_clock_s, hypervolume]
+  - id: P072_hypervolume_vs_budget
+    required_data: [algorithm, evaluation_budget, hypervolume]
+  - id: P072_search_overhead_vs_evaluation_cost
+    required_data: [algorithm, search_overhead_s, evaluation_time_s]
+  - id: P072_evaluation_count_vs_total_time
+    required_data: [algorithm, n_evaluations, t_total_s]
+  - id: P072_programming_time_vs_configuration_count
+    required_data: [algorithm, n_program, t_program_s]
+  - id: P072_lifecycle_time_breakdown
+    required_data: [algorithm, t_search_s, t_hls_s, t_synthesis_s, t_pnr_s, t_bitstream_s, t_program_s, t_init_s, t_execution_s]
+  - id: P072_time_to_target
+    required_data: [algorithm, target_definition, time_to_target_s]

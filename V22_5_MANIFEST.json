@@ -1,0 +1,11 @@
+{
+  "version": "V22.5",
+  "created_date": "2026-09-25",
+  "changes": [
+    "Added explicit pragma-space layer",
+    "Added automatic candidate generation policy",
+    "Added candidate provenance schema",
+    "Added CSV/data-storage policy"
+  ],
+  "file_count": 423
+}

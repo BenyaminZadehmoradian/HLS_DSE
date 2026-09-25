@@ -1,0 +1,50 @@
+study_id: S09_LEGACY_EXTERNAL_BASELINE_LEGACY_EXTERNAL_BASELINE
+study_name: External Baseline Reproduction and Cross-Paper Comparison
+phase_id: P5
+status: ARCHIVED_ID_COLLISION
+purpose: >-
+  Reproduce selected external HLS-DSE baselines when technically feasible and compare
+  them with our methods under a controlled, explicitly documented protocol.
+core_question: >-
+  Can our method be compared fairly against prior HLS-DSE methods on common
+  benchmarks, design spaces, hardware, toolchains, constraints, and evaluation budgets?
+mandatory_rules:
+  - Never treat literature-reported numbers as our measurements.
+  - Never claim head-to-head superiority when benchmark, device, tool version, design space, or metric differs materially.
+  - Preserve the original paper's reported protocol and separately define the reproduction protocol.
+  - Record unavailable code/data as unavailable; never reconstruct missing values by guesswork.
+  - Record tool versions, device, clock constraints, seeds, benchmark revision, pragma space, and budget.
+  - Separate direct reproduction, controlled re-evaluation, and indirect literature comparison.
+  - All reproduced results must enter the measured evidence store with provenance.
+  - All comparison tables must expose evidence provenance per cell or row.
+required_evidence_classes:
+  - LITERATURE_REPORTED
+  - REPRODUCED
+  - OUR_MEASURED
+  - REFERENCE_ORACLE
+required_baselines:
+  - Random
+  - Local-only
+  - Independent-composition
+  - Cost-aware baseline
+  - Proposed
+candidate_external_methods:
+  - AutoHLS
+  - IronMan-Pro
+  - CollectiveHLS
+  - HLSyn
+  - Correlated-Multi-fidelity-HLS
+  - NLP-DSE-or-Sisyphus-where-compatible
+  - Other-methods-approved-in-paper-protocol
+mandatory_outputs:
+  - reproduction_matrix.csv
+  - benchmark_mapping.csv
+  - environment_matrix.csv
+  - literature_vs_reproduced.csv
+  - comparison_report.md
+  - at_least_one_comparison_plot_when_data_permits
+stop_conditions:
+  - External method cannot be reproduced without undocumented assumptions.
+  - Benchmark or design-space mapping changes the scientific question materially.
+  - Required proprietary tool/license is unavailable and no fair alternative exists.
+  - Reproduction result cannot be traced to immutable source artifacts.

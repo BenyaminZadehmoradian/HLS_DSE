@@ -1,0 +1,29 @@
+mode: strictly_sequential_gated
+active_phase: P0
+state: PLANNED
+human_approval_required: true
+automatic_advance: false
+
+transition_rules:
+  - from: PLANNED
+    to: IMPLEMENTING
+    requires: start_active_phase
+  - from: IMPLEMENTING
+    to: VALIDATING
+    requires: implementation_complete
+  - from: VALIDATING
+    to: GATE_REVIEW
+    requires: validation_complete
+  - from: GATE_REVIEW
+    to: APPROVED_FOR_NEXT_PHASE
+    requires: explicit_human_approval
+  - from: GATE_REVIEW
+    to: BLOCKED
+    requires: gate_failure
+
+forbidden:
+  - implement_future_phase
+  - execute_future_phase
+  - generate_future_phase_evidence
+  - auto_advance
+  - self_approve_gate

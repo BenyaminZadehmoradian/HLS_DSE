@@ -1,0 +1,102 @@
+contract_version: "1.0"
+contract_id: ARTIFACT_AND_RUN_MANAGEMENT_CONTRACT
+status: "ACTIVE"
+
+reference_device:
+  part: "xc7z020clg484"
+
+identity:
+  required_ids:
+    - project_version
+    - study_id
+    - run_id
+    - hardware_id
+    - software_id
+    - benchmark_id
+    - candidate_id
+    - environment_id
+  artifact_hash_algorithm: "sha256"
+
+isolation:
+  study_workspace: "runs/<STUDY_ID>/<RUN_ID>/"
+  rule: "A Study must not write into another Study workspace."
+  run_rule: "A RUN_COMPLETE workspace is immutable; changes require a new RUN_ID."
+  overwrite_raw_artifacts: false
+  overwrite_measured_evidence: false
+  shared_artifacts_are_read_only: true
+
+run_layout:
+  manifest: "manifest.yaml"
+  config: "config/"
+  vivado: "vivado/"
+  vitis: "vitis/"
+  bitstreams: "bitstreams/"
+  measurements: "measurements/"
+  raw: "raw/"
+  normalized: "normalized/"
+  logs: "logs/"
+  report: "report/"
+
+vivado_layout:
+  project: "vivado/project/"
+  design: "vivado/design/"
+  exports: "vivado/exports/"
+  reports_synthesis: "vivado/reports/synthesis/"
+  reports_implementation: "vivado/reports/implementation/"
+  reports_timing: "vivado/reports/timing/"
+  reports_utilization: "vivado/reports/utilization/"
+  reports_power: "vivado/reports/power/"
+  logs: "vivado/logs/"
+
+vitis_layout:
+  platform: "vitis/platform/"
+  domain: "vitis/domain/"
+  application: "vitis/application/"
+  build: "vitis/build/"
+  binaries_elf: "vitis/binaries/elf/"
+  binaries_boot: "vitis/binaries/boot/"
+  reports: "vitis/reports/"
+  logs: "vitis/logs/"
+
+required_artifacts:
+  hardware:
+    - "vivado/exports/*.xsa"
+    - "bitstreams/* when generated"
+  software:
+    - "vitis/binaries/elf/* when Vitis is used"
+  provenance:
+    - "manifest.yaml"
+
+manifest_required_fields:
+  - project_version
+  - study_id
+  - run_id
+  - hardware_id
+  - software_id
+  - environment_id
+  - benchmark_id
+  - candidate_id
+  - device_part
+  - vivado_version
+  - vitis_version
+  - artifacts
+  - timestamps
+  - status
+
+artifact_classes:
+  raw: "Direct tool output; never manually edited."
+  normalized: "Parsed/normalized evidence derived from raw artifacts."
+  derived: "Metrics computed from normalized evidence."
+  report: "Human-readable interpretation generated from registered evidence."
+
+naming:
+  hardware: "HW_<hardware_id>_<artifact>.<ext>"
+  software: "SW_<software_id>_<artifact>.<ext>"
+  bitstream: "BIT_<study_id>_<run_id>_<candidate_id>.<ext>"
+  elf: "ELF_<study_id>_<run_id>_<candidate_id>.elf"
+
+forbidden:
+  - "copying an XSA/bitstream/ELF into another Run without recording its source identity and hash"
+  - "overwriting another Study's artifact"
+  - "using a mutable shared Vivado/Vitis workspace as an experimental source"
+  - "claiming a measurement when the corresponding raw artifact is absent"

@@ -1,0 +1,6 @@
+report_system:
+  canonical_template: AI_CONTROL/REPORT_TEMPLATE.md
+  policy: AI_CONTROL/AI_REPORT_TEMPLATE_POLICY.md
+  immutable_archive_required: true
+  provenance_chain: [study, run, evidence, derived_metric, plot_or_table, report]
+  ai_self_approval_forbidden: true

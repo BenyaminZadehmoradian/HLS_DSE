@@ -1,0 +1,38 @@
+{
+  "audit_date": "2026-09-25",
+  "scope": "discovery-only; non-secret snapshot",
+  "project": {
+    "root": "/home/benyamin/Desktop/HLS_DSE",
+    "version": "V23.2",
+    "reference_device": "xc7z020clg484",
+    "validator": "errors=0 warnings=0",
+    "manifest": {"listed_files": 585, "missing": 0, "mismatched": 0},
+    "tests": {"status": "BLOCKED", "reason": "pytest unavailable for discovered Python interpreters"}
+  },
+  "host": {
+    "os": "Ubuntu 24.04.5 LTS",
+    "kernel": "7.0.0-31-generic",
+    "architecture": "x86_64",
+    "virtualization": "none",
+    "cpu": "Intel Core i7-10700 CPU @ 2.90GHz",
+    "logical_cpus": 16,
+    "physical_cores": 8,
+    "memory_total_gib": 93,
+    "memory_available_gib": 60,
+    "swap_total_gib": 8,
+    "project_filesystem": {"type": "ext4", "available_gib": 17, "use_percent": 97}
+  },
+  "toolchain": {
+    "vivado": [{"version": "2025.2.1", "path": "/mnt/data/Apps/2025.2.1/Vivado/bin/vivado", "status": "AVAILABLE"}],
+    "vitis": [{"version": "2025.2.1", "path": "/mnt/data/Apps/2025.2.1/Vitis/bin/vitis", "status": "AVAILABLE"}],
+    "vitis_hls": [
+      {"version": "2025.2.1 wrapper", "path": "/home/benyamin/.local/bin/vitis_hls", "status": "CONFLICT"},
+      {"version": "2023.2", "path": "/mnt/data/Xilinx/Vitis_HLS/2023.2/bin/vitis_hls", "status": "CONFLICT"}
+    ],
+    "sdk_2019_1": "/tools/Xilinx/SDK/2019.1/bin",
+    "target_part_database": "AVAILABLE",
+    "license": "UNKNOWN"
+  },
+  "hardware": {"status": "HARDWARE_NOT_DETECTED"},
+  "readiness": {"environment": "PARTIAL", "toolchain": "PARTIAL", "project": "READY", "hardware": "HARDWARE_NOT_DETECTED", "license": "UNKNOWN", "p0": "BLOCKED", "p1": "NOT_AUTHORIZED"}
+}

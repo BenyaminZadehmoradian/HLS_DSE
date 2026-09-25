@@ -1,0 +1,18 @@
+timing:
+  required_fields:
+    - t_hls_s
+    - t_synthesis_s
+    - t_pnr_s
+    - t_bitstream_s
+    - t_program_s
+    - t_init_s
+    - t_execution_s
+    - t_total_s
+  required_counts:
+    - n_program
+    - n_bitstream_build
+    - n_invocation
+  missing_value_policy: UNKNOWN
+  estimation_as_measurement: forbidden
+  bitstream_generation_equals_programming: false
+  provenance_required: true

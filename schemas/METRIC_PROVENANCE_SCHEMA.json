@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["metric_id","metric","value","unit","status","source_stage","provenance"],
+  "properties": {
+    "metric_id": {"type":"string"},
+    "metric": {"type":"string"},
+    "value": {},
+    "unit": {"type":"string"},
+    "status": {"enum":["MEASURED","TOOL_REPORTED","DERIVED","ESTIMATED","PREDICTED","LITERATURE_REPORTED","REPRODUCED","REFERENCE_ORACLE","UNKNOWN"]},
+    "source_stage": {"type":"string"},
+    "provenance": {
+      "type":"object",
+      "required":["project_version","study_id","run_id","candidate_id","benchmark_id","device_part","tool","tool_version","source_artifact","source_artifact_sha256","source_field_or_measurement","recorded_at_utc"],
+      "properties": {
+        "project_version":{"type":"string"},"study_id":{"type":"string"},"run_id":{"type":"string"},"candidate_id":{"type":"string"},"benchmark_id":{"type":"string"},"device_part":{"type":"string"},"tool":{"type":"string"},"tool_version":{"type":"string"},"source_artifact":{"type":"string"},"source_artifact_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},"source_field_or_measurement":{"type":"string"},"recorded_at_utc":{"type":"string"}
+      }
+    }
+  }
+}

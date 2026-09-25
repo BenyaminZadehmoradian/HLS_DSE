@@ -1,0 +1,13 @@
+skills:
+  hls:
+    can: [configure, execute, parse]
+    cannot: [modify_research_question]
+  vivado:
+    can: [synthesis, implementation, timing, utilization]
+    cannot: [modify_benchmark_definition]
+  literature:
+    can: [search, collect, classify]
+    cannot: [declare_unverified_code_available]
+  reporting:
+    can: [generate_report]
+    cannot: [create_measurement]

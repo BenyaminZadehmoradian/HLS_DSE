@@ -1,0 +1,32 @@
+project_version: V23.2
+current_phase: P0
+current_study: S00
+status: READY_FOR_P0_IMPLEMENTATION
+preimplementation_hardening: COMPLETE
+staged_evaluation_and_provenance_hardening: COMPLETE
+p1_authorized: false
+p1_gate_required: true
+active_phase: P0
+active_phase_state: PLANNED
+next_phase_implementation_allowed: false
+human_gate_required: true
+automatic_advance: false
+future_phase_implementation_allowed: false
+canonical_source: MASTER/HLS_DSE_MASTER_V23_2.md
+state_schema_version: '1.0'
+active_environment: null
+last_validated_evidence: null
+pending_escalations: []
+study_registry_policy: STUDY_IDS_IMMUTABLE; S71 reserved for external baseline reproduction
+external_baseline_study:
+  study_id: S71
+  status: planned
+  evidence_classes:
+  - LITERATURE_REPORTED
+  - REPRODUCED
+  - OUR_MEASURED
+  - REFERENCE_ORACLE
+  direct_comparison_requires_normalization: true
+fixed_reference_device: xc7z020clg484
+artifact_isolation_contract: contracts/ARTIFACT_AND_RUN_MANAGEMENT_CONTRACT.yaml
+hardware_platform_contract: contracts/HARDWARE_PLATFORM_CONTRACT.yaml

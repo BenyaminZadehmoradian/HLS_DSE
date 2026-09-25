@@ -1,0 +1,3 @@
+raw_artifacts_required: true
+duplicate_evaluation: forbidden
+missing_result: unknown_not_estimated

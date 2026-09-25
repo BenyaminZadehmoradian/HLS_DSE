@@ -1,0 +1,14 @@
+{
+  "study_id": "S72",
+  "mandatory_plots": [
+    "P072_search_quality_vs_total_time",
+    "P072_hypervolume_vs_wall_clock",
+    "P072_hypervolume_vs_budget",
+    "P072_search_overhead_vs_evaluation_cost",
+    "P072_evaluation_count_vs_total_time",
+    "P072_programming_time_vs_configuration_count",
+    "P072_lifecycle_time_breakdown",
+    "P072_time_to_target"
+  ],
+  "status": "PLANNED"
+}

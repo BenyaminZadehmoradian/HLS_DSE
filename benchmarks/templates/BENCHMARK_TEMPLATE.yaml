@@ -1,0 +1,14 @@
+benchmark_id: BENCHMARK_REPLACE
+source_uri_or_path: REQUIRED
+source_commit_or_hash: REQUIRED
+source_language: C/C++
+top_function: REQUIRED
+benchmark_family: REQUIRED
+input_dataset_id: REQUIRED
+test_harness: REQUIRED
+correctness_test: REQUIRED
+interface_contract: REQUIRED
+compiler_flags: REQUIRED
+workload_class: UNKNOWN_UNTIL_CLASSIFIED
+memory_footprint_bytes: UNKNOWN
+expected_output_hash: UNKNOWN

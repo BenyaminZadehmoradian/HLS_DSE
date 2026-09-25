@@ -1,0 +1,9 @@
+environments:
+  - id: ENV-001
+    status: template
+    vivado: record_actual_version
+    vitis: record_actual_version
+    device: record_actual_device
+    os: record_actual_os
+    compiler: record_actual_compiler
+    git_commit: record_actual_commit

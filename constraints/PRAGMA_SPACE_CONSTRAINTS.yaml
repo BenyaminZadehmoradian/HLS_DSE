@@ -1,0 +1,8 @@
+version: "1.0"
+user_defines_allowed_space: true
+framework_may_generate_candidates: true
+silent_search_space_expansion: false
+candidate_provenance_required: true
+candidate_legality_status_required: true
+primary_novelty_claim: false
+canonical_candidate_record: "experiments/PRAGMA_CANDIDATE_SCHEMA.json"

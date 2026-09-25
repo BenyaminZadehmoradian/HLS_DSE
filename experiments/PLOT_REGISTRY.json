@@ -1,0 +1,198 @@
+{
+  "policy": "AI_CONTROL/AI_PLOT_POLICY.md",
+  "registry": {
+    "S01": [
+      "flow_stage_time",
+      "flow_success_rate"
+    ],
+    "S02": [
+      "local_vs_joint_scatter",
+      "interaction_residual_distribution"
+    ],
+    "S03": [
+      "decision_change_rate",
+      "decision_value_per_cost"
+    ],
+    "S04": [
+      "oracle_pareto_front",
+      "pareto_hypervolume_vs_budget"
+    ],
+    "S05": [
+      "method_hypervolume_vs_budget",
+      "method_wall_clock",
+      "selected_joint_evaluations"
+    ],
+    "S06": [
+      "budget_vs_hypervolume",
+      "budget_vs_decision_loss",
+      "budget_vs_wall_clock"
+    ],
+    "S07": [
+      "workload_scaling",
+      "cross_workload_decision_quality"
+    ],
+    "S08": [
+      "end_to_end_method_comparison",
+      "quality_vs_wall_clock"
+    ],
+    "S09": [
+      "measurement_variability"
+    ],
+    "S10": [
+      "transfer_quality"
+    ],
+    "S11": [
+      "task_candidate_fidelity_cost"
+    ],
+    "S12": [
+      "lifecycle_time_breakdown"
+    ],
+    "S13": [
+      "cpu_fpga_tradeoff"
+    ],
+    "S14": [
+      "dma_transfer_time"
+    ],
+    "S15": [
+      "concurrent_joint_resource_latency"
+    ],
+    "S16": [
+      "decision_change_prediction"
+    ],
+    "S17": [
+      "certificate_precision_recall"
+    ],
+    "S18": [
+      "budget_dma_tradeoff"
+    ],
+    "S19": [
+      "power_energy_vs_resource"
+    ],
+    "S20": [
+      "energy_cost_carbon"
+    ],
+    "S21": [
+      "fidelity_quality_cost"
+    ],
+    "S22": [
+      "joint_evidence_threshold"
+    ],
+    "S23": [
+      "fidelity_ladder"
+    ],
+    "S24": [
+      "large_workload_scaling"
+    ],
+    "S25": [
+      "distributed_speedup"
+    ],
+    "S26": [
+      "provenance_completeness"
+    ],
+    "S27": [
+      "controller_comparison"
+    ],
+    "S72": [
+      "P072_search_quality_vs_total_time",
+      "P072_hypervolume_vs_wall_clock",
+      "P072_hypervolume_vs_budget",
+      "P072_search_overhead_vs_evaluation_cost",
+      "P072_evaluation_count_vs_total_time",
+      "P072_programming_time_vs_configuration_count",
+      "P072_lifecycle_time_breakdown",
+      "P072_time_to_target"
+    ],
+    "S73": [
+      "memory_bandwidth_vs_e2e",
+      "cache_wait_vs_latency",
+      "data_movement_cost"
+    ],
+    "S74": [
+      "input_sensitivity",
+      "pareto_stability_across_inputs"
+    ],
+    "S75": [
+      "search_space_quality",
+      "search_space_size_vs_quality"
+    ],
+    "S76": [
+      "hierarchical_decision_order",
+      "cross_level_quality"
+    ],
+    "S77": [
+      "frequency_vs_latency",
+      "frequency_vs_resource",
+      "timing_closure"
+    ],
+    "S78": [
+      "hls_vs_physical_qor",
+      "physical_feasibility_gap"
+    ],
+    "S79": [
+      "slr_utilization",
+      "cross_slr_cost",
+      "slr_timing"
+    ],
+    "S80": [
+      "toolchain_qor_shift",
+      "toolchain_rank_correlation"
+    ],
+    "S81": [
+      "implementation_variability",
+      "timing_distribution"
+    ],
+    "S82": [
+      "accuracy_vs_resource",
+      "accuracy_vs_latency"
+    ],
+    "S83": [
+      "e2e_latency_breakdown",
+      "kernel_vs_e2e"
+    ],
+    "S84": [
+      "overlap_speedup",
+      "cpu_fpga_overlap"
+    ],
+    "S85": [
+      "configuration_strategy_lifecycle",
+      "config_count_vs_total_time"
+    ],
+    "S86": [
+      "bitstream_size_vs_program_time"
+    ],
+    "S87": [
+      "cache_reuse_value",
+      "reuse_risk"
+    ],
+    "S88": [
+      "early_stop_savings",
+      "early_stop_quality_loss"
+    ],
+    "S89": [
+      "constraint_vs_qor_prediction"
+    ],
+    "S90": [
+      "workload_family_generalization"
+    ],
+    "S91": [
+      "cross_device_rank_correlation"
+    ],
+    "S92": [
+      "objective_sensitivity"
+    ],
+    "S93": [
+      "invocation_distribution_lifecycle"
+    ],
+    "S94": [
+      "lifecycle_robustness"
+    ],
+    "S95": [
+      "resource_fragmentation_vs_feasibility"
+    ],
+    "S96": [
+      "sustained_performance",
+      "thermal_behavior"
+    ]
+  },
+  "additional_studies": "Every later Study must declare its own mandatory plots before execution."
+}

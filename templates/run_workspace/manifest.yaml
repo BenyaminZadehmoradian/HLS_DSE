@@ -1,0 +1,25 @@
+project_version: V23.1
+study_id: SXX
+run_id: SXX_RUN_0001
+hardware_id: HW_0001
+software_id: SW_0001
+environment_id: ENV_0001
+benchmark_id: BENCH_0001
+candidate_id: CFG_0001
+device_part: xc7z020clg484
+vivado_version: UNKNOWN_UNTIL_MEASURED
+vitis_version: UNKNOWN_UNTIL_MEASURED
+
+artifacts:
+  xsa:
+    pre_synthesis: null
+    post_implementation: null
+  bitstream: null
+  elf: null
+  boot: null
+
+timestamps:
+  start: null
+  end: null
+
+status: PLANNED

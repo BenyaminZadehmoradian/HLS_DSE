@@ -1,0 +1,19 @@
+study_id: S01
+study_name: Flow Smoke Test
+phase_id: P1
+status: LOCKED_UNTIL_P0_GATE
+purpose: Validate one real HLS tool flow on one benchmark and one device without scientific claims.
+requirements:
+  benchmark_count: 1
+  candidate_count: <=5
+  toolchain_count: 1
+  physical_implementation: optional
+  correctness_required: true
+  timing_required: true
+outputs:
+  - raw_tool_artifacts
+  - normalized_evidence
+  - timing_breakdown
+  - flow_success_plot
+exit_gate:
+  human_approval_required: true

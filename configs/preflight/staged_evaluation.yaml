@@ -1,0 +1,19 @@
+staged_evaluation:
+  enabled: true
+  full_flow_reference: true
+  stages:
+    - CANDIDATE
+    - HLS
+    - SYNTHESIS
+    - IMPLEMENTATION
+    - BITSTREAM
+    - PROGRAMMING
+    - RUNTIME
+  decision_policy: explicit_and_logged
+  estimates:
+    may_select_next_candidate: true
+    may_advance_stage: true
+    may_be_reported_as_measured: false
+  provenance:
+    required_for_every_metric: true
+    required_for_every_decision: true

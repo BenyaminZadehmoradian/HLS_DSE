@@ -1,0 +1,20 @@
+contract_version: "1.0"
+contract_id: EXTERNAL_BASELINE_CONTRACT
+status: ACTIVE
+required_fields:
+  - paper_id
+  - repository_url
+  - repository_commit
+  - benchmark
+  - device
+  - tool_version
+  - method_version
+  - reproduction_status
+  - normalization_status
+reproduction_status_values:
+  - NOT_ATTEMPTED
+  - BLOCKED
+  - PARTIAL
+  - REPRODUCED
+  - REPRODUCED_WITH_DEVIATION
+comparison_rule: "Literature-reported and reproduced values must remain separate."

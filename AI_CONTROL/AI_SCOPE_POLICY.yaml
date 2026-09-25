@@ -1,0 +1,4 @@
+core_path: [P0,P1,P2,P3,P4,P5,P6,P7,P15]
+extensions_require_gate: true
+historical_archive_read_only: true
+future_work_executable: false

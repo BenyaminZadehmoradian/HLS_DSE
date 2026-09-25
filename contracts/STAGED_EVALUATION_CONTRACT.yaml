@@ -1,0 +1,41 @@
+contract_version: "1.0"
+contract_id: STAGED_EVALUATION_CONTRACT
+status: ACTIVE
+principle: "A candidate advances through increasingly expensive stages only when declared evidence satisfies the stage gate."
+full_flow_is_reference: true
+stages:
+  - id: CANDIDATE
+    cost_class: GENERATION
+  - id: HLS
+    cost_class: LOW
+  - id: SYNTHESIS
+    cost_class: MEDIUM
+  - id: IMPLEMENTATION
+    cost_class: HIGH
+  - id: BITSTREAM
+    cost_class: HIGH
+  - id: PROGRAMMING
+    cost_class: HARDWARE
+  - id: RUNTIME
+    cost_class: HARDWARE
+transitions:
+  default: [CANDIDATE, HLS, SYNTHESIS, IMPLEMENTATION, BITSTREAM, PROGRAMMING, RUNTIME]
+  allowed_decisions: [ADVANCE, DROP, KEEP, DEFER, BLOCKED]
+gate_policy:
+  measured_evidence_preferred: true
+  estimates_may_guide_next_stage_selection: true
+  estimates_must_not_be_reported_as_measurements: true
+  prediction_must_record_model_identity_and_confidence: true
+  failed_stage_does_not_imply_unmeasured_later_stage_failure: true
+  no_synthetic_measurement_values: true
+required_decision_fields:
+  - decision_id
+  - candidate_id
+  - run_id
+  - current_stage
+  - decision
+  - reason_codes
+  - evidence_ids
+  - next_stage
+  - timestamp_utc
+  - policy_version

@@ -1,0 +1,33 @@
+contract_version: "1.0"
+contract_id: SEARCH_ALGORITHM_CONTRACT
+status: ACTIVE
+separation:
+  search_algorithm_is_separate_from_evidence_selection: true
+  search_algorithm_must_not_change_declared_pragma_space: true
+required_record:
+  - algorithm_id
+  - algorithm_version
+  - seed
+  - search_overhead_s
+  - candidates_generated
+  - candidates_selected
+  - evaluation_budget
+  - stop_reason
+  - final_quality_metrics
+fairness:
+  same_design_space: required
+  same_budget_definition: required
+  same_correctness_rule: required
+  same_device: required
+  same_toolchain: required
+  seed_policy: preregistered
+algorithms:
+  - exhaustive_when_feasible
+  - random
+  - bayesian_optimization
+  - evolutionary
+optional:
+  - heuristic
+  - reinforcement_learning
+  - gnn_ml
+  - llm_agentic

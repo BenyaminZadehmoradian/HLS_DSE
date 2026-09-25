@@ -1,0 +1,18 @@
+study_id: S18
+status: registry_only
+isolated_workspace: true
+measured_evidence_required: true
+cross_study_write: false
+
+timing_measurement:
+  required: true
+  programming_time: required_when_programmed
+  missing_value: UNKNOWN
+  estimation_as_measurement: forbidden
+
+plotting:
+  required: true
+  plot_code_isolated: true
+  data_must_be_traceable: true
+  invented_measurements_forbidden: true
+  mandatory_plots: []

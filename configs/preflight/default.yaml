@@ -1,0 +1,19 @@
+project_version: V23.2
+reference_device: xc7z020clg484
+required_tools:
+  vivado: required
+  vitis: required
+  vitis_hls: required
+  python: required
+hardware_execution: optional_until_P1_hardware_smoke
+checks:
+  - python_version
+  - git
+  - vivado_version
+  - vitis_version
+  - vitis_hls_version
+  - device_support
+  - license_visibility
+  - disk_space
+  - cpu_memory
+  - project_contracts

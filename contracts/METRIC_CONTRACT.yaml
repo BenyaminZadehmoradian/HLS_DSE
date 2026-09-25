@@ -1,0 +1,16 @@
+schema_version: "1.0"
+metrics:
+  latency_cycles: {direction: minimize, unit: cycles}
+  latency_ns: {direction: minimize, unit: ns}
+  throughput: {direction: maximize, unit: application_defined}
+  lut: {direction: minimize, unit: count}
+  ff: {direction: minimize, unit: count}
+  bram: {direction: minimize, unit: count_or_equivalent}
+  uram: {direction: minimize, unit: count}
+  dsp: {direction: minimize, unit: count}
+  fmax_mhz: {direction: maximize, unit: MHz}
+  power_w: {direction: minimize, unit: W}
+  energy_j: {direction: minimize, unit: J}
+  total_wall_clock_s: {direction: minimize, unit: s}
+  fpga_program_time_s: {direction: minimize, unit: s}
+rule: Every metric record must include source_stage, measurement_status, provenance, and unit.

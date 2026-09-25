@@ -1,0 +1,14 @@
+schema_version: "1.0"
+required:
+  benchmark_id: required
+  source_uri_or_path: required
+  source_commit_or_hash: required
+  top_function: required
+  input_dataset_id: required
+  test_harness: required
+  correctness_test: required
+  source_language: required
+  interface_contract: required
+  compiler_flags: required
+  benchmark_family: required
+unknown_policy: UNKNOWN; never infer missing identity fields.

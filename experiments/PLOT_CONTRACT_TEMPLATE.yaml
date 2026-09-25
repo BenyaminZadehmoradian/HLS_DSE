@@ -1,0 +1,20 @@
+plot_contract:
+  plot_id: Pxx
+  study_id: Sxx
+  title: ""
+  purpose: ""
+  research_question: ""
+  mandatory: false
+  chart_type: ""
+  input_sources: []
+  required_columns: []
+  grouping: []
+  x: ""
+  y: ""
+  uncertainty: ""
+  output_formats:
+    - png
+    - pdf
+  script: ""
+  output: ""
+  status: planned

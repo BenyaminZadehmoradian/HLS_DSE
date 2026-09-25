@@ -1,0 +1,119 @@
+study_id: S72
+study_name: Search Algorithm and End-to-End Cost Comparison
+phase_id: P11
+status: PLANNED
+purpose: >-
+  Determine whether the choice of configuration-search algorithm changes the discovered
+  design quality, search overhead, evaluation workload, FPGA programming/configuration
+  workload, and end-to-end time under controlled budgets.
+core_question: >-
+  Under the same benchmark, design space, device, toolchain, correctness criteria,
+  objective definitions, and comparable evaluation budgets, how do different search
+  algorithms trade off search overhead, expensive evaluations, lifecycle/configuration
+  cost, and final decision quality?
+scientific_status: >-
+  Exploratory study. No search algorithm is assumed to be superior before measurement.
+search_algorithms:
+  required_baselines:
+    - EXHAUSTIVE_WHEN_FEASIBLE
+    - RANDOM_SEARCH
+  controlled_candidates:
+    - BAYESIAN_OPTIMIZATION
+    - EVOLUTIONARY_SEARCH
+  optional_extensions:
+    - HEURISTIC_SEARCH
+    - MULTI_OBJECTIVE_SEARCH
+    - RL_GUIDED_SEARCH
+    - ML_GNN_GUIDED_SEARCH
+    - LLM_AGENTIC_SEARCH
+comparison_controls:
+  benchmark_contract: required
+  pragma_space_version: required
+  candidate_generator_version: required
+  device_toolchain_contract: required
+  correctness_contract: required
+  objective_constraint_contract: required
+  evaluation_fidelity: matched_when_claimed_directly_comparable
+  random_seed_policy: required
+  concurrency_policy: fixed_or_recorded
+  license_policy: fixed_or_recorded
+  fpga_availability_policy: fixed_or_recorded
+budgets:
+  required_axes:
+    - candidate_evaluations
+    - hls_evaluations
+    - synthesis_evaluations
+    - pnr_evaluations
+    - bitstream_builds
+    - fpga_programming_events
+    - benchmark_invocations
+    - wall_clock_seconds
+    - cpu_hours
+    - fpga_hours
+metrics:
+  search:
+    - search_overhead_s
+    - candidates_generated
+    - candidates_selected_for_evaluation
+  build:
+    - t_hls_s
+    - t_synthesis_s
+    - t_pnr_s
+    - t_bitstream_s
+  lifecycle:
+    - t_program_s
+    - t_init_s
+    - t_execution_s
+    - t_total_s
+    - n_program
+    - n_invocation
+  quality:
+    - hypervolume
+    - decision_loss
+    - pareto_front_coverage
+    - decision_change_rate_when_applicable
+  robustness:
+    - run_to_run_variability
+    - seed_sensitivity
+end_to_end_model:
+  formula: >-
+    T_end_to_end = T_search + T_HLS + T_SYN + T_PNR + T_BITSTREAM + T_PROGRAM + T_INIT + T_EXEC
+  rule: Every term must be measured or explicitly marked UNKNOWN/NOT_MEASURED; estimation cannot be reported as measurement.
+required_comparisons:
+  - quality_vs_total_wall_clock
+  - hypervolume_vs_wall_clock
+  - hypervolume_vs_evaluation_budget
+  - search_overhead_vs_evaluation_cost
+  - evaluation_count_vs_total_time
+  - programming_time_vs_configuration_count
+  - lifecycle_time_breakdown
+  - time_to_target_quality
+mandatory_plots:
+  - P072_search_quality_vs_total_time
+  - P072_hypervolume_vs_wall_clock
+  - P072_hypervolume_vs_budget
+  - P072_search_overhead_vs_evaluation_cost
+  - P072_evaluation_count_vs_total_time
+  - P072_programming_time_vs_configuration_count
+  - P072_lifecycle_time_breakdown
+  - P072_time_to_target
+success_criteria:
+  - all compared algorithms execute under the same declared experimental contract
+  - search and evaluation times are separately measured
+  - programming/configuration time is separately measured whenever programming occurs
+  - final quality and end-to-end cost are both reported
+  - no algorithm is declared superior solely from one metric
+stop_conditions:
+  - benchmark or design-space mapping is not equivalent across algorithms
+  - correctness cannot be established consistently
+  - required toolchain or hardware is unavailable
+  - timing provenance is incomplete for a claimed end-to-end comparison
+  - the study becomes an uncontrolled comparison of different evaluation fidelity levels
+outputs:
+  - search_algorithm_comparison.json
+  - search_algorithm_comparison.csv
+  - timing_breakdown.csv
+  - budget_quality_curve.csv
+  - decision_quality.csv
+  - comparison_report.md
+  - mandatory_plots

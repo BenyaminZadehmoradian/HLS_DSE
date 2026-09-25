@@ -1,0 +1,12 @@
+{
+  "version": "V22.2",
+  "base_version": "V22.1",
+  "changes": [
+    "Added isolated per-study plotting architecture",
+    "Added plot policy and plot contracts",
+    "Added plot registry",
+    "Added provenance requirements for generated figures"
+  ],
+  "study_count": 71,
+  "file_count": 410
+}

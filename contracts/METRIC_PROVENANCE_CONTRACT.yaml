@@ -1,0 +1,43 @@
+contract_version: "1.0"
+contract_id: METRIC_PROVENANCE_CONTRACT
+status: ACTIVE
+principle: "No reported number without a machine-traceable provenance chain."
+allowed_statuses:
+  - MEASURED
+  - TOOL_REPORTED
+  - DERIVED
+  - ESTIMATED
+  - PREDICTED
+  - LITERATURE_REPORTED
+  - REPRODUCED
+  - REFERENCE_ORACLE
+  - UNKNOWN
+required_fields:
+  - metric_id
+  - metric
+  - value
+  - unit
+  - status
+  - source_stage
+  - provenance
+provenance_required:
+  - project_version
+  - study_id
+  - run_id
+  - candidate_id
+  - benchmark_id
+  - device_part
+  - tool
+  - tool_version
+  - source_artifact
+  - source_artifact_sha256
+  - source_field_or_measurement
+  - recorded_at_utc
+rules:
+  measured_requires_raw_artifact: true
+  tool_reported_requires_source_artifact: true
+  derived_requires_input_metric_ids: true
+  estimated_requires_estimator_id: true
+  predicted_requires_model_id_and_confidence: true
+  unknown_must_not_have_fabricated_value: true
+  report_generators_must_preserve_provenance: true
