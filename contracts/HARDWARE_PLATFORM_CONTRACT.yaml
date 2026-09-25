@@ -4,8 +4,18 @@ status: "FIXED_REFERENCE_DEVICE"
 reference_device:
   family: "Zynq-7000"
   part: "xc7z020clg484"
-  speed_grade: "UNKNOWN_UNTIL_FIXED"
-  board: "UNKNOWN_UNTIL_FIXED"
+  speed_grade: "-1"
+  board: "NONE"
+
+platform_status:
+  hardware_status: "NOT_AVAILABLE"
+  board_status: "NOT_AVAILABLE"
+  device_status: "VERIFIED"
+  speed_grade_status: "FIXED_REFERENCE_CONFIGURATION"
+  hardware_available: false
+  programming_available: false
+  runtime_measurement_available: false
+  note: "No physical board exists. Device status means Vivado 2025.2.1 recognizes the part; it does not imply board, programming, or runtime availability."
 
 required_identity:
   - hardware_id

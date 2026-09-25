@@ -6,8 +6,17 @@ device:
   family: "Zynq-7000"
   part: "xc7z020clg484"
   package: "clg484"
-  speed_grade: "UNKNOWN_UNTIL_FIXED"
-  board: "UNKNOWN_UNTIL_FIXED"
+  speed_grade: "-1"
+  board: "NONE"
+  hardware_available: false
+
+speed_grade_provenance:
+  status: "FIXED_REFERENCE_CONFIGURATION"
+  tool_part_string: "xc7z020clg484-1"
+  source: "Human decision, 2026-09-25 (Final Pre-P0 remediation)."
+  basis: "Documented/common Zynq-7020 HLS reference usage; -1 is the slowest commercial grade and therefore the timing-conservative choice."
+  not_derived_from: "board identification (no physical board exists)"
+  tool_visibility: "Vivado 2025.2.1 get_parts reports xc7z020clg484-1 (see audit/environment/PRE_P0_TOOLCHAIN_PREPARATION_REPORT.md)."
 
 policy:
   fixed_reference_device: true

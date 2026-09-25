@@ -1,0 +1,149 @@
+{
+  "project_version": "V23.2",
+  "current_phase": "P0",
+  "current_study": "S00",
+  "audit_timestamp": "2026-09-25T16:50:55+02:00",
+  "final_status": "READY_FOR_HUMAN_GATE",
+  "technical_pre_p0_prerequisites": "PASS",
+  "human_gate": "REQUIRED",
+  "p0_execution": "NOT_AUTHORIZED",
+  "repository": {
+    "branch": "main",
+    "base_head": "ada921ff946ef42b38f92289dfcbbcccc66a5f6a",
+    "origin_main": "db5326642d956a5d257d90e9f2045d399b5d178d",
+    "unpushed_commits_at_audit_start": ["ada921f pre-p0: remediate b03 b04 b05"],
+    "worktree_at_audit_start": "clean",
+    "validator": {"command": "python3 scripts/validate_project.py", "exit_code": 0, "output": "errors=0 warnings=0", "status": "MEASURED"},
+    "validator_venv": {"command": "run_in_env.sh /home/benyamin/.venvs/hls_dse_py312/bin/python scripts/validate_project.py", "exit_code": 0, "output": "errors=0 warnings=0", "status": "MEASURED"},
+    "pytest": {"command": "run_in_env.sh /home/benyamin/.venvs/hls_dse_py312/bin/python -m pytest -q -p no:cacheprovider", "exit_code": 0, "output": "4 passed in 0.02s", "status": "MEASURED"},
+    "git_diff_check": {"exit_code": 0, "status": "MEASURED"}
+  },
+  "toolchain": {
+    "launcher": {"path": "environments/xilinx_2025_2_1/run_in_env.sh", "sha256": "3d662778d6cac61bf527df642924cbf4e855123172b0c7eab4855de031f7f58e", "check_exit_code": 0},
+    "vitis_hls_shim": {"path": "environments/xilinx_2025_2_1/bin/vitis_hls", "sha256": "17456415db532ac3b8724480c320ea5e16a4e5b19a28ef4af1cf821193b48860", "resolves_to": "vitis-run --mode hls"},
+    "vendor_settings": {"path": "/mnt/data/Apps/2025.2.1/Vivado/settings64.sh", "sha256": "c53e2d30fe4b09067fe6894d11a9fc11fedda82d4fb1f506878a67a6d7aab3bb"},
+    "vivado": {"path": "/mnt/data/Apps/2025.2.1/Vivado/bin/vivado", "version": "vivado v2025.2.1 (64-bit)", "exit_code": 0, "status": "TOOL_REPORTED"},
+    "vitis": {"path": "/mnt/data/Apps/2025.2.1/Vitis/bin/vitis", "version": "Vitis v2025.2.1 (64-bit)", "exit_code": 0, "status": "TOOL_REPORTED"},
+    "vitis_hls": {"path": "/home/benyamin/Desktop/HLS_DSE/environments/xilinx_2025_2_1/bin/vitis_hls", "version": "vitis-run v2025.2.1 (64-bit)", "exit_code": 0, "status": "TOOL_REPORTED"},
+    "vitis_run": {"path": "/mnt/data/Apps/2025.2.1/Vitis/bin/vitis-run", "version": "vitis-run v2025.2.1 (64-bit)", "exit_code": 0, "status": "TOOL_REPORTED"},
+    "vpp": {"path": "/mnt/data/Apps/2025.2.1/Vitis/bin/v++", "version": "v++ v2025.2.1 (64-bit)", "exit_code": 0, "status": "TOOL_REPORTED"},
+    "old_toolchain_contamination": {"result": "NONE", "evidence": "type -a inside launcher resolves only to 2025.2.1 and the project shim; polluted-PATH bypass refused with exit 3 (forbidden PATH entry: /home/benyamin/.local/bin)", "status": "MEASURED"}
+  },
+  "python": {
+    "executable": "/home/benyamin/.venvs/hls_dse_py312/bin/python",
+    "base": "/usr/bin/python3.12",
+    "version": "3.12.3",
+    "pytest": "9.1.1",
+    "pyyaml_venv": "6.0.3",
+    "pyyaml_system": "6.0.1",
+    "system_python_modified": false,
+    "status": "TOOL_REPORTED"
+  },
+  "device": {
+    "vendor": "AMD-Xilinx",
+    "family": "Zynq-7000",
+    "part": "xc7z020clg484",
+    "tool_part_string": "xc7z020clg484-1",
+    "package": "clg484",
+    "speed_grade": "-1",
+    "speed_grade_status": "FIXED_REFERENCE_CONFIGURATION",
+    "speed_grade_basis": "Human decision (2026-09-25); documented/common Zynq-7020 HLS reference usage; -1 is the slowest, timing-conservative commercial grade. Not derived from board identification.",
+    "board": "NONE",
+    "board_status": "NOT_AVAILABLE",
+    "hardware_status": "NOT_AVAILABLE",
+    "hardware_available": false,
+    "device_status": "VERIFIED",
+    "device_evidence": {"command": "run_in_env.sh vivado -mode batch -nolog -nojournal -notrace -source <read-only get_parts Tcl>", "timestamp": "2026-09-25T16:50:39+02:00", "exit_code": 0, "result": "xc7z020clg484-1 FAMILY=zynq DEVICE=xc7z020 PACKAGE=clg484 SPEED=-1 present", "status": "TOOL_REPORTED"},
+    "dma": "UNKNOWN_UNTIL_MEASURED",
+    "acp": "UNKNOWN_UNTIL_MEASURED",
+    "cache_behavior": "UNKNOWN_UNTIL_MEASURED",
+    "programming_time": "UNKNOWN_UNTIL_MEASURED",
+    "runtime": "UNKNOWN_UNTIL_MEASURED"
+  },
+  "license": {
+    "LM_LICENSE_FILE": "<UNSET>",
+    "XILINXD_LICENSE_FILE": "<UNSET>",
+    "license_file_present": true,
+    "license_file_metadata": "/home/benyamin/.Xilinx/trial.lic, 359 bytes",
+    "license_content_read": false,
+    "license_value_logged": false,
+    "verified_scope": {"vivado_synthesis_xc7z020": "VERIFIED"},
+    "not_verified_scope": {"whole_xilinx_toolchain": "NOT_VERIFIED"},
+    "synthesis_smoke": {
+      "status": "TOOL_REPORTED",
+      "origin": "User-run Vivado 2025.2.1 session outside HLS_DSE (learning project, not research evidence); not executed by this audit",
+      "artifact": "/home/benyamin/Desktop/Learn_Zynq/zynq_gemm_xc7z020/zynq_gemm_xc7z020/zynq_gemm_xc7z020.runs/synth_1/design_1_wrapper.vds",
+      "artifact_sha256": "9201bd6e8886d71e626a90f4346237dc3ba7b033b1d46f26c772a2d1ca150604",
+      "session_start": "Fri Sep 25 13:58:22 2026",
+      "lines": {
+        "36": "Command: synth_design -top design_1_wrapper -part xc7z020clg484-1",
+        "39": "INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'",
+        "338": "synth_design completed successfully"
+      }
+    },
+    "residual_risk": "The checkout was observed in a session started outside the project launcher; a checkout inside run_in_env.sh has not been observed (UNKNOWN). The launcher preserves HOME, so the default ~/.Xilinx license search location is unchanged."
+  },
+  "workspace": {
+    "path": "/mnt/data/HLS_DSE_work",
+    "exists": true,
+    "owner": "benyamin:benyamin",
+    "mode": "drwxr-x--- (750)",
+    "user_writable": true,
+    "contents": "empty",
+    "filesystem": {"source": "/dev/sda4", "type": "xfs", "size_bytes": 11921134714880, "used_bytes": 370673115136, "avail_bytes": 11550461599744, "use_percent": "4%", "status": "MEASURED"},
+    "registered_in": "environments/ENVIRONMENT_REGISTRY.yaml (ENV-2025.2.1-XC7Z020-1)",
+    "bound_to_run_layout": false,
+    "minimum_required_space": "UNKNOWN (no contract defines one)",
+    "suitability": "SUITABLE for generated vendor artifacts; ARTIFACT_AND_RUN_MANAGEMENT_CONTRACT still places runs at runs/<STUDY_ID>/<RUN_ID>/. P0/S00 generates no vendor artifacts, so binding is deferred to a separate change before the first vendor-artifact phase."
+  },
+  "environment_registry": {
+    "environment_id": "ENV-2025.2.1-XC7Z020-1",
+    "template_ENV-001_preserved": true,
+    "research_state_active_environment": null,
+    "note": "RESEARCH_STATE.yaml was not modified; setting active_environment is a human-gate decision."
+  },
+  "consistency_checks": {
+    "part_consistent_across_contracts_state_schemas_registry": true,
+    "speed_grade_consistent": true,
+    "board_none_consistent": true,
+    "hardware_not_available_consistent": true,
+    "speed_grade_status_consistent": true,
+    "no_UNKNOWN_UNTIL_FIXED_in_contracts": true,
+    "registry_ids_unique": true,
+    "timestamp": "2026-09-25T16:50:43+02:00"
+  },
+  "preflight": {
+    "command": "environments/xilinx_2025_2_1/run_in_env.sh python3 scripts/p0_preflight.py",
+    "timestamp": "2026-09-25T16:50:09+02:00",
+    "exit_code": 0,
+    "status_line": "STATUS=ENVIRONMENT_TOOLS_VISIBLE",
+    "stderr_bytes": 0,
+    "stdout_sha256": "75d473d7ad647dbd3baca860b3c5956cd6cc259c0f40f11e0c5da6bd668f6252",
+    "stdout_change_note": "Differs from the earlier 90d914e4... output because the OS release changed from 7.0.0-31-generic to 7.0.0-34-generic.",
+    "known_limitations": ["vitis version field is banner-only", "device_support.verified is hard-coded false", "license_visibility not checked", "disk_space not checked", "cpu_memory not checked"]
+  },
+  "change_record": {
+    "actor": "Claude Code on human instruction (2026-09-25)",
+    "study": "S00 (pre-P0; no study execution)",
+    "approval": "Human instruction in session: fix speed grade -1 as FIXED_REFERENCE_CONFIGURATION, board NONE, register environment",
+    "device_change_interpretation": "Part xc7z020clg484 is unchanged; speed_grade/board placeholders declared UNKNOWN_UNTIL_FIXED were resolved. This is not a device change under DEVICE_REFERENCE_CONTRACT change_requires_new_project_version.",
+    "files": [
+      {"path": "contracts/DEVICE_REFERENCE_CONTRACT.yaml", "old_sha256": "e1b7d001df589a7d485de92253a9ff49ee063afd51afd3a7f919d19e7ef98568", "new_sha256": "6e818c0b472883803ad0b64948714948775ef95a8d942bacdcca26b37806ba17"},
+      {"path": "contracts/HARDWARE_PLATFORM_CONTRACT.yaml", "old_sha256": "9937dc829ee277d42f20ae1bfd60b98e4318c5e34b9fe6e366b11ec31990a733", "new_sha256": "4517118675c1c169414a4b365b5131604faf74e5f1c38f7cf3c7b6de24b7c950"},
+      {"path": "contracts/TOOLCHAIN_DEVICE_CONTRACT.yaml", "old_sha256": "ba1c9b8e06d651fb831751f47c648b0cc1f1ccda9317524f0bd00f9c545f6d1c", "new_sha256": "8c8745fe9b8019b6ce260061858aacdc7e04511ce8ee80c7645ae697022370a4"},
+      {"path": "environments/ENVIRONMENT_REGISTRY.yaml", "old_sha256": "e5e9d5f8e0b938aa28fd05df2ef1a407616194307e4f468b739a31eaa128b2dd", "new_sha256": "f71ca296ca674197fb82e48fa8f5012ca9af88389d211fa706cb2cfe2e3aab86"}
+    ],
+    "unchanged": ["RESEARCH_STATE.yaml", "contracts/ARTIFACT_AND_RUN_MANAGEMENT_CONTRACT.yaml", "templates/run_workspace/manifest.yaml", "all previous audit files"]
+  },
+  "research_state_sha256": {"before": "f78cd18857c410cb5f0fef4058b360d8ed1b06a00909d0484200d7f148f690de", "after": "f78cd18857c410cb5f0fef4058b360d8ed1b06a00909d0484200d7f148f690de", "unchanged": true},
+  "governance": {"current_phase": "P0", "current_study": "S00", "active_phase_state": "PLANNED", "human_gate_required": true, "p1_authorized": false, "automatic_advance": false, "future_phase_implementation_allowed": false, "next_phase_implementation_allowed": false},
+  "safety": {"xsa_generated": false, "bitstream_generated": false, "elf_generated": false, "programming_performed": false, "runtime_experiment_performed": false, "research_campaign_started": false, "p0_started": false, "p1_authorized": false, "automatic_phase_advance": false, "scan_timestamp": "2026-09-25T16:50:55+02:00", "scan_scope": ["HLS_DSE repository", "/mnt/data/HLS_DSE_work"]},
+  "blockers": [
+    {"id": "B-01", "status": "RESOLVED"},
+    {"id": "B-02", "status": "RESOLVED"},
+    {"id": "B-03", "status": "VERIFIED"},
+    {"id": "B-04", "status": "VERIFIED (scope: Vivado Synthesis / xc7z020 only)"},
+    {"id": "B-05", "status": "VERIFIED"},
+    {"id": "B-06", "status": "OPEN"}
+  ]
+}

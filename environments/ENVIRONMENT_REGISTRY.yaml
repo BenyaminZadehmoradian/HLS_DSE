@@ -7,3 +7,27 @@ environments:
     os: record_actual_os
     compiler: record_actual_compiler
     git_commit: record_actual_commit
+  - id: ENV-2025.2.1-XC7Z020-1
+    status: registered
+    project_version: V23.2
+    registered_at: '2026-09-25'
+    evidence: audit/environment/FINAL_PRE_P0_READINESS_SNAPSHOT_V23_2.json
+    launcher: environments/xilinx_2025_2_1/run_in_env.sh
+    launcher_commit: ada921ff946ef42b38f92289dfcbbcccc66a5f6a
+    vivado: {value: 'vivado v2025.2.1 (64-bit), SW Build 6403652', path: /mnt/data/Apps/2025.2.1/Vivado/bin/vivado, status: TOOL_REPORTED}
+    vitis: {value: 'Vitis v2025.2.1 (64-bit), SW Build 6397637', path: /mnt/data/Apps/2025.2.1/Vitis/bin/vitis, status: TOOL_REPORTED}
+    vitis_run: {value: 'vitis-run v2025.2.1 (64-bit), SW Build 6397637', path: /mnt/data/Apps/2025.2.1/Vitis/bin/vitis-run, status: TOOL_REPORTED}
+    vitis_hls: {value: 'project shim -> vitis-run --mode hls (2025.2.1 ships no standalone vitis_hls)', path: environments/xilinx_2025_2_1/bin/vitis_hls, status: MEASURED}
+    vendor_settings: {path: /mnt/data/Apps/2025.2.1/Vivado/settings64.sh, sha256: c53e2d30fe4b09067fe6894d11a9fc11fedda82d4fb1f506878a67a6d7aab3bb, status: MEASURED}
+    device: {part: xc7z020clg484, tool_part_string: xc7z020clg484-1, speed_grade: '-1', speed_grade_status: FIXED_REFERENCE_CONFIGURATION, board: NONE, hardware_available: false}
+    os: {value: 'Ubuntu 24.04.5 LTS, Linux 7.0.0-34-generic x86_64', status: MEASURED}
+    compiler: {value: 'gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0 (system; vendor tools use bundled compilers)', status: TOOL_REPORTED}
+    python: {executable: /home/benyamin/.venvs/hls_dse_py312/bin/python, version: 3.12.3, base: /usr/bin/python3.12, status: MEASURED}
+    pytest: {version: 9.1.1, status: TOOL_REPORTED}
+    pyyaml: {version: 6.0.3, status: TOOL_REPORTED}
+    workspace: {path: /mnt/data/HLS_DSE_work, filesystem: /dev/sda4 xfs, owner: 'benyamin:benyamin', mode: '750', status: REGISTERED_NOT_BOUND_TO_RUN_LAYOUT}
+    license_scope:
+      vivado_synthesis_xc7z020: VERIFIED
+      whole_xilinx_toolchain: NOT_VERIFIED
+      evidence: 'Vivado 2025.2.1 INFO [Common 17-349] Got license for feature Synthesis and/or device xc7z020 (user-run session outside HLS_DSE; see snapshot)'
+    git_commit: record_at_run_time

@@ -18,4 +18,5 @@ device_part: xc7z020clg484
 vendor: AMD-Xilinx
 family: Zynq-7000
 package: clg484
-speed_grade: UNKNOWN_UNTIL_FIXED
+speed_grade: '-1'
+board: NONE
