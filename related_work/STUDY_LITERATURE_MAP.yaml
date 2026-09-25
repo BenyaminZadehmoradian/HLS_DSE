@@ -3,7 +3,8 @@
 # dimension_match = a review dimension linked to the Study is YES (mechanical; see README §7).
 # partial_overlap = linked dimension is PARTIAL (mechanical).
 # Overlap means the paper reports on the same dimension, not that it answers the Study question. LITERATURE_REPORTED only.
-map_version: '2.0'
+# 2.1 (2026-09-25): S97-S100 added; HOLD papers RW0063-RW0085 (web search) listed under not_reviewed_hold.
+map_version: '2.1'
 studies:
 - study_id: S00
   title: Project contract
@@ -171,7 +172,9 @@ studies:
   - RW0048
   - RW0053
   - RW0057
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0074
+  - RW0084
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S05
@@ -212,6 +215,7 @@ studies:
   - RW0033
   not_reviewed_hold:
   - RW0022
+  - RW0066
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S06
@@ -445,7 +449,8 @@ studies:
   direct_overlap: []
   dimension_match: []
   partial_overlap: []
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0079
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -471,7 +476,9 @@ studies:
   - RW0013
   dimension_match: []
   partial_overlap: []
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0067
+  - RW0068
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S15
@@ -508,7 +515,11 @@ studies:
   - RW0044
   - RW0045
   - RW0057
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S16
@@ -519,7 +530,9 @@ studies:
   direct_overlap: []
   dimension_match: []
   partial_overlap: []
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0066
+  - RW0070
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -705,7 +718,9 @@ studies:
   - RW0048
   - RW0053
   - RW0057
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0081
+  - RW0082
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S22
@@ -756,7 +771,8 @@ studies:
   - RW0030
   - RW0031
   - RW0033
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0081
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S24
@@ -905,7 +921,8 @@ studies:
   - RW0036
   - RW0037
   - RW0050
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0069
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -948,6 +965,7 @@ studies:
   not_reviewed_hold:
   - RW0015
   - RW0016
+  - RW0066
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -1323,7 +1341,8 @@ studies:
   direct_overlap: []
   dimension_match: []
   partial_overlap: []
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0077
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -1528,7 +1547,8 @@ studies:
   - RW0032
   - RW0037
   - RW0057
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0080
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -1678,7 +1698,8 @@ studies:
   - RW0050
   dimension_match: []
   partial_overlap: []
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0063
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S67
@@ -1767,6 +1788,8 @@ studies:
   - RW0033
   not_reviewed_hold:
   - RW0007
+  - RW0072
+  - RW0083
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S72
@@ -1844,6 +1867,10 @@ studies:
   not_reviewed_hold:
   - RW0007
   - RW0022
+  - RW0071
+  - RW0072
+  - RW0073
+  - RW0083
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S73
@@ -1906,7 +1933,11 @@ studies:
   - RW0050
   - RW0053
   - RW0057
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0075
+  - RW0076
+  - RW0077
+  - RW0078
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -2075,7 +2106,8 @@ studies:
   - RW0032
   - RW0037
   - RW0057
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0084
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -2157,6 +2189,7 @@ studies:
   - RW0047
   not_reviewed_hold:
   - RW0002
+  - RW0078
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S85
@@ -2193,6 +2226,8 @@ studies:
   - RW0026
   not_reviewed_hold:
   - RW0005
+  - RW0074
+  - RW0079
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S86
@@ -2227,7 +2262,8 @@ studies:
   - RW0021
   - RW0023
   - RW0026
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0079
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S87
@@ -2240,7 +2276,8 @@ studies:
   - RW0026
   dimension_match: []
   partial_overlap: []
-  not_reviewed_hold: []
+  not_reviewed_hold:
+  - RW0085
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S88
@@ -2481,3 +2518,70 @@ studies:
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
+- study_id: S97
+  title: Compositional-Assumption Test
+  study_status: PLANNED
+  paper_ids: []
+  relationship: HOLD_ONLY_IN_CURRENT_COLLECTION
+  direct_overlap: []
+  dimension_match: []
+  partial_overlap: []
+  not_reviewed_hold:
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0070
+  - RW0074
+  missing_evidence:
+  - No OUR_MEASURED evidence exists (study not started).
+  - Related papers are HOLD (abstract-only); full-text review required before any overlap judgement.
+- study_id: S98
+  title: Cross-Fidelity Interaction Residual
+  study_status: PLANNED
+  paper_ids: []
+  relationship: HOLD_ONLY_IN_CURRENT_COLLECTION
+  direct_overlap: []
+  dimension_match: []
+  partial_overlap: []
+  not_reviewed_hold:
+  - RW0080
+  - RW0084
+  missing_evidence:
+  - No OUR_MEASURED evidence exists (study not started).
+  - Related papers are HOLD (abstract-only); full-text review required before any overlap judgement.
+- study_id: S99
+  title: Decision-Centric Multi-Source Acquisition of Local vs Joint Evidence
+  study_status: PLANNED
+  paper_ids: []
+  relationship: HOLD_ONLY_IN_CURRENT_COLLECTION
+  direct_overlap: []
+  dimension_match: []
+  partial_overlap: []
+  not_reviewed_hold:
+  - RW0066
+  - RW0067
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0082
+  - RW0085
+  missing_evidence:
+  - No OUR_MEASURED evidence exists (study not started).
+  - Related papers are HOLD (abstract-only); full-text review required before any overlap judgement.
+- study_id: S100
+  title: Runtime Memory-Interference Residual on Zynq-7020
+  study_status: PLANNED
+  paper_ids: []
+  relationship: HOLD_ONLY_IN_CURRENT_COLLECTION
+  direct_overlap: []
+  dimension_match: []
+  partial_overlap: []
+  not_reviewed_hold:
+  - RW0075
+  - RW0076
+  - RW0077
+  - RW0078
+  missing_evidence:
+  - No OUR_MEASURED evidence exists (study not started).
+  - Related papers are HOLD (abstract-only); full-text review required before any overlap judgement.

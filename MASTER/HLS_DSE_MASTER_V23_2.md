@@ -100,6 +100,11 @@ See `contracts/SYSTEM_ARCHITECTURE_CONTRACT.yaml` and `REPORTS/R12_CROSS_LAYER_S
 
 S73–S96 are registered as independent research questions. They are gated, isolated, and not automatically part of the final paper.
 
+S97–S100 (added 2026-09-25 from the web-search literature update) sharpen the core question: S97 tests the
+compositional (local-Pareto-first) assumption against an oracle, S98 measures the joint-minus-local interaction
+residual across fidelities and is the go/no-go for S99, S99 is the decision-centric multi-source acquisition of
+local vs joint evidence, and S100 measures runtime memory interference (blocked until a board exists).
+
 ## Fixed Reference Device and Artifact Isolation — V23.2
 
 The current reference device is fixed to `xc7z020clg484`.

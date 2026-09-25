@@ -55,3 +55,21 @@ Before final paper submission, re-scan HLS DSE for FIFO sizing, memory/bandwidth
 
 ## G18 — Power/energy measurement remains incomplete
 The current project contains a power/energy extension, but it must define actual measurement source, tool, activity assumptions, execution workload, and whether power is estimated or measured before publication claims.
+
+## G19 — The compositional assumption is prior art and untested (2026-09-25)
+Compositional system-level HLS DSE (DATE 2012, COSMOS 2017, PG-DSE 2023, EtoE-DSE 2024) prunes components to their
+local Pareto fronts. No oracle test of that assumption on co-resident FPGA kernels was found. → S97.
+
+## G20 — Interaction residual across fidelities is unmeasured (2026-09-25)
+Published evidence of non-additive behaviour is at RTL simulation (Stream-HLS) and post-route (Prometheus, FADO,
+HLPS-DSE), never as "joint minus composed-local" against a noise floor. If the residual is zero at every
+fidelity, the local-vs-joint question collapses. → S98 (go/no-go for S99).
+
+## G21 — Local-vs-joint acquisition must build on multi-source VOI (2026-09-25)
+Multi-information-source BO (MISO knowledge gradient; constrained multi-source BO) and decision-domain refinement
+(Fovea) already exist outside HLS. The contribution can only be their formulation over local/joint sources with an
+interaction-residual model, fused feasibility, censored crashes and tool noise. → S99.
+
+## G22 — Runtime co-residence effects are documented but unused in DSE (2026-09-25)
+Memory-path interference on FPGA SoCs (up to 10-16x slowdowns; bounded on Zynq-7000) is measured but not fed into
+HLS DSE decisions. Requires a physical board (currently NOT_AVAILABLE). → S100.

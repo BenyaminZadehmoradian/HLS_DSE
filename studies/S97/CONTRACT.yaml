@@ -1,0 +1,61 @@
+study_id: S97
+study_name: Compositional-Assumption Test (does the local Pareto front survive composition?)
+phase_id: P5
+status: PLANNED
+purpose: >-
+  Test, against an exhaustive joint oracle, the assumption behind compositional HLS DSE (Liu/Petracca/Carloni
+  DATE 2012, COSMOS 2017, PG-DSE 2023, EtoE-DSE 2024): that system-level Pareto-optimal designs are composed
+  only of component-level (local) Pareto-optimal implementations, so local Pareto pruning is safe.
+core_question: >-
+  On multi-kernel designs sharing one xc7z020, how often does the true joint Pareto front (post-P&R) contain a
+  kernel implementation that is NOT on that kernel's local Pareto front, and how often is a composition of
+  locally feasible, locally Pareto-optimal implementations jointly infeasible?
+hypotheses:
+  H0: Local Pareto pruning loses no joint-Pareto design and admits no jointly infeasible composition (the compositional assumption holds).
+  H1: At high joint utilization, local pruning loses joint-Pareto designs and/or admits jointly infeasible compositions at a rate above the P&R noise floor.
+  note: A result supporting H0 is a publishable NEGATIVE_RESULT and is preserved.
+design:
+  workloads: 4-6 composite designs of 2-4 kernels (PolyBench multi-statement kernels plus at least two non-affine MachSuite/Rosetta kernels)
+  utilization_regime: "low (<30%), medium (30-60%) and high (60-80%) of the binding resource, set by kernel sizing"
+  space_size_limit: per-kernel space <= 20 points; joint space <= ~400 points so that the oracle is exhaustive
+  oracle: every joint point implemented to post-route (contracts/HARDWARE_PLATFORM_CONTRACT.yaml device), replicated over Vivado seeds per the S81 noise-floor protocol
+  local_evidence: every kernel implemented alone at the same fidelities
+  fidelities: [HLS_REPORT, POST_SYNTHESIS, POST_ROUTE]
+measurements:
+  - per-kernel local QoR (latency, LUT, FF, DSP, BRAM, WNS/Fmax) at each fidelity
+  - joint QoR and feasibility (routing success, timing met) at each fidelity
+  - seed-to-seed distribution of joint post-route Fmax/WNS
+metrics:
+  - pareto_loss_rate: fraction of joint-Pareto designs removed by local Pareto pruning
+  - false_feasible_rate: fraction of compositions of locally feasible implementations that are jointly infeasible
+  - adrs_after_pruning: ADRS of the pruned space's best front vs the oracle front
+  - effect_vs_noise: each rate compared with its value under seed resampling (noise floor)
+baselines:
+  - compositional pruning as in COSMOS / PG-DSE (RW0063, RW0065)
+  - additive composition (sum of resources, max/sum latency) as in CRYPTONITE / EtoE-DSE (RW0001, RW0050)
+controls:
+  device_toolchain: contracts/HARDWARE_PLATFORM_CONTRACT.yaml + registered environment
+  integration_template: one fixed block-design template per composite (shared AXI/clock); declared in the study config
+  seeds: Vivado implementation seeds declared per the S81 protocol; algorithm seeds not applicable (exhaustive)
+  statistics: bootstrap confidence intervals over designs and seeds; pre-registered H0/H1
+stop_conditions:
+  - oracle cost exceeds the declared budget before the smallest composite completes
+  - joint designs cannot be integrated without changing kernel sources
+  - noise floor (S81) larger than every measured effect
+outputs:
+  - oracle dataset (raw post-route reports + normalized evidence) per composite
+  - pareto_loss / false_feasible tables with confidence intervals
+  - report.md with the H0/H1 decision
+literature:
+  tests_assumption_of: [RW0063 COSMOS, RW0064 CompSLD12, RW0065 PGDSE, RW0050 EtoEDSE]
+  methodology_precedent: [RW0074 Omega (exhaustive golden model), RW0084 SeedTiming (P&R variability)]
+dependencies: [S01 (flow works), S81 (noise floor)]
+overlaps: [S04 (oracle benchmark), S66 (composition failure)]
+isolated_workspace: true
+measured_evidence_required: true
+cross_study_write: false
+architecture_contract: contracts/SYSTEM_ARCHITECTURE_CONTRACT.yaml
+phase_gate_required: true
+missing_value: UNKNOWN
+estimation_as_measurement: forbidden
+negative_result_preserved: true

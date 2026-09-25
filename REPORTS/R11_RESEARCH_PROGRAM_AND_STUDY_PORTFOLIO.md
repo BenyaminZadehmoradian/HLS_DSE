@@ -320,5 +320,9 @@ The following Studies are registered as independent questions. They are not auto
 | S94 | Lifecycle-robust DSE | candidate |
 | S95 | Resource fragmentation / spatial packing | supporting candidate |
 | S96 | Sustained execution / thermal behavior | extension |
+| S97 | Compositional-assumption test (oracle) | core candidate |
+| S98 | Cross-fidelity interaction residual (go/no-go for S99) | core candidate |
+| S99 | Decision-centric multi-source acquisition of local vs joint evidence | core candidate |
+| S100 | Runtime memory-interference residual on Zynq-7020 (needs a board) | candidate (blocked) |
 
 All IDs are immutable once registered. A Study may be dropped without deleting its contract or evidence history.

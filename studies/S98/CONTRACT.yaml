@@ -1,0 +1,57 @@
+study_id: S98
+study_name: Cross-Fidelity Interaction Residual (joint minus composed-local)
+phase_id: P3
+status: PLANNED
+purpose: >-
+  Measure the interaction residual r = joint - compose(local) for co-resident HLS kernels at three fidelities, and
+  determine at which fidelity (if any) it exceeds the tool noise floor. This decides whether "joint evidence"
+  carries information that local evidence does not.
+core_question: >-
+  For kernels co-resident on one xc7z020, is the residual between jointly measured QoR/feasibility and the
+  composition of their individually measured QoR larger than run-to-run noise at HLS-report, RTL co-simulation
+  and post-route fidelity, and how does it scale with joint utilization?
+hypotheses:
+  H0: The residual is within the noise floor at every fidelity (joint evidence is redundant).
+  H1: The residual is zero at HLS-report fidelity (additive reports) but exceeds the noise floor at post-route (routing congestion, Fmax loss, placement failure) and grows with utilization.
+  H2: For dataflow-coupled kernels the residual is already visible at RTL co-simulation (FIFO/back-pressure effects), consistent with Stream-HLS observations.
+design:
+  workloads: the S97 composites plus 2 dataflow-coupled composites (producer/consumer via FIFO)
+  utilization_sweep: kernel parallelism scaled to reach 20% .. 80% of the binding resource
+  fidelities: [HLS_REPORT, RTL_COSIM, POST_SYNTHESIS, POST_ROUTE]
+  replication: Vivado seeds per the S81 protocol for every POST_ROUTE point
+composition_operators:
+  resources: sum
+  latency_independent_kernels: max
+  latency_dataflow_chain: sum of stage latencies / slowest-stage II
+  fmax: min over kernels
+  feasibility: logical AND of local feasibility
+metrics:
+  - residual per objective and fidelity (absolute and relative), with bootstrap CI
+  - residual / noise-floor ratio
+  - residual vs utilization curve and knee point
+  - decision-change indicator: does the residual flip Pareto membership or feasibility of any design?
+baselines: [additive composition (RW0001, RW0050), FADO-style analytical slot model (RW0037, RW0080)]
+controls:
+  device_toolchain: contracts/HARDWARE_PLATFORM_CONTRACT.yaml + registered environment
+  integration_template: fixed per composite, identical for local (kernel alone in the same template) and joint runs
+  statistics: bootstrap CIs; noise floor from S81; pre-registered H0/H1/H2
+stop_conditions:
+  - noise floor larger than every residual at every fidelity (report H0, stop)
+  - RTL co-simulation not available for a composite (mark that fidelity UNKNOWN for it)
+outputs:
+  - residual dataset (per design, fidelity, seed)
+  - residual-vs-utilization plots per fidelity
+  - go/no-go recommendation for S99 (is there information in joint evidence?)
+literature:
+  motivating_observations: [RW0011 StreamHLS (HLS reports miss inter-node effects), RW0031 Prometheus (congestion blocks bitstreams), RW0037/RW0080 FADO (70% slot fill fails P&R), RW0042 HLPSDSE (5x Fmax spread)]
+  noise_reference: [RW0084 SeedTiming]
+dependencies: [S01, S81]
+overlaps: [S02 (interaction pilot), S36, S41 (interaction discovery/decomposition), S59 (physical interaction)]
+isolated_workspace: true
+measured_evidence_required: true
+cross_study_write: false
+architecture_contract: contracts/SYSTEM_ARCHITECTURE_CONTRACT.yaml
+phase_gate_required: true
+missing_value: UNKNOWN
+estimation_as_measurement: forbidden
+negative_result_preserved: true

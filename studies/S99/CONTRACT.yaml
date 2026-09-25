@@ -1,0 +1,58 @@
+study_id: S99
+study_name: Decision-Centric Multi-Source Acquisition of Local vs Joint Evidence
+phase_id: P6
+status: PLANNED
+purpose: >-
+  Treat local (kernel-alone) and joint (co-resident) evaluation, at each fidelity, as information sources with
+  different cost and bias, and acquire joint evidence only when it is expected to change a decision (Pareto
+  membership or feasibility). Built on multi-information-source value-of-information methods (MISO knowledge
+  gradient, constrained multi-source BO), not invented from scratch.
+core_question: >-
+  Under a fixed expensive-evaluation budget, does a decision-centric acquisition rule over {local, joint} x
+  {HLS, synthesis, post-route} find the global feasible Pareto front of multi-kernel designs better (ADRS,
+  feasible-front recall) or cheaper than always-local, always-joint and cost-aware multi-fidelity baselines?
+hypotheses:
+  H0: The rule is not better than the best baseline at equal budget.
+  H1: The rule reaches equal ADRS with fewer expensive evaluations (or better ADRS at equal budget), and the gain disappears when the S98 residual is zero (it comes from decision gating, not from extra fidelity).
+entry_condition: S98 reports a residual above the noise floor at some fidelity; otherwise S99 runs only as a negative-control replication and is reported as such.
+method:
+  surrogate: joint model of per-kernel local QoR + an interaction-residual term (from S98), with per-source discrepancy (MISO-style)
+  acquisition: expected value of sample information on the decision (Pareto membership / feasibility) per unit cost, over (configuration set, source, fidelity)
+  feasibility: constrained multi-source model fusing local and joint feasibility evidence; crashes/timeouts modelled as censored outcomes, not penalty values
+  nondeterminism: repeated-seed observations modelled as noise, not as distinct points
+baselines:
+  - ALWAYS_LOCAL + additive composition
+  - ALWAYS_JOINT (evaluate every candidate composite jointly)
+  - CMMFO-style cost-penalized multi-fidelity acquisition (RW0006, RW0081) applied to the joint space
+  - multi-fidelity BO without the residual term (ablation)
+  - AutoDSE-style model-free search and RANDOM (RW0017)
+  - S72 search-algorithm baselines at the same budget
+metrics:
+  - ADRS vs the S97 oracle; feasible-front recall; hypervolume (normalized, declared reference point)
+  - cost: expensive evaluations by source/fidelity and wall-clock (both reported)
+  - decision_change_rate: fraction of joint evaluations that changed Pareto membership or feasibility
+  - time-to-target ADRS
+controls:
+  budget: primary budget = post-route-equivalent evaluation hours; evaluation counts reported as secondary
+  parallelism: fixed number of concurrent tool jobs for every method
+  seeds: ">= 10 algorithm seeds per (method, workload, budget), paired across methods"
+  statistics: paired bootstrap CIs, effect sizes, Holm correction across workloads
+stop_conditions:
+  - S98 residual below noise floor at every fidelity (run negative control only)
+  - oracle (S97) unavailable for a workload (no ADRS claim for it)
+outputs:
+  - acquisition-rule implementation (after its phase gate), run traces, per-method result tables and plots
+  - ablation isolating decision gating from fidelity
+literature:
+  method_foundations: [RW0066 MISO, RW0067 MISCBO, RW0068 CBOMIS, RW0069 CMFBO, RW0012 MTBO, RW0013 CMOBOOCE]
+  closest_prior_art: [RW0006 CMMFO, RW0081 CMMFOJ, RW0082 MFHLS18, RW0070 Fovea, RW0030 NLPDSE (bound gating), RW0018 Chimera (evaluation gate)]
+dependencies: [S97 (oracle), S98 (residual), S72 (search baselines), S81 (noise)]
+overlaps: [S05 (evidence selection), S16 (decision-change prediction), S22 (minimum joint evidence), S07 (joint task-candidate-fidelity selection)]
+isolated_workspace: true
+measured_evidence_required: true
+cross_study_write: false
+architecture_contract: contracts/SYSTEM_ARCHITECTURE_CONTRACT.yaml
+phase_gate_required: true
+missing_value: UNKNOWN
+estimation_as_measurement: forbidden
+negative_result_preserved: true

@@ -15,7 +15,7 @@ studies, measures and optimizes. This directory holds that literature evidence a
 | `PDF_PROVENANCE.csv` | Every PDF ever placed: original path, current path, SHA-256, license reported, disposition |
 | `MANIFEST.md` | Human-readable inventory (repository-derived counts) |
 | `GAP_OVERLAP_MATRIX.md` | Dimensions vs canonical prior work, plus the prior-art boundary check |
-| `STUDY_LITERATURE_MAP.yaml` | Literature ↔ Study relationships for all 97 registered Study IDs |
+| `STUDY_LITERATURE_MAP.yaml` | Literature ↔ Study relationships for all 101 registered Study IDs |
 | `notes/RW####_<Key>.md` | Detailed reviews for CORE and SUPPORTING papers; abstract-only reviews for HOLD papers |
 | `papers/<category>/` | Canonical local PDFs (not committed; see §6) |
 | `noncanonical_pdfs/` | Local-only PDFs of ADJACENT papers that exist nowhere else locally (not canonical; not committed) |

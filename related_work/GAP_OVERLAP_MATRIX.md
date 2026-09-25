@@ -186,3 +186,20 @@ prevent false novelty claims, not to establish novelty.
 - **RW0032 Sisyphus** (SUPPORTING): Models off-chip/on-chip transfers, tiling for on-chip caching, burst width
 - **RW0033 FIFOAdvisor** (CORE): FIFO buffering/BRAM memory usage is the optimized quantity
 - **RW0044 FOS** (SUPPORTING): AXI port throughput characterized; memory contention observed.
+
+## 5. Addendum 2026-09-25 — web-search additions (HOLD, abstract-only; not used in the matrix above)
+
+The matrix above is built from canonical papers only and is unchanged. The web search added 23 HOLD papers
+(RW0063–RW0085). They do not change any status cell until their full text is reviewed, but they move three
+prior-art boundaries that any claim must respect:
+
+| Boundary | HOLD papers | Consequence |
+|---|---|---|
+| Compositional (local-Pareto-first) system-level HLS DSE is an established line | RW0064 CompSLD12 (DATE 2012), RW0063 COSMOS (TECS 2017), RW0065 PGDSE (ASP-DAC 2023), with RW0050 EtoEDSE | "Joint vs local" is not a new framing; what remains open is an oracle test of the compositional assumption (S97) and measured residuals (S98). |
+| Value-of-information / multi-information-source acquisition exists as a method | RW0066 MISO (NeurIPS 2017), RW0067 MISCBO, RW0068 CBOMIS, RW0069 CMFBO; decision-domain refinement in hardware DSE: RW0070 Fovea | The acquisition rule of S99 must be positioned as an application/extension of these, not as a new VOI method. |
+| Co-residence changes runtime on FPGA SoCs | RW0075, RW0076, RW0077 (Zynq-7000 traces), RW0078 (XC7Z020 ACP/HP) | Runtime joint≠local is documented; using it inside an HLS DSE decision (S100) is not found in the collection. Hardware required. |
+
+Search-algorithm comparison (S72) gains further prior art: RW0071 SoberDSE, RW0072 Prospector, RW0073 KuangMOBO.
+No paper in the collection was found that (a) reports a kernel's post-route QoR alone vs co-resident, or (b) uses a
+local-vs-joint choice as an acquisition decision. This remains a statement about the current collection, not a
+novelty claim; the systematic review RW0083 is the next source to check.

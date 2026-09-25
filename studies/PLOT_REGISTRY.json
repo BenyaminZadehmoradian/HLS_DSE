@@ -181,6 +181,27 @@
     "S96": [
       "sustained_performance",
       "thermal_behavior"
+    ],
+    "S97": [
+      "P097_01_pareto_loss_vs_utilization",
+      "P097_02_false_feasible_vs_utilization",
+      "P097_03_oracle_vs_pruned_front"
+    ],
+    "S98": [
+      "P098_01_residual_vs_utilization_by_fidelity",
+      "P098_02_residual_to_noise_ratio",
+      "P098_03_decision_flips"
+    ],
+    "S99": [
+      "P099_01_adrs_vs_budget",
+      "P099_02_cost_breakdown_by_source",
+      "P099_03_decision_change_rate",
+      "P099_04_gating_ablation"
+    ],
+    "S100": [
+      "P100_01_runtime_residual_vs_intensity",
+      "P100_02_acp_vs_hp",
+      "P100_03_ranking_change"
     ]
   },
   "unassigned_historical_plots": {

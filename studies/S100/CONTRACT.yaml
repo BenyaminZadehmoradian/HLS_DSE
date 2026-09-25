@@ -1,0 +1,48 @@
+study_id: S100
+study_name: Runtime Memory-Interference Residual on Zynq-7020 (ACP/HP)
+phase_id: P3
+status: PLANNED
+blocked_by: hardware_not_available   # contracts/HARDWARE_PLATFORM_CONTRACT.yaml: board NONE; runtime measurement impossible until a board is registered
+purpose: >-
+  Measure whether co-resident accelerators change each other's runtime (and the CPU's) through the shared memory
+  path on the reference device, and whether that runtime residual changes the preferred design. Published
+  evidence shows large slowdowns on FPGA SoCs (up to 10-16x for low operational intensity); none uses it inside
+  an HLS DSE decision.
+core_question: >-
+  On an xc7z020 board, does the runtime of an HLS kernel measured alone differ from its runtime when co-resident
+  kernels share the ACP or HP data path, by more than run-to-run variation, and does that change the Pareto
+  front or ranking obtained from local runtime measurements?
+hypotheses:
+  H0: Co-residence changes kernel runtime by less than run-to-run variation for the chosen workloads.
+  H1: For memory-bound kernels (low operational intensity) co-residence produces a runtime residual that exceeds variation, differs between ACP and HP paths, and changes the runtime-Pareto ranking.
+design:
+  data_path_variants: [ACP (coherent, shared L2), HP (non-coherent DDR)]   # declared per SYSTEM_ARCHITECTURE_CONTRACT, never inferred
+  workloads: S98 composites + synthetic traffic generators spanning operational intensity
+  measurements_per_run: kernel execution time, end-to-end latency, data-ready wait, CPU benchmark slowdown, achieved bandwidth (hardware counters/timers)
+  replication: ">= 30 runtime repetitions per configuration"
+metrics:
+  - runtime residual (joint - local) per kernel and data path, with CI
+  - residual vs operational intensity
+  - ranking/Pareto changes between local-runtime and joint-runtime fronts
+baselines: [local runtime (kernel alone), roofline-based prediction (RW0075), worst-case AXI bound (RW0077)]
+controls:
+  board_identity: registered environment with board, clocks and DDR configuration recorded
+  measurement: hardware timers; PCAP programming time recorded separately (RW0079 reports ~128 MB/s PCAP; full bitstream 4,045,564 bytes)
+stop_conditions:
+  - no registered board (status stays PLANNED / blocked)
+  - timer resolution insufficient for the kernel runtimes
+outputs:
+  - runtime residual dataset; residual-vs-intensity plots; ranking-change table
+literature:
+  evidence: [RW0075 MemIntfHost, RW0076 MemIntfHeSoC, RW0077 AXIBound, RW0078 ZynqACP, RW0044 FOS]
+  numbers: [RW0079 ZyCAP (reconfiguration throughput)]
+dependencies: [hardware board registration, S98]
+overlaps: [S73 (memory/data movement), S83 (end-to-end latency), S84 (CPU-FPGA overlap)]
+isolated_workspace: true
+measured_evidence_required: true
+cross_study_write: false
+architecture_contract: contracts/SYSTEM_ARCHITECTURE_CONTRACT.yaml
+phase_gate_required: true
+missing_value: UNKNOWN
+estimation_as_measurement: forbidden
+negative_result_preserved: true
