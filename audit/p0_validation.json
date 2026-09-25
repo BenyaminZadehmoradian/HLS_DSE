@@ -2,10 +2,10 @@
   "study_id": "S00",
   "phase_id": "P0",
   "project_version": "V23.2",
-  "generated_at_utc": "2026-09-25T19:00:18+00:00",
+  "generated_at_utc": "2026-09-25T19:02:39+00:00",
   "generator": "scripts/p0_validation.py",
-  "repository_commit": "4f70b09c12875d37f58b754b866768b00d3b3fc5",
-  "working_tree_clean_except_publish_log": false,
+  "repository_commit": "254b0bbebc401da82321360c55659cd045b7f954",
+  "working_tree_clean_except_publish_log": true,
   "environment": {
     "python": "3.12.3",
     "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39"
@@ -103,7 +103,7 @@
       "evidence": {
         "command": "run_in_env.sh python -m pytest -q tests/test_pragma_space.py",
         "returncode": 0,
-        "summary": "4 passed in 0.56s"
+        "summary": "4 passed in 0.32s"
       },
       "detail": ""
     },
@@ -135,7 +135,7 @@
       "evidence": {
         "command": "run_in_env.sh python -m pytest -q",
         "returncode": 0,
-        "summary": "98 passed in 11.84s"
+        "summary": "98 passed in 11.95s"
       },
       "detail": ""
     },
