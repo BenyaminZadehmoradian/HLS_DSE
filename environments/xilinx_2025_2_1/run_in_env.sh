@@ -17,14 +17,21 @@ XILINX_ROOT=/mnt/data/Apps/2025.2.1
 VENDOR_SETTINGS="$XILINX_ROOT/Vivado/settings64.sh"
 VENDOR_SETTINGS_SHA256=c53e2d30fe4b09067fe6894d11a9fc11fedda82d4fb1f506878a67a6d7aab3bb
 BASE_PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# The only caller variables passed through env -i. Values are never printed.
+LICENSE_ALLOWLIST=(XILINXD_LICENSE_FILE LM_LICENSE_FILE)
 
 ENV_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if [[ "${HLSDSE_XILINX_ENV:-}" != "$XILINX_RELEASE" ]]; then
+    license_env=()
+    for var in "${LICENSE_ALLOWLIST[@]}"; do
+        [[ -n "${!var:-}" ]] && license_env+=("$var=${!var}")
+    done
     exec env -i \
         HOME="$HOME" USER="${USER:-$(id -un)}" LOGNAME="${LOGNAME:-$(id -un)}" \
         LANG="${LANG:-C.UTF-8}" TERM="${TERM:-dumb}" \
         PATH="$BASE_PATH" HLSDSE_XILINX_ENV="$XILINX_RELEASE" \
+        "${license_env[@]}" \
         bash --noprofile --norc "${BASH_SOURCE[0]}" "$@"
 fi
 
@@ -64,6 +71,7 @@ if [[ "${1:-}" == "--check" ]]; then
     echo "HLSDSE_XILINX_ENV=$XILINX_RELEASE"
     echo "VENDOR_SETTINGS=$VENDOR_SETTINGS sha256=$actual_sha"
     for var in XILINX_VIVADO XILINX_VITIS XILINX_HLS; do echo "$var=${!var}"; done
+    for var in "${LICENSE_ALLOWLIST[@]}"; do echo "$var=$([[ -n "${!var:-}" ]] && echo '<SET>' || echo '<UNSET>')"; done
     for tool in vivado vitis vitis_hls vitis-run v++ python3; do
         exe="$(command -v "$tool")"; echo "$tool=$exe -> $(readlink -f "$exe")"
     done
