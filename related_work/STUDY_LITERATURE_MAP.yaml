@@ -4,7 +4,8 @@
 # partial_overlap = linked dimension is PARTIAL (mechanical).
 # Overlap means the paper reports on the same dimension, not that it answers the Study question. LITERATURE_REPORTED only.
 # 2.1 (2026-09-25): S97-S100 added; HOLD papers RW0063-RW0085 (web search) listed under not_reviewed_hold.
-map_version: '2.1'
+# 2.2 (2026-09-25): 14 web-search papers reviewed in full text; moved from not_reviewed_hold to direct/dimension links.
+map_version: '2.2'
 studies:
 - study_id: S00
   title: Project contract
@@ -59,6 +60,8 @@ studies:
   - RW0045
   - RW0050
   - RW0053
+  - RW0080
+  - RW0070
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0023
@@ -88,6 +91,8 @@ studies:
   - RW0045
   - RW0050
   - RW0053
+  - RW0080
+  - RW0070
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -138,11 +143,31 @@ studies:
   - RW0048
   - RW0053
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0072
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0071
+  - RW0079
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0006
   - RW0009
   - RW0036
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0072
+  - RW0070
+  - RW0081
+  - RW0071
   dimension_match:
   - RW0011
   - RW0012
@@ -152,6 +177,11 @@ studies:
   - RW0033
   - RW0045
   - RW0046
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
   partial_overlap:
   - RW0001
   - RW0003
@@ -172,9 +202,13 @@ studies:
   - RW0048
   - RW0053
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0080
+  - RW0079
+  - RW0085
   not_reviewed_hold:
   - RW0074
-  - RW0084
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S05
@@ -195,6 +229,16 @@ studies:
   - RW0030
   - RW0031
   - RW0033
+  - RW0063
+  - RW0064
+  - RW0072
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0071
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0006
@@ -204,6 +248,12 @@ studies:
   - RW0026
   - RW0042
   - RW0048
+  - RW0072
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0081
+  - RW0085
   partial_overlap:
   - RW0001
   - RW0013
@@ -213,9 +263,12 @@ studies:
   - RW0030
   - RW0031
   - RW0033
+  - RW0063
+  - RW0064
+  - RW0070
+  - RW0071
   not_reviewed_hold:
   - RW0022
-  - RW0066
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S06
@@ -252,6 +305,16 @@ studies:
   - RW0048
   - RW0053
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0080
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0079
+  - RW0085
   relationship: DIMENSION_MATCH_ONLY
   direct_overlap: []
   dimension_match:
@@ -266,6 +329,11 @@ studies:
   - RW0036
   - RW0045
   - RW0046
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
   partial_overlap:
   - RW0001
   - RW0003
@@ -286,6 +354,11 @@ studies:
   - RW0048
   - RW0053
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0080
+  - RW0079
+  - RW0085
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -309,6 +382,11 @@ studies:
   - RW0044
   - RW0045
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0070
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0006
@@ -323,11 +401,16 @@ studies:
   - RW0037
   - RW0042
   - RW0050
+  - RW0080
   partial_overlap:
   - RW0001
   - RW0044
   - RW0045
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0070
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -375,6 +458,12 @@ studies:
   - RW0033
   - RW0036
   - RW0042
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0070
+  - RW0071
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0012
@@ -386,6 +475,7 @@ studies:
   - RW0010
   - RW0023
   - RW0048
+  - RW0071
   partial_overlap:
   - RW0008
   - RW0011
@@ -395,6 +485,11 @@ studies:
   - RW0033
   - RW0036
   - RW0042
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0070
+  - RW0085
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -418,6 +513,12 @@ studies:
   - RW0033
   - RW0036
   - RW0042
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0070
+  - RW0071
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0012
@@ -429,6 +530,7 @@ studies:
   - RW0021
   - RW0023
   - RW0048
+  - RW0071
   partial_overlap:
   - RW0008
   - RW0011
@@ -438,6 +540,11 @@ studies:
   - RW0033
   - RW0036
   - RW0042
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0070
+  - RW0085
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -449,8 +556,7 @@ studies:
   direct_overlap: []
   dimension_match: []
   partial_overlap: []
-  not_reviewed_hold:
-  - RW0079
+  not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -478,7 +584,6 @@ studies:
   partial_overlap: []
   not_reviewed_hold:
   - RW0067
-  - RW0068
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S15
@@ -498,6 +603,11 @@ studies:
   - RW0044
   - RW0045
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0070
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0003
@@ -510,16 +620,17 @@ studies:
   dimension_match:
   - RW0004
   - RW0042
+  - RW0080
   partial_overlap:
   - RW0001
   - RW0044
   - RW0045
   - RW0057
-  not_reviewed_hold:
   - RW0063
   - RW0064
   - RW0065
-  - RW0080
+  - RW0070
+  not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S16
@@ -530,9 +641,7 @@ studies:
   direct_overlap: []
   dimension_match: []
   partial_overlap: []
-  not_reviewed_hold:
-  - RW0066
-  - RW0070
+  not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -575,6 +684,9 @@ studies:
   - RW0057
   - RW0008
   - RW0043
+  - RW0065
+  - RW0081
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0004
@@ -587,9 +699,12 @@ studies:
   - RW0052
   - RW0053
   - RW0057
+  - RW0065
   partial_overlap:
   - RW0008
   - RW0043
+  - RW0081
+  - RW0085
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -620,6 +735,17 @@ studies:
   - RW0031
   - RW0033
   - RW0043
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0072
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0071
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0052
@@ -636,6 +762,13 @@ studies:
   - RW0048
   - RW0050
   - RW0053
+  - RW0065
+  - RW0072
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0081
+  - RW0085
   partial_overlap:
   - RW0001
   - RW0008
@@ -647,6 +780,12 @@ studies:
   - RW0031
   - RW0033
   - RW0043
+  - RW0063
+  - RW0064
+  - RW0070
+  - RW0081
+  - RW0071
+  - RW0085
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -684,6 +823,16 @@ studies:
   - RW0048
   - RW0053
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0080
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0079
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0006
@@ -698,6 +847,11 @@ studies:
   - RW0033
   - RW0045
   - RW0046
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
   partial_overlap:
   - RW0001
   - RW0003
@@ -718,8 +872,12 @@ studies:
   - RW0048
   - RW0053
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0080
+  - RW0079
+  - RW0085
   not_reviewed_hold:
-  - RW0081
   - RW0082
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -753,6 +911,16 @@ studies:
   - RW0030
   - RW0031
   - RW0033
+  - RW0063
+  - RW0064
+  - RW0072
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0071
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0006
@@ -762,6 +930,12 @@ studies:
   - RW0026
   - RW0042
   - RW0048
+  - RW0072
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0081
+  - RW0085
   partial_overlap:
   - RW0001
   - RW0013
@@ -771,8 +945,11 @@ studies:
   - RW0030
   - RW0031
   - RW0033
-  not_reviewed_hold:
-  - RW0081
+  - RW0063
+  - RW0064
+  - RW0070
+  - RW0071
+  not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S24
@@ -896,6 +1073,15 @@ studies:
   - RW0036
   - RW0037
   - RW0050
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
   relationship: DIMENSION_MATCH_ONLY
   direct_overlap: []
   dimension_match:
@@ -907,6 +1093,8 @@ studies:
   - RW0042
   - RW0045
   - RW0048
+  - RW0070
+  - RW0081
   partial_overlap:
   - RW0003
   - RW0008
@@ -921,8 +1109,14 @@ studies:
   - RW0036
   - RW0037
   - RW0050
-  not_reviewed_hold:
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0066
+  - RW0068
   - RW0069
+  not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -944,6 +1138,16 @@ studies:
   - RW0030
   - RW0031
   - RW0033
+  - RW0063
+  - RW0064
+  - RW0072
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0071
+  - RW0085
   relationship: DIMENSION_MATCH_ONLY
   direct_overlap: []
   dimension_match:
@@ -953,6 +1157,12 @@ studies:
   - RW0026
   - RW0042
   - RW0048
+  - RW0072
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0081
+  - RW0085
   partial_overlap:
   - RW0001
   - RW0013
@@ -962,10 +1172,13 @@ studies:
   - RW0030
   - RW0031
   - RW0033
+  - RW0063
+  - RW0064
+  - RW0070
+  - RW0071
   not_reviewed_hold:
   - RW0015
   - RW0016
-  - RW0066
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -994,6 +1207,15 @@ studies:
   - RW0036
   - RW0037
   - RW0050
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
   relationship: DIMENSION_MATCH_ONLY
   direct_overlap: []
   dimension_match:
@@ -1005,6 +1227,8 @@ studies:
   - RW0042
   - RW0045
   - RW0048
+  - RW0070
+  - RW0081
   partial_overlap:
   - RW0003
   - RW0008
@@ -1019,6 +1243,13 @@ studies:
   - RW0036
   - RW0037
   - RW0050
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0066
+  - RW0068
+  - RW0069
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -1063,6 +1294,8 @@ studies:
   - RW0045
   - RW0050
   - RW0053
+  - RW0080
+  - RW0070
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0011
@@ -1091,6 +1324,8 @@ studies:
   - RW0045
   - RW0050
   - RW0053
+  - RW0080
+  - RW0070
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -1122,6 +1357,8 @@ studies:
   - RW0045
   - RW0050
   - RW0053
+  - RW0080
+  - RW0070
   relationship: DIMENSION_MATCH_ONLY
   direct_overlap: []
   dimension_match:
@@ -1150,6 +1387,8 @@ studies:
   - RW0045
   - RW0050
   - RW0053
+  - RW0080
+  - RW0070
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -1230,10 +1469,15 @@ studies:
   - RW0050
   - RW0052
   - RW0053
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0084
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0057
-  dimension_match: []
+  dimension_match:
+  - RW0070
   partial_overlap:
   - RW0003
   - RW0006
@@ -1246,6 +1490,9 @@ studies:
   - RW0050
   - RW0052
   - RW0053
+  - RW0069
+  - RW0081
+  - RW0084
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -1277,10 +1524,15 @@ studies:
   - RW0050
   - RW0052
   - RW0053
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0084
   relationship: DIMENSION_MATCH_ONLY
   direct_overlap: []
   dimension_match:
   - RW0057
+  - RW0070
   partial_overlap:
   - RW0003
   - RW0006
@@ -1293,6 +1545,9 @@ studies:
   - RW0050
   - RW0052
   - RW0053
+  - RW0069
+  - RW0081
+  - RW0084
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -1446,6 +1701,8 @@ studies:
   - RW0045
   - RW0050
   - RW0053
+  - RW0080
+  - RW0070
   relationship: DIMENSION_MATCH_ONLY
   direct_overlap: []
   dimension_match:
@@ -1474,6 +1731,8 @@ studies:
   - RW0045
   - RW0050
   - RW0053
+  - RW0080
+  - RW0070
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -1525,6 +1784,13 @@ studies:
   - RW0032
   - RW0037
   - RW0057
+  - RW0080
+  - RW0072
+  - RW0070
+  - RW0081
+  - RW0079
+  - RW0084
+  - RW0085
   relationship: DIMENSION_MATCH_ONLY
   direct_overlap: []
   dimension_match:
@@ -1541,14 +1807,20 @@ studies:
   - RW0047
   - RW0048
   - RW0053
+  - RW0080
+  - RW0072
+  - RW0081
+  - RW0079
+  - RW0084
   partial_overlap:
   - RW0003
   - RW0004
   - RW0032
   - RW0037
   - RW0057
-  not_reviewed_hold:
-  - RW0080
+  - RW0070
+  - RW0085
+  not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -1586,6 +1858,13 @@ studies:
   - RW0032
   - RW0037
   - RW0057
+  - RW0080
+  - RW0072
+  - RW0070
+  - RW0081
+  - RW0079
+  - RW0084
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0042
@@ -1602,12 +1881,19 @@ studies:
   - RW0047
   - RW0048
   - RW0053
+  - RW0080
+  - RW0072
+  - RW0081
+  - RW0079
+  - RW0084
   partial_overlap:
   - RW0003
   - RW0004
   - RW0032
   - RW0037
   - RW0057
+  - RW0070
+  - RW0085
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -1664,6 +1950,11 @@ studies:
   - RW0044
   - RW0045
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0070
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0001
@@ -1677,10 +1968,15 @@ studies:
   - RW0003
   - RW0004
   - RW0042
+  - RW0080
   partial_overlap:
   - RW0044
   - RW0045
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0070
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -1698,8 +1994,7 @@ studies:
   - RW0050
   dimension_match: []
   partial_overlap: []
-  not_reviewed_hold:
-  - RW0063
+  not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S67
@@ -1788,7 +2083,6 @@ studies:
   - RW0033
   not_reviewed_hold:
   - RW0007
-  - RW0072
   - RW0083
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -1828,6 +2122,19 @@ studies:
   - RW0048
   - RW0053
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0072
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0071
+  - RW0079
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0010
@@ -1835,6 +2142,16 @@ studies:
   - RW0017
   - RW0018
   - RW0030
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0072
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0071
+  - RW0085
   dimension_match:
   - RW0006
   - RW0009
@@ -1846,6 +2163,11 @@ studies:
   - RW0036
   - RW0045
   - RW0046
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
   partial_overlap:
   - RW0001
   - RW0003
@@ -1864,11 +2186,14 @@ studies:
   - RW0048
   - RW0053
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0080
+  - RW0079
+  - RW0085
   not_reviewed_hold:
   - RW0007
   - RW0022
-  - RW0071
-  - RW0072
   - RW0073
   - RW0083
   missing_evidence:
@@ -1903,6 +2228,15 @@ studies:
   - RW0050
   - RW0053
   - RW0057
+  - RW0063
+  - RW0064
+  - RW0080
+  - RW0072
+  - RW0070
+  - RW0081
+  - RW0079
+  - RW0084
+  - RW0085
   relationship: DIMENSION_MATCH_ONLY
   direct_overlap: []
   dimension_match:
@@ -1913,6 +2247,7 @@ studies:
   - RW0032
   - RW0033
   - RW0044
+  - RW0063
   partial_overlap:
   - RW0001
   - RW0006
@@ -1933,6 +2268,14 @@ studies:
   - RW0050
   - RW0053
   - RW0057
+  - RW0064
+  - RW0080
+  - RW0072
+  - RW0070
+  - RW0081
+  - RW0079
+  - RW0084
+  - RW0085
   not_reviewed_hold:
   - RW0075
   - RW0076
@@ -2012,6 +2355,13 @@ studies:
   - RW0004
   - RW0032
   - RW0057
+  - RW0080
+  - RW0072
+  - RW0070
+  - RW0081
+  - RW0079
+  - RW0084
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0037
@@ -2029,11 +2379,18 @@ studies:
   - RW0047
   - RW0048
   - RW0053
+  - RW0080
+  - RW0072
+  - RW0081
+  - RW0079
+  - RW0084
   partial_overlap:
   - RW0003
   - RW0004
   - RW0032
   - RW0057
+  - RW0070
+  - RW0085
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -2084,8 +2441,17 @@ studies:
   - RW0032
   - RW0037
   - RW0057
-  relationship: DIMENSION_MATCH_ONLY
-  direct_overlap: []
+  - RW0080
+  - RW0072
+  - RW0070
+  - RW0081
+  - RW0079
+  - RW0084
+  - RW0085
+  relationship: PRIMARY_LITERATURE
+  direct_overlap:
+  - RW0080
+  - RW0084
   dimension_match:
   - RW0006
   - RW0008
@@ -2100,14 +2466,20 @@ studies:
   - RW0047
   - RW0048
   - RW0053
+  - RW0080
+  - RW0072
+  - RW0081
+  - RW0079
+  - RW0084
   partial_overlap:
   - RW0003
   - RW0004
   - RW0032
   - RW0037
   - RW0057
-  not_reviewed_hold:
-  - RW0084
+  - RW0070
+  - RW0085
+  not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
   - No directly matching work identified in the current reviewed collection. Additional systematic search required.
@@ -2138,11 +2510,14 @@ studies:
   - RW0045
   - RW0046
   - RW0047
+  - RW0072
+  - RW0079
   relationship: DIMENSION_MATCH_ONLY
   direct_overlap: []
   dimension_match:
   - RW0044
   - RW0053
+  - RW0079
   partial_overlap:
   - RW0003
   - RW0004
@@ -2153,6 +2528,7 @@ studies:
   - RW0045
   - RW0046
   - RW0047
+  - RW0072
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -2172,11 +2548,14 @@ studies:
   - RW0045
   - RW0046
   - RW0047
+  - RW0072
+  - RW0079
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0044
   dimension_match:
   - RW0053
+  - RW0079
   partial_overlap:
   - RW0003
   - RW0004
@@ -2187,6 +2566,7 @@ studies:
   - RW0045
   - RW0046
   - RW0047
+  - RW0072
   not_reviewed_hold:
   - RW0002
   - RW0078
@@ -2208,26 +2588,33 @@ studies:
   - RW0021
   - RW0023
   - RW0026
+  - RW0072
+  - RW0079
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0043
   - RW0044
   - RW0045
   - RW0053
+  - RW0079
+  - RW0085
   dimension_match:
   - RW0046
   - RW0047
   - RW0052
   - RW0057
+  - RW0079
   partial_overlap:
   - RW0004
   - RW0021
   - RW0023
   - RW0026
+  - RW0072
+  - RW0085
   not_reviewed_hold:
   - RW0005
   - RW0074
-  - RW0079
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S86
@@ -2246,6 +2633,9 @@ studies:
   - RW0021
   - RW0023
   - RW0026
+  - RW0072
+  - RW0079
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0043
@@ -2253,17 +2643,21 @@ studies:
   - RW0046
   - RW0047
   - RW0053
+  - RW0079
+  - RW0085
   dimension_match:
   - RW0045
   - RW0052
   - RW0057
+  - RW0079
   partial_overlap:
   - RW0004
   - RW0021
   - RW0023
   - RW0026
-  not_reviewed_hold:
-  - RW0079
+  - RW0072
+  - RW0085
+  not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S87
@@ -2276,8 +2670,7 @@ studies:
   - RW0026
   dimension_match: []
   partial_overlap: []
-  not_reviewed_hold:
-  - RW0085
+  not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
 - study_id: S88
@@ -2305,6 +2698,15 @@ studies:
   - RW0036
   - RW0037
   - RW0050
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0020
@@ -2316,6 +2718,8 @@ studies:
   - RW0042
   - RW0045
   - RW0048
+  - RW0070
+  - RW0081
   partial_overlap:
   - RW0003
   - RW0008
@@ -2330,6 +2734,13 @@ studies:
   - RW0036
   - RW0037
   - RW0050
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0066
+  - RW0068
+  - RW0069
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -2372,6 +2783,12 @@ studies:
   - RW0033
   - RW0036
   - RW0042
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0070
+  - RW0071
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0008
@@ -2384,6 +2801,7 @@ studies:
   - RW0021
   - RW0026
   - RW0048
+  - RW0071
   partial_overlap:
   - RW0011
   - RW0030
@@ -2392,6 +2810,11 @@ studies:
   - RW0033
   - RW0036
   - RW0042
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0070
+  - RW0085
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -2423,10 +2846,15 @@ studies:
   - RW0050
   - RW0052
   - RW0053
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0084
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0057
-  dimension_match: []
+  dimension_match:
+  - RW0070
   partial_overlap:
   - RW0003
   - RW0006
@@ -2439,6 +2867,9 @@ studies:
   - RW0050
   - RW0052
   - RW0053
+  - RW0069
+  - RW0081
+  - RW0084
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -2472,6 +2903,9 @@ studies:
   - RW0021
   - RW0023
   - RW0026
+  - RW0072
+  - RW0079
+  - RW0085
   relationship: PRIMARY_LITERATURE
   direct_overlap:
   - RW0045
@@ -2483,11 +2917,14 @@ studies:
   - RW0047
   - RW0053
   - RW0057
+  - RW0079
   partial_overlap:
   - RW0004
   - RW0021
   - RW0023
   - RW0026
+  - RW0072
+  - RW0085
   not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (P0 not started).
@@ -2521,60 +2958,94 @@ studies:
 - study_id: S97
   title: Compositional-Assumption Test
   study_status: PLANNED
-  paper_ids: []
-  relationship: HOLD_ONLY_IN_CURRENT_COLLECTION
-  direct_overlap: []
-  dimension_match: []
-  partial_overlap: []
-  not_reviewed_hold:
+  paper_ids:
   - RW0063
   - RW0064
   - RW0065
+  - RW0080
   - RW0070
+  - RW0071
+  relationship: PRIMARY_LITERATURE
+  direct_overlap:
+  - RW0063
+  - RW0064
+  - RW0065
+  - RW0080
+  - RW0070
+  - RW0071
+  dimension_match: []
+  partial_overlap: []
+  not_reviewed_hold:
   - RW0074
   missing_evidence:
   - No OUR_MEASURED evidence exists (study not started).
-  - Related papers are HOLD (abstract-only); full-text review required before any overlap judgement.
+  - Literature reviewed in full text 2026-09-25; overlap is on dimensions, not an answer to the Study question.
 - study_id: S98
   title: Cross-Fidelity Interaction Residual
   study_status: PLANNED
-  paper_ids: []
-  relationship: HOLD_ONLY_IN_CURRENT_COLLECTION
-  direct_overlap: []
+  paper_ids:
+  - RW0063
+  - RW0080
+  - RW0066
+  - RW0068
+  - RW0070
+  - RW0081
+  - RW0084
+  relationship: PRIMARY_LITERATURE
+  direct_overlap:
+  - RW0063
+  - RW0080
+  - RW0066
+  - RW0068
+  - RW0070
+  - RW0081
+  - RW0084
   dimension_match: []
   partial_overlap: []
-  not_reviewed_hold:
-  - RW0080
-  - RW0084
+  not_reviewed_hold: []
   missing_evidence:
   - No OUR_MEASURED evidence exists (study not started).
-  - Related papers are HOLD (abstract-only); full-text review required before any overlap judgement.
+  - Literature reviewed in full text 2026-09-25; overlap is on dimensions, not an answer to the Study question.
 - study_id: S99
   title: Decision-Centric Multi-Source Acquisition of Local vs Joint Evidence
   study_status: PLANNED
-  paper_ids: []
-  relationship: HOLD_ONLY_IN_CURRENT_COLLECTION
-  direct_overlap: []
-  dimension_match: []
-  partial_overlap: []
-  not_reviewed_hold:
+  paper_ids:
+  - RW0063
+  - RW0064
+  - RW0072
   - RW0066
-  - RW0067
   - RW0068
   - RW0069
   - RW0070
   - RW0081
-  - RW0082
   - RW0085
+  relationship: PRIMARY_LITERATURE
+  direct_overlap:
+  - RW0063
+  - RW0064
+  - RW0072
+  - RW0066
+  - RW0068
+  - RW0069
+  - RW0070
+  - RW0081
+  - RW0085
+  dimension_match: []
+  partial_overlap: []
+  not_reviewed_hold:
+  - RW0067
+  - RW0082
   missing_evidence:
   - No OUR_MEASURED evidence exists (study not started).
-  - Related papers are HOLD (abstract-only); full-text review required before any overlap judgement.
+  - Literature reviewed in full text 2026-09-25; overlap is on dimensions, not an answer to the Study question.
 - study_id: S100
   title: Runtime Memory-Interference Residual on Zynq-7020
   study_status: PLANNED
-  paper_ids: []
-  relationship: HOLD_ONLY_IN_CURRENT_COLLECTION
-  direct_overlap: []
+  paper_ids:
+  - RW0079
+  relationship: PRIMARY_LITERATURE
+  direct_overlap:
+  - RW0079
   dimension_match: []
   partial_overlap: []
   not_reviewed_hold:
@@ -2584,4 +3055,4 @@ studies:
   - RW0078
   missing_evidence:
   - No OUR_MEASURED evidence exists (study not started).
-  - Related papers are HOLD (abstract-only); full-text review required before any overlap judgement.
+  - Literature reviewed in full text 2026-09-25; overlap is on dimensions, not an answer to the Study question.

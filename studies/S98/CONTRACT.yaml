@@ -47,6 +47,10 @@ literature:
   noise_reference: [RW0084 SeedTiming]
 dependencies: [S01, S81]
 overlaps: [S02 (interaction pilot), S36, S41 (interaction discovery/decomposition), S59 (physical interaction)]
+design_implications_from_literature:   # full-text review 2026-09-25
+  - "Report the maximum (worst-case) residual per fidelity, not only means: a decision-domain rule (RW0070) is only safe under a valid worst-case bound."
+  - "FADO (RW0080) had to lower a summed-resource slot cap from 70% to 65% after P&R failures; reproduce that effect as a measured residual at matched utilization."
+  - "Use a seed-replicated noise floor measured on xc7z020 (S81); the only published seed study (RW0084, 20 nm UltraScale, ~8% Fmax spread) is not transferable and internally inconsistent."
 isolated_workspace: true
 measured_evidence_required: true
 cross_study_write: false

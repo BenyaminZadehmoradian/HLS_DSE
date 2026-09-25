@@ -117,3 +117,6 @@ outputs:
   - decision_quality.csv
   - comparison_report.md
   - mandatory_plots
+design_implications_from_literature:   # full-text review 2026-09-25
+  - "SoberDSE (RW0071) claims no algorithm dominates from single runs on a GNN surrogate with a self-referential reference set; S72 must rank algorithms at equal budget, with >= 10 seeds, against the S04 exhaustive front, and report whether rankings exceed run-to-run variance."
+  - "Include PESMO/GP BO (RW0072) as the BO arm and the RW0064/RW0063 LP plan-then-query strategy as a local-only planner."

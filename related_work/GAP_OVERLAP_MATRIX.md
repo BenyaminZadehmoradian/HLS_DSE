@@ -1,7 +1,7 @@
 # Gap / Overlap Matrix — HLS-DSE V23.2 (corrected 2026-09-25)
 
-Built from the **canonical** Related Work set only: 6 CORE and
-30 SUPPORTING papers. The 6 HOLD papers were reviewed from the
+Built from the **canonical** Related Work set only: 11 CORE and
+39 SUPPORTING papers (14 of them added by full-text review on 2026-09-25). HOLD papers were reviewed from the
 abstract only and appear as NOT REVIEWED. ADJACENT and EXCLUDED papers (`EXCLUSION_REGISTER.csv`) are not used.
 
 This matrix exposes overlap. **It makes no novelty claim**, and the collection is **not a systematic review**.
@@ -19,18 +19,18 @@ Status vocabulary:
 
 | Dimension | Status | Canonical papers reporting it (YES) | PARTIAL (count) | NOT REVIEWED (HOLD, YES/PARTIAL/NOT_REPORTED) | Our Studies | Evidence required from us |
 |---|---|---|---|---|---|---|
-| Multi-kernel / concurrent joint evaluation | PARTIAL OVERLAP | RW0003 MultiFPGAAlloc, RW0004 EnergyOptAlloc, RW0011 StreamHLS, RW0014 CoopBO, RW0031 Prometheus, RW0033 FIFOAdvisor, RW0037 FADO, RW0042 HLPSDSE, RW0050 EtoEDSE | 4 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0022 HGBODSE | S07, S15, S65, S66 | Measured joint vs local selection outcomes on the same multi-kernel workload. |
-| Measured multi-kernel interaction | PARTIAL OVERLAP | RW0011 StreamHLS, RW0033 FIFOAdvisor, RW0037 FADO, RW0042 HLPSDSE, RW0044 FOS | 19 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0022 HGBODSE | S02, S36–S42, S56 | Measured interaction effect (joint minus composed-local) with replication. |
-| Evidence selection (adaptive acquisition) | KNOWN PRIOR ART | RW0006 CMMFO, RW0012 MTBO, RW0018 Chimera, RW0026 TaskTransfer, RW0042 HLPSDSE, RW0048 HLPow | 8 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0016 VOISystemDesign, RW0022 HGBODSE | S05, S20, S22, S67 | Measured decision quality per unit of evidence cost, adaptive vs fixed policies. |
-| Multi-fidelity / cost-aware evaluation | KNOWN PRIOR ART | RW0006 CMMFO, RW0009 HierQoR, RW0011 StreamHLS, RW0012 MTBO, RW0030 NLPDSE, RW0031 Prometheus, RW0032 Sisyphus, RW0033 FIFOAdvisor, RW0036 QoRML, RW0045 PLD, RW0046 Bonamy12DPR | 19 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0022 HGBODSE | S04, S06, S21, S23 | Measured per-stage tool cost and fidelity error against a full-flow oracle. |
-| Staged evaluation | KNOWN PRIOR ART | RW0001 CRYPTONITE, RW0006 CMMFO, RW0020 AutoHLS, RW0030 NLPDSE, RW0035 PatternDSE, RW0042 HLPSDSE, RW0045 PLD, RW0048 HLPow | 13 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0016 VOISystemDesign, RW0022 HGBODSE | S88, S32 | Stage-decision records with measured stop/continue outcomes (false-stop rate). |
-| Decision / Pareto stability | PARTIAL OVERLAP | RW0057 CORDOBA | 11 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0022 HGBODSE | S43–S46, S92 | Replicated runs/seeds with measured front and rank stability. |
-| Physical implementation | KNOWN PRIOR ART | RW0006 CMMFO, RW0008 HLSFactory, RW0009 HierQoR, RW0031 Prometheus, RW0036 QoRML, RW0042 HLPSDSE, RW0043 DPRSurvey, RW0044 FOS, RW0045 PLD, RW0046 Bonamy12DPR, RW0047 Nafkha17DPR, RW0048 HLPow, RW0053 IdleSleep | 5 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0022 HGBODSE | S59–S61, S78, S81 | Post-route reports as raw artifacts per candidate. |
-| Lifecycle / configuration cost | PARTIAL OVERLAP | RW0043 DPRSurvey, RW0044 FOS, RW0045 PLD, RW0046 Bonamy12DPR, RW0047 Nafkha17DPR, RW0052 GreenFPGA, RW0053 IdleSleep, RW0057 CORDOBA | 4 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0016 VOISystemDesign, RW0022 HGBODSE | S85, S86, S94 | Measured build, programming and invocation cost (programming needs hardware: NOT_AVAILABLE). |
-| Multi-benchmark transfer | KNOWN PRIOR ART | RW0009 HierQoR, RW0010 CollectiveHLS, RW0012 MTBO, RW0019 GNNDSE, RW0021 HARP, RW0023 HLSyn, RW0026 TaskTransfer, RW0048 HLPow | 8 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0022 HGBODSE | S10, S11, S90 | Held-out benchmark evaluation under the data-leakage contract. |
-| Power / energy | KNOWN PRIOR ART | RW0004 EnergyOptAlloc, RW0006 CMMFO, RW0046 Bonamy12DPR, RW0047 Nafkha17DPR, RW0048 HLPow, RW0050 EtoEDSE, RW0052 GreenFPGA, RW0053 IdleSleep, RW0057 CORDOBA | 2 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0022 HGBODSE | S19, S20 | Measured power/energy kept separate from estimates. |
-| CPU–FPGA interaction | PARTIAL OVERLAP | RW0044 FOS, RW0053 IdleSleep | 9 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0022 HGBODSE | S83, S84 | Measured end-to-end latency/overlap (hardware NOT_AVAILABLE). |
-| Memory / data movement | KNOWN PRIOR ART | RW0003 MultiFPGAAlloc, RW0004 EnergyOptAlloc, RW0030 NLPDSE, RW0031 Prometheus, RW0032 Sisyphus, RW0033 FIFOAdvisor, RW0044 FOS | 19 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0022 HGBODSE | S73 | Measured data movement; DMA/ACP/cache stay UNKNOWN_UNTIL_MEASURED. |
+| Multi-kernel / concurrent joint evaluation | PARTIAL OVERLAP | RW0003 MultiFPGAAlloc, RW0004 EnergyOptAlloc, RW0011 StreamHLS, RW0014 CoopBO, RW0031 Prometheus, RW0033 FIFOAdvisor, RW0037 FADO, RW0042 HLPSDSE, RW0050 EtoEDSE, RW0080 FADO2 | 8 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0022 HGBODSE | S07, S15, S65, S66 | Measured joint vs local selection outcomes on the same multi-kernel workload. |
+| Measured multi-kernel interaction | PARTIAL OVERLAP | RW0011 StreamHLS, RW0033 FIFOAdvisor, RW0037 FADO, RW0042 HLPSDSE, RW0044 FOS | 21 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0022 HGBODSE | S02, S36–S42, S56 | Measured interaction effect (joint minus composed-local) with replication. |
+| Evidence selection (adaptive acquisition) | KNOWN PRIOR ART | RW0006 CMMFO, RW0012 MTBO, RW0018 Chimera, RW0026 TaskTransfer, RW0042 HLPSDSE, RW0048 HLPow, RW0066 MISO, RW0068 CBOMIS, RW0069 CMFBO, RW0072 Prospector, RW0081 CMMFOJ, RW0085 ASPO | 12 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0016 VOISystemDesign, RW0022 HGBODSE | S05, S20, S22, S67 | Measured decision quality per unit of evidence cost, adaptive vs fixed policies. |
+| Multi-fidelity / cost-aware evaluation | KNOWN PRIOR ART | RW0006 CMMFO, RW0009 HierQoR, RW0011 StreamHLS, RW0012 MTBO, RW0030 NLPDSE, RW0031 Prometheus, RW0032 Sisyphus, RW0033 FIFOAdvisor, RW0036 QoRML, RW0045 PLD, RW0046 Bonamy12DPR, RW0066 MISO, RW0068 CBOMIS, RW0069 CMFBO, RW0070 Fovea, RW0081 CMMFOJ | 24 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0022 HGBODSE | S04, S06, S21, S23 | Measured per-stage tool cost and fidelity error against a full-flow oracle. |
+| Staged evaluation | KNOWN PRIOR ART | RW0001 CRYPTONITE, RW0006 CMMFO, RW0020 AutoHLS, RW0030 NLPDSE, RW0035 PatternDSE, RW0042 HLPSDSE, RW0045 PLD, RW0048 HLPow, RW0070 Fovea, RW0081 CMMFOJ | 20 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0016 VOISystemDesign, RW0022 HGBODSE | S88, S32 | Stage-decision records with measured stop/continue outcomes (false-stop rate). |
+| Decision / Pareto stability | PARTIAL OVERLAP | RW0057 CORDOBA, RW0070 Fovea | 14 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0022 HGBODSE | S43–S46, S92 | Replicated runs/seeds with measured front and rank stability. |
+| Physical implementation | KNOWN PRIOR ART | RW0006 CMMFO, RW0008 HLSFactory, RW0009 HierQoR, RW0031 Prometheus, RW0036 QoRML, RW0042 HLPSDSE, RW0043 DPRSurvey, RW0044 FOS, RW0045 PLD, RW0046 Bonamy12DPR, RW0047 Nafkha17DPR, RW0048 HLPow, RW0053 IdleSleep, RW0072 Prospector, RW0079 ZyCAP, RW0080 FADO2, RW0081 CMMFOJ, RW0084 SeedTiming | 7 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0022 HGBODSE | S59–S61, S78, S81 | Post-route reports as raw artifacts per candidate. |
+| Lifecycle / configuration cost | PARTIAL OVERLAP | RW0043 DPRSurvey, RW0044 FOS, RW0045 PLD, RW0046 Bonamy12DPR, RW0047 Nafkha17DPR, RW0052 GreenFPGA, RW0053 IdleSleep, RW0057 CORDOBA, RW0079 ZyCAP | 6 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0016 VOISystemDesign, RW0022 HGBODSE | S85, S86, S94 | Measured build, programming and invocation cost (programming needs hardware: NOT_AVAILABLE). |
+| Multi-benchmark transfer | KNOWN PRIOR ART | RW0009 HierQoR, RW0010 CollectiveHLS, RW0012 MTBO, RW0019 GNNDSE, RW0021 HARP, RW0023 HLSyn, RW0026 TaskTransfer, RW0048 HLPow, RW0071 SoberDSE | 13 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0015 VOISetBased, RW0022 HGBODSE | S10, S11, S90 | Held-out benchmark evaluation under the data-leakage contract. |
+| Power / energy | KNOWN PRIOR ART | RW0004 EnergyOptAlloc, RW0006 CMMFO, RW0046 Bonamy12DPR, RW0047 Nafkha17DPR, RW0048 HLPow, RW0050 EtoEDSE, RW0052 GreenFPGA, RW0053 IdleSleep, RW0057 CORDOBA, RW0065 PGDSE | 4 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0022 HGBODSE | S19, S20 | Measured power/energy kept separate from estimates. |
+| CPU–FPGA interaction | PARTIAL OVERLAP | RW0044 FOS, RW0053 IdleSleep, RW0079 ZyCAP | 10 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0022 HGBODSE | S83, S84 | Measured end-to-end latency/overlap (hardware NOT_AVAILABLE). |
+| Memory / data movement | KNOWN PRIOR ART | RW0003 MultiFPGAAlloc, RW0004 EnergyOptAlloc, RW0030 NLPDSE, RW0031 Prometheus, RW0032 Sisyphus, RW0033 FIFOAdvisor, RW0044 FOS, RW0063 COSMOS | 27 | RW0002 MVSym, RW0005 DML, RW0007 IronManPro, RW0022 HGBODSE | S73 | Measured data movement; DMA/ACP/cache stay UNKNOWN_UNTIL_MEASURED. |
 
 ## 2. Prior-art boundary check
 
@@ -75,6 +75,7 @@ prevent false novelty claims, not to establish novelty.
 - **RW0037 FADO** (CORE): Multiple dataflow and non-dataflow kernels in one design co-optimized under shared per-die resource constraints.
 - **RW0042 HLPSDSE** (SUPPORTING): Whole multi-module accelerator is floorplanned and implemented jointly
 - **RW0050 EtoEDSE** (CORE): Component alternatives combined and evaluated at system level under EtoE latency.
+- **RW0080 FADO2** (CORE, full text 2026-09-25): directives for all kernels co-selected under shared per-slot constraints; whole design synthesized and implemented
 
 ### Measured multi-kernel interaction
 
@@ -92,6 +93,12 @@ prevent false novelty claims, not to establish novelty.
 - **RW0026 TaskTransfer** (SUPPORTING): Active learning (coreset) selects which designs to synthesize each CEM iteration
 - **RW0042 HLPSDSE** (SUPPORTING): Metrics from prior implementations guide the next parameter choices
 - **RW0048 HLPow** (SUPPORTING): SDR-guided sampling selects which design points to run through HLS.
+- **RW0066 MISO** (SUPPORTING, full text 2026-09-25): cost-sensitive knowledge gradient over (source, design), Eq. 1
+- **RW0068 CBOMIS** (SUPPORTING, full text 2026-09-25): constrained max-value entropy search / source cost in a trust region
+- **RW0069 CMFBO** (SUPPORTING, full text 2026-09-25): heuristic cost-scaled constrained EI-style
+- **RW0072 Prospector** (SUPPORTING, full text 2026-09-25): multi-objective BO with PESMO
+- **RW0081 CMMFOJ** (CORE, full text 2026-09-25): per-stage cost-penalized EIPV, argmax over (x, stage)
+- **RW0085 ASPO** (SUPPORTING, full text 2026-09-25): cost-aware EI divided by lambda(t)*c_hat(x) plus constraint-aware optimisation (cooling ineffective as written)
 
 ### Multi-fidelity / cost-aware evaluation
 
@@ -106,6 +113,11 @@ prevent false novelty claims, not to establish novelty.
 - **RW0036 QoRML** (SUPPORTING): Explicitly models the gap between low-fidelity HLS estimates and high-fidelity implementation results
 - **RW0045 PLD** (SUPPORTING): Compile time vs performance trade-off quantified per level.
 - **RW0046 Bonamy12DPR** (SUPPORTING): Three model granularities with accuracy/complexity trade-off.
+- **RW0066 MISO** (SUPPORTING, full text 2026-09-25): per-source cost, noise and discrepancy GP
+- **RW0068 CBOMIS** (SUPPORTING, full text 2026-09-25): lambda(x,l), discrepancy GP, rho-based variance correction
+- **RW0069 CMFBO** (SUPPORTING, full text 2026-09-25): see registry row and note for the evidence
+- **RW0070 Fovea** (SUPPORTING, full text 2026-09-25): ~4000x cost gap, disagreement bound, full runtime accounting
+- **RW0081 CMMFOJ** (CORE, full text 2026-09-25): rho_i = T_impl/T_i and non-linear multi-fidelity GP
 
 ### Staged evaluation
 
@@ -117,10 +129,13 @@ prevent false novelty claims, not to establish novelty.
 - **RW0042 HLPSDSE** (SUPPORTING): FSM of ordered actions; each stage builds on best result of the previous
 - **RW0045 PLD** (SUPPORTING): -O0 / -O1 / -O3 levels provide progressively slower but higher-quality compile paths.
 - **RW0048 HLPow** (SUPPORTING): HLS runs + learned power model replace RTL implementation/measurement for most points.
+- **RW0070 Fovea** (SUPPORTING, full text 2026-09-25): formulation, analytical screening, calibration, reference evaluation
+- **RW0081 CMMFOJ** (CORE, full text 2026-09-25): hls/syn/impl stages, run up to a selected stage h
 
 ### Decision / Pareto stability
 
 - **RW0057 CORDOBA** (SUPPORTING): Optimal design robustness across lifetime and carbon-intensity uncertainty analysed.
+- **RW0070 Fovea** (SUPPORTING, full text 2026-09-25): exact recovery over 20 calibration draws per pair
 
 ### Physical implementation
 
@@ -137,6 +152,11 @@ prevent false novelty claims, not to establish novelty.
 - **RW0047 Nafkha17DPR** (SUPPORTING): Real partial bitstreams on hardware.
 - **RW0048 HLPow** (SUPPORTING): Training/ground-truth power from implemented designs measured on board.
 - **RW0053 IdleSleep** (SUPPORTING): Real bitstreams on hardware.
+- **RW0072 Prospector** (SUPPORTING, full text 2026-09-25): place-and-route per evaluated design
+- **RW0079 ZyCAP** (SUPPORTING, full text 2026-09-25): measured on ZedBoard with a PR floorplan
+- **RW0080 FADO2** (CORE, full text 2026-09-25): SLR floorplan in the loop; post-implementation Fmax on U250
+- **RW0081 CMMFOJ** (CORE, full text 2026-09-25): Vivado implementation reports at the impl stage on VC707
+- **RW0084 SeedTiming** (SUPPORTING, full text 2026-09-25): post-route STA over 30 place-and-route seeds
 
 ### Lifecycle / configuration cost
 
@@ -148,6 +168,7 @@ prevent false novelty claims, not to establish novelty.
 - **RW0052 GreenFPGA** (SUPPORTING): Full lifecycle CFP including reconfiguration/app-development/configuration time.
 - **RW0053 IdleSleep** (SUPPORTING): Configuration energy and on/off vs idle lifecycle central.
 - **RW0057 CORDOBA** (SUPPORTING): Embodied vs operational carbon over hardware lifetime is central.
+- **RW0079 ZyCAP** (SUPPORTING, full text 2026-09-25): reconfiguration throughput, bitstream sizes, caching/prefetch, blocking vs overlapped (Tables I-II, Fig. 5)
 
 ### Multi-benchmark transfer
 
@@ -159,6 +180,7 @@ prevent false novelty claims, not to establish novelty.
 - **RW0023 HLSyn** (SUPPORTING): Held-out kernels with zero-shot and few-shot adaptation
 - **RW0026 TaskTransfer** (SUPPORTING): Transfer across toolchain versions and across programs (domain transfer)
 - **RW0048 HLPow** (SUPPORTING): Power model trained on 15 apps and tested on 7 unseen PolyBench apps.
+- **RW0071 SoberDSE** (SUPPORTING, full text 2026-09-25): disjoint training (20) and inference (9) kernels
 
 ### Power / energy
 
@@ -171,11 +193,13 @@ prevent false novelty claims, not to establish novelty.
 - **RW0052 GreenFPGA** (SUPPORTING): Operational energy from TDP and duty cycle.
 - **RW0053 IdleSleep** (SUPPORTING): Measured.
 - **RW0057 CORDOBA** (SUPPORTING): Energy/operational carbon from simulator.
+- **RW0065 PGDSE** (CORE, full text 2026-09-25): primary objective via frequency-scaled power x time model
 
 ### CPU–FPGA interaction
 
 - **RW0044 FOS** (SUPPORTING): Linux/ARM host runtime and drivers manage accelerators; offloading scenarios.
 - **RW0053 IdleSleep** (SUPPORTING): MCU-FPGA SPI configuration and offloading.
+- **RW0079 ZyCAP** (SUPPORTING, full text 2026-09-25): PS-PL interfaces, processor blocking vs overlap, 140 ns access latency
 
 ### Memory / data movement
 
@@ -186,20 +210,24 @@ prevent false novelty claims, not to establish novelty.
 - **RW0032 Sisyphus** (SUPPORTING): Models off-chip/on-chip transfers, tiling for on-chip caching, burst width
 - **RW0033 FIFOAdvisor** (CORE): FIFO buffering/BRAM memory usage is the optimized quantity
 - **RW0044 FOS** (SUPPORTING): AXI port throughput characterized; memory contention observed.
+- **RW0063 COSMOS** (CORE, full text 2026-09-25): datapath/PLM co-design is central; interconnect bandwidth fixed
 
-## 5. Addendum 2026-09-25 — web-search additions (HOLD, abstract-only; not used in the matrix above)
+## 5. Addendum 2026-09-25 — web-search additions
 
-The matrix above is built from canonical papers only and is unchanged. The web search added 23 HOLD papers
-(RW0063–RW0085). They do not change any status cell until their full text is reviewed, but they move three
-prior-art boundaries that any claim must respect:
+23 papers were added from a web search (RW0063–RW0085). **14 were then reviewed in full text** and entered the
+canonical set (their YES dimensions are merged into §1 and §4 above); the other 9 remain HOLD (abstract only; for 4 of
+them no legitimate open copy was found). Full-text findings that move prior-art boundaries:
 
-| Boundary | HOLD papers | Consequence |
-|---|---|---|
-| Compositional (local-Pareto-first) system-level HLS DSE is an established line | RW0064 CompSLD12 (DATE 2012), RW0063 COSMOS (TECS 2017), RW0065 PGDSE (ASP-DAC 2023), with RW0050 EtoEDSE | "Joint vs local" is not a new framing; what remains open is an oracle test of the compositional assumption (S97) and measured residuals (S98). |
-| Value-of-information / multi-information-source acquisition exists as a method | RW0066 MISO (NeurIPS 2017), RW0067 MISCBO, RW0068 CBOMIS, RW0069 CMFBO; decision-domain refinement in hardware DSE: RW0070 Fovea | The acquisition rule of S99 must be positioned as an application/extension of these, not as a new VOI method. |
-| Co-residence changes runtime on FPGA SoCs | RW0075, RW0076, RW0077 (Zynq-7000 traces), RW0078 (XC7Z020 ACP/HP) | Runtime joint≠local is documented; using it inside an HLS DSE decision (S100) is not found in the collection. Hardware required. |
+| Boundary | Papers (full text) | What the full text shows | Consequence |
+|---|---|---|---|
+| Compositional (local-first) system-level HLS DSE | RW0064 CompSLD12, RW0063 COSMOS, RW0065 PGDSE (all CORE) | Per-component dominance/Pareto pruning plus additive or TMG composition (sum of areas; throughput from cycle time). None of the three ever synthesizes or implements the composed system; their accuracy numbers (1–13% mismatch, "ADRS 0") compare composed plans with composed results. PG-DSE's "lossless pruning" is verified against exhaustive search on one 27-alternative synthetic system only. | The compositional assumption is prior art **and untested against joint evidence** → S97. |
+| Joint co-resident directive optimization with implementation | RW0080 FADO 2.0 (CORE) | Additive per-slot resources + max/sum latency; slot cap had to be tightened 70%→65% because summed HLS QoR still failed placement/routing; implementation failures in Table 6; single runs, ~9% Fmax differences. | Strongest published sign that composed-local ≠ joint post-route, never quantified → S98. |
+| Stage-selective (multi-fidelity) HLS evidence acquisition | RW0081 CMMFO journal (CORE), with RW0006 | Cost-penalized EIPV over (configuration, hls/syn/impl stage) for single kernels; normalized ADRS 0.34 (DCGP). | Stage selection is prior art; S99's new element must be local-vs-joint across co-resident kernels. |
+| Multi-information-source VOI | RW0066 MISO, RW0068 CBOMIS, RW0069 CMFBO (SUPPORTING) | Cost-normalized knowledge gradient with additive source discrepancy f(l,x)=f(0,x)+δ_l(x) (MISO); constrained entropy search with correlation-based variance inflation (CBOMIS). All single-objective; none handles one evaluation informing several components, Pareto targets, or crashed runs. | Method foundation for S99; the gaps listed are what S99 must add. |
+| Decision-domain cross-fidelity refinement in hardware DSE | RW0070 Fovea (SUPPORTING) | Reference evaluation only inside a domain guaranteed to contain the reference optimum if the measured disagreement bound holds; 1400/1400 exact recoveries; single objective, one-shot. | Direct precedent for "buy expensive evidence only if it can change the decision"; S99 needs the Pareto/multi-kernel version and S98 must report worst-case residuals. |
+| Search-algorithm comparison | RW0071 SoberDSE, RW0072 Prospector (SUPPORTING) | SoberDSE's "no algorithm dominates" rests on single runs on a GNN surrogate with a self-referential reference set; Prospector: PESMO BO 1.74x closer to exhaustive fronts on small single-kernel spaces. | S72 remains supporting; it must rank algorithms at equal budget, with seeds, against the S04 oracle. |
+| Tool noise and configuration cost | RW0084 SeedTiming, RW0079 ZyCAP, RW0085 ASPO (SUPPORTING) | 30 seeds → ~8% peak-to-peak Fmax on 20 nm UltraScale (internally inconsistent statistics); ZedBoard PCAP 128 MB/s, ICAP-DMA 382 MB/s, full xc7z020 bitstream 4,045,564 B; checkpoint reuse saves 20–33% per synthesis. | S81 must measure its own noise floor on xc7z020; configuration time (ms) is negligible next to build time (min–h). |
 
-Search-algorithm comparison (S72) gains further prior art: RW0071 SoberDSE, RW0072 Prospector, RW0073 KuangMOBO.
-No paper in the collection was found that (a) reports a kernel's post-route QoR alone vs co-resident, or (b) uses a
-local-vs-joint choice as an acquisition decision. This remains a statement about the current collection, not a
-novelty claim; the systematic review RW0083 is the next source to check.
+Still true after the full-text review: no paper in the collection reports a kernel's post-route QoR alone vs
+co-resident, or uses a local-vs-joint choice as an acquisition decision. This is a statement about the current
+collection, not a novelty claim; the remaining HOLD papers and the systematic review RW0083 still need checking.

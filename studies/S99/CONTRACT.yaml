@@ -44,10 +44,17 @@ outputs:
   - acquisition-rule implementation (after its phase gate), run traces, per-method result tables and plots
   - ablation isolating decision gating from fidelity
 literature:
-  method_foundations: [RW0066 MISO, RW0067 MISCBO, RW0068 CBOMIS, RW0069 CMFBO, RW0012 MTBO, RW0013 CMOBOOCE]
+  method_foundations: [RW0066 MISO, RW0068 CBOMIS, RW0069 CMFBO, RW0012 MTBO, RW0013 CMOBOOCE, RW0085 ASPO]   # full text; RW0067 MISCBO still HOLD
   closest_prior_art: [RW0006 CMMFO, RW0081 CMMFOJ, RW0082 MFHLS18, RW0070 Fovea, RW0030 NLPDSE (bound gating), RW0018 Chimera (evaluation gate)]
 dependencies: [S97 (oracle), S98 (residual), S72 (search baselines), S81 (noise)]
 overlaps: [S05 (evidence selection), S16 (decision-change prediction), S22 (minimum joint evidence), S07 (joint task-candidate-fidelity selection)]
+design_implications_from_literature:   # full-text review 2026-09-25
+  - "Start from misoKG (RW0066): IS0 = joint co-resident evaluation, IS_k = composed-local, discrepancy = the S98 residual. Extend it where it has gaps: a local evaluation informs only one kernel's projection; the target is a feasible Pareto front, not a scalar max; crashed runs must be handled."
+  - "Feasibility term candidate: Pr(objective) x prod Pr(resource_i <= cap) with local-source variance inflated by 1 - rho^2 (RW0068)."
+  - "Avoid per-source improvement measured on the source's own front (the per-stage EIPV pattern of RW0081); measure improvement of the joint target front."
+  - "Pareto analogue of the decision domain (RW0070): a composite needs joint evaluation only if its optimistic joint vector is not dominated by the pessimistic current front."
+  - "Add cost-aware EI with measured/predicted cost (RW0085 pattern, without its ineffective constant cooling) as a named baseline; treat cost as history-dependent when synthesis checkpoints are reused."
+  - "Stage-selective evidence (hls/syn/impl) is prior art (RW0006/RW0081); the claim must rest on local-vs-joint evidence across co-resident kernels."
 isolated_workspace: true
 measured_evidence_required: true
 cross_study_write: false

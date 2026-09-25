@@ -1,4 +1,4 @@
-# Related Work Manifest — HLS-DSE V23.2 (corrected 2026-09-25)
+# Related Work Manifest — HLS-DSE V23.2 (updated 2026-09-25: web-search additions, 14 reviewed in full text)
 
 This inventory is repository-derived from `RELATED_WORK_REGISTRY.csv`, `EXCLUSION_REGISTER.csv` and
 `PDF_PROVENANCE.csv`. The collection is curated. **It is not a systematic review.**
@@ -7,29 +7,29 @@ This inventory is repository-derived from `RELATED_WORK_REGISTRY.csv`, `EXCLUSIO
 
 | Class | Count | Where recorded |
 |---|---|---|
-| CORE | 6 | registry; PDFs in `papers/core/` |
-| SUPPORTING | 30 | registry; PDFs in `papers/<category>/` |
-| HOLD | 29 | registry (metadata only; abstract-only review; 23 added by the 2026-09-25 web search) |
+| CORE | 11 | registry; PDFs in `papers/core/` |
+| SUPPORTING | 39 | registry; PDFs in `papers/<category>/` |
+| HOLD | 15 | registry (metadata only; abstract-only review) |
 | ADJACENT | 20 | `EXCLUSION_REGISTER.csv` (not canonical) |
 | EXCLUDE | 3 | `EXCLUSION_REGISTER.csv` (not canonical) |
 
 ## Canonical PDFs
 
-- 36 canonical PDFs, all **local only** (gitignored; the repository is public). **0 PDFs are tracked by git.**
-- Metadata only: 29 (the HOLD papers). The 6 original HOLD papers have no legitimate open copy; several of the 23 added
-  2026-09-25 do have open copies (arXiv/author sites) that were not downloaded — see `pdf_availability`.
+- 50 canonical PDFs, all **local only** (gitignored; the repository is public). **0 PDFs are tracked by git.**
+- Metadata only: 15 (the HOLD papers). Where no legitimate open copy was found, `pdf_availability` says so;
+  `NOT_CHECKED` means no open-copy search has been done yet.
 - The reported open license of each paper's open-access version is in the registry column `license_reported`.
   A reported open license does not change the local-only policy.
 
 | Category (canonical) | Papers | PDFs |
 |---|---|---|
-| core | 6 | 6 |
+| core | 11 | 11 |
 | concurrent_multikernel | 2 | 2 |
-| hls_dse | 13 | 13 |
-| multifidelity | 3 | 3 |
-| bo_mobo | 2 | 2 |
-| physical | 1 | 1 |
-| lifecycle_dfx | 3 | 3 |
+| hls_dse | 15 | 15 |
+| multifidelity | 4 | 4 |
+| bo_mobo | 6 | 6 |
+| physical | 2 | 2 |
+| lifecycle_dfx | 4 | 4 |
 | energy_sustainability | 6 | 6 |
 
 ## Canonical inventory
@@ -42,6 +42,11 @@ This inventory is repository-derived from `RELATED_WORK_REGISTRY.csv`, `EXCLUSIO
 | RW0033 | FIFOAdvisor | 2026 | ASP-DAC | CORE | core | `core/RW0033_AbiKaram2026_FIFOAdvisor_ASPDAC.pdf` | 8f57ad7f0cf5 | full text | PARTIAL OVERLAP | S15 S36 S65 |
 | RW0037 | FADO | 2023 | FPGA | CORE | core | `core/RW0037_Du2023_FADO_FPGA_arxiv.pdf` | 4e63512b5bd8 | full text | PARTIAL OVERLAP | S15 S65 S78 |
 | RW0050 | EtoEDSE | 2024 | IEEE TCAD | CORE | core | `core/RW0050_Liao2024_EtoEDSE_TCAD_arxiv.pdf` | db1a8c2a44ff | full text | PARTIAL OVERLAP | S15 S65 S66 |
+| RW0063 | COSMOS | 2017 | ACM TECS 16(5s) Art. 150 (C… | CORE | core | `core/RW0063_Piccolboni2017_COSMOS_TECS_arxiv.pdf` | bdabfd90e240 | full text | PARTIAL OVERLAP | S97 S98 S99 S72 S04 |
+| RW0064 | CompSLD12 | 2012 | DATE 2012, pp. 641-646 (Bes… | CORE | core | `core/RW0064_Liu2012_CompSLD12_DATE_accepted.pdf` | 7f38e096eab0 | full text | PARTIAL OVERLAP | S97 S99 S72 S04 |
+| RW0065 | PGDSE | 2023 | ASP-DAC 2023, pp. 567-572 | CORE | core | `core/RW0065_Liao2023_PGDSE_ASPDAC.pdf` | 7febed14089e | full text | PARTIAL OVERLAP | S97 S72 S04 |
+| RW0080 | FADO2 | 2024 | ACM TRETS | CORE | core | `core/RW0080_Du2024_FADO2_TRETS_accepted.pdf` | 1b11908a7261 | full text | PARTIAL OVERLAP | S97 S98 S81 S72 |
+| RW0081 | CMMFOJ | 2022 | ACM TODAES 27(4) Art. 31 (M… | CORE | core | `core/RW0081_Sun2022_CMMFOJ_TODAES_accepted.pdf` | 2cc0a2713ce8 | full text | PARTIAL OVERLAP | S99 S98 S72 S04 |
 | RW0001 | CRYPTONITE | 2025 | IEEE ASAP | SUPPORTING | hls_dse | `hls_dse/RW0001_Maheswaran2025_CRYPTONITE_ASAP_arxiv.pdf` | 50310049e0a1 | full text | RELEVANT BUT DIFFERENT | S66 S65 |
 | RW0003 | MultiFPGAAlloc | 2019 | DAC | SUPPORTING | concurrent_multikernel | `concurrent_multikernel/RW0003_Shan2019_MultiFPGAAlloc_DAC_accepted.pdf` | 07bce8536ccb | full text | RELEVANT BUT DIFFERENT | S95 S15 |
 | RW0004 | EnergyOptAlloc | 2022 | IEEE TCAD | SUPPORTING | concurrent_multikernel | `concurrent_multikernel/RW0004_Shan2022_EnergyOptAlloc_TCAD_accepted.pdf` | e52ff84e7a15 | full text | RELEVANT BUT DIFFERENT | S95 S19 |
@@ -72,38 +77,30 @@ This inventory is repository-derived from `RELATED_WORK_REGISTRY.csv`, `EXCLUSIO
 | RW0052 | GreenFPGA | 2024 | DAC | SUPPORTING | energy_sustainability | `energy_sustainability/RW0052_ChoppaliSudarshan2024_GreenFPGA_DAC_arxiv.pdf` | 4eecc1572a26 | full text | RELEVANT BUT DIFFERENT | S20 S94 |
 | RW0053 | IdleSleep | 2024 | ARCS (LNCS 14842) | SUPPORTING | energy_sustainability | `energy_sustainability/RW0053_Qian2024_IdleSleep_ARCS_arxiv.pdf` | 53963a987e44 | full text | RELEVANT BUT DIFFERENT | S85 S86 |
 | RW0057 | CORDOBA | 2025 | HPCA | SUPPORTING | energy_sustainability | `energy_sustainability/RW0057_Elgamal2025_CORDOBA_HPCA.pdf` | 4e44ebf0b94e | full text | METHOD FOUNDATIONAL | S20 S92 S43 |
+| RW0066 | MISO | 2017 | NeurIPS 2017 | SUPPORTING | bo_mobo | `bo_mobo/RW0066_Poloczek2017_MISO_NeurIPS_arxiv.pdf` | e6c593a32b4e | full text | METHOD FOUNDATIONAL | S99 S98 |
+| RW0068 | CBOMIS | 2026 | arXiv 2607.00865 | SUPPORTING | bo_mobo | `bo_mobo/RW0068_Maathuis2026_CBOMIS_arXiv.pdf` | 39f564f4f240 | full text | METHOD FOUNDATIONAL | S99 S98 |
+| RW0069 | CMFBO | 2025 | arXiv 2503.01126 | SUPPORTING | bo_mobo | `bo_mobo/RW0069_ZanjaniFoumani2025_CMFBO_arXiv.pdf` | 9a6ef133260d | full text | RELEVANT BUT DIFFERENT | S99 S72 |
+| RW0070 | Fovea | 2026 | arXiv 2608.03285 | SUPPORTING | multifidelity | `multifidelity/RW0070_Li2026_Fovea_arXiv.pdf` | 30a7de2bcdf6 | full text | PARTIAL OVERLAP | S99 S98 S97 S04 S72 |
+| RW0071 | SoberDSE | 2026 | DAC 2026 (accepted; arXiv 2… | SUPPORTING | hls_dse | `hls_dse/RW0071_Xu2026_SoberDSE_DAC_arxiv.pdf` | a00e3815f6af | full text | PARTIAL OVERLAP | S72 S04 S97 |
+| RW0072 | Prospector | 2020 | ACM TACO 18(1), Art. 4 | SUPPORTING | hls_dse | `hls_dse/RW0072_Mehrabi2020_Prospector_TACO_accepted.pdf` | 6aff13e1ee1d | full text | METHOD FOUNDATIONAL | S99 S72 S04 |
+| RW0079 | ZyCAP | 2014 | IEEE Embedded Systems Lette… | SUPPORTING | lifecycle_dfx | `lifecycle_dfx/RW0079_Vipin2014_ZyCAP_ESL_accepted.pdf` | 2fe34e14a04d | full text | METHOD FOUNDATIONAL | S85 S86 S100 |
+| RW0084 | SeedTiming | 2025 | arXiv 2512.13866 (submitted… | SUPPORTING | physical | `physical/RW0084_Darvishi2025_SeedTiming_arXiv.pdf` | 30cb2c4899ea | full text | RELEVANT BUT DIFFERENT | S81 S98 |
+| RW0085 | ASPO | 2025 | arXiv 2506.06817 | SUPPORTING | bo_mobo | `bo_mobo/RW0085_Wu2025_ASPO_arXiv.pdf` | 581779260504 | full text | METHOD FOUNDATIONAL | S99 S85 S86 S72 |
 | RW0002 | MVSym | 2023 | Integration, the VLSI Journ… | HOLD | concurrent_multikernel | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | UNRESOLVED | S84 S93 |
 | RW0005 | DML | 2022 | IEEE Transactions on Comput… | HOLD | lifecycle_dfx | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | UNRESOLVED | S85 S93 |
 | RW0007 | IronManPro | 2023 | IEEE TCAD | HOLD | hls_dse | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | UNRESOLVED | S71 S72 |
 | RW0015 | VOISetBased | 2021 | Systems Engineering (Wiley/… | HOLD | bo_mobo | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | UNRESOLVED | S33 S03 |
 | RW0016 | VOISystemDesign | 1986 | Information Processing & Ma… | HOLD | bo_mobo | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | UNRESOLVED | S33 |
 | RW0022 | HGBODSE | 2023 | ICFPT | HOLD | hls_dse | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | UNRESOLVED | S72 S05 |
-| RW0063 | COSMOS | 2017 | ACM TECS 16(5s) Art. 150 (CO… | HOLD | concurrent_multikernel | — (OPEN_COPY_AVAILABLE) | — | abstract | POTENTIAL OVERLAP | S97 S15 S66 |
-| RW0064 | CompSLD12 | 2012 | DATE 2012, pp. 641-646 (Best… | HOLD | concurrent_multikernel | — (OPEN_COPY_AVAILABLE) | — | abstract | POTENTIAL OVERLAP | S97 S15 |
-| RW0065 | PGDSE | 2023 | ASP-DAC 2023 | HOLD | concurrent_multikernel | — (NOT_CHECKED) | — | abstract | POTENTIAL OVERLAP | S97 S15 |
-| RW0066 | MISO | 2017 | NeurIPS 2017 | HOLD | bo_mobo | — (OPEN_COPY_AVAILABLE) | — | abstract | METHOD FOUNDATIONAL | S99 S05 S16 S33 |
-| RW0067 | MISCBO | 2019 | Structural and Multidiscipli… | HOLD | bo_mobo | — (NOT_CHECKED) | — | abstract | UNRESOLVED | S99 S14 |
-| RW0068 | CBOMIS | 2026 | arXiv 2607.00865 | HOLD | bo_mobo | — (OPEN_COPY_AVAILABLE) | — | abstract | METHOD FOUNDATIONAL | S99 S14 |
-| RW0069 | CMFBO | 2025 | arXiv 2503.01126 | HOLD | bo_mobo | — (OPEN_COPY_AVAILABLE) | — | abstract | METHOD FOUNDATIONAL | S99 S32 |
-| RW0070 | Fovea | 2026 | arXiv 2608.03285 | HOLD | multifidelity | — (OPEN_COPY_AVAILABLE) | — | abstract | PARTIAL OVERLAP | S99 S16 S97 |
-| RW0071 | SoberDSE | 2026 | arXiv 2603.00986 | HOLD | hls_dse | — (OPEN_COPY_AVAILABLE) | — | abstract | PARTIAL OVERLAP | S72 |
-| RW0072 | Prospector | 2020 | ACM journal (DOI 10.1145/342… | HOLD | hls_dse | — (NOT_CHECKED) | — | abstract | PRIOR ART | S72 S71 |
-| RW0073 | KuangMOBO | 2023 | ISEDA 2023 | HOLD | hls_dse | — (NOT_CHECKED) | — | abstract | PRIOR ART | S72 |
-| RW0074 | Omega | 2026 | IEEE Transactions on Compute… | HOLD | lifecycle_dfx | — (NOT_CHECKED) | — | abstract | PARTIAL OVERLAP | S04 S97 S85 |
-| RW0075 | MemIntfHost | 2021 | DATE 2021, pp. 1152-1155 | HOLD | concurrent_multikernel | — (NOT_CHECKED) | — | abstract | PARTIAL OVERLAP | S100 S73 |
-| RW0076 | MemIntfHeSoC | 2022 | DATE 2022, pp. 1335-1340 | HOLD | concurrent_multikernel | — (NOT_CHECKED) | — | abstract | PARTIAL OVERLAP | S100 S73 |
-| RW0077 | AXIBound | 2023 | IEEE Transactions on Compute… | HOLD | concurrent_multikernel | — (NOT_CHECKED) | — | abstract | PARTIAL OVERLAP | S100 S73 S49 |
-| RW0078 | ZynqACP | 2013 | FPGAworld 2013 | HOLD | concurrent_multikernel | — (NOT_CHECKED) | — | abstract | RELEVANT BUT DIFFERENT | S100 S73 S84 |
-| RW0079 | ZyCAP | 2014 | IEEE Embedded Systems Letter… | HOLD | lifecycle_dfx | — (OPEN_COPY_AVAILABLE) | — | abstract | RELEVANT BUT DIFFERENT | S85 S86 S12 |
-| RW0080 | FADO2 | 2024 | ACM TRETS | HOLD | physical | — (OPEN_COPY_AVAILABLE) | — | abstract | PARTIAL OVERLAP | S98 S59 S15 |
-| RW0081 | CMMFOJ | 2022 | ACM TODAES 27(4) Art. 31 | HOLD | multifidelity | — (OPEN_COPY_AVAILABLE) | — | abstract | PRIOR ART | S99 S21 S23 |
-| RW0082 | MFHLS18 | 2018 | FPL 2018, pp. 272-279 | HOLD | multifidelity | — (NOT_CHECKED) | — | abstract | PRIOR ART | S99 S21 |
-| RW0083 | MLDSEReview | 2025 | Integration, the VLSI Journa… | HOLD | hls_dse | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | METHOD FOUNDATIONAL | S71 S72 |
-| RW0084 | SeedTiming | 2025 | arXiv 2512.13866 | HOLD | physical | — (OPEN_COPY_AVAILABLE) | — | abstract | RELEVANT BUT DIFFERENT | S81 S98 S04 |
-| RW0085 | ASPO | 2025 | arXiv 2506.06817 | HOLD | bo_mobo | — (OPEN_COPY_AVAILABLE) | — | abstract | PARTIAL OVERLAP | S99 S87 |
-
-Non-canonical papers (ADJACENT/EXCLUDE), with reasons and provenance, are in `EXCLUSION_REGISTER.csv`. Their full earlier
-reviews remain in git history (commit 6a08f53).
+| RW0067 | MISCBO | 2019 | Structural and Multidiscipl… | HOLD | bo_mobo | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | UNRESOLVED | S99 S14 |
+| RW0073 | KuangMOBO | 2023 | ISEDA 2023 | HOLD | hls_dse | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | PRIOR ART | S72 |
+| RW0074 | Omega | 2026 | IEEE Transactions on Comput… | HOLD | lifecycle_dfx | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | PARTIAL OVERLAP | S04 S97 S85 |
+| RW0075 | MemIntfHost | 2021 | DATE 2021, pp. 1152-1155 | HOLD | concurrent_multikernel | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | PARTIAL OVERLAP | S100 S73 |
+| RW0076 | MemIntfHeSoC | 2022 | DATE 2022, pp. 1335-1340 | HOLD | concurrent_multikernel | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | PARTIAL OVERLAP | S100 S73 |
+| RW0077 | AXIBound | 2023 | IEEE Transactions on Comput… | HOLD | concurrent_multikernel | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | PARTIAL OVERLAP | S100 S73 S49 |
+| RW0078 | ZynqACP | 2013 | FPGAworld 2013 | HOLD | concurrent_multikernel | — (BROWSER_ONLY) | — | abstract | RELEVANT BUT DIFFERENT | S100 S73 S84 |
+| RW0082 | MFHLS18 | 2018 | FPL 2018, pp. 272-279 | HOLD | multifidelity | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | PRIOR ART | S99 S21 |
+| RW0083 | MLDSEReview | 2025 | Integration, the VLSI Journ… | HOLD | hls_dse | — (LEGITIMATE_OPEN_COPY_NOT_FOUND) | — | abstract | METHOD FOUNDATIONAL | S71 S72 |
 
 ## Duplicate handling
 

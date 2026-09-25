@@ -1,5 +1,6 @@
-registry_version: "1.4"
+registry_version: "1.5"
 ids_immutable: true          # IDs are never reused or renamed; entries may gain status/notes
+# 1.5 (2026-09-25): owner decision - S97-S100 are kept as separate studies (no supersession of S02/S04/S05/...).
 # 1.4 (2026-09-25): S97-S100 added from the web-search literature update (compositional assumption, cross-fidelity
 #      interaction residual, decision-centric multi-source acquisition, runtime memory interference). New IDs only.
 # 1.3: S67 marked SUPERSEDED by S22 (identical title/question); overlap_review added for similar studies.
@@ -241,7 +242,7 @@ overlap_review:
   - {studies: [S21, S23], topic: "adaptive fidelity", decision: PENDING_HUMAN}
   - {studies: [S32, S34, S88], topic: "early stopping / staged evaluation termination", decision: PENDING_HUMAN}
   - {studies: [S26, S87], topic: "provenance storage / evidence reuse", decision: PENDING_HUMAN}
-  - {studies: [S97, S04, S66], topic: "oracle-based test of composition (S97 is the compositional-assumption test; S04 the oracle benchmark; S66 composition failure)", decision: PENDING_HUMAN}
-  - {studies: [S98, S02, S36, S41, S59], topic: "interaction measurement (S98 is the cross-fidelity, noise-floor-aware version of the S02 pilot)", decision: PENDING_HUMAN}
-  - {studies: [S99, S05, S16, S22, S07], topic: "evidence selection / decision-change acquisition (S99 is the multi-source local-vs-joint formulation)", decision: PENDING_HUMAN}
-  - {studies: [S100, S73, S83, S84], topic: "runtime memory / data-path effects (S100 is the co-residence residual on the reference device)", decision: PENDING_HUMAN}
+  - {studies: [S97, S04, S66], topic: "oracle-based test of composition (S97 is the compositional-assumption test; S04 the oracle benchmark; S66 composition failure)", decision: KEEP_SEPARATE, decided_by: repository owner, decided_at: "2026-09-25", rationale: "separate studies give clearer, independent decisions"}
+  - {studies: [S98, S02, S36, S41, S59], topic: "interaction measurement (S98 is the cross-fidelity, noise-floor-aware version of the S02 pilot)", decision: KEEP_SEPARATE, decided_by: repository owner, decided_at: "2026-09-25", rationale: "separate studies give clearer, independent decisions"}
+  - {studies: [S99, S05, S16, S22, S07], topic: "evidence selection / decision-change acquisition (S99 is the multi-source local-vs-joint formulation)", decision: KEEP_SEPARATE, decided_by: repository owner, decided_at: "2026-09-25", rationale: "separate studies give clearer, independent decisions"}
+  - {studies: [S100, S73, S83, S84], topic: "runtime memory / data-path effects (S100 is the co-residence residual on the reference device)", decision: KEEP_SEPARATE, decided_by: repository owner, decided_at: "2026-09-25", rationale: "separate studies give clearer, independent decisions"}

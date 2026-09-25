@@ -51,6 +51,10 @@ literature:
   methodology_precedent: [RW0074 Omega (exhaustive golden model), RW0084 SeedTiming (P&R variability)]
 dependencies: [S01 (flow works), S81 (noise floor)]
 overlaps: [S04 (oracle benchmark), S66 (composition failure)]
+design_implications_from_literature:   # full-text review 2026-09-25
+  - "Test the exact pruning rules of RW0064 (knob-setting dominance per latency interval), RW0063 (lambda-constrained regions) and RW0065 (per-MCC Pareto per frequency set), not a generic local-Pareto rule."
+  - "Their published accuracy (1-13% mismatch, ADRS 0) compares composed plans with composed results; S97 must compare against jointly implemented designs, which none of them does."
+  - "Use the exhaustive-ground-truth ADRS protocol of RW0081/RW0072 so results are comparable."
 isolated_workspace: true
 measured_evidence_required: true
 cross_study_write: false
