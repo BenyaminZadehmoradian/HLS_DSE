@@ -1,13 +1,113 @@
-schema_version: "1.0"
-pre_registration:
-  primary_metrics: required
-  primary_comparisons: required
-  repetition_rule: required
-  confidence_interval: required
-  effect_size: required
-  multiple_comparison_policy: required
+contract_version: "2.0"
+contract_id: STATISTICS_CONTRACT
+status: ACTIVE
+# 2.0 (2026-09-26) replaces the 1.0 field list with a complete protocol. Every Study that makes a quantitative claim
+# follows it. Study-specific choices are fixed in studies/<SXX>/PREREGISTRATION.yaml (templates/PREREGISTRATION_TEMPLATE.yaml)
+# BEFORE the first measured run; the file's SHA-256 is recorded in every run manifest of that Study.
+
 principles:
-  - choose statistical procedure before inspecting outcomes
-  - report effect size and uncertainty, not p-value alone
-  - paired designs are preferred when the same design points are evaluated
-  - tool failure is not a stochastic observation of QoR
+  - "Choose every statistical procedure before inspecting outcomes (pre-registration); deviations are reported as deviations."
+  - "Report effect sizes with uncertainty; p-values are secondary and never reported alone."
+  - "Paired designs when methods can share seeds, initial designs and workloads."
+  - "A tool failure is not a stochastic observation of QoR; it is classified (FAILURE_AND_RETRY_CONTRACT) and counted."
+  - "No optional stopping: seed counts and budgets are fixed in advance."
+  - "Negative and null results are reported with the same detail as positive ones."
+
+pre_registration:
+  file: studies/<SXX>/PREREGISTRATION.yaml
+  template: templates/PREREGISTRATION_TEMPLATE.yaml
+  must_be_committed_before_first_measured_run: true
+  required_fields: [study_id, hypotheses, primary_metric, secondary_metrics, primary_comparisons, workloads,
+                    replication, budget_ladder, utility_for_decision_loss, time_to_target_threshold,
+                    minimum_detectable_effect, exclusion_rules, multiple_comparison_family, analysis_code_path]
+
+units_of_analysis:
+  design_point: "one configuration (single kernel) or one composite configuration (co-resident kernels)"
+  measurement_replicate: "one tool run (implementation seed) or one runtime repetition of a design point"
+  method_run: "one execution of a search/acquisition method with one algorithm seed"
+  workload: "one benchmark or composite; the top-level unit for generalization claims"
+
+replication:
+  hls:
+    assumption: deterministic
+    verification: "re-run 3 randomly chosen design points per workload; if any QoR field differs, treat HLS like implementation below and record it"
+  implementation:                               # synthesis + place-and-route
+    seeds_per_design_point_for_oracle_or_residual: 5          # minimum; raise it if S81 shows a wider noise floor
+    seeds_per_design_point_inside_search_methods: 1           # methods see one seed, as in practice; the oracle uses all seeds
+    seed_mechanism: "Vivado implementation directive/strategy seed recorded in the run manifest"
+    noise_floor_source: S81
+  runtime:                                      # hardware studies only
+    repetitions: 30
+    warmup_discarded: 3
+  method_runs:
+    algorithm_seeds_per_method_workload_budget: 10            # minimum
+    pairing: "all methods use the same seed list and the same initial design for a given seed"
+
+noise_floor:
+  definition: "for each metric, the 95th percentile of |y_seed_a - y_seed_b| over all seed pairs of the same design point, pooled per workload"
+  use: "an effect, residual or difference is called 'above noise' only if its 95% CI lies entirely outside [-noise_floor, +noise_floor]"
+  reported_with_every_claim: true
+
+objectives_and_fronts:
+  direction: "all objectives are converted to minimization (maximize x -> minimize -x) before any front computation"
+  feasibility_first: "infeasible or failed design points never enter a Pareto front; feasibility is reported separately"
+  normalization: "min-max per workload over the feasible oracle set (exhaustive S04/S97 data); where no oracle exists, fixed bounds declared in the pre-registration"
+  pareto_tolerance: "two points are equal in a metric if they differ by less than that metric's noise floor"
+
+quality_metrics:
+  adrs:                                         # primary front-quality metric (community standard for HLS DSE)
+    definition: "ADRS(G, A) = (1/|G|) * sum_{g in G} min_{a in A} max_j max(0, (a_j - g_j) / |g_j|)"
+    reference_front_G: "oracle (exhaustive, seed-median) feasible Pareto front of the workload"
+    approximate_front_A: "feasible Pareto front of the points the method evaluated at the highest fidelity it claims"
+    reported_as: percent
+  hypervolume:
+    space: normalized objectives
+    reference_point: "1.1 in every normalized objective"
+    computation: "exact (e.g. WFG) for <= 5 objectives"
+    reported_as: "hypervolume ratio HV(A) / HV(G)"
+  feasible_front_recall: "fraction of oracle Pareto points matched by an evaluated point within the Pareto tolerance"
+  decision_loss:
+    definition: "u(best oracle design) - u(design the method would select), divided by the range of u over the oracle feasible set"
+    utility_u: "declared per Study in the pre-registration (e.g. minimize latency subject to resource caps, or a weighted sum)"
+  time_to_target:
+    definition: "primary-budget cost at which ADRS first falls to or below the pre-registered threshold"
+    censoring: "runs that never reach the threshold are right-censored at the budget; report Kaplan-Meier median and CI"
+  interaction_residual:                         # S98
+    definition: "r = y_joint - compose(y_local) per metric and fidelity; relative r_rel = r / |compose(y_local)|"
+    composition_operators: "as declared in studies/S98/CONTRACT.yaml composition_operators"
+    decision_flip: "a residual counts as decision-changing if using y_joint instead of compose(y_local) changes Pareto membership or feasibility of any design point"
+  decision_change_rate:                         # S99
+    definition: "fraction of joint evaluations whose outcome changed the current Pareto membership or feasibility of at least one design point"
+
+inference:
+  confidence_intervals:
+    method: "nonparametric bootstrap, BCa, 10000 resamples"
+    resampling: "hierarchical: resample workloads, then method seeds (and implementation seeds) within workload"
+    level: 0.95
+  effect_sizes:
+    method_comparison: "median paired difference with CI; Cliff's delta for ordinal comparisons"
+    costs: "geometric-mean ratio with CI"
+  tests:                                        # secondary to effect sizes
+    paired_within_workload: "Wilcoxon signed-rank over paired seeds"
+    across_workloads: "sign test / Wilcoxon over per-workload effects"
+    multiple_comparisons: "Holm-Bonferroni within each Study's pre-registered family of primary comparisons"
+  equivalence_claims:                           # e.g. 'the compositional assumption holds' (S97 H0)
+    method: "two one-sided tests (TOST) with margin = noise floor, or = the pre-registered practical margin if larger"
+    note: "absence of a significant difference is never reported as equivalence without TOST"
+  power:
+    minimum_detectable_effect: "declared in the pre-registration from a pilot; if the fixed budget cannot reach it the Study reports itself as underpowered"
+
+failures_and_missing_data:
+  classification: contracts/FAILURE_AND_RETRY_CONTRACT.yaml
+  budget: "failed and timed-out evaluations consume budget at their measured cost"
+  imputation: forbidden
+  all_seeds_failed: "design point is infeasible (reason recorded)"
+  some_seeds_failed: "report the failure rate; statistics use successful seeds only, and the failure rate is itself a reported outcome"
+  exclusions: "only by pre-registered rules; every excluded run is listed with its reason"
+
+reporting:
+  per_workload_tables: required
+  aggregate_over_workloads: "median with bootstrap CI (never a mean of ratios without CI)"
+  plots: "every curve with its CI band; x-axis in primary-budget units unless stated"
+  raw_data: "every number traceable to evidence records (METRIC_PROVENANCE_CONTRACT)"
+  analysis_code: "committed and referenced in the pre-registration before results are inspected"

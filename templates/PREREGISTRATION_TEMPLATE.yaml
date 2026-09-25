@@ -1,0 +1,33 @@
+# Pre-registration for one Study. Copy to studies/<SXX>/PREREGISTRATION.yaml, fill every field, and commit it BEFORE
+# the first measured run of the Study. Its SHA-256 goes into every run manifest (provenance). Changes after the first
+# measured run are allowed only as a new version with a `deviations` entry explaining what changed and why.
+# Rules: contracts/STATISTICS_CONTRACT.yaml, contracts/BUDGET_CONTRACT.yaml.
+preregistration_version: "1"
+study_id: SXX
+committed_before_first_run: true
+hypotheses:
+  H0: "<null hypothesis, stated as a measurable condition>"
+  H1: "<alternative hypothesis>"
+primary_metric: "<one of: ADRS | hypervolume_ratio | decision_loss | time_to_target | interaction_residual | decision_change_rate | other (define)>"
+secondary_metrics: []
+primary_comparisons:                 # the family for Holm-Bonferroni
+  - "<method A vs method B at budget level x on all workloads>"
+workloads:
+  - id: "<benchmark or composite id>"
+    oracle_available: true           # exhaustive evaluation exists (S04/S97)
+replication:
+  implementation_seeds_for_oracle: 5
+  algorithm_seeds: 10
+  runtime_repetitions: 30            # hardware Studies only
+budget_ladder: [0.02, 0.05, 0.10, 0.25]    # fractions of oracle tool_seconds
+stage_timeouts: {hls_s: 3600, synthesis_s: 7200, pnr_s: 10800, bitstream_s: 3600}
+workers: 4
+utility_for_decision_loss: "<declared utility u, e.g. minimize latency s.t. LUT/DSP/BRAM <= caps>"
+time_to_target_threshold: "<e.g. ADRS <= 5%>"
+normalization_bounds: "oracle feasible set"      # or explicit bounds when no oracle exists
+minimum_detectable_effect: "<value and pilot it is based on>"
+equivalence_margin: "noise floor"                # or a larger practical margin, stated
+exclusion_rules: []
+multiple_comparison_family: "primary_comparisons above"
+analysis_code_path: "<path to the committed analysis script>"
+deviations: []

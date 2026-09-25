@@ -59,6 +59,21 @@ for name in ['METRIC_PROVENANCE_SCHEMA.json','STAGE_DECISION_SCHEMA.json','EVIDE
 if not (ROOT/'schemas/PRAGMA_SPACE_SCHEMA.yaml').exists(): errors.append('Missing schemas/PRAGMA_SPACE_SCHEMA.yaml')
 
 # The run template must satisfy the run-manifest schema's required fields and top-level types.
+# Statistical and budget protocol must be complete (STATISTICS_CONTRACT / BUDGET_CONTRACT 2.0).
+stats=load_yaml(ROOT/'contracts/STATISTICS_CONTRACT.yaml')
+for k in ['pre_registration','units_of_analysis','replication','noise_floor','objectives_and_fronts','quality_metrics','inference','failures_and_missing_data']:
+    if k not in stats: errors.append(f'STATISTICS_CONTRACT missing section {k}')
+for k in ['adrs','hypervolume','decision_loss','time_to_target']:
+    if k not in (stats.get('quality_metrics') or {}): errors.append(f'STATISTICS_CONTRACT missing metric definition {k}')
+budget=load_yaml(ROOT/'contracts/BUDGET_CONTRACT.yaml')
+if (budget.get('primary_budget') or {}).get('name')!='tool_seconds': errors.append('BUDGET_CONTRACT must declare primary_budget tool_seconds')
+for k in ['charging_rules','stage_timeouts','parallelism','stopping']:
+    if k not in budget: errors.append(f'BUDGET_CONTRACT missing section {k}')
+if not (ROOT/'templates/PREREGISTRATION_TEMPLATE.yaml').exists(): errors.append('Missing templates/PREREGISTRATION_TEMPLATE.yaml')
+prereq=set(stats.get('pre_registration',{}).get('required_fields',[]))
+tmpl_keys=set(load_yaml(ROOT/'templates/PREREGISTRATION_TEMPLATE.yaml')) if (ROOT/'templates/PREREGISTRATION_TEMPLATE.yaml').exists() else set()
+if prereq-tmpl_keys: errors.append(f'PREREGISTRATION template lacks required fields {sorted(prereq-tmpl_keys)}')
+
 tmpl=ROOT/'runs/_TEMPLATE/manifest.yaml'
 if not tmpl.exists(): errors.append('Missing runs/_TEMPLATE/manifest.yaml')
 elif 'RUN_MANIFEST_SCHEMA.json' in schemas:

@@ -169,3 +169,12 @@ The reference execution path remains the full HLS → synthesis → implementati
 Every reported numeric metric must carry machine-traceable provenance to its Run, Candidate, benchmark, device, tool, tool version, source artifact, artifact SHA-256, and source field or measurement. Stage decisions are immutable records with explicit reason codes and evidence IDs.
 
 See `contracts/STAGED_EVALUATION_CONTRACT.yaml`, `contracts/STAGE_DECISION_CONTRACT.yaml`, and `contracts/METRIC_PROVENANCE_CONTRACT.yaml`.
+
+## Statistical and Budget Protocol (2026-09-26)
+
+Every quantitative claim follows `contracts/STATISTICS_CONTRACT.yaml` 2.0: pre-registration committed before the
+first measured run (`templates/PREREGISTRATION_TEMPLATE.yaml`, hash recorded in each run manifest), ADRS against the
+exhaustive oracle as the primary front metric, hypervolume ratio, decision loss and time-to-target as defined there,
+a seed-based noise floor (S81) that every effect must exceed, hierarchical bootstrap confidence intervals, Holm
+correction and TOST for equivalence claims. Methods are compared at equal `tool_seconds` budgets
+(`contracts/BUDGET_CONTRACT.yaml` 2.0), expressed as fractions of the oracle cost, with equal workers and timeouts.

@@ -33,7 +33,7 @@ metrics:
   - decision_change_rate: fraction of joint evaluations that changed Pareto membership or feasibility
   - time-to-target ADRS
 controls:
-  budget: primary budget = post-route-equivalent evaluation hours; evaluation counts reported as secondary
+  budget: "primary budget = tool_seconds at the pre-registered budget ladder (BUDGET_CONTRACT); evaluation counts and wall-clock reported as secondary"
   parallelism: fixed number of concurrent tool jobs for every method
   seeds: ">= 10 algorithm seeds per (method, workload, budget), paired across methods"
   statistics: paired bootstrap CIs, effect sizes, Holm correction across workloads

@@ -1,14 +1,62 @@
-schema_version: "1.0"
-budget_dimensions:
-  - candidate_count
-  - hls_evaluations
-  - synthesis_evaluations
-  - pnr_evaluations
-  - bitstream_builds
-  - fpga_programs
-  - benchmark_invocations
-  - wall_clock_seconds
-  - cpu_hours
-  - license_hours
-  - fpga_hours
-fairness_rule: Report both algorithmic evaluation counts and actual elapsed/resource costs.
+contract_version: "2.0"
+contract_id: BUDGET_CONTRACT
+status: ACTIVE
+# 2.0 (2026-09-26) replaces the 1.0 dimension list. Fixes ONE primary budget for comparisons, how every evaluation is
+# charged, and how parallelism, failures, caching and search overhead are accounted. Study-specific values (budget
+# ladder, timeouts, worker count) are fixed in studies/<SXX>/PREREGISTRATION.yaml.
+
+primary_budget:
+  name: tool_seconds
+  definition: >-
+    Sum over all expensive evaluations of the measured wall-clock time of each tool stage actually run
+    (t_hls_s + t_synthesis_s + t_pnr_s + t_bitstream_s, per AI_CONTROL/AI_TIME_MEASUREMENT_POLICY.md), summed across
+    workers. It is independent of how many workers ran in parallel and charges joint (co-resident) evaluations at
+    their true, usually higher, cost.
+  why: "evaluation counts hide that a post-route or joint evaluation costs far more than an HLS-only one"
+  normalization: >-
+    Budget levels are expressed as a fraction of the workload's oracle cost (tool_seconds of evaluating the whole
+    oracle space once at the highest fidelity), so budgets are comparable across workloads.
+  default_budget_ladder: [0.02, 0.05, 0.10, 0.25]     # fractions of oracle cost; a Study may declare its own ladder
+
+secondary_budgets:                               # always reported, never used to stop a method unless pre-registered
+  - evaluation counts per stage (hls, synthesis, pnr, bitstream) and per source (local, joint)
+  - elapsed_wall_clock_s at the declared worker count
+  - search_overhead_s (surrogate fitting, acquisition optimization)
+  - candidate_count (generated vs evaluated)
+  - bitstream_builds, fpga_programs, benchmark_invocations
+  - cpu_hours, license_hours, fpga_hours
+  - storage_bytes written (G10)
+
+charging_rules:
+  staged_evaluation: "a candidate stopped after stage k is charged only for stages <= k that actually ran"
+  joint_evaluation: "charged at the measured time of the joint run; never at the sum of local runs"
+  incremental_or_checkpoint_reuse: "charged at the measured incremental time; the reuse source must be legal under CACHE_CONTRACT"
+  cache_hits: "an evaluation served from the evidence cache costs 0 tool_seconds; it is counted and reported separately; cache content must come from the same Study's own earlier runs or from declared shared evidence"
+  failures_and_timeouts: "charged at elapsed time until failure or the declared stage timeout"
+  in_flight_at_exhaustion: "evaluations started before the budget is exhausted are charged in full and their results may be used; none start afterwards"
+  search_overhead: "not part of tool_seconds; reported as a secondary budget and in wall-clock views"
+  oracle_construction: "never charged to any method; it is experimental infrastructure"
+
+stage_timeouts:                                  # defaults; a Study may override in its pre-registration
+  hls_s: 3600
+  synthesis_s: 7200
+  pnr_s: 10800
+  bitstream_s: 3600
+
+parallelism:
+  workers: "fixed per Study and identical for every compared method (CONCURRENCY_FAIRNESS_CONTRACT)"
+  batch_methods: "a batch method proposes at most `workers` evaluations at a time"
+  license_contention: "recorded as infrastructure state, never as QoR noise"
+
+stopping:
+  rule: "a method stops when its primary budget level is exhausted"
+  early_stop_by_method: "allowed only if it is part of the method; the unused budget is reported, not reassigned"
+
+hardware_budget:                                 # only for hardware Studies (e.g. S100)
+  fpga_hours: required_when_used
+  programming_events: required_when_used
+  exclusive_device_lock: "CONCURRENCY_FAIRNESS_CONTRACT"
+
+fairness_rule: >-
+  Methods are compared at equal primary-budget levels, with equal workers, timeouts, design space, device and
+  toolchain. Evaluation counts and elapsed wall-clock are always reported beside the primary budget.
