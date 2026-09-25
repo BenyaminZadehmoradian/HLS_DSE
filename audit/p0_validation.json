@@ -1,0 +1,198 @@
+{
+  "study_id": "S00",
+  "phase_id": "P0",
+  "project_version": "V23.2",
+  "generated_at_utc": "2026-09-25T19:00:18+00:00",
+  "generator": "scripts/p0_validation.py",
+  "repository_commit": "4f70b09c12875d37f58b754b866768b00d3b3fc5",
+  "working_tree_clean_except_publish_log": false,
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39"
+  },
+  "phase_state_at_validation": {
+    "current_phase": "P0",
+    "current_study": "S00",
+    "active_phase_state": "PLANNED",
+    "p1_authorized": false,
+    "active_environment": null
+  },
+  "summary": {
+    "PASS": 12,
+    "FAIL": 0,
+    "NOT_VERIFIABLE_IN_P0": 2
+  },
+  "checks": [
+    {
+      "id": "canonical_version",
+      "source": "S00 CONTRACT",
+      "status": "PASS",
+      "evidence": {
+        "state": "V23.2",
+        "policy": "V23.2",
+        "canonical_contract": "V23.2",
+        "pyproject": "V23.2"
+      },
+      "detail": "canonical_source MASTER/HLS_DSE_MASTER_V23_2.md"
+    },
+    {
+      "id": "immutable_study_ids",
+      "source": "S00 CONTRACT; P0 exit: Study IDs are unique",
+      "status": "PASS",
+      "evidence": {
+        "ids_in_initial_registry": 36,
+        "ids_now": 97,
+        "removed": [],
+        "retitled": [],
+        "duplicate_folder_ids": {},
+        "folder_id_mismatch": {}
+      },
+      "detail": "compared with contracts/STUDY_ID_REGISTRY.yaml at 28f98fa"
+    },
+    {
+      "id": "S09_archived_S71_active_for_external_baselines",
+      "source": "S00 CONTRACT",
+      "status": "PASS",
+      "evidence": {
+        "S09": [
+          "ARCHIVED",
+          "ARCHIVED_ID_COLLISION"
+        ],
+        "S71": "PLANNED"
+      },
+      "detail": "S09 archived and not executable; S71 is the external-baseline study"
+    },
+    {
+      "id": "schema_parseability",
+      "source": "S00 CONTRACT; P0 exit: manifest schema validates",
+      "status": "PASS",
+      "evidence": {
+        "EVIDENCE_RECORD_SCHEMA.json": "PARSED",
+        "METRIC_PROVENANCE_SCHEMA.json": "PARSED",
+        "PRAGMA_CANDIDATE_SCHEMA.json": "PARSED",
+        "PRAGMA_SPACE_SCHEMA.yaml": "PARSED",
+        "RUN_MANIFEST_SCHEMA.json": "PARSED",
+        "RUN_TIMING_SCHEMA.json": "PARSED",
+        "STAGE_DECISION_SCHEMA.json": "PARSED"
+      },
+      "detail": "run-template conformance to RUN_MANIFEST_SCHEMA is checked by the validator"
+    },
+    {
+      "id": "no_measured_evidence_before_experiment",
+      "source": "S00 CONTRACT; P0 exit",
+      "status": "PASS",
+      "evidence": {
+        "evidence_files": [],
+        "run_dirs": []
+      },
+      "detail": "no measured/derived evidence and no run workspace exist before experimental execution"
+    },
+    {
+      "id": "report_metadata",
+      "source": "S00 CONTRACT",
+      "status": "PASS",
+      "evidence": {
+        "reports_without_metadata": []
+      },
+      "detail": "REPORTS/*.md"
+    },
+    {
+      "id": "candidate_generator_unit_test",
+      "source": "S00 CONTRACT",
+      "status": "PASS",
+      "evidence": {
+        "command": "run_in_env.sh python -m pytest -q tests/test_pragma_space.py",
+        "returncode": 0,
+        "summary": "4 passed in 0.56s"
+      },
+      "detail": ""
+    },
+    {
+      "id": "validator_errors_zero",
+      "source": "P0 exit: validator exits with errors=0; project contracts validate",
+      "status": "PASS",
+      "evidence": {
+        "returncode": 0,
+        "output": [
+          "errors=0 warnings=0"
+        ]
+      },
+      "detail": "scripts/validate_project.py"
+    },
+    {
+      "id": "control_plane_consistency",
+      "source": "S00 purpose: validate the control plane",
+      "status": "PASS",
+      "evidence": {
+        "repository_control_errors": []
+      },
+      "detail": "policy, state machine, approvals, transition provenance, decision log"
+    },
+    {
+      "id": "full_test_suite",
+      "source": "S00 purpose: validate the control plane",
+      "status": "PASS",
+      "evidence": {
+        "command": "run_in_env.sh python -m pytest -q",
+        "returncode": 0,
+        "summary": "98 passed in 11.84s"
+      },
+      "detail": ""
+    },
+    {
+      "id": "reference_device_fixed_and_enforced",
+      "source": "P0 exit: XC7Z020CLG484 is fixed and enforced",
+      "status": "PASS",
+      "evidence": {
+        "HARDWARE_PLATFORM_CONTRACT": "xc7z020clg484",
+        "ARTIFACT_AND_RUN_MANAGEMENT_CONTRACT": "xc7z020clg484",
+        "RUN_MANIFEST_SCHEMA.device_part.const": "xc7z020clg484",
+        "RESEARCH_STATE.fixed_reference_device": "xc7z020clg484",
+        "configs/preflight/default.yaml": "xc7z020clg484",
+        "runs/_TEMPLATE/manifest.yaml": "xc7z020clg484",
+        "registered_environments": [
+          "xc7z020clg484"
+        ]
+      },
+      "detail": "enforced by the RUN_MANIFEST_SCHEMA const and the validator"
+    },
+    {
+      "id": "required_contracts_exist",
+      "source": "P0 exit: provenance/benchmark/baseline/failure/cache/leakage/concurrency/P1 contracts",
+      "status": "PASS",
+      "evidence": {
+        "benchmark contract": "PRESENT",
+        "baseline reproduction contract": "PRESENT",
+        "reproduction contract": "PRESENT",
+        "failure/retry policy": "PRESENT",
+        "cache/reuse policy": "PRESENT",
+        "leakage policy": "PRESENT",
+        "concurrency/fairness policy": "PRESENT",
+        "P1 implementation contract": "PRESENT",
+        "measurement provenance rules": "PRESENT"
+      },
+      "detail": "contracts/"
+    },
+    {
+      "id": "run_isolation_validated",
+      "source": "P0 exit: Run isolation is validated",
+      "status": "NOT_VERIFIABLE_IN_P0",
+      "evidence": {
+        "run_layout_defined": true,
+        "manifest_schema": "schemas/RUN_MANIFEST_SCHEMA.json",
+        "run_workspaces_present": []
+      },
+      "detail": "The isolation rules, layout and manifest schema exist and the template conforms, but no Run has been executed, so isolation between real Runs cannot be observed until the first P1 run."
+    },
+    {
+      "id": "raw_evidence_write_once",
+      "source": "studies/S00/report.md required check 4",
+      "status": "NOT_VERIFIABLE_IN_P0",
+      "evidence": {
+        "evidence_store_implementation": null
+      },
+      "detail": "Required by studies/S00/report.md (check 4). No evidence store exists yet (the earlier stub had no callers and was removed); write-once raw evidence is enforced only by policy until the P1 evidence store is implemented."
+    }
+  ],
+  "gate_note": "This file is evidence for the human P0 gate. It decides nothing and authorizes nothing."
+}
