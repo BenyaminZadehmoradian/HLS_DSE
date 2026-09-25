@@ -1,0 +1,83 @@
+# Single source for AI agent roles, permissions, tools, skills and plugins.
+# Merges the former AI_AGENT_POLICY.yaml, AI_PERMISSION_MATRIX.csv, AI_TOOL_POLICY.yaml, AI_SKILL_POLICY.yaml,
+# AI_PLUGIN_POLICY.yaml and agents/*/AGENT.md.
+#
+# ENFORCEMENT: ADVISORY. The runtime control plane (src/hlsdse/control.py) authorizes by *action*, phase, study,
+# environment and human approval; it records the `actor` string but does not check it against this file.
+# Tool execution is gated by AI_CONTROL/CONTROL_PLANE_POLICY.yaml regardless of which agent asks.
+policy_version: "1.0"
+
+agents:
+  research_manager:
+    role: "Orchestrate only; cannot create measured evidence or modify locked definitions."
+    read: [studies, reports, related_work]
+    write: []
+    evidence: none
+  experiment_agent:
+    role: "Execute authorized experiments and produce reproducible run capsules."
+    read: [studies]
+    write: [runs, studies]
+    evidence: [measured, derived]
+  scanner_agent:
+    role: "Validate completeness, duplicates, artifacts and provenance."
+    read: [studies, runs]
+    write: [validation_findings]     # scanner findings are validation records, not evidence
+    evidence: none
+  literature_agent:
+    role: "Collect and verify literature evidence; never infer code/dataset availability."
+    read: [related_work]
+    write: [related_work]
+    evidence: [literature_reported]
+  analysis_agent:
+    role: "Derive metrics from verified evidence; predictions remain labeled predictions."
+    read: [studies, runs]
+    write: []
+    evidence: [derived]
+  report_agent:
+    role: "Generate reports from evidence; cannot create measurements."
+    read: [studies, runs]
+    write: [reports]
+    evidence: none
+  archive_agent:
+    role: "Move superseded material into archive/ with a recorded reason; never alter archived content."
+    read: [all]
+    write: [archive]
+    evidence: none
+
+# No agent may modify a contract or a locked input; contract changes are human-reviewed commits.
+forbidden_for_all_agents: [modify_contract, modify_locked_inputs, approve_gate, edit_gate_fields]
+
+tools:
+  literature: {allowed_for: [literature_agent]}
+  # Commits and pushes happen only through the canonical publisher (hlsdse publish / AI_CONTROL/AUTO_PUSH_POLICY.yaml).
+  source_control: {allowed_for: [experiment_agent, archive_agent], only_via: hlsdse.publish}
+  hls: {allowed_for: [experiment_agent]}
+  vivado: {allowed_for: [experiment_agent]}
+  vitis: {allowed_for: [experiment_agent]}
+  reporting: {allowed_for: [report_agent]}
+  arbitrary_external_execution: {allowed: false}
+
+skills:
+  hls:
+    can: [configure, execute, parse]
+    cannot: [modify_research_question]
+  vivado:
+    can: [synthesis, implementation, timing, utilization]
+    cannot: [modify_benchmark_definition]
+  vitis:
+    can: [platform, application_build, parse]
+    cannot: [modify_benchmark_definition]
+  literature:
+    can: [search, collect, classify]
+    cannot: [declare_unverified_code_available]
+  reporting:
+    can: [generate_report]
+    cannot: [create_measurement]
+
+plugins:
+  default: deny
+  registered: []                 # no plugin is registered; every plugin use is therefore denied
+  each_use_requires: [purpose, study_id, provenance]
+  forbidden:
+    - using_plugin_output_as_measured_experiment_without_execution_evidence
+    - modifying_locked_project_contract

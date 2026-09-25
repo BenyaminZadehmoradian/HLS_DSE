@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/RUN_MANIFEST_SCHEMA.json",
+  "title": "Run manifest (runs/<STUDY_ID>/<RUN_ID>/manifest.yaml)",
+  "description": "Single run-manifest schema; merges the former STUDY_RUN_SCHEMA.json. Required fields are the manifest identity of contracts/ARTIFACT_AND_RUN_MANAGEMENT_CONTRACT.yaml; toolchain identity follows contracts/HARDWARE_PLATFORM_CONTRACT.yaml.",
+  "type": "object",
+  "required": [
+    "project_version", "study_id", "run_id", "hardware_id", "software_id",
+    "environment_id", "benchmark_id", "candidate_id", "device_part",
+    "vivado_version", "vitis_version", "artifacts", "timestamps", "status"
+  ],
+  "properties": {
+    "project_version": {"type": "string"},
+    "study_id": {"type": "string"},
+    "study_version": {"type": "string"},
+    "run_id": {"type": "string"},
+    "hardware_id": {"type": "string"},
+    "software_id": {"type": "string"},
+    "environment_id": {"type": "string"},
+    "benchmark_id": {"type": "string"},
+    "candidate_id": {"type": "string"},
+    "device_part": {"const": "xc7z020clg484"},
+    "vivado_version": {"type": ["string", "null"]},
+    "vitis_version": {"type": ["string", "null"]},
+    "hls_version": {"type": ["string", "null"]},
+    "timestamps": {"type": "object"},
+    "status": {"enum": ["PLANNED", "RUNNING", "SUCCESS", "FAILED", "CANCELLED", "UNKNOWN"]},
+    "failure_class": {"type": ["string", "null"]},
+    "seed": {"type": ["integer", "null"]},
+    "command": {"type": ["string", "null"]},
+    "provenance": {"type": "object"},
+    "artifacts": {
+      "type": "object",
+      "properties": {
+        "xsa": {"type": ["object", "null"]},
+        "bitstream": {"type": ["string", "null"]},
+        "elf": {"type": ["string", "null"]},
+        "boot": {"type": ["string", "null"]}
+      }
+    },
+    "timing": {"$ref": "RUN_TIMING_SCHEMA.json"},
+    "measurements": {"type": "object"},
+    "staged_evaluation": {
+      "type": "object",
+      "required": ["current_stage", "last_decision_id"],
+      "properties": {
+        "current_stage": {"enum": ["CANDIDATE", "HLS", "SYNTHESIS", "IMPLEMENTATION", "BITSTREAM", "PROGRAMMING", "RUNTIME"]},
+        "last_decision_id": {"type": ["string", "null"]},
+        "later_stages_not_run": {"type": "boolean"}
+      }
+    }
+  }
+}

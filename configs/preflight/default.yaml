@@ -3,7 +3,7 @@ reference_device: xc7z020clg484
 required_tools:
   vivado: required
   vitis: required
-  vitis_hls: required
+  vitis_run: required          # 2025.2.1 ships no standalone vitis_hls; the gated project shim maps it to vitis-run --mode hls
   python: required
 hardware_execution: optional_until_P1_hardware_smoke
 checks:
@@ -11,7 +11,7 @@ checks:
   - git
   - vivado_version
   - vitis_version
-  - vitis_hls_version
+  - vitis_run_version
   - device_support
   - license_visibility
   - disk_space

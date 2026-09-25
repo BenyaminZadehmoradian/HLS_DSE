@@ -97,7 +97,10 @@ def test_g_unknown_environment(tmp_path, spy):
     repo = SyntheticRepo(tmp_path)
     assert_denied(repo, run(repo, 'control_plane_implementation', environment='ENV-DOES-NOT-EXIST'), spy,
                   'UNKNOWN_ENVIRONMENT')
-    assert_denied(repo, run(repo, 'control_plane_implementation', environment='ENV-001'), spy,   # template only
+    # an entry that exists but is only a template (status != registered) is not an environment either
+    repo.edit('environments/ENVIRONMENT_REGISTRY.yaml', 'environments:\n',
+              'environments:\n  - id: ENV-TEMPLATE\n    status: template\n')
+    assert_denied(repo, run(repo, 'control_plane_implementation', environment='ENV-TEMPLATE'), spy,
                   'UNKNOWN_ENVIRONMENT')
     # a registered environment that is not the approved/active one (active_environment is null)
     assert_denied(repo, run(repo, 'control_plane_implementation', environment=ENV_ID), spy, 'ENVIRONMENT_NOT_ACTIVE')
@@ -227,8 +230,6 @@ def test_k_version_query_is_environment_discovery(tmp_path):
     assert repo.decisions()[-1]['decision'] == 'ALLOW'
 
 
-@pytest.mark.xfail(strict=True, reason='bin/vitis_hls execs $XILINX_VITIS/bin/vitis-run directly; the launcher '
-                   'patch that routes it through the gated vitis-run shim was not applied (see implementation report)')
 def test_k_vitis_hls_shim_is_gated(tmp_path):
     repo = SyntheticRepo(tmp_path)
     vit = tmp_path / 'vitis_root'
@@ -236,9 +237,14 @@ def test_k_vitis_hls_shim_is_gated(tmp_path):
     (vit / 'bin/vitis-run').write_text(f"#!/bin/sh\necho \"MOCK vitis-run $*\" >> '{repo.marker}'\n")
     (vit / 'bin/vitis-run').chmod(0o755)
     import subprocess
-    subprocess.run([str(repo.root / 'environments/xilinx_2025_2_1/bin/vitis_hls'), '-f', 'x.tcl'], capture_output=True,
-                   env={'PATH': '/usr/bin:/bin', 'HLSDSE_XILINX_ENV': '2025.2.1', 'XILINX_VITIS': str(vit)})
+    cp = subprocess.run([str(repo.root / 'environments/xilinx_2025_2_1/bin/vitis_hls'), '-f', 'x.tcl'],
+                        capture_output=True, text=True,
+                        env={'PATH': '/usr/bin:/bin', 'HLSDSE_XILINX_ENV': '2025.2.1', 'XILINX_VITIS': str(vit)})
     assert not repo.tool_reached()
+    assert cp.returncode == 126 and 'HLSDSE_CONTROL_DENY' in cp.stderr
+    rec = repo.decisions()[-1]
+    assert rec['action'] == 'research_hls_runs' and rec['caller'] == 'launcher-gate:vitis-run'
+    assert rec['decision'] == 'DENY' and rec['executor_called'] is False
 
 
 def test_l_invalid_phase_transitions(tmp_path, spy):
@@ -336,6 +342,54 @@ def test_positive_mock_control_plane_request(tmp_path, spy):
     assert run(repo, 'unit_tests').decision.allowed
 
 
+def test_unexpected_transition_error_is_a_logged_deny(tmp_path):
+    repo = SyntheticRepo(tmp_path, state='PLANNED')
+    repo.edit('AI_CONTROL/PHASE_CONTROL.yaml', 'transition_rules:\n', 'transition_rules:\n  - not_a_mapping\n')
+    before = (repo.root / 'RESEARCH_STATE.yaml').read_text()
+    with pytest.raises(ControlError) as e:
+        control.transition('IMPLEMENTING', approval_id=None, actor='pytest', reason='negative', root=repo.root)
+    assert e.value.code == 'INTERNAL_ERROR'
+    rec = [r for r in repo.log() if r['record_type'] == 'TRANSITION'][-1]
+    assert rec['decision'] == 'DENY' and rec['reason_code'] == 'INTERNAL_ERROR'
+    assert (repo.root / 'RESEARCH_STATE.yaml').read_text() == before
+
+
+def test_failed_state_write_restores_both_files(tmp_path, monkeypatch):
+    import os
+    repo = SyntheticRepo(tmp_path, state='PLANNED')
+    files = [repo.root / 'RESEARCH_STATE.yaml', repo.root / 'AI_CONTROL/PHASE_CONTROL.yaml']
+    before = [f.read_text() for f in files]
+    real, calls = os.replace, []
+
+    def flaky(src, dst):
+        calls.append(dst)
+        if len(calls) == 2:
+            raise OSError('disk full')
+        return real(src, dst)
+    monkeypatch.setattr(control.os, 'replace', flaky)
+    with pytest.raises(ControlError) as e:
+        control.transition('IMPLEMENTING', approval_id=None, actor='pytest', reason='negative', root=repo.root)
+    assert e.value.code == 'STATE_WRITE_FAILED'
+    assert [f.read_text() for f in files] == before
+    assert not list(repo.root.rglob('*.tmp'))
+    monkeypatch.undo()
+    assert control.repository_control_errors(repo.root) == []
+
+
+def test_post_execution_log_failure_does_not_hide_the_result(tmp_path, monkeypatch):
+    repo = SyntheticRepo(tmp_path)
+    real = control._append_log
+
+    def failing(root, pol, record):
+        if record.get('executor_called'):
+            raise OSError('log disk gone')
+        return real(root, pol, record)
+    monkeypatch.setattr(control, '_append_log', failing)
+    res = run(repo, 'control_plane_implementation')
+    assert res.executor_called is True and res.returncode == 0 and repo.tool_reached()
+    assert res.log_error and 'log disk gone' in res.log_error
+
+
 # ------------------------------------------------------------------------------------ fail-closed extras
 
 def test_fail_closed_internal_error_and_unloggable_decisions(tmp_path, spy, monkeypatch):
@@ -407,6 +461,9 @@ def test_only_the_control_plane_and_publisher_start_processes():
                 names = [a.name for a in node.names]
             elif isinstance(node, ast.ImportFrom):
                 names = [node.module or '']
+                if node.module == 'os':
+                    names += ['os.' + a.name for a in node.names
+                              if a.name in ('system', 'popen') or a.name.startswith(('exec', 'spawn'))]
             elif isinstance(node, ast.Attribute) and isinstance(node.value, ast.Name) and node.value.id == 'os' \
                     and (node.attr in ('system', 'popen') or node.attr.startswith(('exec', 'spawn'))):
                 names = ['os.' + node.attr]

@@ -9,8 +9,14 @@ description = "Controlled, reproducible HLS DSE research execution layer"
 requires-python = ">=3.10"
 dependencies = ["PyYAML>=6.0"]
 
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
 [project.scripts]
 hlsdse = "hlsdse.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

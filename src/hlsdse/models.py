@@ -14,7 +14,7 @@ class RunRecord:
     run_id: str
     study_id: str
     benchmark_id: str
-    environment_id: str
+    environment_id: Optional[str]
     candidate_id: str
     status: str = "PLANNED"
     failure_class: Optional[str] = None

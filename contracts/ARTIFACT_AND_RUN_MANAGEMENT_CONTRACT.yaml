@@ -67,21 +67,8 @@ required_artifacts:
   provenance:
     - "manifest.yaml"
 
-manifest_required_fields:
-  - project_version
-  - study_id
-  - run_id
-  - hardware_id
-  - software_id
-  - environment_id
-  - benchmark_id
-  - candidate_id
-  - device_part
-  - vivado_version
-  - vitis_version
-  - artifacts
-  - timestamps
-  - status
+# Required manifest fields are defined once, in the schema; scripts/validate_project.py checks runs/_TEMPLATE against it.
+manifest_schema: schemas/RUN_MANIFEST_SCHEMA.json
 
 artifact_classes:
   raw: "Direct tool output; never manually edited."

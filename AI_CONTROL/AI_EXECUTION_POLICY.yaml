@@ -32,3 +32,16 @@ phase_execution:
     - acceptance_criteria
     - unresolved_issues
     - approval_status
+
+# Rules formerly held in constraints/*.yaml (removed: every other rule there duplicated this file,
+# AI_CONTROL/AI_TIME_MEASUREMENT_POLICY.md, AI_CONTROL/PRAGMA_SPACE_AND_CANDIDATE_POLICY.md or a contract).
+evaluation:
+  duplicate_evaluation: forbidden            # an evaluation identity (candidate, stage, environment, seed) runs once
+  missing_result: unknown_not_estimated
+  unique_run_id: true
+  self_contained_config: true
+  report_generated_from_evidence: true
+  prediction_must_be_labeled: true
+tools:
+  tool_versions_must_be_recorded: true
+  unexpected_tool_version: stop_and_escalate

@@ -11,6 +11,6 @@ metrics:
   fmax_mhz: {direction: maximize, unit: MHz}
   power_w: {direction: minimize, unit: W}
   energy_j: {direction: minimize, unit: J}
-  total_wall_clock_s: {direction: minimize, unit: s}
-  fpga_program_time_s: {direction: minimize, unit: s}
-rule: Every metric record must include source_stage, measurement_status, provenance, and unit.
+  t_total_s: {direction: minimize, unit: s}          # AI_TIME_MEASUREMENT_POLICY.md
+  t_program_s: {direction: minimize, unit: s}
+rule: Every metric record must include source_stage, status, provenance, and unit (contracts/METRIC_PROVENANCE_CONTRACT.yaml).

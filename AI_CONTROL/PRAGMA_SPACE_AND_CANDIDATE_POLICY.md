@@ -47,7 +47,7 @@ Illegal candidates must remain traceable but must not be presented as successful
 
 ## No silent expansion
 
-If the system discovers that a useful configuration is outside the current space, it records an `OUT_OF_SPACE_CANDIDATE` event. It does not silently expand the search space.
+If the system discovers that a useful configuration is outside the current space, it records the candidate with `legality_status: OUT_OF_SPACE_CANDIDATE` (`schemas/PRAGMA_CANDIDATE_SCHEMA.json`). It does not silently expand the search space.
 
 ## Relationship to the research contribution
 

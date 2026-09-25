@@ -5,6 +5,7 @@ history, never publishes gate-controlled state changes, and is not an authorizat
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import subprocess
@@ -32,7 +33,7 @@ def _git(root, *args, check=True):
 def load_policy(root, policy_path=POLICY_PATH):
     p = Path(root) / policy_path
     try:
-        pol = yaml.safe_load(p.read_text())
+        pol = yaml.safe_load(p.read_text(encoding='utf-8'))
     except Exception as exc:
         raise PublishBlocked('POLICY_UNREADABLE', f'{policy_path}: {type(exc).__name__}')
     required = ['policy_version', 'enabled', 'remote', 'remote_url', 'branch', 'force_push', 'rewrite_history',
@@ -76,19 +77,22 @@ def _check_message(pol, message):
 
 
 def _scan_file(root, rel, pol):
+    """Scan the working-tree copy of a changed path. A deletion publishes no content and is never blocked."""
+    full = Path(root) / rel
+    return _scan_content(rel, full.read_bytes() if full.is_file() else None, pol)
+
+
+def _scan_content(rel, data, pol):
+    if data is None:
+        return None
     s = pol['scan']
     p = PurePosixPath(rel)
-    full = Path(root) / rel
     if any(part in s['forbidden_path_parts'] for part in p.parts[:-1]):
         return 'FORBIDDEN_PATH', rel
     if p.name in s['forbidden_names'] or p.suffix.lower() in s['forbidden_extensions']:
         return 'FORBIDDEN_ARTIFACT_OR_SECRET_FILE', rel
-    if not full.exists():                     # deletion: nothing to publish
-        return None
-    data = full.read_bytes()
     if p.suffix.lower() == '.pdf':
         allowed = {(a['path'], a['sha256']) for a in s['pdf'].get('allowlist', [])}
-        import hashlib
         if (rel, hashlib.sha256(data).hexdigest()) not in allowed:
             return 'PDF_NOT_ALLOWLISTED', rel
         return None
@@ -103,6 +107,23 @@ def _scan_file(root, rel, pol):
     return None
 
 
+def _unpushed_findings(root, pol, remote_ref):
+    """Scan the committed content of every file added or modified by each commit in remote_ref..HEAD, so a secret
+    that was committed and later edited away in the working tree is still caught (it would be pushed)."""
+    findings = []
+    for commit in _git(root, 'rev-list', f'{remote_ref}..HEAD').split():
+        changed = _git(root, 'diff-tree', '-r', '--root', '--no-commit-id', '--name-only', '-z',
+                       '--diff-filter=ACMRT', commit)
+        for rel in filter(None, changed.split('\0')):
+            cp = subprocess.run(['git', '-C', str(root), 'show', f'{commit}:{rel}'], capture_output=True)
+            if cp.returncode != 0:
+                raise PublishBlocked('GIT_ERROR', f'cannot read {rel} at {commit[:12]}')
+            f = _scan_content(rel, cp.stdout, pol)
+            if f:
+                findings.append((f[0], f'{f[1]} (in unpushed commit {commit[:12]})'))
+    return findings
+
+
 def _protected_state_changes(root, pol, paths):
     changes = []
     for f, keys in pol['protected_state']['files'].items():
@@ -110,7 +131,7 @@ def _protected_state_changes(root, pol, paths):
             continue
         try:
             old = yaml.safe_load(_git(root, 'show', f'HEAD:{f}', check=False) or '{}') or {}
-            new = yaml.safe_load((Path(root) / f).read_text()) or {}
+            new = yaml.safe_load((Path(root) / f).read_text(encoding='utf-8')) or {}
         except Exception:
             changes.append(f'{f}: unparseable')
             continue
@@ -176,8 +197,11 @@ def automatic_publish(root, message, *, reason, actor, provenance=None, paths=No
         remote_ref = f"{pol['remote']}/{pol['branch']}"
         if pol.get('fetch_before_push', True):
             _git(root, 'fetch', '--quiet', pol['remote'], pol['branch'])
-        unpushed = _git(root, 'diff', '--name-only', f'{remote_ref}...HEAD', check=False).splitlines()
-        findings = [f for f in (_scan_file(root, r, pol) for r in sorted(set(selected) | set(unpushed))) if f]
+        if subprocess.run(['git', '-C', str(root), 'rev-parse', '--verify', '--quiet', remote_ref],
+                          capture_output=True).returncode != 0:
+            raise PublishBlocked('REMOTE_REF_MISSING', f'{remote_ref} not found; cannot determine the unpushed range')
+        findings = [f for f in (_scan_file(root, r, pol) for r in sorted(set(selected))) if f]
+        findings += _unpushed_findings(root, pol, remote_ref)
         pdf = [f for f in findings if f[0] == 'PDF_NOT_ALLOWLISTED']
         sec = [f for f in findings if f[0] in ('SECRET_PATTERN', 'FORBIDDEN_ARTIFACT_OR_SECRET_FILE')]
         art = [f for f in findings if f[0] in ('FORBIDDEN_PATH', 'FILE_TOO_LARGE', 'BINARY_NOT_ALLOWED')]

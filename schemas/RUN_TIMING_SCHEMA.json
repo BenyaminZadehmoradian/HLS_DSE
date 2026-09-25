@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/RUN_TIMING_SCHEMA.json",
+  "title": "Run timing accounting",
+  "description": "Field names and meanings: AI_CONTROL/AI_TIME_MEASUREMENT_POLICY.md. A missing duration is null with status UNKNOWN; it is never estimated.",
+  "type": "object",
+  "required": ["durations_s", "counts", "status", "provenance"],
+  "properties": {
+    "durations_s": {
+      "type": "object",
+      "required": ["t_hls_s", "t_synthesis_s", "t_pnr_s", "t_bitstream_s", "t_program_s", "t_init_s", "t_execution_s", "t_total_s"],
+      "additionalProperties": false,
+      "properties": {
+        "t_hls_s": {"type": ["number", "null"], "minimum": 0},
+        "t_synthesis_s": {"type": ["number", "null"], "minimum": 0},
+        "t_pnr_s": {"type": ["number", "null"], "minimum": 0},
+        "t_bitstream_s": {"type": ["number", "null"], "minimum": 0},
+        "t_program_s": {"type": ["number", "null"], "minimum": 0},
+        "t_init_s": {"type": ["number", "null"], "minimum": 0},
+        "t_execution_s": {"type": ["number", "null"], "minimum": 0},
+        "t_total_s": {"type": ["number", "null"], "minimum": 0}
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": ["n_program", "n_bitstream_build", "n_invocation"],
+      "properties": {
+        "n_program": {"type": ["integer", "null"], "minimum": 0},
+        "n_bitstream_build": {"type": ["integer", "null"], "minimum": 0},
+        "n_invocation": {"type": ["integer", "null"], "minimum": 0}
+      }
+    },
+    "status": {"enum": ["MEASURED", "DERIVED", "UNKNOWN"]},
+    "provenance": {
+      "type": "object",
+      "required": ["source_artifact", "command", "environment_fingerprint"],
+      "properties": {
+        "source_artifact": {"type": ["string", "null"]},
+        "command": {"type": ["string", "null"]},
+        "environment_fingerprint": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

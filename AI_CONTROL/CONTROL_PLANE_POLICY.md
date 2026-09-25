@@ -28,7 +28,7 @@ and the launcher gate (`environments/xilinx_2025_2_1/bin/<tool>` → `tool_gate.
 
 ## Rules
 
-- **Actions** are approval-scope tokens. Each maps to a category:
+- **Actions** are approval-scope tokens. Each maps to a category (the authoritative lists are in the YAML):
   - ungated: `READ_ONLY`, `ENVIRONMENT_DISCOVERY`;
   - gated: `VALIDATION`, `CONTROL_PLANE`, `RESEARCH_EXECUTION`, `HLS`, `VIVADO`, `VITIS`, `HARDWARE`.
 
@@ -43,7 +43,7 @@ and the launcher gate (`environments/xilinx_2025_2_1/bin/<tool>` → `tool_gate.
 - **Approval validity** requires:
   - all fields present and no `<placeholder>`;
   - `status: APPROVED`;
-  - a file name equal to `approval_id` and the project version V23.2;
+  - a file name equal to `approval_id` and the policy's `project_version`;
   - an ISO-8601 `approved_at` with a timezone, not in the future;
   - not expired;
   - known scope tokens, and no token that is both allowed and forbidden;
@@ -56,7 +56,10 @@ and the launcher gate (`environments/xilinx_2025_2_1/bin/<tool>` → `tool_gate.
 - **Transitions** follow the `PHASE_CONTROL.yaml` table:
   - `GATE_REVIEW → APPROVED_FOR_NEXT_PHASE` is human-only;
   - a phase change (for example P0 → P1) is never an automated transition;
-  - `active_environment`, `p1_authorized` and the human-gate fields are never changed by `transition()`.
+  - `active_environment`, `p1_authorized` and the human-gate fields are never changed by `transition()`;
+  - `RESEARCH_STATE.yaml` and `PHASE_CONTROL.yaml` are replaced as one unit: if either replace fails, the other is
+    restored, so the two files never disagree;
+  - any failure inside `transition()`, expected or not, is logged as a DENY `TRANSITION` record.
 - **Executor:** it accepts only a sealed, single-use ALLOW decision bound to the exact argv, issued in-process by
   `run_authorized()`. A shell string is never executed.
 - **Log:** every decision is appended to `audit/AI_CONTROL/CONTROL_DECISION_LOG.jsonl`.
@@ -68,6 +71,8 @@ and the launcher gate (`environments/xilinx_2025_2_1/bin/<tool>` → `tool_gate.
     - provenance: `state_hash`, `approval_id`, `repository_commit`.
   - Arguments are recorded only as `argv_sha256`, never in clear.
   - A decision that cannot be logged is DENY.
+  - If the record written *after* a tool ran cannot be appended, the tool's result is still returned (with
+    `log_error` set and a warning on stderr); a completed execution is never hidden.
 
 ## Auto-push relation
 

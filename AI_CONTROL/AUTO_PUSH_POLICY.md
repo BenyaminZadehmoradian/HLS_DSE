@@ -27,9 +27,10 @@ load policy (missing / malformed / force_push≠false → fail closed)
 → commit message format (<phase>/<study>: <change> or <area>: <change>; no meaningless subjects)
 → collect changes (no substantive change → NO_CHANGES: no empty commit, no push)
 → protected-state check
-→ fetch origin
-→ content scan of the new change set AND every file changed in origin/main...HEAD
-      (secrets, license files, forbidden artifacts/paths, binaries, size, PDFs)
+→ fetch origin; origin/main must exist (else REMOTE_REF_MISSING)
+→ content scan of the new change set (working-tree copy) AND the committed content of every file added or
+      modified by each commit in origin/main..HEAD (secrets, license files, forbidden artifacts/paths,
+      binaries, size, PDFs). Deleting a previously committed file publishes no content and is not blocked.
 → `git ls-files '*.pdf'` must be empty (or allowlisted)
 → validation commands (git diff --check, validate_project.py, approved pytest)
 → stage exactly the selected paths; verify the staged set equals the selected set
@@ -39,9 +40,8 @@ load policy (missing / malformed / force_push≠false → fail closed)
 → append the event to audit/git/AUTO_PUSH_LOG.jsonl
 ```
 
-**Protected state:** a change to any gate field is never auto-published. The gate fields are the phase/status fields,
-`p1_authorized`, `human_gate_required`, `automatic_advance`, `active_environment` and the `*_allowed` flags in
-`RESEARCH_STATE.yaml` / `PHASE_CONTROL.yaml`. Files under `audit/gates/approvals/` are never auto-published either.
+**Protected state:** a change to any gate field (listed in `protected_state` of the YAML policy) is never
+auto-published. Files under `audit/gates/approvals/` are never auto-published either.
 The human commits gate decisions.
 
 ## Blocking outcomes

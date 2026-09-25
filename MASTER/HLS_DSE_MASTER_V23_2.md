@@ -3,20 +3,45 @@
 ## Status
 Canonical project master and navigation document.
 
+## Core research question
+Under a fixed expensive-evaluation budget, does selecting between local and joint evidence improve discovery of the global feasible Pareto frontier in concurrent HLS DSE?
+
+## Scientific core
+1. User/benchmark designer defines a bounded legal pragma/design space.
+2. Candidate generation creates concrete configurations inside that space.
+3. Local evidence is acquired first where appropriate.
+4. Joint evidence is acquired selectively when it can change a decision.
+5. Physical evidence is treated as a separate fidelity/stage, not conflated with logical interaction.
+6. All decisions are evaluated against explicit cost and, where possible, an exhaustive small-space oracle.
+
+## What is not novelty by itself
+Automatic pragma generation, Bayesian optimization, GNN/RL, multi-fidelity, Pareto search, multi-kernel deployment, and physical-aware DSE are established research directions and are treated as baselines/components rather than standalone novelty claims.
+
+## Canonical execution chain
+Benchmark contract → Pragma Space → Candidate Generator → Legality → Correctness → Local HLS → Joint HLS/Synthesis → Physical implementation when authorized → Evidence → Metrics → Decision Selection → Oracle/Reference → Report.
+
+## Evidence classes
+The canonical metric statuses are defined once in `contracts/METRIC_PROVENANCE_CONTRACT.yaml`
+(MEASURED, TOOL_REPORTED, DERIVED, ESTIMATED, PREDICTED, LITERATURE_REPORTED, REPRODUCED, REFERENCE_ORACLE, UNKNOWN).
+These classes must never be silently mixed.
+
 ## Preservation rule
-The complete V21 master is preserved unchanged under `archive/V21/`.
-V22 adds a multi-report structure and an AI Research Control Layer. No historical study,
-hypothesis, extension, implementation idea, or prior version is deleted.
+Earlier masters (V22, V22.8, V23, V23.1) and release manifests are kept under `archive/`. The original V21
+master is **not** retained in this repository: `archive/V21/` holds only a placeholder (the original's SHA-256
+is recorded in `archive/manifests/V22_MANIFEST.json`).
 
 ## Canonical reports
-- R01 — Research Master
-- R02 — Research Program & Phases
+Current reports in `REPORTS/`:
 - R03 — Experimental Methodology
-- R04 — System & Software Architecture
-- R05 — Related Work & Literature Evidence
-- R06 — Study Specifications & Execution Registry
+- R05 — Related Work & Literature Evidence (index; the registry lives in `related_work/`)
+- R06 — Study Specifications & Execution Registry (with `contracts/STUDY_ID_REGISTRY.yaml`)
 - R07 — Research Extensions
-- R08 — Historical Archive
+- R09 — Pragma Space and Candidate Generation
+- R11 — Research Program and Study Portfolio
+- R12 — Cross-Layer Study Matrix
+
+Retired stubs (R01, R02, R04, R08) are in `archive/reports_retired/`; per-version release notes (R10, R13, R14) are in
+`archive/release_notes/`; the V19 research master formerly embedded in R07 is in `archive/V19/`.
 
 ## AI Control Layer
 The AI_CONTROL directory governs agents, tools, plugins, skills, permissions,
@@ -81,8 +106,7 @@ The current reference device is fixed to `xc7z020clg484`.
 
 Every Vivado/Vitis experiment is isolated by `STUDY_ID/RUN_ID`. Hardware and software artifacts are provenance-controlled. The canonical contracts are:
 
-- `contracts/DEVICE_REFERENCE_CONTRACT.yaml`
-- `contracts/HARDWARE_PLATFORM_CONTRACT.yaml`
+- `contracts/HARDWARE_PLATFORM_CONTRACT.yaml` (reference device, platform and toolchain identity)
 - `contracts/ARTIFACT_AND_RUN_MANAGEMENT_CONTRACT.yaml`
 
 The required run workspace is:
@@ -121,7 +145,7 @@ Before implementation, the following contracts are mandatory and validated by `s
 
 - `SEARCH_ALGORITHM_CONTRACT.yaml`
 - `MEASUREMENT_CONTRACT.yaml`
-- `MEMORY_PATH_CONTRACT.yaml`
+- `SYSTEM_ARCHITECTURE_CONTRACT.yaml` (includes the memory-path rules)
 - `CONCURRENCY_FAIRNESS_CONTRACT.yaml`
 - `REPRODUCTION_CONTRACT.yaml`
 - `DATA_LEAKAGE_CONTRACT.yaml`

@@ -1,5 +1,0 @@
-{
-  "study_id": "S24",
-  "plots": [],
-  "rule": "Only measured, derived, explicitly-labelled reference/oracle, or explicitly-labelled predicted data may be plotted."
-}

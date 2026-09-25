@@ -1,0 +1,22 @@
+schema_version: "1.0"
+required:
+  - pragma_space_id
+  - benchmark_id
+  - source_version
+  - directives
+  - constraints
+properties:
+  pragma_space_id: string
+  benchmark_id: string
+  source_version: string
+  directives:
+    type: list
+    item_fields:
+      - directive_family
+      - location
+      - parameters
+  constraints:
+    type: list
+  generator_policy:
+    allowed_methods: [exhaustive, random, bayesian_optimization, evolutionary, rule_based, custom]   # names as in SEARCH_ALGORITHM_CONTRACT
+    seed: integer_or_null

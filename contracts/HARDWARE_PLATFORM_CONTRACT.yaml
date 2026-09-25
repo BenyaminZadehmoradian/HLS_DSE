@@ -1,23 +1,52 @@
-contract_version: "1.0"
+contract_version: "2.0"
 contract_id: HARDWARE_PLATFORM_CONTRACT
 status: "FIXED_REFERENCE_DEVICE"
+# Single source of truth for the reference device, the hardware platform and the toolchain/device identity.
+# 2.0 merges the former DEVICE_REFERENCE_CONTRACT.yaml and TOOLCHAIN_DEVICE_CONTRACT.yaml (see
+# archive/README.md). Other files reference this contract instead of restating the device.
+
 reference_device:
+  vendor: "AMD-Xilinx"
   family: "Zynq-7000"
   part: "xc7z020clg484"
+  package: "clg484"
   speed_grade: "-1"
+  tool_part_string: "xc7z020clg484-1"
   board: "NONE"
+  hardware_available: false
+
+speed_grade_provenance:
+  status: "FIXED_REFERENCE_CONFIGURATION"
+  source: "Human decision, 2026-09-25 (Final Pre-P0 remediation)."
+  basis: "Documented/common Zynq-7020 HLS reference usage; -1 is the slowest commercial grade and therefore the timing-conservative choice."
+  not_derived_from: "board identification (no physical board exists)"
+  tool_visibility: "Vivado 2025.2.1 get_parts reports xc7z020clg484-1 (see audit/environment/PRE_P0_TOOLCHAIN_PREPARATION_REPORT.md)."
+
+device_policy:
+  fixed_reference_device: true
+  change_requires_new_project_version: true
+  no_silent_device_change: true
+  device_must_be_recorded_per_run: true
 
 platform_status:
   hardware_status: "NOT_AVAILABLE"
   board_status: "NOT_AVAILABLE"
   device_status: "VERIFIED"
-  speed_grade_status: "FIXED_REFERENCE_CONFIGURATION"
   hardware_available: false
   programming_available: false
   runtime_measurement_available: false
   note: "No physical board exists. Device status means Vivado 2025.2.1 recognizes the part; it does not imply board, programming, or runtime availability."
 
-required_identity:
+# Toolchain/device identity recorded per run (field presence is enforced by schemas/RUN_MANIFEST_SCHEMA.json).
+toolchain_identity:
+  required: [vendor, device_part, os_image, target_clock]
+  required_when_used: [vivado_version, vitis_version, hls_version, clock_uncertainty, synthesis_strategy,
+                       implementation_strategy]
+  required_when_stochastic: [seeds]
+  optional: [board, package, speed_grade]
+  identity_rule: "Toolchain/device differences create distinct environment IDs (environments/ENVIRONMENT_REGISTRY.yaml)."
+
+hardware_build_identity:
   - hardware_id
   - device_part
   - vivado_version
@@ -26,13 +55,11 @@ required_identity:
   - bitstream_hash_when_generated
 
 rules:
-  - "The reference FPGA device is fixed to xc7z020clg484 unless a new project version explicitly changes it."
   - "Every hardware build receives a unique HARDWARE_ID."
-  - "XSA artifacts are immutable after RUN_COMPLETE."
-  - "Bitstreams are immutable after RUN_COMPLETE."
+  - "XSA artifacts and bitstreams are immutable after RUN_COMPLETE."
   - "Vivado projects must be isolated per Study/Run unless an explicitly versioned immutable hardware artifact is referenced."
   - "Shared hardware artifacts are read-only inputs and may not be overwritten by a Study."
-  - "DMA, ACP, cache level, coherency, DDR path, and result-return path are UNKNOWN until declared and measured."
+  - "Memory-path and interface properties (DMA, ACP, M_AXI, cache level, coherency, result return) are governed by contracts/SYSTEM_ARCHITECTURE_CONTRACT.yaml."
 
 vivado_outputs:
   required_when_used:

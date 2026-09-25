@@ -1,56 +1,14 @@
----
-report_metadata:
-  report_id: "report"
-  report_type: "STUDY"
-  title: "report"
-  project: "HLS-DSE"
-  project_version: "V22.4"
-  phase_id: ""
-  study_id: "S01"
-  gate_id: ""
-  status: "DRAFT"
-authorship:
-  generated_by_ai: true
-  ai_model: "GPT-5.6 Luna"
-  ai_role: "Research documentation"
-  human_researcher: ""
-  human_approval_required: true
-  human_approval_status: "PENDING"
-dates:
-  created_date: "2026-09-25"
-  last_updated: "2026-09-25"
-versioning:
-  report_version: "1.0"
-  revision: 0
-  supersedes_report_id: ""
-provenance:
-  source_studies: ["S01"]
-  source_runs: []
-  source_evidence: []
-  source_artifacts: []
-  source_data_versions: []
-  source_scripts: []
-  source_plot_scripts: []
-reproducibility:
-  environment_id: ""
-  tool_versions: []
-  hardware: []
-  random_seeds: []
-  commands_or_entrypoints: []
-  reproducibility_status: "NOT_CHECKED"
-validation:
-  validation_status: "NOT_RUN"
-  validation_tests: []
-  acceptance_criteria: []
-  failed_criteria: []
-  known_limitations: []
-classification:
-  evidence_level: "MIXED"
-  publication_ready: false
----
+# S01 — P1 Flow Smoke Test
 
-# S01 Study Report
+**Status:** LOCKED_UNTIL_P0_GATE; not started (see `studies/S01/CONTRACT.yaml`).
 
-Status: registry_only
+## Objective
+The first real tool-flow implementation after P0 approval. It uses one benchmark, one device, one toolchain
+and a tiny pragma space (at most 5 candidates). It validates HLS → synthesis/P&R parsing and timing accounting
+without making scientific claims.
 
-Generated sections must be derived from scanner, logger, evidence, and analysis outputs.
+## Evidence
+No evidence exists yet.
+
+## Gate decision
+Not applicable until the P0 gate is approved by a human.

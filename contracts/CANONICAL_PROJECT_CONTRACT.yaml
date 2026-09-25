@@ -9,7 +9,8 @@ source_of_truth:
   raw_evidence: evidence/measured/
   derived_evidence: evidence/derived/
   plots: studies/<SXX>/plots/generated/
-  reports: reports_generated/
+  plot_registry: studies/PLOT_REGISTRY.json
+  reports: REPORTS/
   run_manifests: runs/<STUDY_ID>/<RUN_ID>/manifest.yaml
   hardware_contract: contracts/HARDWARE_PLATFORM_CONTRACT.yaml
   artifact_contract: contracts/ARTIFACT_AND_RUN_MANAGEMENT_CONTRACT.yaml

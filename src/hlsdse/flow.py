@@ -21,11 +21,17 @@ def run_command(run: RunRecord, command, log_path, *, action, actor='hlsdse.flow
     argv = shlex.split(command) if isinstance(command, str) else list(command)
     start = time.time()
     try:
-        with open(log_path, 'w', encoding='utf-8') as log:
+        # append mode: a denied request must not truncate an existing log
+        with open(log_path, 'a', encoding='utf-8') as log:
             res = control.run_authorized(argv, action=action, phase=phase or _study_phase(root, run.study_id),
                                          study=run.study_id, environment=run.environment_id, actor=actor,
                                          caller=f'hlsdse.flow.run_command:{run.run_id}', root=root,
                                          stdout=log, stderr=log)
+    except control.ExecutionDenied as e:
+        run.status = 'DENIED'
+        run.metrics['control_reason'] = f'EXECUTION_REFUSED: {e}'
+        run.metrics['wall_clock_s'] = time.time() - start
+        return run
     except OSError:
         run.status = 'FAILED'; run.failure_class = 'INFRASTRUCTURE_FAILURE'
         run.metrics['wall_clock_s'] = time.time() - start
@@ -39,6 +45,6 @@ def run_command(run: RunRecord, command, log_path, *, action, actor='hlsdse.flow
         run.status = 'FAILED'; run.failure_class = 'INFRASTRUCTURE_FAILURE'
     else:
         run.status = 'SUCCESS' if res.returncode == 0 else 'FAILED'
-        if res.returncode != 0: run.failure_class = 'UNKNOWN_FAILURE'
+        if res.returncode != 0: run.failure_class = 'UNKNOWN_ERROR'
     run.metrics['wall_clock_s'] = time.time() - start
     return run

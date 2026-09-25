@@ -4,14 +4,14 @@ report_metadata:
   report_type: "PHASE | STUDY | GATE | METHODOLOGY | ANALYSIS | FINAL"
   title: ""
   project: "HLS-DSE"
-  project_version: "V22.x"
+  project_version: "<RESEARCH_STATE.yaml project_version>"
   phase_id: ""
   study_id: ""
   gate_id: ""
   status: "DRAFT | IN_PROGRESS | VALIDATED | GATE_REVIEW | APPROVED | REJECTED | ARCHIVED"
 authorship:
   generated_by_ai: true
-  ai_model: "GPT-5.6 Luna"
+  ai_model: "<model from the actual execution context, else UNKNOWN>"
   ai_role: "Research execution / analysis / reporting"
   human_researcher: ""
   human_approval_required: true
@@ -50,7 +50,7 @@ validation:
   failed_criteria: []
   known_limitations: []
 classification:
-  evidence_level: "MEASURED | DERIVED | PREDICTED | REFERENCE | MIXED"
+  evidence_level: "<statuses from contracts/METRIC_PROVENANCE_CONTRACT.yaml, or MIXED>"
   publication_ready: false
 ---
 

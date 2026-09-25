@@ -2,33 +2,30 @@ contract_version: "1.0"
 contract_id: MEASUREMENT_CONTRACT
 status: ACTIVE
 principle: "Measured, derived, and estimated values must never be conflated."
+# Stage durations use the t_*_s names of AI_CONTROL/AI_TIME_MEASUREMENT_POLICY.md and schemas/RUN_TIMING_SCHEMA.json.
 required_time_layers:
   - search_overhead_s
-  - hls_s
-  - synthesis_s
-  - implementation_s
-  - bitstream_generation_s
-  - programming_s
-  - initialization_s
+  - t_hls_s
+  - t_synthesis_s
+  - t_pnr_s
+  - t_bitstream_s
+  - t_program_s
+  - t_init_s
   - data_ready_wait_s
-  - accelerator_execution_s
+  - t_execution_s
   - synchronization_s
   - end_to_end_latency_s
   - lifecycle_time_s
+  - t_total_s
 required_counts:
   - n_hls
   - n_synthesis
-  - n_implementation
+  - n_pnr
   - n_bitstream_build
   - n_program
   - n_invocation
-source_labels:
-  allowed:
-    - MEASURED
-    - DERIVED
-    - TOOL_REPORTED
-    - LITERATURE_REPORTED
-    - UNKNOWN
+# Value statuses are the canonical list in contracts/METRIC_PROVENANCE_CONTRACT.yaml (allowed_statuses).
+source_labels: contracts/METRIC_PROVENANCE_CONTRACT.yaml#allowed_statuses
 rules:
   - "UNKNOWN must remain UNKNOWN; no synthetic value may be inserted."
   - "Kernel execution time and end-to-end latency must be stored separately."

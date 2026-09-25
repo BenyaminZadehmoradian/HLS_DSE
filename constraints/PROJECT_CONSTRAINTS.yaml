@@ -1,6 +1,0 @@
-project: HLS-DSE
-mode: controlled_research
-no_fabricated_results: true
-cross_study_write: false
-locked_research_contract: true
-evidence_provenance_required: true

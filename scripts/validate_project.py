@@ -22,7 +22,7 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, str(ROOT/'src'))
 from hlsdse.control import repository_control_errors
 errors.extend(f'CONTROL: {e}' for e in repository_control_errors(ROOT))
-for name in ['CONTROL_PLANE_POLICY.yaml','PHASE_CONTROL.yaml','AUTO_PUSH_POLICY.yaml','AI_EXECUTION_POLICY.yaml','AI_SCOPE_POLICY.yaml']:
+for name in ['CONTROL_PLANE_POLICY.yaml','PHASE_CONTROL.yaml','AUTO_PUSH_POLICY.yaml','AI_EXECUTION_POLICY.yaml','AGENT_PERMISSIONS.yaml','AI_CONDUCT.md','AI_PHASE_GATE_POLICY.md']:
     require(ROOT/'AI_CONTROL'/name, 'AI_CONTROL policy')
 if state.get('fixed_reference_device') != 'xc7z020clg484': errors.append('Reference device must be xc7z020clg484')
 
@@ -43,18 +43,36 @@ s09=load_yaml(ROOT/'studies/S09/CONTRACT.yaml')
 if s09 and s09.get('status')!='ARCHIVED_ID_COLLISION': errors.append('S09 must be archived')
 
 required_contracts=[
-'DEVICE_REFERENCE_CONTRACT.yaml','HARDWARE_PLATFORM_CONTRACT.yaml','ARTIFACT_AND_RUN_MANAGEMENT_CONTRACT.yaml',
+'HARDWARE_PLATFORM_CONTRACT.yaml','ARTIFACT_AND_RUN_MANAGEMENT_CONTRACT.yaml',
 'BENCHMARK_CONTRACT.yaml','STATISTICS_CONTRACT.yaml','SEARCH_ALGORITHM_CONTRACT.yaml','MEASUREMENT_CONTRACT.yaml',
-'MEMORY_PATH_CONTRACT.yaml','CONCURRENCY_FAIRNESS_CONTRACT.yaml','REPRODUCTION_CONTRACT.yaml','DATA_LEAKAGE_CONTRACT.yaml',
+'SYSTEM_ARCHITECTURE_CONTRACT.yaml','CONCURRENCY_FAIRNESS_CONTRACT.yaml','REPRODUCTION_CONTRACT.yaml','DATA_LEAKAGE_CONTRACT.yaml',
 'CACHE_CONTRACT.yaml','FAILURE_AND_RETRY_CONTRACT.yaml','P1_IMPLEMENTATION_CONTRACT.yaml','EXTERNAL_BASELINE_CONTRACT.yaml',
 'STAGED_EVALUATION_CONTRACT.yaml','STAGE_DECISION_CONTRACT.yaml','METRIC_PROVENANCE_CONTRACT.yaml']
 for name in required_contracts: require(ROOT/'contracts'/name, 'contract')
 
-for p in [ROOT/'schemas/METRIC_PROVENANCE_SCHEMA.json',ROOT/'schemas/STAGE_DECISION_SCHEMA.json',ROOT/'experiments/EVIDENCE_RECORD_SCHEMA.json',ROOT/'experiments/RUN_MANIFEST_SCHEMA.json',ROOT/'experiments/PRAGMA_CANDIDATE_SCHEMA.json',ROOT/'schemas/STUDY_RUN_SCHEMA.json']:
-    try: json.loads(p.read_text(encoding='utf-8'))
+schemas={}
+for name in ['METRIC_PROVENANCE_SCHEMA.json','STAGE_DECISION_SCHEMA.json','EVIDENCE_RECORD_SCHEMA.json',
+             'RUN_MANIFEST_SCHEMA.json','RUN_TIMING_SCHEMA.json','PRAGMA_CANDIDATE_SCHEMA.json']:
+    p=ROOT/'schemas'/name
+    try: schemas[name]=json.loads(p.read_text(encoding='utf-8'))
     except Exception as e: errors.append(f'JSON {p}: {e}')
+if not (ROOT/'schemas/PRAGMA_SPACE_SCHEMA.yaml').exists(): errors.append('Missing schemas/PRAGMA_SPACE_SCHEMA.yaml')
 
-if not (ROOT/'runs/_TEMPLATE/manifest.yaml').exists(): errors.append('Missing runs/_TEMPLATE/manifest.yaml')
+# The run template must satisfy the run-manifest schema's required fields and top-level types.
+tmpl=ROOT/'runs/_TEMPLATE/manifest.yaml'
+if not tmpl.exists(): errors.append('Missing runs/_TEMPLATE/manifest.yaml')
+elif 'RUN_MANIFEST_SCHEMA.json' in schemas:
+    m=load_yaml(tmpl); rs=schemas['RUN_MANIFEST_SCHEMA.json']
+    pytypes={'object':dict,'string':str,'integer':int,'boolean':bool,'null':type(None)}
+    for k in rs['required']:
+        if k not in m: errors.append(f'runs/_TEMPLATE manifest missing required field {k}')
+    for k,spec in rs['properties'].items():
+        if k in m and 'type' in spec:
+            allowed=spec['type'] if isinstance(spec['type'],list) else [spec['type']]
+            if not isinstance(m[k],tuple(pytypes[a] for a in allowed if a in pytypes)):
+                errors.append(f'runs/_TEMPLATE manifest field {k} is not {allowed}')
+        if k in m and 'const' in spec and m[k]!=spec['const']:
+            errors.append(f'runs/_TEMPLATE manifest field {k} must be {spec["const"]}')
 if not (ROOT/'benchmarks/templates/BENCHMARK_TEMPLATE.yaml').exists(): errors.append('Missing benchmark template')
 if not (ROOT/'configs/preflight/default.yaml').exists(): errors.append('Missing preflight config')
 if not (ROOT/'audit/gates/P0_EXIT_CRITERIA.md').exists(): errors.append('Missing P0 exit criteria')

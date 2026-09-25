@@ -34,7 +34,8 @@ from pathlib import Path
 
 import yaml
 
-ROOT = Path(__file__).resolve().parents[2]
+# The repository root. HLSDSE_ROOT overrides the source-tree default (needed when the package is installed).
+ROOT = Path(os.environ.get('HLSDSE_ROOT') or Path(__file__).resolve().parents[2]).resolve()
 POLICY_PATH = 'AI_CONTROL/CONTROL_PLANE_POLICY.yaml'
 DEFAULT_LOG = 'audit/AI_CONTROL/CONTROL_DECISION_LOG.jsonl'   # used only when the policy itself is unreadable
 EXECUTABLE_STUDY_STATUSES = ('PLANNED', 'ACTIVE')
@@ -535,6 +536,7 @@ class ExecutionResult:
     decision: Decision
     executor_called: bool
     returncode: int | None
+    log_error: str | None = None          # the tool ran but its post-execution record could not be written
 
 
 def run_authorized(argv, *, action, phase, study, environment, actor, caller=None, approval_id=None, root=None,
@@ -574,13 +576,20 @@ def run_authorized(argv, *, action, phase, study, environment, actor, caller=Non
     try:
         rc = _execute(d, argv, cwd=cwd, stdout=stdout, stderr=stderr, env=env)
     except ExecutionDenied as e:                              # refused inside the executor: nothing ran
-        _append_log(root, pol, _record(replace(d, decision='DENY', reason_code='EXECUTION_REFUSED', reason=str(e)), False))
+        try:
+            _append_log(root, pol, _record(replace(d, decision='DENY', reason_code='EXECUTION_REFUSED', reason=str(e)), False))
+        except OSError:
+            pass
         raise
     except OSError as e:                                      # the executor was called; the program did not start
         err = f'{type(e).__name__}: {e}'
     finally:
         _ISSUED.pop(d.request_id, None)
-    _append_log(root, pol, _record(d, True, executor_returncode=rc, executor_error=err))
+    try:
+        _append_log(root, pol, _record(d, True, executor_returncode=rc, executor_error=err))
+    except OSError as e:                                      # the tool already ran: report, do not hide its result
+        print(f'HLSDSE_CONTROL_WARNING: post-execution record for {d.request_id} not written: {e}', file=sys.stderr)
+        return ExecutionResult(d, True, rc, log_error=f'{type(e).__name__}: {e}')
     return ExecutionResult(d, True, rc)
 
 
@@ -638,27 +647,50 @@ def transition(to_state, *, approval_id, actor, reason, to_phase=None, root=None
         if changed != {'status', 'active_phase_state'} or changed_pc != {'state'}:
             raise ControlError('STATE_INVALID', f'transition would change unexpected fields: {sorted(changed | changed_pc)}')
         validate_state(root, pol, ns, npc)
-        for path, text in ((sp, s_new), (pp, p_new)):
-            tmp = path.with_suffix(path.suffix + '.tmp')
-            tmp.write_text(text, encoding='utf-8')
-            os.replace(tmp, path)
+        _write_pair(((sp, s_old, s_new), (pp, p_old, p_new)))
         rec.update(decision='ALLOW', reason_code='TRANSITIONED', new_state=to_state, approval_id=appr['approval_id'],
                    requires=rule['requires'], new_state_sha256=_sha256(s_new.encode()),
                    new_gate_hash=gate_hash(pol, ns, npc))
         try:
             _append_log(root, pol, rec)
         except OSError:
-            sp.write_text(s_old, encoding='utf-8')
-            pp.write_text(p_old, encoding='utf-8')
+            _write_pair(((sp, s_new, s_old), (pp, p_new, p_old)))
             raise ControlError('LOG_UNAVAILABLE', 'transition rolled back: decision log not writable')
         return rec
-    except ControlError as e:
+    except Exception as exc:                                  # any failure is a logged DENY, never a partial ALLOW
+        e = exc if isinstance(exc, ControlError) else ControlError('INTERNAL_ERROR', f'{type(exc).__name__}: {exc}')
         rec.update(decision='DENY', reason_code=e.code, reason=f'{e.code}: {e.detail} (requested by {actor}: {reason})')
         try:
             _append_log(root, pol, rec)
         except OSError:
             pass
-        raise
+        if e is exc:
+            raise
+        raise e from exc
+
+
+def _write_pair(files):
+    """Replace several files as one unit: every new text is written to a temp file first, then each is moved into
+    place; if any replace fails, the files already replaced are restored to their old text."""
+    tmps = []
+    try:
+        for path, _old, new in files:
+            tmp = path.with_suffix(path.suffix + '.tmp')
+            tmp.write_text(new, encoding='utf-8')
+            tmps.append(tmp)
+        done = []
+        try:
+            for (path, old, _new), tmp in zip(files, tmps):
+                os.replace(tmp, path)
+                done.append((path, old))
+        except OSError:
+            for path, old in done:
+                path.write_text(old, encoding='utf-8')
+            raise ControlError('STATE_WRITE_FAILED', 'state files could not be replaced; previous state restored')
+    finally:
+        for tmp in tmps:
+            if tmp.exists():
+                tmp.unlink()
 
 
 # ------------------------------------------------------------------------------------------- repository checks

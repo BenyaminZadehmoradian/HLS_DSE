@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
 from hlsdse.scanning.environment import scan_environment
 
-required=['vivado','vitis','vitis_hls','git']
+required=['vivado','vitis','vitis-run','git']   # configs/preflight/default.yaml
 env=scan_environment()
 print(json.dumps(env, indent=2))
 missing=[k for k in required if not env['tools'][k]['present']]

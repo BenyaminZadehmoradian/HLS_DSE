@@ -1,9 +1,11 @@
+import uuid
 from dataclasses import dataclass, asdict
 from datetime import datetime, timezone
 from typing import Any, Iterable
 
 STAGES = ("CANDIDATE", "HLS", "SYNTHESIS", "IMPLEMENTATION", "BITSTREAM", "PROGRAMMING", "RUNTIME")
 DECISIONS = ("ADVANCE", "DROP", "KEEP", "DEFER", "BLOCKED")
+DECISION_SOURCES = ("RULE", "HUMAN", "SCHEDULER", "ESTIMATOR_ASSISTED")   # STAGE_DECISION_CONTRACT
 
 @dataclass(frozen=True)
 class StageDecision:
@@ -39,8 +41,12 @@ def validate_stage_decision(decision: StageDecision) -> None:
         raise ValueError("invalid current_stage")
     if decision.decision not in DECISIONS:
         raise ValueError("invalid decision")
+    if decision.decision_source not in DECISION_SOURCES:
+        raise ValueError(f"invalid decision_source: {decision.decision_source}")
     if decision.decision == "ADVANCE":
         expected = next_stage(decision.current_stage)
+        if expected is None:
+            raise ValueError(f"cannot ADVANCE past the final stage {decision.current_stage}")
         if decision.next_stage != expected:
             raise ValueError(f"ADVANCE must target {expected}")
     elif decision.next_stage is not None and decision.decision in {"DROP", "KEEP", "DEFER", "BLOCKED"}:
@@ -59,7 +65,7 @@ def make_decision(candidate_id: str, run_id: str, current_stage: str, decision: 
                   source: str = "RULE", estimator: dict[str, Any] | None = None,
                   decision_id: str | None = None) -> StageDecision:
     if decision_id is None:
-        decision_id = f"DEC-{run_id}-{candidate_id}-{current_stage}"
+        decision_id = f"DEC-{run_id}-{candidate_id}-{current_stage}-{uuid.uuid4().hex[:12]}"
     d = StageDecision(
         decision_id=decision_id, candidate_id=candidate_id, run_id=run_id,
         current_stage=current_stage, decision=decision,

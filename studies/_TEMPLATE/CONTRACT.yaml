@@ -1,0 +1,12 @@
+study_id: SXX
+title: "<Study title from contracts/STUDY_ID_REGISTRY.yaml>"
+status: PLANNED
+isolated_workspace: true
+measured_evidence_required: true
+cross_study_write: false
+architecture_contract: contracts/SYSTEM_ARCHITECTURE_CONTRACT.yaml
+phase_gate_required: true
+classification: undecided
+missing_value: UNKNOWN
+estimation_as_measurement: forbidden
+negative_result_preserved: true

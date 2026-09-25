@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "study_id",
+    "run_id",
+    "class",
+    "status",
+    "provenance"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string"
+    },
+    "study_id": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "class": {
+      "enum": [
+        "MEASURED",
+        "TOOL_REPORTED",
+        "DERIVED",
+        "ESTIMATED",
+        "PREDICTED",
+        "LITERATURE_REPORTED",
+        "REPRODUCED",
+        "REFERENCE_ORACLE",
+        "UNKNOWN"
+      ],
+      "description": "Canonical metric statuses: contracts/METRIC_PROVENANCE_CONTRACT.yaml allowed_statuses."
+    },
+    "status": {
+      "enum": [
+        "VALID",
+        "INVALID",
+        "UNKNOWN"
+      ],
+      "description": "Validation state of the evidence record (not the value status)."
+    },
+    "metric": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "value": {},
+    "unit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_stage": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "project_version",
+        "study_id",
+        "run_id",
+        "candidate_id",
+        "benchmark_id",
+        "device_part",
+        "tool",
+        "tool_version",
+        "source_artifact",
+        "source_artifact_sha256",
+        "source_field_or_measurement",
+        "recorded_at_utc"
+      ]
+    },
+    "failure_class": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

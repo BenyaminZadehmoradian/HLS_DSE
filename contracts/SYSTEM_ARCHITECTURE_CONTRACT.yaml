@@ -1,6 +1,10 @@
-contract_version: '1.0'
-status: PLANNED
+contract_version: '2.0'
+contract_id: SYSTEM_ARCHITECTURE_CONTRACT
+status: ACTIVE
+# 2.0 merges the former MEMORY_PATH_CONTRACT.yaml. The reference device is defined in
+# contracts/HARDWARE_PLATFORM_CONTRACT.yaml; timing field names follow AI_CONTROL/AI_TIME_MEASUREMENT_POLICY.md.
 architecture_id: CPU_PROGRAM_FPGA_SHARED_CACHE_DATA_PATH
+device_contract: contracts/HARDWARE_PLATFORM_CONTRACT.yaml
 assumptions:
   control_plane:
     owner: CPU
@@ -15,17 +19,21 @@ assumptions:
     - shared_cache
     - FPGA_accelerator
     data_source: shared_cache
-    dma: UNKNOWN_UNTIL_MEASURED
     direct_ddr_access: NOT_ASSUMED
-    cache_coherence: MUST_BE_DECLARED
-    cache_level: MUST_BE_DECLARED
   fpga:
     receives_data_from: shared_cache
-    returns_results_to: MUST_BE_DECLARED
   configuration:
     initiated_by: CPU
     programming_time_required_when_programmed: true
     partial_reconfiguration: OPTIONAL_STUDY
+interfaces:
+  control: MUST_BE_DECLARED_AND_MEASURED
+  m_axi: UNKNOWN_UNTIL_MEASURED      # identified from the actual block design and generated artifacts
+  acp: UNKNOWN_UNTIL_MEASURED        # declared from the actual hardware design
+  dma: UNKNOWN_UNTIL_MEASURED
+  cache_level: MUST_BE_DECLARED
+  cache_coherence: MUST_BE_DECLARED
+  result_return_path: MUST_BE_DECLARED
 required_measurements:
   configuration:
   - t_program_s
@@ -40,11 +48,12 @@ required_measurements:
   - data_ready_wait_s
   - fpga_data_consumption_s
   - contention_wait_s
+  - memory_bandwidth_Bps
   system:
   - cpu_control_overhead_s
-  - accelerator_execution_s
+  - t_execution_s
   - end_to_end_latency_s
-  - invocation_count
+  - n_invocation
   - lifecycle_time_s
 forbidden_assumptions:
 - infer_dma_from_api_calls
@@ -58,12 +67,3 @@ architecture_questions:
 - Does CPU programming overhead change the preferred design?
 - Does shared-cache contention change ranking among candidates or benchmarks?
 - Does lifecycle-optimal DSE differ from kernel-latency-optimal DSE?
-device_part: xc7z020clg484
-interfaces:
-  control: MUST_BE_DECLARED_AND_MEASURED
-  m_axi: UNKNOWN_UNTIL_MEASURED
-  acp: UNKNOWN_UNTIL_MEASURED
-  dma: UNKNOWN_UNTIL_MEASURED
-  cache_level: MUST_BE_DECLARED
-  cache_coherence: MUST_BE_DECLARED
-  result_return_path: MUST_BE_DECLARED

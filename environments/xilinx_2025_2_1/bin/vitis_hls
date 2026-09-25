@@ -17,4 +17,6 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-exec "$XILINX_VITIS/bin/vitis-run" --mode hls "${ARGS[@]}"
+# Routed through the control-plane gate as `vitis-run --mode hls`: classified as research_hls_runs (or
+# environment_discovery for --version) and resolved behind the gate, never exec'd directly.
+exec "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/../tool_gate.sh" vitis-run --mode hls "${ARGS[@]}"

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HLS-DSE Pragma Candidate",
+  "type": "object",
+  "required": [
+    "candidate_id",
+    "benchmark_id",
+    "pragma_space_id",
+    "source_version",
+    "generator_id",
+    "configuration",
+    "legality_status",
+    "generated_at",
+    "evaluation_status"
+  ],
+  "properties": {
+    "candidate_id": {
+      "type": "string"
+    },
+    "benchmark_id": {
+      "type": "string"
+    },
+    "pragma_space_id": {
+      "type": "string"
+    },
+    "source_version": {
+      "type": "string"
+    },
+    "generator_id": {
+      "type": "string"
+    },
+    "generator_version": {
+      "type": "string"
+    },
+    "seed": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "configuration": {
+      "type": "object"
+    },
+    "legality_status": {
+      "enum": [
+        "LEGAL",
+        "ILLEGAL_DECLARED_CONSTRAINT",
+        "ILLEGAL_TOOL_REJECTED",
+        "INVALID_GENERATOR_OUTPUT",
+        "UNKNOWN",
+        "OUT_OF_SPACE_CANDIDATE"
+      ],
+      "description": "OUT_OF_SPACE_CANDIDATE records a useful configuration outside the declared space; it is never evaluated as part of that space."
+    },
+    "parent_candidate_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "generated_at": {
+      "type": "string",
+      "description": "ISO-8601 UTC generation timestamp"
+    },
+    "evaluation_status": {
+      "enum": [
+        "NOT_EVALUATED",
+        "IN_PROGRESS",
+        "EVALUATED",
+        "FAILED",
+        "DROPPED"
+      ]
+    }
+  }
+}

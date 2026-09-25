@@ -1,12 +1,17 @@
-contract_version: "1.0"
+contract_version: "2.0"
 contract_id: FAILURE_AND_RETRY_CONTRACT
 status: ACTIVE
+# 2.0 merges the former FAILURE_TAXONOMY.yaml. Where the two files disagreed, the resolution is recorded in
+# `resolutions`. Aliases map the former taxonomy names to the canonical class names.
 classes:
   - CONFIG_ERROR
+  - SOURCE_ERROR
   - ENVIRONMENT_ERROR
   - TOOL_NOT_FOUND
   - LICENSE_ERROR
   - PROCESS_ERROR
+  - INFRASTRUCTURE_FAILURE
+  - TRANSIENT_TOOL_FAILURE
   - TIMEOUT
   - HLS_SYNTHESIS_ERROR
   - HLS_PARSE_ERROR
@@ -20,18 +25,41 @@ classes:
   - CORRECTNESS_FAILURE
   - DATABASE_ERROR
   - UNKNOWN_ERROR
+aliases:
+  HLS_ERROR: HLS_SYNTHESIS_ERROR
+  FUNCTIONAL_MISMATCH: CORRECTNESS_FAILURE
+  RESOURCE_OVERFLOW: RESOURCE_FAILURE
+  SYNTHESIS_ERROR: VIVADO_SYNTHESIS_ERROR
+  PNR_ERROR: VIVADO_IMPLEMENTATION_ERROR
+  LICENSE_FAILURE: LICENSE_ERROR
+  UNKNOWN_FAILURE: UNKNOWN_ERROR
 retry:
   max_attempts: 2
+  # retryable: the same attempt may be repeated unchanged.
   retryable:
     - LICENSE_ERROR
-    - TIMEOUT
     - PROCESS_ERROR
+    - INFRASTRUCTURE_FAILURE
+    - TRANSIENT_TOOL_FAILURE
+  # controlled: a retry must change a declared, recorded parameter (seed, strategy, timeout, clock) and is a
+  # new attempt; a blind repeat is not allowed.
+  controlled:
+    - TIMEOUT
+    - TIMING_FAILURE
+    - VIVADO_IMPLEMENTATION_ERROR
   non_retryable:
     - CONFIG_ERROR
+    - SOURCE_ERROR
+    - HLS_SYNTHESIS_ERROR
     - HLS_PARSE_ERROR
+    - VIVADO_SYNTHESIS_ERROR
     - CORRECTNESS_FAILURE
     - RESOURCE_FAILURE
-    - TIMING_FAILURE
+    - UNKNOWN_ERROR
+resolutions:
+  TIMING_FAILURE: "was non_retryable (FAILURE_AND_RETRY) vs controlled (FAILURE_TAXONOMY): controlled - a changed seed or strategy is a legitimate, recorded new attempt."
+  TIMEOUT: "was retryable vs controlled: controlled - a blind repeat of a timeout spends budget without new information."
 rules:
+  - "Failure class must be assigned before a run is counted in a scientific metric."
   - "Every retry gets a new attempt_id."
   - "A retry must never overwrite the failed attempt's logs or artifacts."

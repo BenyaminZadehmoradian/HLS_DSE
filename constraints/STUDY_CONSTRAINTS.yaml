@@ -1,5 +1,0 @@
-each_study:
-  isolated_workspace: true
-  unique_run_id: true
-  self_contained_config: true
-  report_generated_from_evidence: true

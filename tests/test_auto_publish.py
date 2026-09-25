@@ -224,3 +224,36 @@ def test_real_policy_is_safe():
     assert pol['remote_url'] == 'https://github.com/BenyaminZadehmoradian/HLS_DSE.git'
     assert pol['scan']['pdf']['default'] == 'block' and pol['scan']['pdf']['allowlist'] == []
     assert 'p1_authorized' in pol['protected_state']['files']['RESEARCH_STATE.yaml']
+
+
+def test_secret_in_unpushed_commit_is_caught_even_if_edited_away(tmp_path):
+    work, remote = make_repo(tmp_path)
+    (work / 'leak.md').write_text('AKIA' + 'QRSTUVWXYZ012345\n'); git(work, 'add', '-A')
+    git(work, 'commit', '-q', '-m', 'test: earlier unpushed commit')
+    (work / 'leak.md').write_text('clean now\n')                         # working tree no longer has the secret
+    e = publish(work)
+    assert e['result'] == 'BLOCKED' and e['security_scan_status'] == 'FAIL'
+    assert 'unpushed commit' in e['blocker']['detail'] and remote_head(remote) != git(work, 'rev-parse', 'HEAD')
+
+
+def test_deleting_a_committed_forbidden_artifact_is_allowed(tmp_path):
+    work, remote = make_repo(tmp_path)
+    (work / 'old.bit').write_bytes(b'bitstream')
+    git(work, 'add', '-A'); git(work, 'commit', '-q', '-m', 'test: legacy artifact')
+    git(work, 'push', '-q', 'origin', 'HEAD:refs/heads/main'); git(work, 'fetch', '-q', 'origin')
+    (work / 'old.bit').unlink()
+    e = publish(work, message='repo: remove legacy bitstream artifact')
+    assert e['result'] == 'PUSHED', e['blocker']
+    assert remote_head(remote) == git(work, 'rev-parse', 'HEAD')
+
+
+def test_missing_remote_ref_blocks(tmp_path):
+    work, remote = make_repo(tmp_path)
+    git(work, 'update-ref', '-d', 'refs/remotes/origin/main')
+    git(work, 'remote', 'set-url', 'origin', str(tmp_path / 'nowhere.git'))
+    pol = yaml.safe_load((work / 'AI_CONTROL/AUTO_PUSH_POLICY.yaml').read_text())
+    pol['remote_url'] = str(tmp_path / 'nowhere.git'); pol['fetch_before_push'] = False
+    (work / 'AI_CONTROL/AUTO_PUSH_POLICY.yaml').write_text(yaml.safe_dump(pol))
+    git(work, 'add', '-A'); git(work, 'commit', '-q', '-m', 'test: point at empty remote')
+    (work / 'x.md').write_text('x\n')
+    assert publish(work)['blocker']['code'] == 'REMOTE_REF_MISSING'

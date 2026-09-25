@@ -1,5 +1,10 @@
 # AI PHASE GATE POLICY
 
+The machine-readable truth is `CONTROL_PLANE_POLICY.yaml` (phases, states, transition requirements) and
+`PHASE_CONTROL.yaml` (transition table); the runtime control plane enforces both. This document explains them.
+It also absorbs the former `AI_SCOPE_POLICY.yaml`, the gate part of `AI_REPORTING_POLICY.md` and
+`PHASE_GATE_REPORT_TEMPLATE.md`.
+
 ## Fundamental rule
 
 The AI MUST NOT implement the entire research project in one pass.
@@ -19,9 +24,12 @@ IMPLEMENTING
 VALIDATING
   ↓
 GATE_REVIEW
-  ├── PASS → APPROVED_FOR_NEXT_PHASE
-  └── FAIL → BLOCKED / REMEDIATION
+  ├── PASS → APPROVED_FOR_NEXT_PHASE   (human only)
+  └── FAIL → BLOCKED
 ```
+
+Remediation is work done while a Phase is `BLOCKED`; it is not a separate state. `PHASE_CONTROL.yaml` has no
+automated transition out of `BLOCKED`: leaving it is a human-authored state change.
 
 A Phase in `PLANNED` state may have:
 - contract
@@ -86,26 +94,29 @@ Before requesting a Gate, the active Phase must produce:
 9. known limitations/failures;
 10. reproducibility information.
 
-## Gate decision
+## Gate report
 
-A Gate report must explicitly contain:
+Every active Phase ends with a Gate Report, written with `REPORT_TEMPLATE.md` (report_type `GATE`). Its Gate
+section must contain:
 
 ```text
 phase_id
 status
-acceptance_criteria
+acceptance_criteria            # one row per criterion: required evidence | result | PASS/FAIL
 criterion_results
-required_outputs
-produced_outputs
+required_outputs               # implementation, raw logs/artifacts, evidence, derived metrics,
+produced_outputs               # required plots, validation, phase report, reproducibility record
 validation_summary
 failed_checks
 known_limitations
 reproducibility_status
-recommendation_for_gate
+recommendation_for_gate        # PASS / FAIL / REMEDIATION_REQUIRED (AI recommendation only)
+human_gate_decision            # PENDING / APPROVED / REJECTED (written by the human)
 ```
 
-The AI may recommend PASS or FAIL based on evidence, but only the user/researcher
-may authorize progression.
+A report without evidence for a criterion is not a PASS. The AI may recommend PASS or FAIL based on evidence,
+but only the user/researcher may authorize progression: the next Phase may start only when
+`human_gate_decision = APPROVED` and a human-authored approval exists in `audit/gates/approvals/`.
 
 ## Critical-path behavior
 
@@ -122,6 +133,11 @@ P0 → P1 → P2 → P3 → P4 → P5 → P6 → P7 → P15
 ```
 
 No phase may be skipped merely because the AI predicts that its outcome will be positive.
+
+## Scope
+- The core path above is fixed; every extension (studies outside it) requires its own Gate.
+- Future work is never executable before its Gate.
+- The historical archive (`archive/`) is read-only.
 
 ## Restart behavior
 

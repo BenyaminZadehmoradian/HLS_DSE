@@ -28,14 +28,6 @@ gate_policy:
   prediction_must_record_model_identity_and_confidence: true
   failed_stage_does_not_imply_unmeasured_later_stage_failure: true
   no_synthetic_measurement_values: true
-required_decision_fields:
-  - decision_id
-  - candidate_id
-  - run_id
-  - current_stage
-  - decision
-  - reason_codes
-  - evidence_ids
-  - next_stage
-  - timestamp_utc
-  - policy_version
+# Decision records: fields and allowed values are defined once, in contracts/STAGE_DECISION_CONTRACT.yaml and
+# schemas/STAGE_DECISION_SCHEMA.json (enforced in code by src/hlsdse/staged.py).
+decision_record_schema: schemas/STAGE_DECISION_SCHEMA.json

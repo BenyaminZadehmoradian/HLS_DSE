@@ -1,3 +1,0 @@
-measured_requires_artifact: true
-prediction_must_be_labeled: true
-unknown_must_not_be_filled: true

@@ -275,9 +275,9 @@ A Study may be planned in this portfolio before its Phase is active, but executa
 
 ## 10. Current Status
 
-At V22.9, the project is **READY FOR P0 IMPLEMENTATION**. S72 is registered as `PLANNED`; its implementation is not authorized merely by adding it to the portfolio.
+The current phase, study and gate state are recorded only in `RESEARCH_STATE.yaml`. S72 is registered as `PLANNED`; its implementation is not authorized merely by adding it to the portfolio.
 
-## 8. Fixed System Architecture for CPU–FPGA Studies
+## 11. Fixed System Architecture for CPU–FPGA Studies
 
 The default hardware/software architecture is now explicitly constrained:
 
@@ -290,7 +290,7 @@ CPU --(program/configure/invoke)--> FPGA
 
 The CPU owns FPGA programming/configuration. FPGA input data is supplied through the shared-cache path. DMA, DDR bypass, cache hierarchy, coherence, and result-return mechanisms are not assumed and must be declared/measured. See `contracts/SYSTEM_ARCHITECTURE_CONTRACT.yaml` and `REPORTS/R12_CROSS_LAYER_STUDY_MATRIX.md`.
 
-## 9. Expanded Independent Study Portfolio
+## 12. Expanded Independent Study Portfolio
 
 The following Studies are registered as independent questions. They are not automatically part of the final paper:
 

@@ -1,3 +1,9 @@
 # Python bytecode/caches (never published; the auto-publish scan also blocks them)
 __pycache__/
 *.py[cod]
+
+# Test and tool caches / stray tool logs written to the working directory
+.pytest_cache/
+.Xil/
+*.log
+!audit/environment/evidence/*.log

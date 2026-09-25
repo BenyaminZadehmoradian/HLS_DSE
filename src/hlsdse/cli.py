@@ -2,6 +2,28 @@ import argparse, json, runpy
 from pathlib import Path
 from .pragma_space import generate_cartesian
 
+def _validate_config(path):
+    """Parse a YAML/JSON config; a pragma-space mapping ({name: [values]}) is also checked for validity.
+    Exit code 0 = valid, 1 = missing or invalid."""
+    import yaml
+    from .pragma_space import validate_space
+    if not path.is_file():
+        print(f'CONFIG_INVALID: {path}: not found'); return 1
+    try:
+        text = path.read_text(encoding='utf-8')
+        data = json.loads(text) if path.suffix == '.json' else yaml.safe_load(text)
+    except Exception as e:
+        print(f'CONFIG_INVALID: {path}: unparseable ({type(e).__name__}: {e})'); return 1
+    if not isinstance(data, dict) or not data:
+        print(f'CONFIG_INVALID: {path}: not a non-empty mapping'); return 1
+    if all(isinstance(v, list) for v in data.values()):
+        try:
+            validate_space(data)
+        except ValueError as e:
+            print(f'CONFIG_INVALID: {path}: {e}'); return 1
+    print(f'CONFIG_VALID: {path}'); return 0
+
+
 def main():
     p=argparse.ArgumentParser(prog='hlsdse')
     sub=p.add_subparsers(dest='cmd',required=True)
@@ -21,26 +43,31 @@ def main():
     pb.add_argument('--path',action='append',dest='paths',help='restrict to these changed paths (repeatable)')
     pb.add_argument('--provenance',default='{}',help='JSON: phase, study, run_id, environment_id when applicable')
     args=p.parse_args()
-    root=Path(__file__).resolve().parents[2]
+    from .control import ROOT as root                 # HLSDSE_ROOT overrides the source-tree default
     if args.cmd=='generate-candidates':
-        space=json.loads(Path(args.space_json).read_text())
-        rows=[{'candidate_id':c.candidate_id,'benchmark_id':c.benchmark_id,'pragma_config':c.pragma_config,'generator':c.generator} for c in generate_cartesian(space,args.benchmark_id)]
+        try:
+            space=json.loads(Path(args.space_json).read_text(encoding='utf-8'))
+            rows=[{'candidate_id':c.candidate_id,'benchmark_id':c.benchmark_id,'pragma_config':c.pragma_config,'generator':c.generator} for c in generate_cartesian(space,args.benchmark_id)]
+        except (OSError, ValueError) as e:                # ValueError covers invalid JSON and invalid spaces
+            print(f'GENERATE_FAILED: {e}'); raise SystemExit(1)
         Path(args.out).write_text(json.dumps(rows,indent=2),encoding='utf-8')
         print(len(rows))
     elif args.cmd=='validate-config':
-        print('CONFIG_PRESENT', Path(args.path).exists())
+        raise SystemExit(_validate_config(Path(args.path)))
     elif args.cmd=='validate-project':
         runpy.run_path(str(root/'scripts/validate_project.py'), run_name='__main__')
     elif args.cmd=='status':
-        state=json.loads('{}') if False else None
         import yaml
-        data=yaml.safe_load((root/'RESEARCH_STATE.yaml').read_text())
+        data=yaml.safe_load((root/'RESEARCH_STATE.yaml').read_text(encoding='utf-8')) or {}
         for k in ['project_version','current_phase','current_study','status','p1_authorized','human_gate_required']:
             print(f'{k}={data.get(k)}')
     elif args.cmd=='publish':
         from .publish import automatic_publish
-        e=automatic_publish(root, args.message, reason=args.reason, actor=args.actor,
-                            provenance=json.loads(args.provenance), paths=args.paths)
+        try:
+            prov=json.loads(args.provenance)
+        except ValueError as err:
+            print(f'PUBLISH_REFUSED: --provenance is not valid JSON ({err})'); raise SystemExit(3)
+        e=automatic_publish(root, args.message, reason=args.reason, actor=args.actor, provenance=prov, paths=args.paths)
         print(json.dumps(e, indent=2, sort_keys=True))
         raise SystemExit({'PUSHED':0,'NO_CHANGES':0,'COMMITTED_NOT_PUSHED':4,'COMMITTED_PUSH_FAILED':5}.get(e['result'],3))
     elif args.cmd=='scan-environment':

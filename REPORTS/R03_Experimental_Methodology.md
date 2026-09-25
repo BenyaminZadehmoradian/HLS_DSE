@@ -249,8 +249,8 @@ Do not conflate logical resource interaction with post-place/post-route interact
 
 
 ## Methodology source of truth
-For detailed historical methodological definitions and earlier alternatives, see:
-`R08_Historical_Archive.md` and the V17 source embedded there.
+Earlier methodological alternatives are preserved in `archive/V19/HLS_DSE_V19_RESEARCH_MASTER.md` and the
+earlier masters in `archive/masters/`. The V17 source is not retained in this repository.
 Current methodology must follow the active Study contract and experiment configuration.
 
 ## Execution-Time and FPGA Programming Accounting
