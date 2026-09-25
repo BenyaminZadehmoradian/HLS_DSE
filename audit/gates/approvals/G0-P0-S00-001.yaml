@@ -1,0 +1,36 @@
+approval_id: G0-P0-S00-001
+project_version: V23.2
+phase: P0
+study: S00
+environment: null
+
+scope:
+allowed:
+- control_plane_implementation
+- mock_validation
+- unit_tests
+- integration_tests
+- negative_control_tests
+- bypass_tests
+- validator_tests
+- control_decision_logging
+- auto_push_policy_validation
+
+forbidden:
+- scientific_experiments
+- research_hls_runs
+- research_vivado_runs
+- research_vitis_runs
+- dse_campaigns
+- xsa
+- bitstream
+- elf
+- hardware_programming
+- hardware_execution
+- p1_implementation
+
+approver: <YOUR_NAME>
+approved_at: <ISO-8601-TIMESTAMP>
+approved_commit: 0cbfc1cd01073b7d6fb3736f5abe9c939179069e
+expires_at: <ISO-8601-TIMESTAMP-OR-null>
+status: APPROVED
