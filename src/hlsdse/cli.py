@@ -10,6 +10,10 @@ def main():
     sub.add_parser('validate-project')
     sub.add_parser('status')
     sub.add_parser('scan-environment')
+    pb=sub.add_parser('publish', help='validate, scan, commit and push per AI_CONTROL/AUTO_PUSH_POLICY.yaml (no force/skip flags)')
+    pb.add_argument('-m','--message',required=True); pb.add_argument('--reason',required=True); pb.add_argument('--actor',required=True)
+    pb.add_argument('--path',action='append',dest='paths',help='restrict to these changed paths (repeatable)')
+    pb.add_argument('--provenance',default='{}',help='JSON: phase, study, run_id, environment_id when applicable')
     args=p.parse_args()
     root=Path(__file__).resolve().parents[2]
     if args.cmd=='generate-candidates':
@@ -28,6 +32,12 @@ def main():
         data=yaml.safe_load((root/'RESEARCH_STATE.yaml').read_text())
         for k in ['project_version','current_phase','current_study','status','p1_authorized','human_gate_required']:
             print(f'{k}={data.get(k)}')
+    elif args.cmd=='publish':
+        from .publish import automatic_publish
+        e=automatic_publish(root, args.message, reason=args.reason, actor=args.actor,
+                            provenance=json.loads(args.provenance), paths=args.paths)
+        print(json.dumps(e, indent=2, sort_keys=True))
+        raise SystemExit({'PUSHED':0,'NO_CHANGES':0,'COMMITTED_NOT_PUSHED':4,'COMMITTED_PUSH_FAILED':5}.get(e['result'],3))
     elif args.cmd=='scan-environment':
         cp=subprocess.run([__import__('sys').executable, str(root/'scripts/p0_preflight.py')], text=True)
         raise SystemExit(cp.returncode)

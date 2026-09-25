@@ -1,0 +1,65 @@
+# Canonical automatic-publish (commit + push) policy. Read by src/hlsdse/publish.py (automatic_publish).
+# A missing or malformed policy fails closed: no commit, no push.
+# Auto-push is repository synchronisation only. It is NOT authorization and never replaces a Human Gate.
+policy_id: AUTO_PUSH_POLICY
+policy_version: "1.0"
+adopted: "2026-09-25"
+adopted_by_request_of: "repository owner (explicit instruction: auto-push is the default after validated runs)"
+
+enabled: true                  # emergency override: set false -> validated commits are still created, pushes are skipped
+mode: automatic
+remote: origin
+remote_url: https://github.com/BenyaminZadehmoradian/HLS_DSE.git
+branch: main
+commit_required: true
+push_required_after_successful_commit: true
+force_push: false
+rewrite_history: false
+retry_failed_push: false       # a failed push is logged; the next publish run pushes the pending commits again
+fetch_before_push: true
+on_remote_divergence: block    # AUTO-PUSH BLOCKED / REMOTE DIVERGED / HUMAN REVIEW REQUIRED
+
+# Validation runs before anything is staged. Every command must exit 0.
+validation_commands:
+  - ["git", "diff", "--check"]
+  - ["python3", "scripts/validate_project.py"]
+  - ["environments/xilinx_2025_2_1/run_in_env.sh", "/home/benyamin/.venvs/hls_dse_py312/bin/python", "-m", "pytest", "-q", "-p", "no:cacheprovider"]
+
+commit_message:
+  pattern: '^[a-z0-9][a-z0-9-]*(/[a-z0-9][a-z0-9-]*)?: \S.{7,}$'   # <phase>/<study>: <change> or <area>: <change>
+  forbidden_subjects: [update, updates, changes, change, fix, fixes, commit, wip, misc, tmp]
+
+# Gate-controlled state: automation never commits a change to these. A human commits gate decisions.
+protected_state:
+  files:
+    RESEARCH_STATE.yaml: [status, current_phase, current_study, active_phase, active_phase_state, p1_authorized,
+                          p1_gate_required, human_gate_required, automatic_advance, active_environment,
+                          next_phase_implementation_allowed, future_phase_implementation_allowed]
+    AI_CONTROL/PHASE_CONTROL.yaml: [active_phase, state, human_approval_required, automatic_advance]
+  paths_never_auto_published: ["audit/gates/approvals/"]   # approval artifacts are human-authored and human-committed
+
+# Content scan over every file in the staged set AND every file changed in <remote>/<branch>..HEAD.
+scan:
+  max_file_bytes: 5000000
+  forbidden_extensions: [.lic, .key, .pem, .p12, .pfx, .token, .kdbx, .xsa, .bit, .bin, .elf, .dcp, .wdb, .vcd,
+                         .fst, .wlf, .jou, .pb, .rpx, .db, .sqlite, .zip, .tar, .gz, .7z]
+  forbidden_names: [id_rsa, id_ed25519, id_ecdsa, .env, credentials, credentials.json, .netrc, .pypirc]
+  forbidden_path_parts: [__pycache__, .pytest_cache, .Xil, .runs, .cache, .hw, .ip_user_files, .sim]
+  pdf:
+    default: block                   # publisher-restricted by default (related_work/README.md §6)
+    allowlist: []                    # entries: {path, sha256, license} - only for verified redistributable licenses
+  binary_allowed_extensions: [.png, .svg]
+  secret_patterns:
+    - '-----BEGIN [A-Z ]*PRIVATE KEY-----'
+    - 'AKIA[0-9A-Z]{16}'
+    - 'gh[pousr]_[A-Za-z0-9]{30,}'
+    - 'github_pat_[A-Za-z0-9_]{40,}'
+    - 'sk-[A-Za-z0-9_-]{32,}'
+    - 'xox[baprs]-[A-Za-z0-9-]{10,}'
+    - '(?i)(password|passwd|secret|api[_-]?key|auth[_-]?token)\s*[:=]\s*["'']?[^\s"'']{8,}'
+    - '(?m)^\s*(INCREMENT|FEATURE)\s+\S+\s+xilinxd\b'
+    - '(?i)HOSTID\s*=\s*\S+'
+
+log:
+  path: audit/git/AUTO_PUSH_LOG.jsonl  # append-only; the entry for publish N is committed by publish N+1
+  log_only_changes_trigger_publish: false

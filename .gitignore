@@ -1,0 +1,3 @@
+# Python bytecode/caches (never published; the auto-publish scan also blocks them)
+__pycache__/
+*.py[cod]
