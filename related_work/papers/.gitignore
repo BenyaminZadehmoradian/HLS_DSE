@@ -1,0 +1,3 @@
+# PDFs are kept locally and not committed: this repository is public and most PDFs are
+# copyrighted publisher/author copies. Identity is tracked by SHA-256 in RELATED_WORK_REGISTRY.csv.
+*.pdf

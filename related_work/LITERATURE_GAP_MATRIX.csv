@@ -1,5 +1,5 @@
 gap_id,topic,prior_art_status,covered_in_project,missing_action,priority
-G01,external baseline reproduction,established artifact practice,yes,S09 reproduction study,HIGH
+G01,external baseline reproduction,established artifact practice,yes,S71 reproduction study,HIGH
 G02,benchmark and design-space normalization,required by HLSyn/HLSFactory,yes,benchmark mapping and provenance,HIGH
 G03,automatic pragma selection,prior art,yes,infrastructure only; avoid novelty claim,HIGH
 G04,code transformation search,prior art,partial,explicitly separate or exclude,HIGH

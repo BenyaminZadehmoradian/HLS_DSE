@@ -1,0 +1,2974 @@
+# Literature <-> Study map (repository-derived, 2026-09-25).
+# Derived mechanically: a paper maps to a Study when a review dimension linked to that Study is YES (direct_overlap)
+# or PARTIAL (partial_overlap). Dimension -> Study table: related_work/README.md. LITERATURE_REPORTED only;
+# 'overlap' means the paper reports on the same dimension, not that it answers the Study's question.
+map_version: '1.0'
+studies:
+- study_id: S00
+  title: Project contract
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S01
+  title: Flow smoke test
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S02
+  title: Interaction pilot
+  paper_ids:
+  - RW0011
+  - RW0025
+  - RW0033
+  - RW0037
+  - RW0041
+  - RW0042
+  - RW0044
+  - RW0003
+  - RW0004
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0014
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0026
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0035
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0045
+  - RW0050
+  - RW0053
+  - RW0055
+  - RW0056
+  - RW0058
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0011
+  - RW0025
+  - RW0033
+  - RW0037
+  - RW0041
+  - RW0042
+  - RW0044
+  partial_overlap:
+  - RW0003
+  - RW0004
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0014
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0026
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0035
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0045
+  - RW0050
+  - RW0053
+  - RW0055
+  - RW0056
+  - RW0058
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S03
+  title: Decision relevance
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S04
+  title: Oracle benchmark
+  paper_ids:
+  - RW0006
+  - RW0009
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0045
+  - RW0046
+  - RW0049
+  - RW0058
+  - RW0001
+  - RW0003
+  - RW0004
+  - RW0007
+  - RW0008
+  - RW0010
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0020
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0025
+  - RW0026
+  - RW0027
+  - RW0029
+  - RW0035
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0048
+  - RW0051
+  - RW0053
+  - RW0056
+  - RW0057
+  - RW0062
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0006
+  - RW0009
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0045
+  - RW0046
+  - RW0049
+  - RW0058
+  partial_overlap:
+  - RW0001
+  - RW0003
+  - RW0004
+  - RW0007
+  - RW0008
+  - RW0010
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0020
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0025
+  - RW0026
+  - RW0027
+  - RW0029
+  - RW0035
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0048
+  - RW0051
+  - RW0053
+  - RW0056
+  - RW0057
+  - RW0062
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S05
+  title: Evidence selection
+  paper_ids:
+  - RW0006
+  - RW0012
+  - RW0015
+  - RW0018
+  - RW0026
+  - RW0029
+  - RW0042
+  - RW0048
+  - RW0056
+  - RW0001
+  - RW0013
+  - RW0016
+  - RW0017
+  - RW0019
+  - RW0020
+  - RW0022
+  - RW0030
+  - RW0031
+  - RW0033
+  - RW0034
+  - RW0049
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0006
+  - RW0012
+  - RW0015
+  - RW0018
+  - RW0026
+  - RW0029
+  - RW0042
+  - RW0048
+  - RW0056
+  partial_overlap:
+  - RW0001
+  - RW0013
+  - RW0016
+  - RW0017
+  - RW0019
+  - RW0020
+  - RW0022
+  - RW0030
+  - RW0031
+  - RW0033
+  - RW0034
+  - RW0049
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S06
+  title: Budget scaling
+  paper_ids:
+  - RW0006
+  - RW0009
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0045
+  - RW0046
+  - RW0049
+  - RW0058
+  - RW0001
+  - RW0003
+  - RW0004
+  - RW0007
+  - RW0008
+  - RW0010
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0020
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0025
+  - RW0026
+  - RW0027
+  - RW0029
+  - RW0035
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0048
+  - RW0051
+  - RW0053
+  - RW0056
+  - RW0057
+  - RW0062
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0006
+  - RW0009
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0045
+  - RW0046
+  - RW0049
+  - RW0058
+  partial_overlap:
+  - RW0001
+  - RW0003
+  - RW0004
+  - RW0007
+  - RW0008
+  - RW0010
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0020
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0025
+  - RW0026
+  - RW0027
+  - RW0029
+  - RW0035
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0048
+  - RW0051
+  - RW0053
+  - RW0056
+  - RW0057
+  - RW0062
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S07
+  title: Joint task-candidate-fidelity selection
+  paper_ids:
+  - RW0003
+  - RW0004
+  - RW0011
+  - RW0014
+  - RW0025
+  - RW0031
+  - RW0033
+  - RW0037
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0050
+  - RW0001
+  - RW0002
+  - RW0005
+  - RW0044
+  - RW0045
+  - RW0054
+  - RW0056
+  - RW0057
+  - RW0061
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0003
+  - RW0004
+  - RW0011
+  - RW0014
+  - RW0025
+  - RW0031
+  - RW0033
+  - RW0037
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0050
+  partial_overlap:
+  - RW0001
+  - RW0002
+  - RW0005
+  - RW0044
+  - RW0045
+  - RW0054
+  - RW0056
+  - RW0057
+  - RW0061
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S08
+  title: Full framework
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S09
+  title: Historical/legacy allocation; no new execution
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S10
+  title: Shared vs per-benchmark model
+  paper_ids:
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0019
+  - RW0021
+  - RW0023
+  - RW0026
+  - RW0027
+  - RW0028
+  - RW0034
+  - RW0048
+  - RW0049
+  - RW0008
+  - RW0011
+  - RW0024
+  - RW0025
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0056
+  - RW0058
+  - RW0061
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0019
+  - RW0021
+  - RW0023
+  - RW0026
+  - RW0027
+  - RW0028
+  - RW0034
+  - RW0048
+  - RW0049
+  partial_overlap:
+  - RW0008
+  - RW0011
+  - RW0024
+  - RW0025
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0056
+  - RW0058
+  - RW0061
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S11
+  title: Cross-benchmark transfer
+  paper_ids:
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0019
+  - RW0021
+  - RW0023
+  - RW0026
+  - RW0027
+  - RW0028
+  - RW0034
+  - RW0048
+  - RW0049
+  - RW0008
+  - RW0011
+  - RW0024
+  - RW0025
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0056
+  - RW0058
+  - RW0061
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0019
+  - RW0021
+  - RW0023
+  - RW0026
+  - RW0027
+  - RW0028
+  - RW0034
+  - RW0048
+  - RW0049
+  partial_overlap:
+  - RW0008
+  - RW0011
+  - RW0024
+  - RW0025
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0056
+  - RW0058
+  - RW0061
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S12
+  title: Online learning
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S13
+  title: Uncertainty-aware scheduling
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S14
+  title: Feasibility learning
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S15
+  title: Joint concurrent HLS DSE
+  paper_ids:
+  - RW0003
+  - RW0004
+  - RW0011
+  - RW0014
+  - RW0025
+  - RW0031
+  - RW0033
+  - RW0037
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0050
+  - RW0001
+  - RW0002
+  - RW0005
+  - RW0044
+  - RW0045
+  - RW0054
+  - RW0056
+  - RW0057
+  - RW0061
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0003
+  - RW0004
+  - RW0011
+  - RW0014
+  - RW0025
+  - RW0031
+  - RW0033
+  - RW0037
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0050
+  partial_overlap:
+  - RW0001
+  - RW0002
+  - RW0005
+  - RW0044
+  - RW0045
+  - RW0054
+  - RW0056
+  - RW0057
+  - RW0061
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S16
+  title: Decision-change prediction
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S17
+  title: No-joint certificate / CPU-FPGA historical variants
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S18
+  title: Budget allocation / DMA historical variants
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S19
+  title: Evidence portfolio / power-energy historical variants
+  paper_ids:
+  - RW0002
+  - RW0004
+  - RW0006
+  - RW0022
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0050
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0055
+  - RW0056
+  - RW0057
+  - RW0058
+  - RW0008
+  - RW0043
+  - RW0059
+  - RW0060
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0002
+  - RW0004
+  - RW0006
+  - RW0022
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0050
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0055
+  - RW0056
+  - RW0057
+  - RW0058
+  partial_overlap:
+  - RW0008
+  - RW0043
+  - RW0059
+  - RW0060
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S20
+  title: Cost-aware evidence selection / carbon historical variants
+  paper_ids:
+  - RW0002
+  - RW0004
+  - RW0006
+  - RW0012
+  - RW0015
+  - RW0018
+  - RW0022
+  - RW0026
+  - RW0029
+  - RW0042
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0050
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0055
+  - RW0056
+  - RW0057
+  - RW0058
+  - RW0001
+  - RW0008
+  - RW0013
+  - RW0016
+  - RW0017
+  - RW0019
+  - RW0020
+  - RW0030
+  - RW0031
+  - RW0033
+  - RW0034
+  - RW0043
+  - RW0059
+  - RW0060
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0002
+  - RW0004
+  - RW0006
+  - RW0012
+  - RW0015
+  - RW0018
+  - RW0022
+  - RW0026
+  - RW0029
+  - RW0042
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0050
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0055
+  - RW0056
+  - RW0057
+  - RW0058
+  partial_overlap:
+  - RW0001
+  - RW0008
+  - RW0013
+  - RW0016
+  - RW0017
+  - RW0019
+  - RW0020
+  - RW0030
+  - RW0031
+  - RW0033
+  - RW0034
+  - RW0043
+  - RW0059
+  - RW0060
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S21
+  title: Adaptive fidelity / no-joint historical variants
+  paper_ids:
+  - RW0006
+  - RW0009
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0045
+  - RW0046
+  - RW0049
+  - RW0058
+  - RW0001
+  - RW0003
+  - RW0004
+  - RW0007
+  - RW0008
+  - RW0010
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0020
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0025
+  - RW0026
+  - RW0027
+  - RW0029
+  - RW0035
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0048
+  - RW0051
+  - RW0053
+  - RW0056
+  - RW0057
+  - RW0062
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0006
+  - RW0009
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0045
+  - RW0046
+  - RW0049
+  - RW0058
+  partial_overlap:
+  - RW0001
+  - RW0003
+  - RW0004
+  - RW0007
+  - RW0008
+  - RW0010
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0020
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0025
+  - RW0026
+  - RW0027
+  - RW0029
+  - RW0035
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0048
+  - RW0051
+  - RW0053
+  - RW0056
+  - RW0057
+  - RW0062
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S22
+  title: Minimum joint evidence
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S23
+  title: Adaptive fidelity ladder
+  paper_ids:
+  - RW0006
+  - RW0012
+  - RW0015
+  - RW0018
+  - RW0026
+  - RW0029
+  - RW0042
+  - RW0048
+  - RW0056
+  - RW0001
+  - RW0013
+  - RW0016
+  - RW0017
+  - RW0019
+  - RW0020
+  - RW0022
+  - RW0030
+  - RW0031
+  - RW0033
+  - RW0034
+  - RW0049
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0006
+  - RW0012
+  - RW0015
+  - RW0018
+  - RW0026
+  - RW0029
+  - RW0042
+  - RW0048
+  - RW0056
+  partial_overlap:
+  - RW0001
+  - RW0013
+  - RW0016
+  - RW0017
+  - RW0019
+  - RW0020
+  - RW0022
+  - RW0030
+  - RW0031
+  - RW0033
+  - RW0034
+  - RW0049
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S24
+  title: Large workload scaling
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S25
+  title: Distributed execution
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S26
+  title: Provenance/storage
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S27
+  title: Advanced controller comparison
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S28
+  title: UNKNOWN
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S29
+  title: UNKNOWN
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S30
+  title: UNKNOWN
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S31
+  title: UNKNOWN
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S32
+  title: Adaptive evaluation stopping
+  paper_ids:
+  - RW0001
+  - RW0006
+  - RW0020
+  - RW0030
+  - RW0035
+  - RW0038
+  - RW0042
+  - RW0045
+  - RW0048
+  - RW0002
+  - RW0003
+  - RW0008
+  - RW0009
+  - RW0010
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0016
+  - RW0019
+  - RW0021
+  - RW0025
+  - RW0026
+  - RW0029
+  - RW0031
+  - RW0036
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0049
+  - RW0050
+  - RW0056
+  - RW0058
+  - RW0062
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0001
+  - RW0006
+  - RW0020
+  - RW0030
+  - RW0035
+  - RW0038
+  - RW0042
+  - RW0045
+  - RW0048
+  partial_overlap:
+  - RW0002
+  - RW0003
+  - RW0008
+  - RW0009
+  - RW0010
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0016
+  - RW0019
+  - RW0021
+  - RW0025
+  - RW0026
+  - RW0029
+  - RW0031
+  - RW0036
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0049
+  - RW0050
+  - RW0056
+  - RW0058
+  - RW0062
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S33
+  title: Stage-wise VOI
+  paper_ids:
+  - RW0006
+  - RW0012
+  - RW0015
+  - RW0018
+  - RW0026
+  - RW0029
+  - RW0042
+  - RW0048
+  - RW0056
+  - RW0001
+  - RW0013
+  - RW0016
+  - RW0017
+  - RW0019
+  - RW0020
+  - RW0022
+  - RW0030
+  - RW0031
+  - RW0033
+  - RW0034
+  - RW0049
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0006
+  - RW0012
+  - RW0015
+  - RW0018
+  - RW0026
+  - RW0029
+  - RW0042
+  - RW0048
+  - RW0056
+  partial_overlap:
+  - RW0001
+  - RW0013
+  - RW0016
+  - RW0017
+  - RW0019
+  - RW0020
+  - RW0022
+  - RW0030
+  - RW0031
+  - RW0033
+  - RW0034
+  - RW0049
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S34
+  title: Dominance-based early termination
+  paper_ids:
+  - RW0001
+  - RW0006
+  - RW0020
+  - RW0030
+  - RW0035
+  - RW0038
+  - RW0042
+  - RW0045
+  - RW0048
+  - RW0002
+  - RW0003
+  - RW0008
+  - RW0009
+  - RW0010
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0016
+  - RW0019
+  - RW0021
+  - RW0025
+  - RW0026
+  - RW0029
+  - RW0031
+  - RW0036
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0049
+  - RW0050
+  - RW0056
+  - RW0058
+  - RW0062
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0001
+  - RW0006
+  - RW0020
+  - RW0030
+  - RW0035
+  - RW0038
+  - RW0042
+  - RW0045
+  - RW0048
+  partial_overlap:
+  - RW0002
+  - RW0003
+  - RW0008
+  - RW0009
+  - RW0010
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0016
+  - RW0019
+  - RW0021
+  - RW0025
+  - RW0026
+  - RW0029
+  - RW0031
+  - RW0036
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0049
+  - RW0050
+  - RW0056
+  - RW0058
+  - RW0062
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S35
+  title: Error-budgeted evaluation
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S36
+  title: Sparse interaction discovery
+  paper_ids:
+  - RW0011
+  - RW0025
+  - RW0033
+  - RW0037
+  - RW0041
+  - RW0042
+  - RW0044
+  - RW0003
+  - RW0004
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0014
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0026
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0035
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0045
+  - RW0050
+  - RW0053
+  - RW0055
+  - RW0056
+  - RW0058
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0011
+  - RW0025
+  - RW0033
+  - RW0037
+  - RW0041
+  - RW0042
+  - RW0044
+  partial_overlap:
+  - RW0003
+  - RW0004
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0014
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0026
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0035
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0045
+  - RW0050
+  - RW0053
+  - RW0055
+  - RW0056
+  - RW0058
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S37
+  title: Interaction screening
+  paper_ids:
+  - RW0011
+  - RW0025
+  - RW0033
+  - RW0037
+  - RW0041
+  - RW0042
+  - RW0044
+  - RW0003
+  - RW0004
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0014
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0026
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0035
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0045
+  - RW0050
+  - RW0053
+  - RW0055
+  - RW0056
+  - RW0058
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0011
+  - RW0025
+  - RW0033
+  - RW0037
+  - RW0041
+  - RW0042
+  - RW0044
+  partial_overlap:
+  - RW0003
+  - RW0004
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0014
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0026
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0035
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0045
+  - RW0050
+  - RW0053
+  - RW0055
+  - RW0056
+  - RW0058
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S38
+  title: Higher-order interaction discovery
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S39
+  title: Interaction-order selection
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S40
+  title: Counterfactual interaction analysis
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S41
+  title: Interaction decomposition
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S42
+  title: Interaction fingerprinting
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S43
+  title: Pareto frontier stability
+  paper_ids:
+  - RW0057
+  - RW0003
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0015
+  - RW0018
+  - RW0026
+  - RW0033
+  - RW0037
+  - RW0049
+  - RW0050
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0055
+  - RW0056
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0057
+  partial_overlap:
+  - RW0003
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0015
+  - RW0018
+  - RW0026
+  - RW0033
+  - RW0037
+  - RW0049
+  - RW0050
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0055
+  - RW0056
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S44
+  title: Pareto rank stability
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S45
+  title: Decision stability
+  paper_ids:
+  - RW0057
+  - RW0003
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0015
+  - RW0018
+  - RW0026
+  - RW0033
+  - RW0037
+  - RW0049
+  - RW0050
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0055
+  - RW0056
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0057
+  partial_overlap:
+  - RW0003
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0015
+  - RW0018
+  - RW0026
+  - RW0033
+  - RW0037
+  - RW0049
+  - RW0050
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0055
+  - RW0056
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S46
+  title: Pareto frontier uncertainty
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S47
+  title: Frontier coverage
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S48
+  title: Asynchronous evidence scheduling
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S49
+  title: Straggler-aware DSE
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S50
+  title: Portfolio scheduling
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S51
+  title: Robust DSE
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S52
+  title: QoR variability
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S53
+  title: Replication-aware DSE
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S54
+  title: Risk-aware Pareto
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S55
+  title: Directive sensitivity map
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S56
+  title: Directive interaction modeling
+  paper_ids:
+  - RW0011
+  - RW0025
+  - RW0033
+  - RW0037
+  - RW0041
+  - RW0042
+  - RW0044
+  - RW0003
+  - RW0004
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0014
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0026
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0035
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0045
+  - RW0050
+  - RW0053
+  - RW0055
+  - RW0056
+  - RW0058
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0011
+  - RW0025
+  - RW0033
+  - RW0037
+  - RW0041
+  - RW0042
+  - RW0044
+  partial_overlap:
+  - RW0003
+  - RW0004
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0014
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0026
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0035
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0045
+  - RW0050
+  - RW0053
+  - RW0055
+  - RW0056
+  - RW0058
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S57
+  title: Dynamic search-space reduction
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S58
+  title: Region-level DSE
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S59
+  title: Pre-P&R physical interaction prediction
+  paper_ids:
+  - RW0006
+  - RW0008
+  - RW0009
+  - RW0031
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0053
+  - RW0058
+  - RW0061
+  - RW0003
+  - RW0004
+  - RW0005
+  - RW0007
+  - RW0022
+  - RW0025
+  - RW0032
+  - RW0037
+  - RW0054
+  - RW0057
+  - RW0060
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0006
+  - RW0008
+  - RW0009
+  - RW0031
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0053
+  - RW0058
+  - RW0061
+  partial_overlap:
+  - RW0003
+  - RW0004
+  - RW0005
+  - RW0007
+  - RW0022
+  - RW0025
+  - RW0032
+  - RW0037
+  - RW0054
+  - RW0057
+  - RW0060
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S60
+  title: Routing-risk prediction
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S61
+  title: Physical feasibility boundary learning
+  paper_ids:
+  - RW0006
+  - RW0008
+  - RW0009
+  - RW0031
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0053
+  - RW0058
+  - RW0061
+  - RW0003
+  - RW0004
+  - RW0005
+  - RW0007
+  - RW0022
+  - RW0025
+  - RW0032
+  - RW0037
+  - RW0054
+  - RW0057
+  - RW0060
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0006
+  - RW0008
+  - RW0009
+  - RW0031
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0053
+  - RW0058
+  - RW0061
+  partial_overlap:
+  - RW0003
+  - RW0004
+  - RW0005
+  - RW0007
+  - RW0022
+  - RW0025
+  - RW0032
+  - RW0037
+  - RW0054
+  - RW0057
+  - RW0060
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S62
+  title: Bottleneck switching
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S63
+  title: Bottleneck transition modeling
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S64
+  title: Resource opportunity cost
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S65
+  title: Joint candidate selection
+  paper_ids:
+  - RW0003
+  - RW0004
+  - RW0011
+  - RW0014
+  - RW0025
+  - RW0031
+  - RW0033
+  - RW0037
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0050
+  - RW0001
+  - RW0002
+  - RW0005
+  - RW0044
+  - RW0045
+  - RW0054
+  - RW0056
+  - RW0057
+  - RW0061
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0003
+  - RW0004
+  - RW0011
+  - RW0014
+  - RW0025
+  - RW0031
+  - RW0033
+  - RW0037
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0050
+  partial_overlap:
+  - RW0001
+  - RW0002
+  - RW0005
+  - RW0044
+  - RW0045
+  - RW0054
+  - RW0056
+  - RW0057
+  - RW0061
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S66
+  title: Joint Pareto composition failure
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S67
+  title: Minimum joint evidence
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S68
+  title: Interaction-driven benchmark grouping
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S69
+  title: Meta-DSE
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S70
+  title: Study selection / meta-study
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S71
+  title: External baseline reproduction and cross-paper comparison
+  paper_ids:
+  - RW0001
+  - RW0006
+  - RW0007
+  - RW0009
+  - RW0010
+  - RW0017
+  - RW0019
+  - RW0021
+  - RW0023
+  - RW0024
+  - RW0025
+  - RW0027
+  - RW0029
+  - RW0031
+  - RW0033
+  - RW0034
+  relationship: PARTIAL_LITERATURE_ONLY
+  direct_overlap: []
+  partial_overlap:
+  - RW0001
+  - RW0006
+  - RW0007
+  - RW0009
+  - RW0010
+  - RW0017
+  - RW0019
+  - RW0021
+  - RW0023
+  - RW0024
+  - RW0025
+  - RW0027
+  - RW0029
+  - RW0031
+  - RW0033
+  - RW0034
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S72
+  title: Search algorithm and end-to-end cost comparison
+  paper_ids:
+  - RW0006
+  - RW0009
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0045
+  - RW0046
+  - RW0049
+  - RW0058
+  - RW0001
+  - RW0003
+  - RW0004
+  - RW0007
+  - RW0008
+  - RW0010
+  - RW0013
+  - RW0014
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0020
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0025
+  - RW0026
+  - RW0027
+  - RW0029
+  - RW0035
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0048
+  - RW0051
+  - RW0053
+  - RW0056
+  - RW0057
+  - RW0062
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0006
+  - RW0009
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0045
+  - RW0046
+  - RW0049
+  - RW0058
+  partial_overlap:
+  - RW0001
+  - RW0003
+  - RW0004
+  - RW0007
+  - RW0008
+  - RW0010
+  - RW0013
+  - RW0014
+  - RW0017
+  - RW0018
+  - RW0019
+  - RW0020
+  - RW0021
+  - RW0022
+  - RW0024
+  - RW0025
+  - RW0026
+  - RW0027
+  - RW0029
+  - RW0035
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0048
+  - RW0051
+  - RW0053
+  - RW0056
+  - RW0057
+  - RW0062
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S73
+  title: Memory-system and data-movement cost
+  paper_ids:
+  - RW0003
+  - RW0004
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0039
+  - RW0041
+  - RW0044
+  - RW0001
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0011
+  - RW0017
+  - RW0018
+  - RW0022
+  - RW0024
+  - RW0025
+  - RW0035
+  - RW0036
+  - RW0037
+  - RW0038
+  - RW0040
+  - RW0042
+  - RW0043
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0050
+  - RW0051
+  - RW0053
+  - RW0054
+  - RW0055
+  - RW0056
+  - RW0057
+  - RW0058
+  - RW0060
+  - RW0061
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0003
+  - RW0004
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0039
+  - RW0041
+  - RW0044
+  partial_overlap:
+  - RW0001
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0011
+  - RW0017
+  - RW0018
+  - RW0022
+  - RW0024
+  - RW0025
+  - RW0035
+  - RW0036
+  - RW0037
+  - RW0038
+  - RW0040
+  - RW0042
+  - RW0043
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0050
+  - RW0051
+  - RW0053
+  - RW0054
+  - RW0055
+  - RW0056
+  - RW0057
+  - RW0058
+  - RW0060
+  - RW0061
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S74
+  title: Input/workload sensitivity
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S75
+  title: Search-space sensitivity
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S76
+  title: Hierarchical DSE
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S77
+  title: Frequency-constrained DSE
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S78
+  title: HLS and physical co-DSE
+  paper_ids:
+  - RW0006
+  - RW0008
+  - RW0009
+  - RW0031
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0053
+  - RW0058
+  - RW0061
+  - RW0003
+  - RW0004
+  - RW0005
+  - RW0007
+  - RW0022
+  - RW0025
+  - RW0032
+  - RW0037
+  - RW0054
+  - RW0057
+  - RW0060
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0006
+  - RW0008
+  - RW0009
+  - RW0031
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0053
+  - RW0058
+  - RW0061
+  partial_overlap:
+  - RW0003
+  - RW0004
+  - RW0005
+  - RW0007
+  - RW0022
+  - RW0025
+  - RW0032
+  - RW0037
+  - RW0054
+  - RW0057
+  - RW0060
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S79
+  title: Multi-die and SLR-aware DSE
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S80
+  title: Toolchain robustness
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S81
+  title: Implementation variability
+  paper_ids:
+  - RW0006
+  - RW0008
+  - RW0009
+  - RW0031
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0053
+  - RW0058
+  - RW0061
+  - RW0003
+  - RW0004
+  - RW0005
+  - RW0007
+  - RW0022
+  - RW0025
+  - RW0032
+  - RW0037
+  - RW0054
+  - RW0057
+  - RW0060
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0006
+  - RW0008
+  - RW0009
+  - RW0031
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0048
+  - RW0049
+  - RW0053
+  - RW0058
+  - RW0061
+  partial_overlap:
+  - RW0003
+  - RW0004
+  - RW0005
+  - RW0007
+  - RW0022
+  - RW0025
+  - RW0032
+  - RW0037
+  - RW0054
+  - RW0057
+  - RW0060
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S82
+  title: Accuracy-aware DSE
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S83
+  title: End-to-end system latency
+  paper_ids:
+  - RW0002
+  - RW0044
+  - RW0053
+  - RW0003
+  - RW0004
+  - RW0011
+  - RW0017
+  - RW0031
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0043
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0060
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0002
+  - RW0044
+  - RW0053
+  partial_overlap:
+  - RW0003
+  - RW0004
+  - RW0011
+  - RW0017
+  - RW0031
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0043
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0060
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S84
+  title: CPU-FPGA overlap
+  paper_ids:
+  - RW0002
+  - RW0044
+  - RW0053
+  - RW0003
+  - RW0004
+  - RW0011
+  - RW0017
+  - RW0031
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0043
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0060
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0002
+  - RW0044
+  - RW0053
+  partial_overlap:
+  - RW0003
+  - RW0004
+  - RW0011
+  - RW0017
+  - RW0031
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0043
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0060
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S85
+  title: Configuration-strategy DSE
+  paper_ids:
+  - RW0005
+  - RW0038
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0056
+  - RW0057
+  - RW0002
+  - RW0004
+  - RW0021
+  - RW0023
+  - RW0026
+  - RW0028
+  - RW0055
+  - RW0059
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0005
+  - RW0038
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0056
+  - RW0057
+  partial_overlap:
+  - RW0002
+  - RW0004
+  - RW0021
+  - RW0023
+  - RW0026
+  - RW0028
+  - RW0055
+  - RW0059
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S86
+  title: Bitstream and configuration-size cost
+  paper_ids:
+  - RW0005
+  - RW0038
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0056
+  - RW0057
+  - RW0002
+  - RW0004
+  - RW0021
+  - RW0023
+  - RW0026
+  - RW0028
+  - RW0055
+  - RW0059
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0005
+  - RW0038
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0056
+  - RW0057
+  partial_overlap:
+  - RW0002
+  - RW0004
+  - RW0021
+  - RW0023
+  - RW0026
+  - RW0028
+  - RW0055
+  - RW0059
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S87
+  title: Evidence reuse and cache value
+  paper_ids:
+  - RW0004
+  - RW0012
+  - RW0019
+  - RW0021
+  - RW0032
+  - RW0036
+  relationship: 'PARTIAL_LITERATURE_ONLY (partial via keyword screen: /transfer|reuse|warm[- ]start|multi-task/ on research_problem+method)'
+  direct_overlap: []
+  partial_overlap:
+  - RW0004
+  - RW0012
+  - RW0019
+  - RW0021
+  - RW0032
+  - RW0036
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S88
+  title: Early stopping and staged evaluation
+  paper_ids:
+  - RW0001
+  - RW0006
+  - RW0020
+  - RW0030
+  - RW0035
+  - RW0038
+  - RW0042
+  - RW0045
+  - RW0048
+  - RW0002
+  - RW0003
+  - RW0008
+  - RW0009
+  - RW0010
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0016
+  - RW0019
+  - RW0021
+  - RW0025
+  - RW0026
+  - RW0029
+  - RW0031
+  - RW0036
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0049
+  - RW0050
+  - RW0056
+  - RW0058
+  - RW0062
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0001
+  - RW0006
+  - RW0020
+  - RW0030
+  - RW0035
+  - RW0038
+  - RW0042
+  - RW0045
+  - RW0048
+  partial_overlap:
+  - RW0002
+  - RW0003
+  - RW0008
+  - RW0009
+  - RW0010
+  - RW0011
+  - RW0012
+  - RW0015
+  - RW0016
+  - RW0019
+  - RW0021
+  - RW0025
+  - RW0026
+  - RW0029
+  - RW0031
+  - RW0036
+  - RW0037
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0049
+  - RW0050
+  - RW0056
+  - RW0058
+  - RW0062
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S89
+  title: Constraint versus QoR prediction
+  paper_ids:
+  - RW0001
+  - RW0004
+  - RW0007
+  - RW0008
+  - RW0009
+  - RW0010
+  - RW0011
+  - RW0018
+  - RW0020
+  - RW0022
+  - RW0023
+  - RW0024
+  - RW0027
+  - RW0028
+  - RW0034
+  - RW0046
+  - RW0048
+  - RW0049
+  - RW0058
+  relationship: 'PARTIAL_LITERATURE_ONLY (partial via keyword screen: /\bpredict|QoR (estimat|model)|performance model|power model/ on research_problem+method)'
+  direct_overlap: []
+  partial_overlap:
+  - RW0001
+  - RW0004
+  - RW0007
+  - RW0008
+  - RW0009
+  - RW0010
+  - RW0011
+  - RW0018
+  - RW0020
+  - RW0022
+  - RW0023
+  - RW0024
+  - RW0027
+  - RW0028
+  - RW0034
+  - RW0046
+  - RW0048
+  - RW0049
+  - RW0058
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S90
+  title: Workload taxonomy and generalization
+  paper_ids:
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0019
+  - RW0021
+  - RW0023
+  - RW0026
+  - RW0027
+  - RW0028
+  - RW0034
+  - RW0048
+  - RW0049
+  - RW0008
+  - RW0011
+  - RW0024
+  - RW0025
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0056
+  - RW0058
+  - RW0061
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0009
+  - RW0010
+  - RW0012
+  - RW0019
+  - RW0021
+  - RW0023
+  - RW0026
+  - RW0027
+  - RW0028
+  - RW0034
+  - RW0048
+  - RW0049
+  partial_overlap:
+  - RW0008
+  - RW0011
+  - RW0024
+  - RW0025
+  - RW0029
+  - RW0030
+  - RW0031
+  - RW0032
+  - RW0033
+  - RW0036
+  - RW0038
+  - RW0039
+  - RW0040
+  - RW0041
+  - RW0042
+  - RW0056
+  - RW0058
+  - RW0061
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S91
+  title: Cross-device generalization
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S92
+  title: Objective and utility sensitivity
+  paper_ids:
+  - RW0057
+  - RW0003
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0015
+  - RW0018
+  - RW0026
+  - RW0033
+  - RW0037
+  - RW0049
+  - RW0050
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0055
+  - RW0056
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0057
+  partial_overlap:
+  - RW0003
+  - RW0006
+  - RW0009
+  - RW0010
+  - RW0015
+  - RW0018
+  - RW0026
+  - RW0033
+  - RW0037
+  - RW0049
+  - RW0050
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0055
+  - RW0056
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S93
+  title: Invocation-distribution-aware DSE
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S94
+  title: Lifecycle-robust DSE
+  paper_ids:
+  - RW0005
+  - RW0038
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0056
+  - RW0057
+  - RW0002
+  - RW0004
+  - RW0021
+  - RW0023
+  - RW0026
+  - RW0028
+  - RW0055
+  - RW0059
+  relationship: LITERATURE_MAPPED
+  direct_overlap:
+  - RW0005
+  - RW0038
+  - RW0043
+  - RW0044
+  - RW0045
+  - RW0046
+  - RW0047
+  - RW0051
+  - RW0052
+  - RW0053
+  - RW0054
+  - RW0056
+  - RW0057
+  partial_overlap:
+  - RW0002
+  - RW0004
+  - RW0021
+  - RW0023
+  - RW0026
+  - RW0028
+  - RW0055
+  - RW0059
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+- study_id: S95
+  title: Resource fragmentation and spatial packing
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
+- study_id: S96
+  title: Sustained execution and thermal behavior
+  paper_ids: []
+  relationship: NOT_MAPPED_BY_CURRENT_DIMENSIONS
+  direct_overlap: []
+  partial_overlap: []
+  missing_evidence:
+  - No OUR_MEASURED evidence exists for any Study (P0 not started).
+  - No reviewed paper reports this dimension as YES; coverage UNRESOLVED (reviewed set is not exhaustive).
